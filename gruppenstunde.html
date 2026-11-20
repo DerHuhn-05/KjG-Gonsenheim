@@ -6,10 +6,8 @@
   <title>Gruppenstunde – KjG Mainz-Gonsenheim</title>
   <meta name="description" content="KjG Mainz-Gonsenheim – Katholische junge Gemeinde">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/bilder.js"></script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
@@ -26,6 +24,7 @@
     <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
   </div>
   <nav class="mobile-nav" aria-label="Mobile Navigation">
+    <a href="index.html">Startseite</a>
     <a href="events.html">Unsere Events</a>
     <a href="team.html">Unser Team</a>
     <a href="faq.html">FAQ</a>
@@ -34,7 +33,10 @@
 </header>
 
 <main>
-<section class="hero-simple"><h1>Gruppenstunde</h1></section>
+<section class="hero-simple">
+  <div class="hero-bg"><span class="ph-label">bilder/gruppenstunde-1.jpg</span><img src="bilder/gruppenstunde-1.jpg" data-base="bilder/gruppenstunde-1" alt="Header-Bild der Seite Gruppenstunde" onerror="kjgBild(this)"></div>
+  <h1>Gruppenstunde</h1>
+</section>
 
 <div class="container prose">
   <p>Diese Seite ist noch in Arbeit.</p>
@@ -43,7 +45,7 @@
 
 <footer class="site-footer">
   <div class="grid">
-    <div class="brand"><img class="footer-logo" src="assets/img/logo-icon.svg" alt="KjG Logo"></div>
+    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" alt="KjG Logo – zur Startseite"></a></div>
     <div>
       <h3>Adresse</h3>
       <ul><li>Pfarrer-Grimm-Strasse 1</li><li>55124 Mainz</li></ul>

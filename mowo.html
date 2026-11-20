@@ -6,10 +6,8 @@
   <title>MoWo – Monsterwochenende – KjG Mainz-Gonsenheim</title>
   <meta name="description" content="KjG Mainz-Gonsenheim – Katholische junge Gemeinde">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/bilder.js"></script>
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
@@ -26,6 +24,7 @@
     <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
   </div>
   <nav class="mobile-nav" aria-label="Mobile Navigation">
+    <a href="index.html">Startseite</a>
     <a href="events.html">Unsere Events</a>
     <a href="team.html">Unser Team</a>
     <a href="faq.html">FAQ</a>
@@ -35,7 +34,7 @@
 
 <main>
 <section class="hero-split">
-  <div class="media" role="img" aria-label="Bild: MoWo – Monsterwochenende"></div>
+  <div class="media"><span class="ph-label">bilder/mowo-1.jpg</span><img src="bilder/mowo-1.jpg" data-base="bilder/mowo-1" alt="Header-Bild MoWo – Monsterwochenende" onerror="kjgBild(this)"></div>
   <div class="content">
     <h1>MoWo</h1>
     <p>Text für das Monsterwochenende</p>
@@ -62,7 +61,7 @@
         <p>In der digitalen Anmeldung gibt es dafür ein entsprechendes Feld, in dem der Name des mitgebrachten Freundes bzw. der Freundin angegeben werden kann.</p>
       </div>
     </div>
-    <div class="media" role="img" aria-label="Bild: Wer sind wir?"></div>
+    <div class="media"><span class="ph-label">bilder/mowo-2.jpg</span><img src="bilder/mowo-2.jpg" data-base="bilder/mowo-2" alt="Bild zum Abschnitt „Wer sind wir?“" loading="lazy" onerror="kjgBild(this)"></div>
   </section>
   <section class="feature reverse" id="vorbereitungen">
     <div>
@@ -72,7 +71,7 @@
         <p>In der digitalen Anmeldung gibt es dafür ein entsprechendes Feld, in dem der Name des mitgebrachten Freundes bzw. der Freundin angegeben werden kann.</p>
       </div>
     </div>
-    <div class="media" role="img" aria-label="Bild: Vorbereitungen"></div>
+    <div class="media"><span class="ph-label">bilder/mowo-3.jpg</span><img src="bilder/mowo-3.jpg" data-base="bilder/mowo-3" alt="Bild zum Abschnitt „Vorbereitungen“" loading="lazy" onerror="kjgBild(this)"></div>
   </section>
   <section class="feature" id="finanzen">
     <div>
@@ -82,14 +81,14 @@
         <p>In der digitalen Anmeldung gibt es dafür ein entsprechendes Feld, in dem der Name des mitgebrachten Freundes bzw. der Freundin angegeben werden kann.</p>
       </div>
     </div>
-    <div class="media" role="img" aria-label="Bild: Finanzen"></div>
+    <div class="media"><span class="ph-label">bilder/mowo-4.jpg</span><img src="bilder/mowo-4.jpg" data-base="bilder/mowo-4" alt="Bild zum Abschnitt „Finanzen“" loading="lazy" onerror="kjgBild(this)"></div>
   </section>
 </div>
 </main>
 
 <footer class="site-footer">
   <div class="grid">
-    <div class="brand"><img class="footer-logo" src="assets/img/logo-icon.svg" alt="KjG Logo"></div>
+    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" alt="KjG Logo – zur Startseite"></a></div>
     <div>
       <h3>Adresse</h3>
       <ul><li>Pfarrer-Grimm-Strasse 1</li><li>55124 Mainz</li></ul>

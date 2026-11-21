@@ -6,6 +6,7 @@
   <title>MoWo – Monsterwochenende – KjG Mainz-Gonsenheim</title>
   <meta name="description" content="KjG Mainz-Gonsenheim – Katholische junge Gemeinde">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/overpass-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/bilder.js"></script>
   <script src="assets/js/main.js" defer></script>
@@ -13,14 +14,14 @@
 <body>
 <header class="site-header">
   <div class="bar">
-    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Startseite"><img src="assets/img/logo-header.svg" alt="KjG – Katholische junge Gemeinde"></a>
+    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Startseite"><img src="assets/img/logo-header.svg" width="250" height="49" alt="KjG – Katholische junge Gemeinde"></a>
     <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="events.html" aria-current="page">Unsere Events</a>
-        <a href="team.html">Unser Team</a>
-        <a href="faq.html">FAQ</a>
-        <a href="gruppenstunde.html">Gruppenstunde</a>
+      <a href="events.html" aria-current="page">Unsere Events</a>
+      <a href="team.html">Unser Team</a>
+      <a href="faq.html">FAQ</a>
+      <a href="gruppenstunde.html">Gruppenstunde</a>
     </nav>
-    <div class="lang"><a href="#" class="active" lang="de">DE</a><a href="#" lang="en">EN</a></div>
+    <div class="lang"><a href="#" class="de active" lang="de">DE</a><span class="sep"></span><a href="#" class="en" lang="en">EN</a></div>
     <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
   </div>
   <nav class="mobile-nav" aria-label="Mobile Navigation">
@@ -36,79 +37,69 @@
 <section class="hero-split">
   <div class="media"><span class="ph-label">bilder/mowo-1.jpg</span><img src="bilder/mowo-1.jpg" data-base="bilder/mowo-1" alt="Header-Bild MoWo – Monsterwochenende" onerror="kjgBild(this)"></div>
   <div class="content">
-    <h1>MoWo</h1>
-    <p>Text für das Monsterwochenende</p>
+    <h1 class="wide">MoWo</h1>
+    <p>Text für das Monster Wochenende</p>
     <a class="btn" href="#">Anmeldung</a>
   </div>
 </section>
 
-<section class="jump-section">
+<section class="jump-section jump-detail">
   <div class="container">
     <ul class="jumplinks">
-      <li><a href="#teaser">Teaser</a></li>
-      <li><a href="#vorbereitungen">Vorbereitungen</a></li>
-      <li><a href="#finanzen">Finanzen</a></li>
+      <li><a href="#teaser"><svg class="arrow" width="17" height="26" viewBox="0 0 17 26" aria-hidden="true"><path d="M8.5 1v23M1.5 16.5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Teaser</span></a></li>
+      <li><a href="#vorbereitungen"><svg class="arrow" width="17" height="26" viewBox="0 0 17 26" aria-hidden="true"><path d="M8.5 1v23M1.5 16.5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Vorbereitungen</span></a></li>
+      <li><a href="#finanzen"><svg class="arrow" width="17" height="26" viewBox="0 0 17 26" aria-hidden="true"><path d="M8.5 1v23M1.5 16.5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Finanzen</span></a></li>
     </ul>
   </div>
 </section>
 
-<div class="container">
+<div class="container features">
   <section class="feature" id="teaser">
-    <div>
+    <div class="text">
       <h2>Wer sind wir?</h2>
       <div class="body">
-        <p>Freunde mitbringen das lohnt sich! Dieses Jahr gibt es eine besondere Aktion. Wer einen Freund oder eine Freundin mitbringt, der oder die bisher noch nie bei einem unserer Zeltlager dabei war, spart sich 20&nbsp;€ auf den Teilnahmebeitrag!</p>
-        <p>In der digitalen Anmeldung gibt es dafür ein entsprechendes Feld, in dem der Name des mitgebrachten Freundes bzw. der Freundin angegeben werden kann.</p>
+        <p>Freunde mitbringen das lohnt sich! Dieses Jahr gibt es<br> eine besondere Aktion. Wer einen Freund oder eine<br> Freundin mitbringt, der oder die bisher noch nie bei<br> einem unserr Zeltlager dabei war, der kann sich sparrt<br> sich 20&nbsp;€ auf den Teilnahmebeitrag!</p>
+        <p>In der digitalen Anmeldung gibt es dafür ein<br> entsprechendes Feld, in dem der Name des<br> mitgebrachten Freundes bzw. der Freundin angegeben<br> werden kann.</p>
       </div>
     </div>
-    <div class="media"><span class="ph-label">bilder/mowo-2.jpg</span><img src="bilder/mowo-2.jpg" data-base="bilder/mowo-2" alt="Bild zum Abschnitt „Wer sind wir?“" loading="lazy" onerror="kjgBild(this)"></div>
+    <div class="media"><span class="ph-label">bilder/mowo-2.jpg</span><img src="bilder/mowo-2.jpg" data-base="bilder/mowo-2" alt="Bild zum Abschnitt 1" loading="lazy" onerror="kjgBild(this)"></div>
   </section>
-  <section class="feature reverse" id="vorbereitungen">
-    <div>
-      <h2>Vorbereitungen</h2>
+  <section class="feature reverse" id="vorbereitungen"><span id="finanzen" class="anchor"></span>
+    <div class="text">
+      <h2>Wer sind wir?</h2>
       <div class="body">
-        <p>Freunde mitbringen das lohnt sich! Dieses Jahr gibt es eine besondere Aktion. Wer einen Freund oder eine Freundin mitbringt, der oder die bisher noch nie bei einem unserer Zeltlager dabei war, spart sich 20&nbsp;€ auf den Teilnahmebeitrag!</p>
-        <p>In der digitalen Anmeldung gibt es dafür ein entsprechendes Feld, in dem der Name des mitgebrachten Freundes bzw. der Freundin angegeben werden kann.</p>
+        <p>Freunde mitbringen das lohnt sich! Dieses Jahr gibt es<br> eine besondere Aktion. Wer einen Freund oder eine<br> Freundin mitbringt, der oder die bisher noch nie bei<br> einem unserr Zeltlager dabei war, der kann sich sparrt<br> sich 20&nbsp;€ auf den Teilnahmebeitrag!</p>
+        <p>In der digitalen Anmeldung gibt es dafür ein<br> entsprechendes Feld, in dem der Name des<br> mitgebrachten Freundes bzw. der Freundin angegeben<br> werden kann.</p>
       </div>
     </div>
-    <div class="media"><span class="ph-label">bilder/mowo-3.jpg</span><img src="bilder/mowo-3.jpg" data-base="bilder/mowo-3" alt="Bild zum Abschnitt „Vorbereitungen“" loading="lazy" onerror="kjgBild(this)"></div>
-  </section>
-  <section class="feature" id="finanzen">
-    <div>
-      <h2>Finanzen</h2>
-      <div class="body">
-        <p>Freunde mitbringen das lohnt sich! Dieses Jahr gibt es eine besondere Aktion. Wer einen Freund oder eine Freundin mitbringt, der oder die bisher noch nie bei einem unserer Zeltlager dabei war, spart sich 20&nbsp;€ auf den Teilnahmebeitrag!</p>
-        <p>In der digitalen Anmeldung gibt es dafür ein entsprechendes Feld, in dem der Name des mitgebrachten Freundes bzw. der Freundin angegeben werden kann.</p>
-      </div>
-    </div>
-    <div class="media"><span class="ph-label">bilder/mowo-4.jpg</span><img src="bilder/mowo-4.jpg" data-base="bilder/mowo-4" alt="Bild zum Abschnitt „Finanzen“" loading="lazy" onerror="kjgBild(this)"></div>
+    <div class="media"><span class="ph-label">bilder/mowo-3.jpg</span><img src="bilder/mowo-3.jpg" data-base="bilder/mowo-3" alt="Bild zum Abschnitt 2" loading="lazy" onerror="kjgBild(this)"></div>
   </section>
 </div>
 </main>
 
 <footer class="site-footer">
   <div class="grid">
-    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" alt="KjG Logo – zur Startseite"></a></div>
-    <div>
+    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" width="192" height="190" alt="KjG Logo – zur Startseite"></a></div>
+    <div class="col">
       <h3>Adresse</h3>
       <ul><li>Pfarrer-Grimm-Strasse 1</li><li>55124 Mainz</li></ul>
     </div>
-    <div>
-      <h3>Kontakt</h3>
+    <div class="col">
+      <h3>Kontaket</h3>
       <ul>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<wbr>gmail.com</a></li>
+        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
         <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
     </div>
-    <div>
+    <div class="col">
       <h3>Quicklinks</h3>
       <ul>
         <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<wbr>gmail.com</a></li>
+        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
       </ul>
     </div>
-    <div>
+    <div class="col col-faq">
       <h3>FAQ</h3>
       <ul>
         <li><a href="faq.html">Häufig gestellte Fragen</a></li>

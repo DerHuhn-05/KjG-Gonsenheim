@@ -6,6 +6,7 @@
   <title>KjG Mainz-Gonsenheim – Katholische junge Gemeinde</title>
   <meta name="description" content="KjG Mainz-Gonsenheim – Katholische junge Gemeinde">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/overpass-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/bilder.js"></script>
   <script src="assets/js/main.js" defer></script>
@@ -13,14 +14,14 @@
 <body>
 <header class="site-header">
   <div class="bar">
-    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Startseite"><img src="assets/img/logo-header.svg" alt="KjG – Katholische junge Gemeinde"></a>
+    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Startseite"><img src="assets/img/logo-header.svg" width="250" height="49" alt="KjG – Katholische junge Gemeinde"></a>
     <nav class="main-nav" aria-label="Hauptnavigation">
-        <a href="events.html">Unsere Events</a>
-        <a href="team.html">Unser Team</a>
-        <a href="faq.html">FAQ</a>
-        <a href="gruppenstunde.html">Gruppenstunde</a>
+      <a href="events.html">Unsere Events</a>
+      <a href="team.html">Unser Team</a>
+      <a href="faq.html">FAQ</a>
+      <a href="gruppenstunde.html">Gruppenstunde</a>
     </nav>
-    <div class="lang"><a href="#" class="active" lang="de">DE</a><a href="#" lang="en">EN</a></div>
+    <div class="lang"><a href="#" class="de active" lang="de">DE</a><span class="sep"></span><a href="#" class="en" lang="en">EN</a></div>
     <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false"><span></span><span></span></button>
   </div>
   <nav class="mobile-nav" aria-label="Mobile Navigation">
@@ -39,88 +40,87 @@
     <source src="bilder/startseite-video.mp4" type="video/mp4">
   </video>
   <div class="hero-video-content">
-    <p class="kicker">Katholische junge Gemeinde</p>
     <h1>KjG Mainz-<br>Gonsenheim</h1>
-    <div class="hero-actions">
-      <a class="btn" href="events.html">Unsere Events</a>
-      <a class="btn btn-outline" href="gruppenstunde.html">Gruppenstunde</a>
-    </div>
+    <p>Katholische junge Gemeinde</p>
+    <a class="btn" href="events.html">Unsere Events</a>
   </div>
-  <a class="scroll-hint" href="#start" aria-label="Nach unten scrollen"></a>
 </section>
 
-<div class="container" id="start">
-  <section class="feature">
-    <div>
+<section class="jump-section jump-detail">
+  <div class="container">
+    <ul class="jumplinks">
+      <li><a href="#teaser"><svg class="arrow" width="17" height="26" viewBox="0 0 17 26" aria-hidden="true"><path d="M8.5 1v23M1.5 16.5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Teaser</span></a></li>
+      <li><a href="#vorbereitungen"><svg class="arrow" width="17" height="26" viewBox="0 0 17 26" aria-hidden="true"><path d="M8.5 1v23M1.5 16.5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Vorbereitungen</span></a></li>
+      <li><a href="#finanzen"><svg class="arrow" width="17" height="26" viewBox="0 0 17 26" aria-hidden="true"><path d="M8.5 1v23M1.5 16.5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="3"/></svg><span>Finanzen</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<div class="container features">
+  <section class="feature" id="teaser">
+    <div class="text">
       <h2>Wer sind wir?</h2>
       <div class="body">
-        <p>Wir sind die KjG Mainz-Gonsenheim – die Katholische junge Gemeinde in Gonsenheim. Mit Gruppenstunden, Wochenendfahrten und Aktionen bieten wir Kindern und Jugendlichen einen Ort, an dem sie Gemeinschaft erleben, Neues ausprobieren und mitbestimmen können.</p>
-        <p>Organisiert wird alles von ehrenamtlichen Gruppenleiter*innen. <a href="team.html">Lerne unser Team kennen →</a></p>
+        <p>Freunde mitbringen das lohnt sich! Dieses Jahr gibt es<br> eine besondere Aktion. Wer einen Freund oder eine<br> Freundin mitbringt, der oder die bisher noch nie bei<br> einem unserr Zeltlager dabei war, der kann sich sparrt<br> sich 20&nbsp;€ auf den Teilnahmebeitrag!</p>
+        <p>In der digitalen Anmeldung gibt es dafür ein<br> entsprechendes Feld, in dem der Name des<br> mitgebrachten Freundes bzw. der Freundin angegeben<br> werden kann.</p>
       </div>
     </div>
-    <div class="media"><span class="ph-label">bilder/startseite-1.jpg</span><img src="bilder/startseite-1.jpg" data-base="bilder/startseite-1" alt="Gruppenfoto der KjG Mainz-Gonsenheim" loading="lazy" onerror="kjgBild(this)"></div>
+    <div class="media"><span class="ph-label">bilder/startseite-1.jpg</span><img src="bilder/startseite-1.jpg" data-base="bilder/startseite-1" alt="Bild zum Abschnitt Wer sind wir" loading="lazy" onerror="kjgBild(this)"></div>
   </section>
 </div>
 
-<section class="events-list">
-  <article class="event-tile">
+<div class="events-list" id="vorbereitungen">
+<span id="finanzen" class="anchor"></span>
+  <article class="event-tile t1">
     <div class="text">
-      <h2>72h-<br>Aktion</h2>
-      <p>Jede Jugendorganisation kann an einem Wochenende 72 Stunden an einer sozialen Aktion teilnehmen.</p>
+      <h2>Gruppen-<br>stunde</h2>
+      <p>Jede Jugendorganisation kann an einem<br> Wochenende 72 Stunden an einem Sozialen Aktion<br> teil</p>
       <a class="more" href="72h-aktion.html">→ genauere Infos</a>
     </div>
-    <div class="media"><span class="ph-label">bilder/startseite-2.jpg</span><img src="bilder/startseite-2.jpg" data-base="bilder/startseite-2" alt="Kachel-Bild 72h-Aktion" loading="lazy" onerror="kjgBild(this)"></div>
+    <div class="media"><span class="ph-label">bilder/startseite-2.jpg</span><img src="bilder/startseite-2.jpg" data-base="bilder/startseite-2" alt="Kachel-Bild Gruppenstunde" loading="lazy" onerror="kjgBild(this)"></div>
   </article>
-  <article class="event-tile reverse">
+  <article class="event-tile t2 reverse">
     <div class="text">
       <h2>MoWo</h2>
-      <p>Das Monsterwochenende ist Jahr für Jahr ein Wochenende im Herbst, an dem wir mit den Kindern in ein Jugendhaus fahren.</p>
+      <p>Das Monsterwochenende ist Jahr für Jahr ein<br> Wochenende, wo wir ein Wochenende im Herbst mit<br> den Kinder in ein Jugendhaus fahren</p>
       <a class="more" href="mowo.html">→ genauere Infos</a>
     </div>
     <div class="media"><span class="ph-label">bilder/startseite-3.jpg</span><img src="bilder/startseite-3.jpg" data-base="bilder/startseite-3" alt="Kachel-Bild MoWo" loading="lazy" onerror="kjgBild(this)"></div>
   </article>
-  <article class="event-tile">
+  <article class="event-tile t3">
     <div class="text">
       <h2>Trainee-<br>Wochenende</h2>
-      <p>Ein Wochenende, an dem wir die ältesten Kinder anlernen, um sie zu unseren Gruppenleiter*innen reifen zu lassen.</p>
+      <p>EIn Wochenende wo wir die ältesten Kinder<br> anlernen um sie zu unserer Gruppenleiter reifen zu<br> lassen</p>
       <a class="more" href="trainee-wochenende.html">→ genauere Infos</a>
     </div>
     <div class="media"><span class="ph-label">bilder/startseite-4.jpg</span><img src="bilder/startseite-4.jpg" data-base="bilder/startseite-4" alt="Kachel-Bild Trainee-Wochenende" loading="lazy" onerror="kjgBild(this)"></div>
   </article>
-</section>
-
-<section class="cta">
-  <div class="container">
-    <h2>Noch Fragen?</h2>
-    <p>Die häufigsten Fragen rund um Anmeldung, Fahrten und Gruppenstunden beantworten wir in unseren FAQ.</p>
-    <a class="btn" href="faq.html">Zu den FAQ</a>
-  </div>
-</section>
+</div>
 </main>
 
 <footer class="site-footer">
   <div class="grid">
-    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" alt="KjG Logo – zur Startseite"></a></div>
-    <div>
+    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" width="192" height="190" alt="KjG Logo – zur Startseite"></a></div>
+    <div class="col">
       <h3>Adresse</h3>
       <ul><li>Pfarrer-Grimm-Strasse 1</li><li>55124 Mainz</li></ul>
     </div>
-    <div>
-      <h3>Kontakt</h3>
+    <div class="col">
+      <h3>Kontaket</h3>
       <ul>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<wbr>gmail.com</a></li>
+        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
         <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
     </div>
-    <div>
+    <div class="col">
       <h3>Quicklinks</h3>
       <ul>
         <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<wbr>gmail.com</a></li>
+        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
       </ul>
     </div>
-    <div>
+    <div class="col col-faq">
       <h3>FAQ</h3>
       <ul>
         <li><a href="faq.html">Häufig gestellte Fragen</a></li>

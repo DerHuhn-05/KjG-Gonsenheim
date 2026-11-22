@@ -13,6 +13,10 @@ Startseite als statisches HTML/CSS (kein Build-Schritt), 1:1 nach dem Figma-Entw
 | `assets/css/style.css` | Styles (Desktop 1:1 nach Entwurf, darunter Tablet/Handy) |
 | `assets/fonts/` | Overpass, Inter, Fira Sans – lokal, keine Verbindung zu Google |
 | `bilder/` | Bilder und Header-Video, siehe [`bilder/README.md`](bilder/README.md) |
+| `icons/` | Alle Icons als SVG (Pfeile, Chevron, Menü), siehe [`icons/README.md`](icons/README.md) |
 
 ## Veröffentlichen (Cloudflare Pages)
 Framework preset: **None** · Build command: **leer** · Build output directory: **`/`**
+
+## Anmelde-Link Zela 2027
+In `zela-2027.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.

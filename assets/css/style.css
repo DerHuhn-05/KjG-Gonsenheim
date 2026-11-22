@@ -65,9 +65,7 @@ section[id] { scroll-margin-top: 0; }
 .lang .en { left: 1072px; }
 .lang .sep { position: absolute; left: 1058px; top: 44px; width: 4px; height: 40px; background: var(--white); }
 .menu-toggle { position: absolute; left: 1200px; top: 57.5px; width: 30px; height: 14px; padding: 0; border: 0; background: none; cursor: pointer; }
-.menu-toggle span { position: absolute; right: 0; height: 3px; background: var(--white); }
-.menu-toggle span:first-child { top: 0; width: 30px; }
-.menu-toggle span:last-child { top: 11px; width: 20px; }
+.menu-toggle img { display: block; width: 30px; height: 14px; }
 .mobile-nav { display: none; position: relative; background: var(--teal); padding: 8px 16px 24px; box-shadow: 0 12px 24px rgba(0,0,0,.25); }
 .mobile-nav a { display: block; padding: 12px 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,.25); }
 .site-header.open .mobile-nav { display: block; }
@@ -89,7 +87,7 @@ section[id] { scroll-margin-top: 0; }
   text-align: center; font: 400 89px/89px var(--i); letter-spacing: .75px; white-space: nowrap;
 }
 .hero-btn {
-  position: absolute; left: calc(50% - 238px); top: 453px; width: 476px; height: 90px;
+  position: absolute; left: calc(50% - 238px); top: 437px; width: 476px; height: 90px; /* Abstand zum Schriftzug: top-Wert ändern (Entwurf: 453px) */
   padding-top: .3px; border: 1px solid var(--white); background: rgba(0,0,0,.35);
   text-align: center; font: 400 37.5px/88px var(--i); letter-spacing: .1px; white-space: nowrap;
   transition: background .15s;
@@ -119,8 +117,9 @@ section[id] { scroll-margin-top: 0; }
 .tile.reverse h2 { font-size: 79px; letter-spacing: -.75px; }
 .tile p { margin-top: 15.74px; font: 600 17.5px/27px var(--f); letter-spacing: .3px; white-space: nowrap; }
 .tile.reverse p { margin-top: 16.11px; }
-.tile-link { display: inline-block; margin-top: 14px; font: 600 17.5px/27px var(--f); letter-spacing: .3px; }
-.tile-link:hover { text-decoration: underline; }
+.tile-link { display: inline-flex; align-items: flex-start; margin-top: 14px; padding-left: 2.2px; font: 600 17.5px/27px var(--f); letter-spacing: .3px; }
+.tile-link .pfeil { flex: none; margin: 10.76px 7.3px 0 0; }
+.tile-link:hover span { text-decoration: underline; }
 
 /* ---------- Karten-Bereiche (Events, Soziale Aktionen) ---------- */
 .cards-section { padding-top: 104.4px; }
@@ -318,7 +317,7 @@ section[id] { scroll-margin-top: 0; }
   .lang { margin-left: auto; }
   .hero { height: 600px; }
   .hero h1 { top: 210px; margin: 0; padding: 0 16px; font-size: 56px; line-height: 64px; letter-spacing: 1px; white-space: normal; }
-  .hero-btn { top: 320px; left: 50%; transform: translateX(-50%); width: auto; height: auto; padding: 14px 28px; font-size: 26px; line-height: 1.2; }
+  .hero-btn { top: 292px; left: 50%; transform: translateX(-50%); width: auto; height: auto; padding: 14px 28px; font-size: 26px; line-height: 1.2; }
   .jump { padding: 32px 0; }
   .jump ul { justify-content: flex-start; flex-direction: column; }
   .tile, .tile.reverse { grid-template-columns: 1fr; }
@@ -353,7 +352,7 @@ section[id] { scroll-margin-top: 0; }
   .site-header .bar { gap: 10px; height: 80px; }
   .lang a { font-size: 20px; }
   .hero h1 { top: 220px; font-size: 40px; line-height: 48px; white-space: nowrap; }
-  .hero-btn { top: 300px; font-size: 22px; padding: 12px 22px; }
+  .hero-btn { top: 282px; font-size: 22px; padding: 12px 22px; }
   .tile h2 { font-size: 44px !important; line-height: 52px; }
   .site-footer .grid { grid-template-columns: 1fr; }
 }

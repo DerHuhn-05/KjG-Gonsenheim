@@ -15,8 +15,7 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 
 | Datei | Wo auf der Seite |
 |---|---|
-| `startseite-video.mp4` | Video im Header (MP4, ohne Ton, möglichst < 10 MB) |
-| `startseite-video-poster.jpg` | Standbild im Header (wird angezeigt, bis das Video lädt – bereits vorhanden, aus dem Entwurf) |
+| `startseite-video.mp4` | Video im Header (MP4, ohne Ton, möglichst < 10 MB) – Dateiname genau so, inkl. .mp4 |
 | `startseite-1.jpg` | Bild Zeltlager 2027 |
 | `startseite-2.jpg` | Bild Gruppenstunde |
 | `startseite-3.jpg` | Bild Monster Wochenende |

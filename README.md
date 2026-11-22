@@ -9,6 +9,7 @@ Startseite als statisches HTML/CSS (kein Build-Schritt), 1:1 nach dem Figma-Entw
 | Pfad | Inhalt |
 |---|---|
 | `index.html` | Startseite |
+| `zela-2027.html` | Zeltlager 2027 (verlinkt von „Anmeldung Zela 2027“ und „genauere infos“ auf der Startseite) |
 | `assets/css/style.css` | Styles (Desktop 1:1 nach Entwurf, darunter Tablet/Handy) |
 | `assets/fonts/` | Overpass, Inter, Fira Sans – lokal, keine Verbindung zu Google |
 | `bilder/` | Bilder und Header-Video, siehe [`bilder/README.md`](bilder/README.md) |

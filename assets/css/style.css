@@ -12,6 +12,10 @@
   src: url("../fonts/fira-sans-400.woff2") format("woff2"); }
 @font-face { font-family: "Fira Sans"; font-weight: 600; font-display: swap;
   src: url("../fonts/fira-sans-600.woff2") format("woff2"); }
+@font-face { font-family: "Fira Sans"; font-weight: 700; font-display: swap;
+  src: url("../fonts/fira-sans-700.woff2") format("woff2"); }
+@font-face { font-family: "Fira Sans"; font-style: italic; font-weight: 700; font-display: swap;
+  src: url("../fonts/fira-sans-700-italic.woff2") format("woff2"); }
 
 :root {
   --teal: #007576;
@@ -167,6 +171,77 @@ section[id] { scroll-margin-top: 0; }
 .site-footer a:hover { text-decoration: underline; }
 
 /* =====================================================================
+   Seite „Zela 2027“ (zela-2027.html) – gleiches Raster wie die Startseite
+   ===================================================================== */
+.page-zela .main-nav a:nth-child(1) { left: 324px; }
+.page-zela .main-nav a:nth-child(2) { left: 518px; }
+.page-zela .main-nav a:nth-child(3) { left: 683px; }
+.page-zela .main-nav a:nth-child(4) { left: 764px; }
+.page-zela .lang .de { left: 1010px; }
+.page-zela .lang .en { left: 1075px; }
+.page-zela .lang .sep { left: 1061px; }
+
+.z-hero { display: grid; grid-template-columns: 705fr 735fr; height: 705px; }
+.z-hero .left { position: relative; }
+.z-hero .left .media { position: absolute; inset: 0; background: #00b6be; }
+.z-hero .intro { position: absolute; left: 7.943%; top: 289.25px; color: var(--teal);
+  font: 400 23px/36px var(--o); letter-spacing: .43px; white-space: nowrap; }
+.z-hero .right { background: var(--teal); color: var(--white); padding: 199.26px 0 0 18.639%; }
+.z-hero h1 { font: 800 76px/76px var(--i); letter-spacing: -.1px; white-space: nowrap; }
+.z-hero .right p { margin-top: 32.99px; font: 400 23px/36px var(--o); letter-spacing: .41px; white-space: nowrap; }
+.z-hero .btn { display: block; width: 289px; height: 88px; margin-top: 16.75px; padding: 9px 0 0 38px;
+  background: var(--white); color: var(--teal); font: 400 38px/79px var(--o); letter-spacing: 1.6px; white-space: nowrap; }
+.z-hero .btn:hover { background: #e9f3f3; }
+
+.z-jump { padding: 32.875px 0 87.125px; }
+.z-jump ul { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; }
+.z-jump a { display: flex; align-items: flex-start; height: 49px; font: 400 22.5px/49px var(--o); letter-spacing: 1px; white-space: nowrap; }
+.z-jump .down { flex: none; margin-top: 9px; color: var(--teal); }
+.z-jump span { margin-left: 9px; }
+.z-jump a:hover span { color: var(--teal); }
+
+.z-termine { height: 361px; background: var(--teal); color: var(--white); }
+.z-termine .inner { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; padding-top: 44.48px; }
+.z-termine h2 { font: 800 48px/48px var(--i); letter-spacing: -.05px; }
+.z-termine ul { margin-top: 28.52px; padding-left: 246px; }
+.z-termine li { position: relative; font: 400 22px/29px var(--o); letter-spacing: 1.05px; white-space: nowrap; }
+.z-termine li::before { content: ""; position: absolute; left: -23px; top: 9px; width: 9px; height: 9px; border-radius: 50%; background: var(--white); }
+.z-termine strong { font-weight: 700; }
+
+.z-content { padding-bottom: 140px; }
+.z-feature { display: grid; grid-template-columns: 630px 400px; width: 1030px; max-width: calc(100% - 32px); height: 533px; margin: 140px auto 0; }
+.z-feature.reverse { grid-template-columns: 400px 630px; }
+.z-feature.reverse .media { order: -1; }
+.z-feature.reverse .text { padding-left: 20px; }
+.z-feature .media { background: var(--placeholder); }
+.z-feature h2 { color: var(--teal); font: 800 48px/48px var(--i); }
+.z-feature.h128 h2 { margin-top: 86.98px; }
+.z-feature.h143 h2 { margin-top: 101.48px; }
+.z-feature.h157 h2 { margin-top: 115.98px; }
+.z-feature .body { margin-top: 28.52px; color: var(--teal); font: 400 22px/29px var(--o); letter-spacing: 1.13px; white-space: nowrap; }
+.z-feature .body p + p { margin-top: 29px; }
+.z-feature.tight .body p + p { margin-top: 0; }
+#zusammen h2 { letter-spacing: -.19px; }
+#vierzehn h2 { letter-spacing: .13px; }
+.z-feature + .z-quote { margin-top: 116px; }
+.z-quote + .z-feature { margin-top: 117px; }
+
+.z-quote { height: 262px; background: var(--teal); color: var(--white); }
+.z-quote-inner { position: relative; width: 1030px; max-width: calc(100% - 32px); height: 100%; margin-inline: auto; }
+.z-quote .circle { position: absolute; top: -16px; width: 295px; height: 295px; border-radius: 50%; overflow: hidden; }
+.z-quote .round { width: 100%; height: 100%; background: #00b6be; }
+.z-quote .round .ph-label { color: rgba(255,255,255,.4); }
+.z-quote.circle-left .circle { left: 0; }
+.z-quote.circle-right .circle { left: 735px; }
+.z-quote blockquote { position: absolute; top: 58.12px; margin: 0; }
+.z-quote.circle-left blockquote { left: 422px; }
+.z-quote.circle-right blockquote { left: 2px; }
+.z-quote blockquote p { font: italic 700 29.5px/42px var(--f); letter-spacing: 1.3px; white-space: nowrap; }
+.z-quote blockquote footer { margin-top: 10.85px; }
+.z-quote blockquote strong { display: block; font: 700 15px/26px var(--f); letter-spacing: .6px; }
+.z-quote blockquote span { display: block; margin-top: -.33px; font: 400 16px/26px var(--f); letter-spacing: -.24px; }
+
+/* =====================================================================
    Kleinere Bildschirme
    ===================================================================== */
 @media (max-width: 1380px) {
@@ -177,6 +252,22 @@ section[id] { scroll-margin-top: 0; }
 }
 
 @media (max-width: 1272px) {
+  .z-hero .right { padding-right: 24px; }
+  .z-hero .intro { white-space: normal; right: 24px; }
+  .z-hero h1 { font-size: 64px; }
+  .z-hero .right p, .z-feature .body, .z-termine li { white-space: normal; }
+  .z-hero br, .z-feature .body br, .z-termine br { display: none; }
+  .z-termine { height: auto; padding-bottom: 48px; }
+  .z-termine ul { padding-left: 23px; }
+  .z-feature, .z-feature.reverse { grid-template-columns: 1fr 400px; gap: 30px; height: auto; min-height: 533px; }
+  .z-feature.reverse { grid-template-columns: 400px 1fr; }
+  .z-feature .text { padding-bottom: 40px; }
+  .z-quote { height: auto; min-height: 262px; }
+  .z-quote-inner { display: flex; align-items: center; gap: 40px; padding: 32px 0; }
+  .z-quote.circle-right .z-quote-inner { flex-direction: row-reverse; justify-content: flex-end; }
+  .z-quote .circle, .z-quote blockquote { position: static; }
+  .z-quote .circle { flex: none; width: 200px; height: 200px; }
+  .z-quote blockquote p { white-space: normal; }
   .site-header .bar { width: auto; height: 90px; margin: 0 16px; display: flex; align-items: center; gap: 16px; }
   .logo, .lang a, .lang .sep, .main-nav a { position: static; left: auto; top: auto; }
   .logo img { height: 40px; width: auto; }
@@ -200,6 +291,27 @@ section[id] { scroll-margin-top: 0; }
 }
 
 @media (max-width: 960px) {
+  .z-hero { grid-template-columns: 1fr; height: auto; }
+  .z-hero .left { min-height: 320px; order: 2; }
+  .z-hero .intro { position: relative; left: auto; right: auto; top: auto; padding: 32px 16px; font-size: 20px; line-height: 30px; }
+  .z-hero .right { padding: 130px 16px 48px; }
+  .z-hero h1 { font-size: 52px; line-height: 60px; }
+  .z-hero .right p { font-size: 20px; line-height: 30px; }
+  .z-jump { padding: 32px 0 40px; }
+  .z-termine .inner { padding-top: 40px; }
+  .z-termine h2, .z-feature h2 { font-size: 34px; line-height: 40px; }
+  .z-termine li { font-size: 19px; line-height: 27px; letter-spacing: .5px; }
+  .z-feature, .z-feature.reverse { grid-template-columns: 1fr; gap: 24px; min-height: 0; margin-top: 64px !important; }
+  .z-feature.reverse .media { order: 2; }
+  .z-feature.reverse .text { padding-left: 0; }
+  .z-feature h2 { margin-top: 0 !important; }
+  .z-feature .media { height: 420px; max-width: 400px; }
+  .z-feature .body { font-size: 19px; line-height: 27px; letter-spacing: .6px; }
+  .z-feature + .z-quote { margin-top: 64px; }
+  .z-quote-inner, .z-quote.circle-right .z-quote-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .z-quote .circle { width: 160px; height: 160px; }
+  .z-quote blockquote p { font-size: 24px; line-height: 34px; letter-spacing: .5px; }
+  .z-content { padding-bottom: 80px; }
   .main-nav { display: none; }
   .lang { margin-left: auto; }
   .hero { height: 600px; }
@@ -242,6 +354,12 @@ section[id] { scroll-margin-top: 0; }
   .hero-btn { top: 300px; font-size: 22px; padding: 12px 22px; }
   .tile h2 { font-size: 44px !important; line-height: 52px; }
   .site-footer .grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 360px) {
+  .hero h1 { font-size: 34px; line-height: 42px; }
+  .z-hero .btn { width: auto; display: inline-block; padding-right: 28px; font-size: 32px; }
+  .z-hero h1 { font-size: 44px; line-height: 52px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

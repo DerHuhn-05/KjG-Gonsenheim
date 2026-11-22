@@ -25,3 +25,15 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | `startseite-6.jpg` | Bild 72 Stunden Aktion |
 | `startseite-7.jpg` | Bild Hilfe bei... |
 | `startseite-8.jpg` | Bild Klamotten Spende |
+
+## Zela 2027 (zela-2027.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `zela-1.jpg` | Header-Bild Zeltlager |
+| `zela-2.jpg` | Bild Programm |
+| `zela-3.jpg` | Foto Gruppenleiter:in |
+| `zela-4.jpg` | Bild Zusammen lohnt’s sich! |
+| `zela-5.jpg` | Bild Vortreffen |
+| `zela-6.jpg` | Foto Gruppenleiter:in |
+| `zela-7.jpg` | Bild Du bist schon 14 Jahre? |

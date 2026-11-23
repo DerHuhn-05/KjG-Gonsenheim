@@ -200,7 +200,6 @@ section[id] { scroll-margin-top: 0; }
   .site-header.scrolled .lang .sep { top: 64px; }
   .site-header.scrolled .menu-toggle { top: 77.5px; }
 }
-}
 
 .z-hero { display: grid; grid-template-columns: 705fr 735fr; height: 705px; }
 .z-hero .left { position: relative; }
@@ -391,3 +390,25 @@ section[id] { scroll-margin-top: 0; }
 @media (prefers-reduced-motion: reduce) {
   .site-header, .site-header::before, .site-header .bar, .logo, .main-nav a, .lang a, .lang .sep, .menu-toggle { transition: none; }
 }
+
+/* =====================================================================
+   Englische Version (en/*.html) – gleiche Gestaltung, Text bricht automatisch um,
+   da die festen Zeilenumbrüche des deutschen Entwurfs entfallen.
+   ===================================================================== */
+@media (min-width: 1273px) {
+  html[lang="en"] .main-nav { position: absolute; left: 326px; top: 56.5px; display: flex; gap: 82px; transition: top .35s ease; }
+  html[lang="en"] .nav-alt .main-nav { left: 324px; gap: 40px; }
+  html[lang="en"] .main-nav a { position: static; }
+  html[lang="en"] .site-header.scrolled .main-nav { top: 76.5px; }
+}
+html[lang="en"] .tile p, html[lang="en"] .card-text, html[lang="en"] .about p,
+html[lang="en"] .z-hero .intro, html[lang="en"] .z-hero .right p, html[lang="en"] .z-termine li,
+html[lang="en"] .z-feature .body, html[lang="en"] .z-quote blockquote p { white-space: normal; }
+html[lang="en"] .tile p { max-width: 440px; }
+@media (min-width: 961px) { html[lang="en"] .z-hero .intro { width: 580px; max-width: calc(100% - 2 * 7.943%); } }
+html[lang="en"] .z-hero .right p { max-width: 400px; }
+html[lang="en"] .z-termine li { max-width: 760px; }
+html[lang="en"] .z-feature .body { max-width: 610px; }
+html[lang="en"] .z-quote.circle-left blockquote p { max-width: 600px; }
+html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
+html[lang="en"] .hero-btn { font-size: 34px; }

@@ -126,3 +126,15 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | Datei | Wo auf der Seite |
 |---|---|
 | `faq-1.jpg` | Header-Bild FAQ |
+
+### Impressum (impressum.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `impressum-1.jpg` | Header-Bild Impressum |
+
+### Datenschutz (datenschutz.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `datenschutz-1.jpg` | Header-Bild Datenschutz |

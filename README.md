@@ -17,6 +17,12 @@ Startseite als statisches HTML/CSS (kein Build-Schritt), 1:1 nach dem Figma-Entw
 | `team.html` | Unser Team |
 | `wer-sind-wir.html` | Wer sind wir? |
 | `faq.html` | Häufig gestellte Fragen |
+| `impressum.html` · `datenschutz.html` | Impressum und Datenschutz (Muster mit gelb markierten Platzhaltern) |
+
+## Sprachen
+Deutsch liegt im Hauptordner, Englisch in `en/` (gleiche Dateinamen). Der DE | EN-Schalter oben rechts
+wechselt zur selben Seite in der anderen Sprache. Englische Seiten neu erzeugen: siehe
+[`tools/i18n/README.md`](tools/i18n/README.md).
 
 ## Ordner
 | Pfad | Inhalt |

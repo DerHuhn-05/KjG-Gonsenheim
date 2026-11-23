@@ -119,8 +119,9 @@
 .sub .person .text { width: 581px; }
 .sub .person.right .text { margin-left: 420px; }
 .sub .person .circle { position: absolute; top: -4.4px; width: 295px; height: 295px; border-radius: 50%; overflow: hidden; }
-.sub .person .circle .media { width: 100%; height: 100%; background: var(--teal); }
-.sub .person .circle .ph-label { color: rgba(255,255,255,.4); }
+.sub .person .circle { will-change: transform; }
+.sub .person .circle .media { width: 100%; height: 100%; background: var(--placeholder); }
+.sub .person .circle .ph-label { color: rgba(0,0,0,.3); }
 .sub .person.left .circle { left: 735px; }
 .sub .person.right .circle { left: 0; }
 .sub .person h3 { font: 800 40px/40px var(--i); letter-spacing: -.3px; }

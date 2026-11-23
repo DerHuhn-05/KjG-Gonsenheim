@@ -15,6 +15,11 @@ Alle Icons der Website liegen hier als SVG-Datei. Die Seiten binden sie per Link
 | `team-uebernahmequote.svg` | 41 × 44 | Zahlenband „Unser Team“: Übernahmequote |
 | `team-mitarbeitende.svg` | 44 × 44 | Zahlenband „Unser Team“: Mitarbeitende |
 | `team-kjg-seit.svg` | 44 × 44 | Zahlenband „Unser Team“: KjG seit |
+| `zela-zeitraum.svg` | 48 × 48 | Zeitleiste Zela 2027: Zeitraum (Kalender) |
+| `zela-zeltplatz.svg` | 48 × 48 | Zeitleiste Zela 2027: Zeltplatz (Zelt) |
+| `zela-alter.svg` | 48 × 48 | Zeitleiste Zela 2027: Alter (Person) |
+| `zela-geschwister.svg` | 48 × 48 | Zeitleiste Zela 2027: Geschwister (Personen) |
+| `zela-anmeldeschluss.svg` | 48 × 48 | Zeitleiste Zela 2027: Anmeldeschluss (Klemmbrett) |
 
 Farben: Petrol `#007576`, Weiß `#ffffff`. Neue Icons möglichst in derselben Größe anlegen,
 sonst verschiebt sich das Layout.

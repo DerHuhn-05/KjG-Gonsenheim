@@ -62,8 +62,8 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .logo { position: absolute; left: 0; top: 40px; }
 .logo img { width: 250px; height: 49px; }
 .main-nav a { font: 400 22px/22px var(--o); letter-spacing: 1.5px; white-space: nowrap; }
-/* Menü mit fünf Punkten auf allen Seiten: gleichmäßige Abstände ab x = 400 */
-.main-nav { position: absolute; left: 300px; top: 56.5px; display: flex; gap: 30px; transition: top .35s ease; }
+/* Menü mit fünf Punkten auf allen Seiten, mittig zwischen Logo (endet bei x = 350) und Sprachwahl (beginnt bei x = 1165) */
+.main-nav { position: absolute; left: 250px; width: 815px; top: 56.5px; display: flex; justify-content: center; gap: 30px; transition: top .35s ease; }
 .main-nav a { position: static; }
 .main-nav a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .lang a { position: absolute; top: 52.25px; font: 400 31px/31px var(--o); letter-spacing: .5px; }
@@ -299,9 +299,9 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .site-header .bar { width: auto; height: 90px; margin: 0 16px; display: flex; align-items: center; gap: 16px; }
   .logo, .lang a, .lang .sep, .main-nav, .main-nav a { position: static; left: auto; top: auto; }
   .logo img { height: 40px; width: auto; }
-  .main-nav { display: flex; gap: 28px; margin-left: auto; }
+  .main-nav { display: flex; flex: 1; justify-content: center; gap: 28px; width: auto; }
   .main-nav a { font-size: 19px; }
-  .lang { display: flex; align-items: center; gap: 10px; margin-left: 24px; }
+  .lang { display: flex; align-items: center; gap: 10px; margin-left: 0; }
   .lang a { font-size: 24px; line-height: 1; }
   .lang .sep { width: 3px; height: 30px; }
   .menu-toggle { position: relative; left: auto; top: auto; margin-left: 16px; flex: none; }

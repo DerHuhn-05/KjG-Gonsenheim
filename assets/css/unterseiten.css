@@ -1,0 +1,203 @@
+/* =====================================================================
+   Unterseiten (FAQ, Events, Soziale Aktionen, Detailseiten, Team, Wer sind wir)
+   Wird nach style.css geladen. Alle Regeln gelten nur innerhalb von <body class="sub">.
+   Raster: 1440 px · 12 Spalten à 85 px · 20 px Abstand · 100 px Rand
+   ===================================================================== */
+
+.sub .container { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; }
+.sub .anchor { position: absolute; }
+.sub .hero-split .ph-label, .sub .event-tile .ph-label, .sub .hero-simple .ph-label { color: rgba(255,255,255,.35); }
+
+/* ---------- Seitentitel grau ---------- */
+.sub .hero-simple { position: relative; height: 785px; background: #626262; color: var(--white); overflow: hidden; }
+.sub .hero-simple .hero-bg { position: absolute; inset: 0; }
+.sub .hero-simple .hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sub .hero-simple .ph-label { place-items: end; padding: 16px 20px; }
+.sub .hero-simple h1 {
+  position: absolute; left: 0; right: 0; top: 360.25px; padding-left: 4.6px;
+  text-align: center; font: 400 89px/89px var(--o); letter-spacing: 4.6px;
+}
+.sub .hero-simple h1.tight { padding-left: 3.93px; letter-spacing: 3.93px; }
+.sub .hero-simple h1.inter { top: 350px; padding-left: .75px; margin-left: -4px; font: 400 89px/89px var(--i); letter-spacing: .75px; }
+
+/* ---------- Seitentitel geteilt (Detailseiten) ---------- */
+.sub .hero-split { display: grid; grid-template-columns: 705fr 735fr; height: 705px; }
+.sub .hero-split .media { background: #00b6be; }
+.sub .hero-split .content { background: var(--teal); color: var(--white); padding: 171px 0 0 17.687%; }
+.sub .hero-split h1 { font: 800 76px/96px var(--o); letter-spacing: 4.4px; }
+.sub .hero-split h1.wide { letter-spacing: 9px; }
+.sub .hero-split.small .content { padding-top: 168.75px; }
+.sub .hero-split.small h1 { font-size: 57px; line-height: 72px; letter-spacing: 4px; }
+.sub .hero-split p { margin-top: 20.75px; font: 400 23px/23px var(--o); letter-spacing: .37px; white-space: nowrap; }
+.sub .hero-split.small p { margin-top: 23px; }
+.sub .btn {
+  display: block; width: 289px; height: 88px; margin-top: 23.25px; padding: 9px 0 0 38px;
+  background: var(--white); color: var(--teal); font: 400 38px/79px var(--o); letter-spacing: 1.6px; white-space: nowrap;
+}
+.sub .btn:hover { background: #e9f3f3; }
+
+/* ---------- Sprungmarken ---------- */
+.sub .jump-section { padding-top: 92.875px; }
+.sub .jump-events { padding-bottom: 87.125px; }
+.sub .jump-detail { padding-bottom: 127.125px; }
+.sub .jump-team { padding-bottom: 90.735px; }
+.sub .jumplinks a { display: flex; align-items: flex-start; height: 49px; font: 400 22.5px/49px var(--o); letter-spacing: 1px; white-space: nowrap; }
+.sub .jumplinks .down { flex: none; margin-top: 9px; }
+.sub .jumplinks span { margin-left: 9px; }
+.sub .jumplinks a:hover span { color: var(--teal); }
+
+/* ---------- Kacheln (Unsere Events, Soziale Aktionen) ---------- */
+.sub .event-tile { display: grid; grid-template-columns: 735fr 705fr; height: 504px; margin-bottom: 40px; }
+.sub .event-tile.reverse { grid-template-columns: 705fr 735fr; }
+.sub .event-tile.reverse .media { order: -1; }
+.sub .event-tile .media { background: #787878; }
+.sub .event-tile .text { background: var(--teal); color: var(--white); padding-left: 22.177%; }
+.sub .event-tile.reverse .text { padding-left: 19.592%; }
+.sub .event-tile h2 { font-family: var(--o); font-weight: 800; white-space: nowrap; }
+.sub .event-tile p { font: 600 18px/27px var(--f); letter-spacing: .2px; white-space: nowrap; }
+.sub .event-tile .more { display: inline-flex; align-items: flex-start; margin-top: 12.5px; padding-left: 2.2px; font: 600 18px/27px var(--f); }
+.sub .event-tile .more .pfeil { flex: none; margin: 10.93px 7.3px 0 0; }
+.sub .event-tile .more:hover span { text-decoration: underline; }
+.sub .t1 .text { padding-top: 117.75px; }
+.sub .t1 h2 { font-size: 57px; line-height: 72px; letter-spacing: 4px; }
+.sub .t1 p { margin-top: 11.2px; letter-spacing: .25px; }
+.sub .t2 .text { padding-top: 144px; }
+.sub .t2 h2 { font-size: 76px; line-height: 96px; letter-spacing: 9px; }
+.sub .t2 h2.narrow { letter-spacing: 4.4px; }
+.sub .t2 h2.narrow.h72 { letter-spacing: 3.6px; }
+.sub .t2 p { margin-top: 9px; letter-spacing: .12px; }
+.sub .t3 .text { padding-top: 112.75px; }
+.sub .t3 h2 { font-size: 63px; line-height: 77px; letter-spacing: 2.2px; }
+.sub .t3 p { margin-top: 11.2px; letter-spacing: 0; }
+.sub .events-list { padding-bottom: 60px; }   /* + 40 px Kachelabstand = 100 px bis Footer */
+
+/* ---------- Inhaltsblöcke (Bild + Text) ---------- */
+.sub .features { padding-bottom: 140px; }
+.sub .feature { position: relative; display: grid; grid-template-columns: 630px 400px; height: 533px; }
+.sub .feature + .feature { margin-top: 180px; }
+.sub .feature.reverse { grid-template-columns: 400px 630px; }
+.sub .feature.reverse .text { padding-left: 20px; }
+.sub .feature.reverse .media { order: -1; }
+.sub .feature .media { background: var(--placeholder); }
+.sub .feature h2 { margin-top: 86.98px; color: var(--teal); font: 800 48px/48px var(--i); letter-spacing: .05px; white-space: nowrap; }
+.sub .feature.h143 h2 { margin-top: 101.48px; }
+.sub .feature .body { width: 612px; margin-top: 28.52px; color: var(--teal); font: 400 22px/29px var(--o); letter-spacing: 1.13px; white-space: nowrap; }
+.sub .feature .body p + p { margin-top: 29px; }
+.sub .feature.tight .body p + p { margin-top: 0; }
+
+/* ---------- FAQ ---------- */
+.sub .faq { padding: 104.4px 0 100.5px; }
+.sub .faq h2 { font: 800 40px/40px var(--i); letter-spacing: .1px; margin-bottom: 43.1px; }
+.sub .faq-item .chev { position: absolute; right: 20px; top: 40.5px; transition: transform .2s; }
+
+/* ---------- Wer sind wir: Seitenaufbau ---------- */
+.sub .wer-flow { padding-bottom: 100px; }
+.sub .wer-flow > * + * { margin-top: 140px; }
+.sub .wer-flow .feature + .feature { margin-top: 140px; }
+.sub .tile.plain .text { padding-left: 22.177%; padding-top: 149.03px; }
+.sub .tile.plain h2 { font-size: 79px; letter-spacing: -.75px; }
+.sub .tile.plain p { margin-top: 16.11px; }
+
+/* ---------- Unser Team: Zahlenband ---------- */
+.sub .stats { height: 212px; background: var(--teal); color: var(--white); }
+.sub .stats ul { position: relative; width: 1240px; height: 100%; margin-inline: auto; }
+.sub .stats li { position: absolute; top: 0; width: 300px; height: 100%; text-align: center; }
+.sub .stats .icon { position: absolute; top: 32px; }
+.sub .stats .num { position: absolute; left: 0; right: 0; top: 98.74px; color: #a2c73f; font: 800 42.5px/42.5px var(--i); letter-spacing: -.85px; }
+.sub .stats .label { position: absolute; left: 0; right: 0; top: 159.31px; font: 400 19.3px/19.3px var(--i); letter-spacing: -.2px; }
+
+/* ---------- Unser Team: Abschnitte und Personen ---------- */
+.sub .team { padding-bottom: 100.08px; }
+.sub .team-in { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; }
+.sub .team .after-quote { padding-top: 44.4px; }
+.sub .team h2 { font: 800 49px/49px var(--i); letter-spacing: -.5px; white-space: nowrap; }
+.sub .team .section + .section { margin-top: 103.69px; }
+.sub .team .section > h2 + .person { margin-top: 49.79px; }
+.sub .team .z-quote { margin-top: 45.39px; }
+.sub .person { position: relative; }
+.sub .person + .person { margin-top: 44.48px; }
+.sub .person .text { width: 581px; }
+.sub .person.right .text { margin-left: 420px; }
+.sub .person .circle { position: absolute; top: -4.4px; width: 295px; height: 295px; border-radius: 50%; overflow: hidden; }
+.sub .person .circle .media { width: 100%; height: 100%; background: var(--teal); }
+.sub .person .circle .ph-label { color: rgba(255,255,255,.4); }
+.sub .person.left .circle { left: 735px; }
+.sub .person.right .circle { left: 0; }
+.sub .person h3 { font: 800 40px/40px var(--i); letter-spacing: -.3px; }
+.sub .person p { margin-top: 23.52px; font: 400 23.5px/29px var(--i); letter-spacing: .2px; white-space: nowrap; }
+
+/* =====================================================================
+   Kleinere Bildschirme
+   ===================================================================== */
+@media (max-width: 1272px) {
+  .sub .container { width: auto; }
+  .sub .feature, .sub .feature.reverse { grid-template-columns: 1fr 400px; gap: 30px; height: auto; min-height: 533px; }
+  .sub .feature.reverse { grid-template-columns: 400px 1fr; gap: 20px; }
+  .sub .feature .body { width: auto; max-width: 612px; white-space: normal; }
+  .sub .feature .text { padding-bottom: 40px; }
+  .sub .feature h2 { white-space: normal; }
+  .sub .event-tile { height: auto; min-height: 504px; }
+  .sub .event-tile .text { padding-right: 32px; padding-bottom: 56px; }
+  .sub .event-tile p { white-space: normal; max-width: 432px; }
+  .sub .event-tile p br, .sub .feature .body br, .sub .person p br { display: none; }
+  .sub .hero-split .content { padding-right: 24px; }
+  .sub .hero-split h1 { font-size: 52px !important; line-height: 66px !important; }
+  .sub .event-tile h2 { font-size: 50px !important; line-height: 60px !important; letter-spacing: 3px !important; white-space: normal; }
+  .sub .hero-split p { white-space: normal; }
+  .sub .stats ul { width: auto; display: grid; grid-template-columns: repeat(4, 1fr); padding: 28px 16px; height: auto; }
+  .sub .stats { height: auto; }
+  .sub .stats li { position: static; width: auto; height: auto; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .sub .stats .icon, .sub .stats .num, .sub .stats .label { position: static; }
+  .sub .team h2 { white-space: normal; }
+  .sub .person { display: flex; gap: 40px; align-items: flex-start; }
+  .sub .person.right { flex-direction: row-reverse; justify-content: flex-end; }
+  .sub .person .text { width: auto; flex: 1; margin-left: 0 !important; }
+  .sub .person .circle { position: static; flex: none; width: 220px; height: 220px; }
+  .sub .person p { white-space: normal; }
+}
+
+@media (max-width: 960px) {
+  .sub .hero-simple { height: 480px; }
+  .sub .hero-simple h1 { top: auto; bottom: 0; position: relative; padding: 210px 16px 0; margin: 0; font-size: 52px; line-height: 1.1; letter-spacing: 3px; }
+  .sub .hero-split { grid-template-columns: 1fr; height: auto; }
+  .sub .hero-split .media { order: 2; height: 300px; }
+  .sub .hero-split .content { padding: 140px 16px 56px; }
+  .sub .event-tile, .sub .event-tile.reverse { grid-template-columns: 1fr; height: auto; }
+  .sub .event-tile.reverse .media { order: 2; }
+  .sub .event-tile .text, .sub .event-tile.reverse .text { padding: 56px 16px; }
+  .sub .event-tile .media { height: 280px; }
+  .sub .event-tile h2 { font-size: 44px !important; line-height: 52px !important; }
+  .sub .event-tile p { margin-top: 12px !important; }
+  .sub .jump-section { padding-top: 48px; padding-bottom: 48px !important; }
+  .sub .feature, .sub .feature.reverse { grid-template-columns: 1fr; gap: 24px; min-height: 0; }
+  .sub .feature.reverse .media { order: 2; }
+  .sub .feature.reverse .text { padding-left: 0; }
+  .sub .feature .media { height: 420px; max-width: 400px; }
+  .sub .feature h2 { margin-top: 0 !important; font-size: 36px; line-height: 42px; }
+  .sub .feature .body { font-size: 19px; line-height: 27px; letter-spacing: .6px; }
+  .sub .feature + .feature, .sub .wer-flow > * + * { margin-top: 72px; }
+  .sub .features { padding-bottom: 80px; }
+  .sub .faq { padding: 64px 0 72px; }
+  .sub .faq h2 { font-size: 30px; line-height: 36px; margin-bottom: 28px; }
+  .sub .faq-item summary { height: auto; padding: 22px 50px 22px 0; font-size: 24px; line-height: 30px; }
+  .sub .faq-item .chev { top: 32px; right: 8px; }
+  .sub .stats ul { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+  .sub .team h2 { font-size: 36px; line-height: 42px; }
+  .sub .person, .sub .person.right { flex-direction: column; gap: 20px; }
+  .sub .person .circle { width: 160px; height: 160px; }
+  .sub .person h3 { font-size: 30px; line-height: 36px; }
+  .sub .person p { font-size: 18px; line-height: 26px; }
+  .sub .team .section + .section { margin-top: 72px; }
+}
+
+@media (max-width: 480px) {
+  .sub .hero-simple h1 { font-size: 40px; letter-spacing: 2px; }
+  .sub .hero-split h1 { font-size: 42px !important; line-height: 50px !important; }
+  .sub .btn { width: auto; display: inline-block; padding-right: 32px; font-size: 30px; }
+  .sub .event-tile h2 { font-size: 36px !important; line-height: 44px !important; }
+}
+
+@media (max-width: 360px) {
+  .sub .hero-split h1 { font-size: 36px !important; line-height: 44px !important; letter-spacing: 2px !important; }
+  .sub .hero-simple h1 { font-size: 34px; }
+}

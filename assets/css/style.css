@@ -174,13 +174,13 @@ section[id] { scroll-margin-top: 0; }
 /* =====================================================================
    Seite „Zela 2027“ (zela-2027.html) – gleiches Raster wie die Startseite
    ===================================================================== */
-.page-zela .main-nav a:nth-child(1) { left: 324px; }
-.page-zela .main-nav a:nth-child(2) { left: 518px; }
-.page-zela .main-nav a:nth-child(3) { left: 683px; }
-.page-zela .main-nav a:nth-child(4) { left: 764px; }
-.page-zela .lang .de { left: 1010px; }
-.page-zela .lang .en { left: 1075px; }
-.page-zela .lang .sep { left: 1061px; }
+.nav-alt .main-nav a:nth-child(1) { left: 324px; }
+.nav-alt .main-nav a:nth-child(2) { left: 518px; }
+.nav-alt .main-nav a:nth-child(3) { left: 683px; }
+.nav-alt .main-nav a:nth-child(4) { left: 764px; }
+.nav-alt .lang .de { left: 1010px; }
+.nav-alt .lang .en { left: 1075px; }
+.nav-alt .lang .sep { left: 1061px; }
 
 .z-hero { display: grid; grid-template-columns: 705fr 735fr; height: 705px; }
 .z-hero .left { position: relative; }

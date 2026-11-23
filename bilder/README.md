@@ -36,3 +36,93 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | `zela-5.jpg` | Bild Vortreffen |
 | `zela-6.jpg` | Foto Gruppenleiter:in |
 | `zela-7.jpg` | Bild Du bist schon 14 Jahre? |
+
+## Unterseiten
+
+### Unsere Events (events.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `events-1.jpg` | Header-Bild Unsere Events |
+| `events-2.jpg` | Kachel-Bild Gruppenstunde |
+| `events-3.jpg` | Kachel-Bild MoWo |
+| `events-4.jpg` | Kachel-Bild Trainee-Wochenende |
+
+### Soziale Aktionen (soziale-aktionen.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `soziale-aktionen-1.jpg` | Header-Bild Soziale Aktionen |
+| `soziale-aktionen-2.jpg` | Kachel-Bild 72h Aktion |
+| `soziale-aktionen-3.jpg` | Kachel-Bild Aktion |
+| `soziale-aktionen-4.jpg` | Kachel-Bild Aktion |
+
+### MoWo (mowo.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `mowo-2.jpg` | Bild Wer sind wir? |
+| `mowo-3.jpg` | Bild Wer sind wir? |
+| `mowo-1.jpg` | Header-Bild MoWo – Monsterwochenende |
+
+### 72h-Aktion (72h-aktion.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `72h-aktion-2.jpg` | Bild Wer sind wir? |
+| `72h-aktion-3.jpg` | Bild Wer sind wir? |
+| `72h-aktion-1.jpg` | Header-Bild 72h-Aktion |
+
+### Aktion (aktion.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `aktion-2.jpg` | Bild Wer sind wir? |
+| `aktion-3.jpg` | Bild Wer sind wir? |
+| `aktion-1.jpg` | Header-Bild Aktion |
+
+### Gruppenstunde (gruppenstunde.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `gruppenstunde-2.jpg` | Bild Was wird gemacht |
+| `gruppenstunde-3.jpg` | Bild Wer sind wir? |
+| `gruppenstunde-1.jpg` | Header-Bild Gruppenstunde |
+
+### Trainee-Wochenende (trainee-wochenende.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `trainee-wochenende-2.jpg` | Bild Wer sind wir? |
+| `trainee-wochenende-3.jpg` | Bild Wer sind wir? |
+| `trainee-wochenende-1.jpg` | Header-Bild Trainee-Wochenende |
+
+### Wer sind wir? (wer-sind-wir.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `wer-sind-wir-1.jpg` | Header-Bild KjG-Gonsenheim |
+| `wer-sind-wir-2.jpg` | Bild Wer sind wir? |
+| `wer-sind-wir-3.jpg` | Bild Zeltlager 2027 |
+| `wer-sind-wir-4.jpg` | Bild KjG-Dachverband |
+| `wer-sind-wir-5.jpg` | Bild Unser Team |
+
+### Unser Team (team.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `team-1.jpg` | Foto Gruppenleiter:in |
+| `team-1.jpg` | Header-Bild Unser Team |
+| `team-3.jpg` | Foto Name 1 |
+| `team-4.jpg` | Foto Name 1 |
+| `team-5.jpg` | Foto Name 1 |
+| `team-6.jpg` | Foto Name 1 |
+| `team-7.jpg` | Foto Name 1 |
+| `team-8.jpg` | Foto Name 1 |
+| `team-9.jpg` | Foto Name 1 |
+
+### FAQ (faq.html)
+
+| Datei | Wo auf der Seite |
+|---|---|
+| `faq-1.jpg` | Header-Bild FAQ |

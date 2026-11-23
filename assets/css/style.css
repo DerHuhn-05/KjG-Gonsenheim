@@ -33,7 +33,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 137px; }
+html { scroll-behavior: smooth; scroll-padding-top: 169px; }
 body { margin: 0; color: #000; background: var(--white); font-family: var(--o);
   -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
 img { display: block; max-width: 100%; }
@@ -46,15 +46,15 @@ section[id] { scroll-margin-top: 0; }
 .wrap { width: 1240px; max-width: calc(100% - 32px); margin-inline: auto; }
 
 /* ---------- Kopfzeile ---------- */
-/* Header: immer oben fixiert. Beim Laden transparent, nach dem Scrollen (Klasse .scrolled, gesetzt in main.js)
-   Petrol-Leiste mit 137 px Höhe – Werte aus dem Header-Entwurf. */
-.site-header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--white); container-type: inline-size;
-  background-color: rgba(0,117,118,0); transition: background-color .35s ease, box-shadow .35s ease; }
+/* Header: immer oben fixiert. Beim Laden transparent mit Verlauf (Entwurf „Frame 18“),
+   nach dem Scrollen Petrol-Leiste (Entwurf „Frame 18-2“, Klasse .scrolled wird in main.js gesetzt). */
+.site-header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--white);
+  background-color: rgba(0,117,118,0); transition: background-color .35s ease; }
 .site-header::before { transition: opacity .35s ease; }
 .site-header .bar, .logo, .main-nav a, .lang a, .lang .sep, .menu-toggle {
-  transition: left .35s ease, top .35s ease, height .35s ease, font-size .35s ease, opacity .25s ease; }
+  transition: top .35s ease, height .35s ease; }
 .site-header::before {
-  content: ""; position: absolute; inset: 0 0 auto 0; height: 172px; pointer-events: none;
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 169px; pointer-events: none;
   background: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,0));
 }
 .site-header .bar { position: relative; width: 1240px; height: 100px; margin-inline: auto; }
@@ -188,26 +188,18 @@ section[id] { scroll-margin-top: 0; }
 .nav-alt .lang .en { left: 1075px; }
 .nav-alt .lang .sep { left: 1061px; }
 
-/* ---------- Header nach dem Scrollen (Desktop) ---------- */
+/* ---------- Header nach dem Scrollen (Desktop) – Entwurf „Frame 18-2“ ----------
+   Petrol-Fläche 169 px hoch, alle Elemente 20 px tiefer als im Ausgangszustand („Frame 18“). */
 @media (min-width: 1273px) {
-  .site-header.scrolled { background-color: var(--teal); box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+  .site-header.scrolled { background-color: var(--teal); }
   .site-header.scrolled::before { opacity: 0; }
-  .site-header.scrolled .bar { height: 137px; }
-  .site-header.scrolled .logo { left: calc(50% - 50cqw + 40px); top: 44px; }
-  .site-header.scrolled .main-nav a { top: 61px; }
-  .site-header.scrolled .main-nav a:nth-child(1) { left: 352px; }
-  .site-header.scrolled .main-nav a:nth-child(2) { left: 507px; }
-  .site-header.scrolled .main-nav a:nth-child(3) { left: 647px; }
-  .site-header.scrolled .main-nav a:nth-child(4) { left: 909px; }
-  .nav-alt .site-header.scrolled .main-nav a:nth-child(1) { left: 350.2px; }
-  .nav-alt .site-header.scrolled .main-nav a:nth-child(2) { left: 543px; }
-  .nav-alt .site-header.scrolled .main-nav a:nth-child(3) { left: 713px; }
-  .nav-alt .site-header.scrolled .main-nav a:nth-child(4) { left: 795px; }
-  .site-header.scrolled .lang a { top: 63.6px; font-size: 28.5px; line-height: 28.5px; }
-  .site-header.scrolled .lang .de { left: 1126.3px; }
-  .site-header.scrolled .lang .en { left: 1189px; }
-  .site-header.scrolled .lang .sep { left: 1173.7px; top: 54px; width: 3.6px; height: 31px; }
-  .site-header.scrolled .menu-toggle { opacity: 0; pointer-events: none; }
+  .site-header.scrolled .bar { height: 169px; }
+  .site-header.scrolled .logo { top: 60px; }
+  .site-header.scrolled .main-nav a { top: 76.5px; }
+  .site-header.scrolled .lang a { top: 72.25px; }
+  .site-header.scrolled .lang .sep { top: 64px; }
+  .site-header.scrolled .menu-toggle { top: 77.5px; }
+}
 }
 
 .z-hero { display: grid; grid-template-columns: 705fr 735fr; height: 705px; }

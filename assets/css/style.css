@@ -61,16 +61,16 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .site-header .bar { position: relative; width: 1240px; height: 100px; margin-inline: auto; }
 .logo { position: absolute; left: 0; top: 40px; }
 .logo img { width: 250px; height: 49px; }
-.main-nav a { position: absolute; top: 56.5px; font: 400 22px/22px var(--o); letter-spacing: 1.5px; white-space: nowrap; }
-.main-nav a:nth-child(1) { left: 326px; }
-.main-nav a:nth-child(2) { left: 481px; }
-.main-nav a:nth-child(3) { left: 621px; }
-.main-nav a:nth-child(4) { left: 883px; }
+.main-nav a { font: 400 22px/22px var(--o); letter-spacing: 1.5px; white-space: nowrap; }
+/* Menü mit fünf Punkten auf allen Seiten: gleichmäßige Abstände ab x = 400 */
+.main-nav { position: absolute; left: 300px; top: 56.5px; display: flex; gap: 30px; transition: top .35s ease; }
+.main-nav a { position: static; }
 .main-nav a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .lang a { position: absolute; top: 52.25px; font: 400 31px/31px var(--o); letter-spacing: .5px; }
-.lang .de { left: 1007px; }
-.lang .en { left: 1072px; }
-.lang .sep { position: absolute; left: 1058px; top: 44px; width: 4px; height: 40px; background: var(--white); }
+.lang .de { left: 1065px; }
+.lang .en { left: 1130px; }
+.lang .sep { position: absolute; left: 1116px; top: 44px; width: 4px; height: 40px; background: var(--white); }
+.lang a.active { font-weight: 700; }   /* gewählte Sprache fett */
 .menu-toggle { position: absolute; left: 1200px; top: 57.5px; width: 30px; height: 14px; padding: 0; border: 0; background: none; cursor: pointer; }
 .menu-toggle img { display: block; width: 30px; height: 14px; }
 .mobile-nav { display: none; position: relative; background: var(--teal); padding: 8px 16px 24px; box-shadow: 0 12px 24px rgba(0,0,0,.25); }
@@ -181,13 +181,6 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 /* =====================================================================
    Seite „Zela 2027“ (zela-2027.html) – gleiches Raster wie die Startseite
    ===================================================================== */
-.nav-alt .main-nav a:nth-child(1) { left: 324px; }
-.nav-alt .main-nav a:nth-child(2) { left: 518px; }
-.nav-alt .main-nav a:nth-child(3) { left: 683px; }
-.nav-alt .main-nav a:nth-child(4) { left: 764px; }
-.nav-alt .lang .de { left: 1010px; }
-.nav-alt .lang .en { left: 1075px; }
-.nav-alt .lang .sep { left: 1061px; }
 
 /* ---------- Header nach dem Scrollen (Desktop) – Entwurf „Frame 18-2“ ----------
    Petrol-Fläche 169 px hoch, alle Elemente 20 px tiefer als im Ausgangszustand („Frame 18“). */
@@ -197,7 +190,7 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   /* Höhe 100 px, alle Elemente vertikal mittig in der Leiste */
   .site-header.scrolled .bar { height: 100px; }
   .site-header.scrolled .logo { top: 25.5px; }
-  .site-header.scrolled .main-nav a { top: 42px; }
+  .site-header.scrolled .main-nav { top: 42px; }
   .site-header.scrolled .lang a { top: 37.75px; }
   .site-header.scrolled .lang .sep { top: 29.5px; }
   .site-header.scrolled .menu-toggle { top: 43px; }
@@ -304,7 +297,7 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .z-quote .circle { flex: none; width: 200px; height: 200px; }
   .z-quote blockquote p { white-space: normal; }
   .site-header .bar { width: auto; height: 90px; margin: 0 16px; display: flex; align-items: center; gap: 16px; }
-  .logo, .lang a, .lang .sep, .main-nav a { position: static; left: auto; top: auto; }
+  .logo, .lang a, .lang .sep, .main-nav, .main-nav a { position: static; left: auto; top: auto; }
   .logo img { height: 40px; width: auto; }
   .main-nav { display: flex; gap: 28px; margin-left: auto; }
   .main-nav a { font-size: 19px; }
@@ -323,6 +316,11 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .about { height: auto; padding-bottom: 72px; }
   .about .wrap { padding-left: 0; max-width: min(820px, calc(100% - 32px)); }
   .about p { width: auto; }
+}
+
+@media (max-width: 1100px) {
+  .main-nav { display: none !important; }
+  .lang { margin-left: auto !important; }
 }
 
 @media (max-width: 960px) {
@@ -405,12 +403,6 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
    Englische Version (en/*.html) – gleiche Gestaltung, Text bricht automatisch um,
    da die festen Zeilenumbrüche des deutschen Entwurfs entfallen.
    ===================================================================== */
-@media (min-width: 1273px) {
-  html[lang="en"] .main-nav { position: absolute; left: 326px; top: 56.5px; display: flex; gap: 82px; transition: top .35s ease; }
-  html[lang="en"] .nav-alt .main-nav { left: 324px; gap: 40px; }
-  html[lang="en"] .main-nav a { position: static; }
-  html[lang="en"] .site-header.scrolled .main-nav { top: 42px; }
-}
 html[lang="en"] .tile p, html[lang="en"] .card-text, html[lang="en"] .about p,
 html[lang="en"] .z-hero .intro, html[lang="en"] .z-hero .right p,
 html[lang="en"] .z-feature .body, html[lang="en"] .z-quote blockquote p { white-space: normal; }

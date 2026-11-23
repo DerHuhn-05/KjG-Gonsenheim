@@ -106,6 +106,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------------------------
+  // Unser Team: Kennzahlen zählen hoch, sobald das Zahlenband sichtbar ist
+  // ---------------------------------------------------------------
+  const zahlen = [...document.querySelectorAll(".stats .num")];
+  if (zahlen.length && !ruhig) {
+    const sprache = document.documentElement.lang === "en" ? "en-US" : "de-DE";
+    const DAUER = 1800; // Millisekunden
+    const hochzaehlen = (el) => {
+      const text = el.textContent.trim();
+      const ziel = parseInt(text.replace(/[.,\s]/g, ""), 10);
+      if (!Number.isFinite(ziel)) return;
+      const format = new Intl.NumberFormat(sprache, { useGrouping: /[.,]/.test(text) });
+      const start = performance.now();
+      const schritt = (jetzt) => {
+        const t = Math.min(1, (jetzt - start) / DAUER);
+        const wert = Math.round(ziel * (1 - Math.pow(1 - t, 3)));   // erst schnell, dann langsam
+        el.textContent = format.format(wert);
+        if (t < 1) requestAnimationFrame(schritt); else el.textContent = text;
+      };
+      el.textContent = format.format(0);
+      requestAnimationFrame(schritt);
+    };
+    const band = document.querySelector(".stats");
+    const zio = new IntersectionObserver((e) => {
+      if (e.some((x) => x.isIntersecting)) { zahlen.forEach(hochzaehlen); zio.disconnect(); }
+    }, { threshold: 0.3 });
+    zio.observe(band);
+  }
+
+  // ---------------------------------------------------------------
   // Gemeinsame Scroll-Schleife
   // ---------------------------------------------------------------
   let geplant = false;

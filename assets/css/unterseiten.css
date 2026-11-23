@@ -227,3 +227,20 @@ html[lang="en"] .sub .event-tile p { max-width: 432px; }
 html[lang="en"] .sub .event-tile .text { padding-right: 40px; }
 html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .lang-note { margin-bottom: 32px; color: #555; font-size: 16px; }
+
+/* ---------- Unser Team: kürzerer Seitentitel, damit die Kennzahlen sofort sichtbar sind ---------- */
+.sub .hero-simple.short { height: 520px; }
+.sub .hero-simple.short h1 { top: 227.75px; }
+.sub .stats .num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Desktop: 20 px mehr Abstand zwischen den Containern (Events, Soziales, Team) ---------- */
+@media (min-width: 961px) {
+  .sub .events-list .event-tile { margin-bottom: 60px; }
+  .sub .events-list { padding-bottom: 40px; }     /* Abstand zum Footer bleibt 100 px */
+  .sub .person + .person { margin-top: 64.48px; }
+  .sub .team .section + .section { margin-top: 123.69px; }
+}
+@media (max-width: 960px) {
+  .sub .hero-simple.short { height: 380px; }
+  .sub .hero-simple.short h1 { padding-top: 160px; }
+}

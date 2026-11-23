@@ -333,4 +333,5 @@ EN = {
 "Anmeldeschluss": "Registration deadline",
 "Zeltlager 2027 der KjG Mainz-Gonsenheim: 24. Juni bis 04. August 2027 in Faulbach-Breitenbrunn, für Kinder von 9 bis 14 Jahren. Anmeldeschluss 01.05.2027.":
     "KjG Mainz-Gonsenheim summer camp 2027: 24 June to 4 August 2027 in Faulbach-Breitenbrunn, for children aged 9 to 14. Registration deadline: 1 May 2027.",
+"Soziales": "Social",
 }

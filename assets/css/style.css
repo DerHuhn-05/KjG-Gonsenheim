@@ -33,7 +33,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 137px; }
 body { margin: 0; color: #000; background: var(--white); font-family: var(--o);
   -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
 img { display: block; max-width: 100%; }
@@ -46,7 +46,13 @@ section[id] { scroll-margin-top: 0; }
 .wrap { width: 1240px; max-width: calc(100% - 32px); margin-inline: auto; }
 
 /* ---------- Kopfzeile ---------- */
-.site-header { position: absolute; inset: 0 0 auto 0; z-index: 10; color: var(--white); }
+/* Header: immer oben fixiert. Beim Laden transparent, nach dem Scrollen (Klasse .scrolled, gesetzt in main.js)
+   Petrol-Leiste mit 137 px Höhe – Werte aus dem Header-Entwurf. */
+.site-header { position: fixed; inset: 0 0 auto 0; z-index: 50; color: var(--white); container-type: inline-size;
+  background-color: rgba(0,117,118,0); transition: background-color .35s ease, box-shadow .35s ease; }
+.site-header::before { transition: opacity .35s ease; }
+.site-header .bar, .logo, .main-nav a, .lang a, .lang .sep, .menu-toggle {
+  transition: left .35s ease, top .35s ease, height .35s ease, font-size .35s ease, opacity .25s ease; }
 .site-header::before {
   content: ""; position: absolute; inset: 0 0 auto 0; height: 172px; pointer-events: none;
   background: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,0));
@@ -182,6 +188,28 @@ section[id] { scroll-margin-top: 0; }
 .nav-alt .lang .en { left: 1075px; }
 .nav-alt .lang .sep { left: 1061px; }
 
+/* ---------- Header nach dem Scrollen (Desktop) ---------- */
+@media (min-width: 1273px) {
+  .site-header.scrolled { background-color: var(--teal); box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+  .site-header.scrolled::before { opacity: 0; }
+  .site-header.scrolled .bar { height: 137px; }
+  .site-header.scrolled .logo { left: calc(50% - 50cqw + 40px); top: 44px; }
+  .site-header.scrolled .main-nav a { top: 61px; }
+  .site-header.scrolled .main-nav a:nth-child(1) { left: 352px; }
+  .site-header.scrolled .main-nav a:nth-child(2) { left: 507px; }
+  .site-header.scrolled .main-nav a:nth-child(3) { left: 647px; }
+  .site-header.scrolled .main-nav a:nth-child(4) { left: 909px; }
+  .nav-alt .site-header.scrolled .main-nav a:nth-child(1) { left: 350.2px; }
+  .nav-alt .site-header.scrolled .main-nav a:nth-child(2) { left: 543px; }
+  .nav-alt .site-header.scrolled .main-nav a:nth-child(3) { left: 713px; }
+  .nav-alt .site-header.scrolled .main-nav a:nth-child(4) { left: 795px; }
+  .site-header.scrolled .lang a { top: 63.6px; font-size: 28.5px; line-height: 28.5px; }
+  .site-header.scrolled .lang .de { left: 1126.3px; }
+  .site-header.scrolled .lang .en { left: 1189px; }
+  .site-header.scrolled .lang .sep { left: 1173.7px; top: 54px; width: 3.6px; height: 31px; }
+  .site-header.scrolled .menu-toggle { opacity: 0; pointer-events: none; }
+}
+
 .z-hero { display: grid; grid-template-columns: 705fr 735fr; height: 705px; }
 .z-hero .left { position: relative; }
 .z-hero .left .media { position: absolute; inset: 0; background: #00b6be; }
@@ -253,6 +281,11 @@ section[id] { scroll-margin-top: 0; }
 }
 
 @media (max-width: 1272px) {
+  html { scroll-padding-top: 72px; }
+  .site-header.scrolled { background-color: var(--teal); box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+  .site-header.scrolled::before { opacity: 0; }
+  .site-header.scrolled .bar { height: 72px; }
+  .site-header.open .mobile-nav { max-height: calc(100vh - 72px); overflow-y: auto; }
   .z-hero .right { padding-right: 24px; }
   .z-hero .intro { white-space: normal; right: 24px; }
   .z-hero h1 { font-size: 64px; }
@@ -361,4 +394,8 @@ section[id] { scroll-margin-top: 0; }
   .hero h1 { font-size: 34px; line-height: 42px; }
   .z-hero .btn { width: auto; display: inline-block; padding-right: 28px; font-size: 32px; }
   .z-hero h1 { font-size: 44px; line-height: 52px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .site-header::before, .site-header .bar, .logo, .main-nav a, .lang a, .lang .sep, .menu-toggle { transition: none; }
 }

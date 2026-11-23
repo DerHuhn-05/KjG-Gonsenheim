@@ -11,10 +11,10 @@ Alle Icons der Website liegen hier als SVG-Datei. Die Seiten binden sie per Link
 | `pfeil-rechts-klein-weiss.svg` | 13 × 5 | „genauere infos“ in den Kacheln Zela 2027 und Unser Team |
 | `chevron-unten.svg` | 22 × 13 | Aufklapp-Pfeil bei den FAQ-Fragen (dreht sich beim Öffnen) |
 | `menue.svg` | 30 × 14 | Menü-Button oben rechts |
-| `team-gruppenleiter.svg` | 42 × 44 | Zahlenband „Unser Team“: Gruppenleiter |
-| `team-uebernahmequote.svg` | 41 × 44 | Zahlenband „Unser Team“: Übernahmequote |
-| `team-mitarbeitende.svg` | 44 × 44 | Zahlenband „Unser Team“: Mitarbeitende |
-| `team-kjg-seit.svg` | 44 × 44 | Zahlenband „Unser Team“: KjG seit |
+| `team-gruppenleiter.svg` | 48 × 36 | Zahlenband „Unser Team“: Gruppenleiter |
+| `team-zelte.svg` | 42 × 33 | Zahlenband „Unser Team“: Zelte |
+| `team-dioezesanverbaende.svg` | 44 × 44 | Zahlenband „Unser Team“: Diözesanverbände |
+| `team-kjg-seit.svg` | 45 × 44 | Zahlenband „Unser Team“: KjG seit (KjG-Logo) |
 | `zela-zeitraum.svg` | 48 × 48 | Zeitleiste Zela 2027: Zeitraum (Kalender) |
 | `zela-zeltplatz.svg` | 48 × 48 | Zeitleiste Zela 2027: Zeltplatz (Zelt) |
 | `zela-alter.svg` | 48 × 48 | Zeitleiste Zela 2027: Alter (Person) |

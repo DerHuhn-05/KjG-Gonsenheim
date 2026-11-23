@@ -336,4 +336,8 @@ EN = {
 "Soziales": "Social",
 "Zelte": "Tents",
 "Diözesanverbänden": "Diocesan associations",
+"Angebote": "Activities",
+"Unsere Angebote": "Our Activities",
+"Unsere Angebote – KjG Mainz-Gonsenheim": "Our Activities – KjG Mainz-Gonsenheim",
+"Header-Bild Unsere Angebote": "Header image: Our Activities",
 }

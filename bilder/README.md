@@ -39,11 +39,11 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 
 ## Unterseiten
 
-### Unsere Events (events.html)
+### Unsere Angebote (events.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
-| `events-1.jpg` | Header-Bild Unsere Events |
+| `events-1.jpg` | Header-Bild Unsere Angebote |
 | `events-2.jpg` | Kachel-Bild Gruppenstunde |
 | `events-3.jpg` | Kachel-Bild MoWo |
 | `events-4.jpg` | Kachel-Bild Trainee-Wochenende |

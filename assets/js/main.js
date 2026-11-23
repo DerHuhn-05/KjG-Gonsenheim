@@ -50,23 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // ---------------------------------------------------------------
-  // Unser Team: runde Fotos bewegen sich beim Scrollen leicht mit (Parallax)
-  // ---------------------------------------------------------------
-  const kreise = ruhig ? [] : [...document.querySelectorAll(".person .circle")];
-  const PARALLAX = 0.12;   // Stärke der Bewegung
-  const MAX_WEG = 60;      // höchstens so viele Pixel nach oben/unten
-  const kreiseBewegen = () => {
-    const mitte = window.innerHeight / 2;
-    for (const k of kreise) {
-      const r = k.parentElement.getBoundingClientRect();
-      if (r.bottom < -200 || r.top > window.innerHeight + 200) continue;
-      const abstand = r.top + r.height / 2 - mitte;
-      const y = Math.max(-MAX_WEG, Math.min(MAX_WEG, -abstand * PARALLAX));
-      k.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
-    }
-  };
-
-  // ---------------------------------------------------------------
   // Einflug-Animationen: Inhalte schieben sich beim Scrollen herein (nicht im Hero)
   // ---------------------------------------------------------------
   const EINFLIEGEN = [
@@ -81,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".event-tile > .text", ".event-tile > .media",
     ".feature > .text", ".feature > .media",
     ".stats li", ".team h2", ".person",
-    ".prose > *", ".site-footer .grid > *",
+    ".prose > *",
   ];
   if (!ruhig && "IntersectionObserver" in window) {
     const elemente = [...new Set(document.querySelectorAll(EINFLIEGEN.join(",")))];
@@ -141,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const aktualisieren = () => {
     headerPruefen();
     leisteBewegen();
-    if (kreise.length) kreiseBewegen();
     geplant = false;
   };
   const anstossen = () => { if (!geplant) { geplant = true; requestAnimationFrame(aktualisieren); } };

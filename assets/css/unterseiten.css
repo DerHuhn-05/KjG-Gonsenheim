@@ -28,7 +28,7 @@
 .sub .hero-split h1.wide { letter-spacing: 9px; }
 .sub .hero-split.small .content { padding-top: 168.75px; }
 .sub .hero-split.small h1 { font-size: 57px; line-height: 72px; letter-spacing: 4px; }
-.sub .hero-split p { margin-top: 20.75px; font: 400 23px/23px var(--o); letter-spacing: .37px; white-space: nowrap; }
+.sub .hero-split p { margin-top: 20.75px; font: 400 23px/32px var(--o); letter-spacing: .37px; white-space: nowrap; }
 .sub .hero-split.small p { margin-top: 23px; }
 .sub .btn {
   display: block; width: 289px; height: 88px; margin-top: 23.25px; padding: 9px 0 0 38px;

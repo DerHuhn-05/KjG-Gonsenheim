@@ -405,13 +405,13 @@ html.menu-offen { overflow: hidden; }
   .lang { margin-left: auto; }
   /* Mobil: Video in voller Bildschirmbreite (16:9) direkt unter der Kopfzeile, nichts abgeschnitten.
      Titel und Button liegen mittig darüber. */
-  .hero { height: auto; padding-top: 90px; }
+  .hero { height: auto; padding-top: 0; }
   .hero video { position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-  .hero-content { position: absolute; left: 0; right: 0; top: 90px; z-index: 1; height: 56.25vw;
+  .hero-content { position: absolute; left: 0; right: 0; top: 0; z-index: 1; height: 56.25vw; padding-top: 80px; box-sizing: border-box;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
   .hero h1 { position: static; margin: 0; padding: 0 16px; font-size: 40px; line-height: 48px; white-space: normal; }
   .hero-btn { position: static; transform: none; width: auto; height: auto; padding: 10px 20px; font-size: 20px; line-height: 1.2; }
-  .video-toggle { right: 12px; bottom: 12px; width: 40px; height: 40px; }
+  .video-toggle { display: none; }   /* mobil nicht pausierbar – das Video hält nur an, wenn es aus dem Bild gescrollt ist */
   .jump { padding: 32px 0; }
   .jump ul { justify-content: flex-start; flex-direction: column; }
   .tile, .tile.reverse { grid-template-columns: 1fr; }
@@ -419,7 +419,7 @@ html.menu-offen { overflow: hidden; }
   .tile .text, .tile.reverse .text { padding: 56px 16px; }
   .tile .media { height: 280px; }
   .tile h2 { font-size: 52px !important; line-height: 60px; }
-  .cards-section { padding-top: 64px; }
+  .cards-section { padding-top: 96px; }
   .events { padding-bottom: 72px; }
   .cards-section h2, .faq h2 { font-size: 32px; line-height: 38px; }
   .cards { grid-template-columns: 1fr 1fr; margin-top: 28px; row-gap: 48px; }
@@ -445,8 +445,7 @@ html.menu-offen { overflow: hidden; }
   .logo img { height: 34px; }
   .site-header .bar { gap: 10px; height: 80px; }
   .lang a { font-size: 20px; }
-  .hero { padding-top: 80px; }
-  .hero-content { top: 80px; gap: 10px; }
+  .hero-content { padding-top: 70px; gap: 10px; }
   .hero h1 { font-size: 30px; line-height: 36px; white-space: nowrap; }
   .hero-btn { font-size: 16px; padding: 8px 16px; }
   .tile h2 { font-size: 44px !important; line-height: 52px; }
@@ -510,9 +509,8 @@ html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
    Mobil (bis 960 px)
    ===================================================================== */
 @media (max-width: 960px) {
-  /* Kopfzeile immer Petrol */
-  .site-header { background-color: var(--teal); }
-  .site-header::before { opacity: 0; }
+  /* Kopfzeile: liegt transparent (mit dunklem Verlauf für die Lesbarkeit) über dem Hero und wird erst beim Scrollen Petrol */
+  .site-header::before { height: 120px; }
 
   /* Kapitel-Links mit Pfeilen kleiner */
   .jump a, .z-jump a, .sub .jumplinks a { height: 34px; font-size: 17px; line-height: 34px; }
@@ -520,7 +518,7 @@ html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
   .jump span, .z-jump span, .sub .jumplinks span { margin-left: 8px; }
 
   /* „Unser Angebot für euch“: Slider – Karten nebeneinander, mit dem Finger wischen, rasten mittig ein */
-  .events .cards { display: flex; grid-template-columns: none; gap: 16px; margin: 24px -16px 0; padding: 0 16px 8px;
+  .events .cards { display: flex; grid-template-columns: none; gap: 16px; margin: 36px -16px 0; padding: 0 16px 8px;
     overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 16px; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
     scrollbar-width: none; }
   .events .cards::-webkit-scrollbar { display: none; }

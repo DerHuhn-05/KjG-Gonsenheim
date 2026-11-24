@@ -13,7 +13,7 @@ Startseite als statisches HTML/CSS (kein Build-Schritt), 1:1 nach dem Figma-Entw
 | `events.html` | Unsere Events (Übersicht) |
 | `gruppenstunde.html` · `mowo.html` · `trainee-wochenende.html` | Event-Detailseiten |
 | `soziale-aktionen.html` | Soziale Aktionen (Übersicht) |
-| `72h-aktion.html` · `aktion.html` | Detailseiten Soziale Aktionen |
+| `72h-aktion.html` · `aktion.html` (Hilfe im Stadtteil) · `klamottenspende.html` | Detailseiten Soziale Aktionen |
 | `team.html` | Unser Team |
 | `wer-sind-wir.html` | Wer sind wir? |
 | `faq.html` | Häufig gestellte Fragen |
@@ -38,4 +38,4 @@ Framework preset: **None** · Build command: **leer** · Build output directory:
 
 ## Anmelde-Links
 Zela 2027 (Startseite und `zela-2027.html`) führt auf das Google-Formular und öffnet es in einem neuen Tab.
-In `mowo.html`, `trainee-wochenende.html`, `72h-aktion.html` und `aktion.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.
+In `mowo.html`, `trainee-wochenende.html`, `72h-aktion.html`, `aktion.html` und `klamottenspende.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.

@@ -350,3 +350,6 @@ EN = {
 "Trainee-Wochenende": "Trainee Weekend",
 "Kachel-Bild Zela 2027": "Tile image: Zela 2027",
 }
+
+from i18n_en_inhalt import EN_INHALT   # redaktionelle Texte (Gruppenstunde, FAQ, Team …)
+EN.update(EN_INHALT)

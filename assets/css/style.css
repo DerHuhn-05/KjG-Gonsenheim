@@ -187,7 +187,7 @@ html.menu-offen { overflow: hidden; }
 .faq-item::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 2px;
   background: linear-gradient(90deg, rgba(0,117,118,.5), #007576 50%, rgba(0,117,118,.5)); }
 .faq-item summary { position: relative; display: block; height: 84px; padding-top: 27.82px; cursor: pointer; list-style: none;
-  color: var(--teal); font: 700 32px/32px var(--i); }
+  color: var(--teal); font: 400 20px/29px var(--o); }   /* Fragen: Größe und Stärke wie der übrige Text */
 .faq-item summary::-webkit-details-marker { display: none; }
 .faq-item .chev { position: absolute; right: 20px; top: 37.5px; color: var(--teal); transition: transform .2s; }
 .faq-item[open] .chev { transform: rotate(180deg); }
@@ -424,8 +424,8 @@ html.menu-offen { overflow: hidden; }
   .about p { font-size: 20px; line-height: 28px; }
   .faq { padding: 72px 0 72px; }
   .faq h2 { margin-bottom: 28px; }
-  .faq-item summary { height: auto; padding: 22px 50px 22px 0; font-size: 24px; line-height: 30px; }
-  .faq-item .chev { top: 32px; right: 8px; }
+  .faq-item summary { height: auto; padding: 22px 50px 22px 0; font-size: 20px; line-height: 29px; }
+  .faq-item .chev { top: calc(50% - 5px); right: 8px; }   /* mittig zur (evtl. zweizeiligen) Frage */
   .site-footer .grid { grid-template-columns: 1fr 1fr; padding: 0 16px; }
   .site-footer .brand { grid-column: 1 / -1; }
   .footer-logo { width: 110px; margin-top: 48px; }

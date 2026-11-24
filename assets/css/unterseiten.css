@@ -87,7 +87,7 @@
 /* ---------- FAQ ---------- */
 .sub .faq { padding: 104.4px 0 100.5px; }
 .sub .faq h2 { font: 800 40px/40px var(--i); letter-spacing: .1px; margin-bottom: 43.1px; }
-.sub .faq-item .chev { position: absolute; right: 20px; top: 40.5px; transition: transform .2s; }
+.sub .faq-item .chev { position: absolute; right: 20px; top: 34.5px; transition: transform .2s; }
 
 /* ---------- Wer sind wir: Seitenaufbau ---------- */
 .sub .wer-flow { padding-bottom: 100px; }
@@ -202,8 +202,8 @@
   .sub .features { padding-bottom: 80px; }
   .sub .faq { padding: 64px 0 72px; }
   .sub .faq h2 { font-size: 30px; line-height: 36px; margin-bottom: 28px; }
-  .sub .faq-item summary { height: auto; padding: 22px 50px 22px 0; font-size: 24px; line-height: 30px; }
-  .sub .faq-item .chev { top: 32px; right: 8px; }
+  .sub .faq-item summary { height: auto; padding: 22px 50px 22px 0; font-size: 20px; line-height: 29px; }
+  .sub .faq-item .chev { top: calc(50% - 5px); right: 8px; }
   .sub .stats ul { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
   .sub .team h2 { font-size: 36px; line-height: 42px; }
   .sub .person.left, .sub .person.right { grid-template-columns: 1fr; gap: 20px; }

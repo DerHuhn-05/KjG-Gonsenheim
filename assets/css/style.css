@@ -27,10 +27,12 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-body { margin: 0; color: #000; background: var(--white); font-family: var(--o);
+body { margin: 0; color: var(--teal); background: var(--white); font-family: var(--o);
   -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
+/* Tastatur-Fokus gut sichtbar: Ring in der Schriftfarbe (weiß auf Petrol, Petrol auf weiß) */
+:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; border-radius: 2px; }
 h1, h2, h3, p, ul { margin: 0; }
 ul { padding: 0; list-style: none; }
 section[id] { scroll-margin-top: 0; }

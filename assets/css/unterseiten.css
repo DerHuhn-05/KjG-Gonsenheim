@@ -106,7 +106,7 @@
 .sub .stats ul { position: relative; width: 1240px; height: 100%; margin-inline: auto; }
 .sub .stats li { position: absolute; top: 0; width: 300px; height: 100%; text-align: center; }
 .sub .stats .icon { position: absolute; top: 32px; }
-.sub .stats .num { position: absolute; left: 0; right: 0; top: 98.74px; color: #a2c73f; font: 800 42.5px/42.5px var(--i); letter-spacing: -.85px; }
+.sub .stats .num { position: absolute; left: 0; right: 0; top: 98.74px; color: var(--white); font: 800 42.5px/42.5px var(--i); letter-spacing: -.85px; }
 .sub .stats .label { position: absolute; left: 0; right: 0; top: 159.31px; font: 400 19.3px/19.3px var(--i); letter-spacing: -.2px; }
 
 /* ---------- Unser Team: Abschnitte und Personen ---------- */
@@ -144,8 +144,8 @@
 .sub .prose li { margin-bottom: .3em; }
 .sub .prose a { color: var(--teal); text-decoration: underline; }
 .sub .prose .toc { list-style: none; padding: 0; columns: 2; column-gap: 32px; }
-.sub .prose .stand { color: #555; font-size: 16px; margin-top: 3em; }
-.sub .ph { background: #fff2a8; color: #000; padding: 0 .25em; border-radius: 3px; font-style: normal; }
+.sub .prose .stand { color: var(--teal); font-size: 16px; margin-top: 3em; }
+.sub .ph { background: #fff2a8; color: var(--teal); padding: 0 .25em; border-radius: 3px; font-style: normal; }
 .sub .notice { border-left: 5px solid #e0b000; background: #fffbe6; padding: 16px 20px; margin-bottom: 40px; font-size: 17px; }
 .sub .notice strong { display: block; margin-bottom: 4px; }
 
@@ -235,7 +235,7 @@ html[lang="en"] .sub .hero-split p, html[lang="en"] .sub .event-tile h2 { white-
 html[lang="en"] .sub .event-tile p { max-width: 432px; }
 html[lang="en"] .sub .event-tile .text { padding-right: 40px; }
 html[lang="en"] .sub .hero-split p { max-width: 560px; }
-.sub .lang-note { margin-bottom: 32px; color: #555; font-size: 16px; }
+.sub .lang-note { margin-bottom: 32px; color: var(--teal); font-size: 16px; }
 
 /* ---------- Unser Team: kürzerer Seitentitel, damit die Kennzahlen sofort sichtbar sind ---------- */
 .sub .hero-simple.short { height: 520px; }

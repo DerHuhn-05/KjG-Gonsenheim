@@ -237,9 +237,10 @@ html[lang="en"] .sub .event-tile .text { padding-right: 40px; }
 html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .lang-note { margin-bottom: 32px; color: var(--teal); font-size: 16px; }
 
-/* ---------- Unser Team: kürzerer Seitentitel, damit die Kennzahlen sofort sichtbar sind ---------- */
-.sub .hero-simple.short { height: 520px; }
-.sub .hero-simple.short h1 { top: 227.75px; }
+/* ---------- Unser Team: Bild füllt den Bildschirm, die Kennzahlen stoßen unten an den Rand ----------
+   --stats-h = Höhe des Kennzahlen-Streifens (setzt main.js) */
+.sub .hero-simple.short { height: max(420px, calc(100vh - var(--stats-h, 212px))); height: max(420px, calc(100svh - var(--stats-h, 212px))); }
+.sub .hero-simple.short h1 { top: calc(50% - 30px); }
 
 /* ---------- Desktop: 20 px mehr Abstand zwischen den Containern (Events, Soziales, Team) ---------- */
 @media (min-width: 961px) {
@@ -249,6 +250,6 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .team .section + .section { margin-top: 123.69px; }
 }
 @media (max-width: 960px) {
-  .sub .hero-simple.short { height: 380px; }
-  .sub .hero-simple.short h1 { padding-top: 160px; }
+  .sub .hero-simple.short { height: max(240px, calc(100vh - var(--stats-h, 336px))); height: max(240px, calc(100svh - var(--stats-h, 336px))); }
+  .sub .hero-simple.short h1 { position: absolute; left: 0; right: 0; top: calc(50% + 14px); bottom: auto; padding: 0 16px; }   /* mittig im sichtbaren Teil unter der Kopfzeile */
 }

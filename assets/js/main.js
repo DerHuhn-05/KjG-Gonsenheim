@@ -1,6 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const ruhig = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const header = document.querySelector(".site-header");
+  // Team: Höhe des Kennzahlen-Streifens merken, damit das Titelbild ihn genau an den unteren Rand schiebt
+  const kennzahlen = document.querySelector(".hero-simple.short + .stats");
+  const kennzahlenMessen = () => { if (kennzahlen) document.documentElement.style.setProperty("--stats-h", kennzahlen.offsetHeight + "px"); };
+  kennzahlenMessen(); window.addEventListener("resize", kennzahlenMessen);
   document.querySelectorAll(".main-nav a").forEach((a) => { a.dataset.t = a.textContent; });   // für die feste Breite (fett = aktiv)
 
   // ---------------------------------------------------------------

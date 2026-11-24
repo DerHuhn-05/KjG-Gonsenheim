@@ -73,17 +73,26 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .site-header.open .menu-toggle .bar1 { top: 5.5px; width: 30px; transform: rotate(45deg); }
 .site-header.open .menu-toggle .bar2 { top: 5.5px; width: 30px; transform: rotate(-45deg); }
 .mobile-nav { display: none; position: relative; background: var(--teal); padding: 8px 16px 24px; box-shadow: 0 12px 24px rgba(0,0,0,.25); }
-.mobile-nav a, .mobile-nav summary { display: block; padding: 12px 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,.25); }
-/* Aufklappbare Gruppen im Menü (Angebote, Soziales) */
+/* Menüeinträge im Stil der FAQ: Trennlinien, die zu den Rändern auslaufen, fette Schrift,
+   aufklappbare Gruppen mit dem FAQ-Pfeil (dreht sich beim Öffnen) */
+.mobile-nav > a, .mobile-nav > details { position: relative; }
+.mobile-nav > a::before, .mobile-nav > details::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,.35), rgba(255,255,255,.9) 50%, rgba(255,255,255,.35)); }
+.mobile-nav > a, .mobile-nav summary { display: block; padding: 14px 0 12px; font-size: 20px; font-weight: 700; }
 .mobile-nav summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; }
 .mobile-nav summary::-webkit-details-marker { display: none; }
-.mobile-nav .mn-chev { flex: none; margin-right: 4px; transition: transform .25s ease; }
+.mobile-nav .mn-chev { flex: none; width: 22px; height: 13px; margin-right: 8px; transition: transform .2s; }
 .mobile-nav details[open] .mn-chev { transform: rotate(180deg); }
-.mobile-nav .mn-sub { padding-left: 16px; }
-.mobile-nav .mn-sub a { font-size: 17px; padding: 10px 0; opacity: .92; }
+.mobile-nav .mn-sub { padding: 0 0 8px 16px; }
+.mobile-nav .mn-sub a { display: block; padding: 9px 0; font-size: 17px; font-weight: 400; border-top: 1px solid rgba(255,255,255,.18); }
 .mobile-nav details[open] .mn-sub { animation: mn-auf .25s ease; }
 @keyframes mn-auf { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .site-header.open .mobile-nav { display: block; }
+/* Abgedunkelter Hintergrund bei offenem Menü – Klick darauf schließt das Menü (main.js) */
+.menu-backdrop { position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.5); opacity: 0; visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease; }
+.menu-backdrop.sichtbar { opacity: 1; visibility: visible; }
+html.menu-offen { overflow: hidden; }
 
 /* ---------- Bildflächen ---------- */
 .media { position: relative; overflow: hidden; }

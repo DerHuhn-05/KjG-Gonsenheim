@@ -37,4 +37,5 @@ wechselt zur selben Seite in der anderen Sprache. Englische Seiten neu erzeugen:
 Framework preset: **None** · Build command: **leer** · Build output directory: **`/`**
 
 ## Anmelde-Links
-In `zela-2027.html`, `gruppenstunde.html`, `mowo.html`, `trainee-wochenende.html`, `72h-aktion.html` und `aktion.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.
+Zela 2027 (Startseite und `zela-2027.html`) führt auf das Google-Formular und öffnet es in einem neuen Tab.
+In `mowo.html`, `trainee-wochenende.html`, `72h-aktion.html` und `aktion.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.

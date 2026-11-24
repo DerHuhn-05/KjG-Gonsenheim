@@ -10,16 +10,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (header) header.classList.toggle("scrolled", window.scrollY > SCHWELLE || header.classList.contains("open"));
   };
 
-  // Mobile-Menü (Hamburger)
+  // Mobile-Menü (Hamburger): Hintergrund abdunkeln, Klick daneben oder Escape schließt
   const toggle = document.querySelector(".menu-toggle");
   if (toggle && header) {
-    toggle.addEventListener("click", () => {
-      const open = header.classList.toggle("open");
-      toggle.setAttribute("aria-expanded", String(open));
-      const en = document.documentElement.lang === "en";
-      toggle.setAttribute("aria-label", open ? (en ? "Close menu" : "Menü schließen") : (en ? "Open menu" : "Menü öffnen"));
+    const dunkel = document.createElement("div");
+    dunkel.className = "menu-backdrop";
+    document.body.appendChild(dunkel);
+    const en = document.documentElement.lang === "en";
+    const menu = (offen) => {
+      header.classList.toggle("open", offen);
+      dunkel.classList.toggle("sichtbar", offen);
+      document.documentElement.classList.toggle("menu-offen", offen);
+      toggle.setAttribute("aria-expanded", String(offen));
+      toggle.setAttribute("aria-label", offen ? (en ? "Close menu" : "Menü schließen") : (en ? "Open menu" : "Menü öffnen"));
       headerPruefen();
-    });
+    };
+    toggle.addEventListener("click", () => menu(!header.classList.contains("open")));
+    dunkel.addEventListener("click", () => menu(false));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && header.classList.contains("open")) { menu(false); toggle.focus(); } });
   }
 
   // ---------------------------------------------------------------

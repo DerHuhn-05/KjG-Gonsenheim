@@ -68,33 +68,53 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------------------------
-  // Startseite „Unser Angebot für euch“ (mobil): Slider mit Punkten (Wischen/Einrasten macht CSS)
+  // Startseite „Unser Angebot für euch“ und „Soziale Aktionen“ (mobil): Slider mit Pfeilen und Punkten
+  // (Wischen und Einrasten macht CSS)
   // ---------------------------------------------------------------
-  const sliderListe = document.querySelector(".events .cards");
-  if (sliderListe) {
-    const karten = [...sliderListe.children];
-    const en = document.documentElement.lang === "en";
+  const en = document.documentElement.lang === "en";
+  document.querySelectorAll(".cards-section .cards").forEach((liste) => {
+    const karten = [...liste.children];
+    if (karten.length < 2) return;
+    const nav = document.createElement("div");
+    nav.className = "slider-nav";
+    const pfeil = (richtung) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "slider-pfeil";
+      b.setAttribute("aria-label", richtung < 0 ? (en ? "Previous card" : "Vorherige Karte") : (en ? "Next card" : "Nächste Karte"));
+      b.innerHTML = `<img src="${en ? "../" : ""}icons/slider-${richtung < 0 ? "links" : "rechts"}.svg" width="12" height="20" alt="">`;
+      b.addEventListener("click", () => {
+        const schritt = karten[1].offsetLeft - karten[0].offsetLeft;
+        liste.scrollBy({ left: richtung * schritt, behavior: ruhig ? "auto" : "smooth" });
+      });
+      return b;
+    };
+    const zurueck = pfeil(-1), weiter = pfeil(1);
     const punkte = document.createElement("div");
     punkte.className = "slider-punkte";
     karten.forEach((k, i) => {
       const b = document.createElement("button");
       b.type = "button";
       b.setAttribute("aria-label", (en ? "Show card " : "Karte ") + (i + 1) + (en ? "" : " anzeigen"));
-      b.addEventListener("click", () => sliderListe.scrollTo({ left: k.offsetLeft - karten[0].offsetLeft, behavior: ruhig ? "auto" : "smooth" }));
+      b.addEventListener("click", () => liste.scrollTo({ left: k.offsetLeft - karten[0].offsetLeft, behavior: ruhig ? "auto" : "smooth" }));
       punkte.appendChild(b);
     });
-    sliderListe.after(punkte);
+    nav.append(zurueck, punkte, weiter);
+    liste.after(nav);
     const markieren = () => {
       // aktive Karte = die, deren linke Kante der aktuellen Scroll-Position am nächsten liegt
       let nah = 0, d = Infinity;
-      karten.forEach((k, i) => { const x = Math.abs(k.offsetLeft - karten[0].offsetLeft - sliderListe.scrollLeft); if (x < d) { d = x; nah = i; } });
-      if (sliderListe.scrollLeft + sliderListe.clientWidth >= sliderListe.scrollWidth - 2) nah = karten.length - 1;
+      karten.forEach((k, i) => { const x = Math.abs(k.offsetLeft - karten[0].offsetLeft - liste.scrollLeft); if (x < d) { d = x; nah = i; } });
+      const ende = liste.scrollLeft + liste.clientWidth >= liste.scrollWidth - 2;
+      if (ende) nah = karten.length - 1;
       [...punkte.children].forEach((b, i) => b.setAttribute("aria-current", String(i === nah)));
+      zurueck.disabled = liste.scrollLeft <= 2;
+      weiter.disabled = ende;
     };
-    sliderListe.addEventListener("scroll", () => requestAnimationFrame(markieren), { passive: true });
+    liste.addEventListener("scroll", () => requestAnimationFrame(markieren), { passive: true });
     window.addEventListener("resize", markieren);
     markieren();
-  }
+  });
 
   // ---------------------------------------------------------------
   // Zela 2027: Termine als Drehrad

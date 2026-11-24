@@ -5,12 +5,13 @@ Alle Icons der Website liegen hier als SVG-Datei. Die Seiten binden sie per Link
 
 | Datei | Größe | Wo |
 |---|---|---|
-| `pfeil-unten.svg` | 17 × 26 | Sprungmarken unter dem Header (Startseite, Zela 2027) |
-| `pfeil-rechts.svg` | 33 × 17 | „weitere informationen (links)“ in den Karten, „Weiterer Fragen“ |
-| `pfeil-rechts-weiss.svg` | 33 × 17 | „weitere informationen (links)“ im Kasten „Wer sind Wir?“ |
-| `pfeil-rechts-klein-weiss.svg` | 13 × 5 | „genauere infos“ in den Kacheln Zela 2027 und Unser Team |
+| `pfeil-unten.svg` | 14 × 16 | Sprungmarken unter dem Header (Startseite, Zela 2027) |
+| `pfeil-rechts.svg` | 22 × 12 | „weitere informationen (links)“ in den Karten, „Weiterer Fragen“ |
+| `pfeil-rechts-weiss.svg` | 22 × 12 | „weitere informationen (links)“ im Kasten „Wer sind Wir?“ |
+| `pfeil-rechts-klein-weiss.svg` | 14 × 10 | „genauere infos“ in den Kacheln Zela 2027 und Unser Team |
 | `chevron-unten.svg` | 22 × 13 | Aufklapp-Pfeil bei den FAQ-Fragen (dreht sich beim Öffnen) |
 | `chevron-unten-weiss.svg` | 22 × 13 | Aufklapp-Pfeil bei „Angebote“ und „Soziales“ im Menü |
+| `slider-links.svg` · `slider-rechts.svg` | 12 × 20 | Blätter-Pfeile unter den Slidern auf der Startseite (mobil) |
 | `video-pause.svg` · `video-play.svg` | 20 × 20 | Knopf zum Pausieren/Abspielen des Startseiten-Videos |
 | `team-gruppenleiter.svg` | 48 × 36 | Zahlenband „Unser Team“: Gruppenleiter |
 | `team-zelte.svg` | 42 × 33 | Zahlenband „Unser Team“: Zelte |

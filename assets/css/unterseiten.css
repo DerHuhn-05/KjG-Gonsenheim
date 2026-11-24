@@ -42,7 +42,7 @@
 .sub .jump-detail { padding-bottom: 127.125px; }
 .sub .jump-team { padding-bottom: 90.735px; }
 .sub .jumplinks a { display: flex; align-items: flex-start; height: 49px; font: 400 22.5px/49px var(--o); letter-spacing: 1px; white-space: nowrap; }
-.sub .jumplinks .down { flex: none; margin-top: 9px; }
+.sub .jumplinks .down { flex: none; margin-top: 16.5px; }
 .sub .jumplinks span { margin-left: 9px; }
 .sub .jumplinks a:hover span { text-decoration: underline; }
 
@@ -56,7 +56,7 @@
 .sub .event-tile h2 { font-family: var(--o); font-weight: 800; white-space: nowrap; }
 .sub .event-tile p { font: 600 18px/27px var(--f); letter-spacing: .2px; white-space: nowrap; }
 .sub .event-tile .more { display: inline-flex; align-items: flex-start; margin-top: 12.5px; padding-left: 2.2px; font: 600 18px/27px var(--f); }
-.sub .event-tile .more .pfeil { flex: none; margin: 10.93px 7.3px 0 0; }
+.sub .event-tile .more .pfeil { flex: none; margin: 9px 8px 0 0; }
 .sub .event-tile .more:hover span { text-decoration: underline; }
 .sub .t1 .text { padding-top: 117.75px; }
 .sub .t1 h2 { font-size: 57px; line-height: 72px; letter-spacing: 4px; }

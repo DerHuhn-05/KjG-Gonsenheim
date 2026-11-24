@@ -44,7 +44,7 @@
 .sub .jumplinks a { display: flex; align-items: flex-start; height: 49px; font: 400 22.5px/49px var(--o); letter-spacing: 1px; white-space: nowrap; }
 .sub .jumplinks .down { flex: none; margin-top: 9px; }
 .sub .jumplinks span { margin-left: 9px; }
-.sub .jumplinks a:hover span { color: var(--teal); }
+.sub .jumplinks a:hover span { text-decoration: underline; }
 
 /* ---------- Kacheln (Unsere Events, Soziale Aktionen) ---------- */
 .sub .event-tile { display: grid; grid-template-columns: 735fr 705fr; height: 504px; margin-bottom: 40px; }
@@ -106,7 +106,7 @@
 .sub .stats ul { position: relative; width: 1240px; height: 100%; margin-inline: auto; }
 .sub .stats li { position: absolute; top: 0; width: 300px; height: 100%; text-align: center; }
 .sub .stats .icon { position: absolute; top: 32px; }
-.sub .stats .num { position: absolute; left: 0; right: 0; top: 98.74px; color: var(--white); font: 800 42.5px/42.5px var(--i); letter-spacing: -.85px; }
+.sub .stats .num { position: absolute; left: 0; right: 0; top: 98.74px; color: #aacd48; font: 800 42.5px/42.5px var(--i); letter-spacing: -.85px; }
 .sub .stats .label { position: absolute; left: 0; right: 0; top: 159.31px; font: 400 19.3px/19.3px var(--i); letter-spacing: -.2px; }
 
 /* ---------- Unser Team: Abschnitte und Personen ---------- */

@@ -142,7 +142,7 @@ html.menu-offen { overflow: hidden; }
 .jump a { display: flex; align-items: flex-start; height: 44px; font: 400 22.5px/44px var(--o); letter-spacing: .7px; white-space: nowrap; }
 .jump .down { flex: none; margin-top: 5.6px; color: var(--teal); }
 .jump span { margin-left: 9px; }
-.jump a:hover span { color: var(--teal); }
+.jump a:hover span { text-decoration: underline; }
 
 /* ---------- Kacheln (Zela, Team) ---------- */
 .tile { display: grid; grid-template-columns: 735fr 705fr; height: 504px; }
@@ -169,7 +169,7 @@ html.menu-offen { overflow: hidden; }
 .card-text { margin-top: 22.78px; font: 400 16.5px/19px var(--i); letter-spacing: -.24px; white-space: nowrap; }
 .more-link { display: inline-flex; align-items: flex-start; color: var(--teal); }
 .more-link .right { flex: none; margin-top: 1.34px; }
-.more-link span { margin-left: 9px; font: 400 16px/19px var(--i); text-decoration: underline; text-underline-offset: 2.5px; text-decoration-thickness: 1px; }
+.more-link span { margin-left: 9px; font: 400 16px/19px var(--i); text-underline-offset: 2.5px; text-decoration-thickness: 1px; }   /* unterstrichen nur bei Hover */
 .card .more-link { margin-top: 23.18px; }
 .more-link:hover span { text-decoration-thickness: 2px; }
 
@@ -549,3 +549,7 @@ h1, h2 { letter-spacing: -0.01em !important; }
   .z-feature .media, .z-feature.reverse .media { order: 2; }
   .z-feature .body { order: 3; margin-top: 0; }
 }
+
+/* ---------- Links mit Pfeil: Schrift schwarz (auf Weiß), unterstrichen nur bei Hover ---------- */
+.jump a, .z-jump a, .sub .jumplinks a, .card .more-link, .faq-more { color: #000; }
+.jump a:hover span, .z-jump a:hover span, .sub .jumplinks a:hover span, .more-link:hover span, .faq-more:hover span { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }

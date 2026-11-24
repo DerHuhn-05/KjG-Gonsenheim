@@ -45,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
     video.setAttribute("playsinline", "");
     const starten = () => { const p = video.play(); if (p && p.catch) p.catch(() => {}); };
     if (!ruhig) starten(); else video.pause();
+    // außerhalb des Bildschirms anhalten (spart Akku und hält das Scrollen flüssig); nur wenn nicht manuell pausiert
+    let vonHand = ruhig;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((e) => {
+        if (e[0].isIntersecting) { if (!vonHand) starten(); } else video.pause();
+      }, { threshold: 0 }).observe(video);
+    }
     if (videoKnopf) {
       const en = document.documentElement.lang === "en";
       const bild = videoKnopf.querySelector("img");
@@ -53,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bild.src = bild.src.replace(/video-(play|pause)\.svg/, pausiert ? "video-play.svg" : "video-pause.svg");
         videoKnopf.setAttribute("aria-label", pausiert ? (en ? "Play video" : "Video abspielen") : (en ? "Pause video" : "Video pausieren"));
       };
-      videoKnopf.addEventListener("click", () => { if (video.paused) starten(); else video.pause(); });
+      videoKnopf.addEventListener("click", () => { if (video.paused) { vonHand = false; starten(); } else { vonHand = true; video.pause(); } });
       video.addEventListener("play", anzeigen);
       video.addEventListener("pause", anzeigen);
       anzeigen();
@@ -77,25 +84,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const querMessen = () => {
     for (const q of quer) {
       const aktiv = !q.nur || window.matchMedia(q.nur).matches;
-      q.leiste.style.transform = "";
-      q.sektion.style.height = "";
-      q.weg = 0;
-      if (!aktiv) continue;
+      if (!aktiv) { q.leiste.style.transform = ""; q.sektion.style.height = ""; q.weg = 0; continue; }
+      // gemessen wird mit den bisherigen Werten (Höhe wird NICHT erst zurückgesetzt, sonst fällt die Seite
+      // kurz zusammen und der Browser springt beim Scrollen)
       const breite = q.buehne.clientWidth;
-      const rechts = q.leiste.offsetLeft + q.ziel(q.leiste);
+      const rechts = q.leiste.offsetLeft + q.ziel(q.leiste);   // offsetLeft/Width sind von transform unabhängig
       q.weg = Math.max(0, rechts - (breite - q.ende(breite)));
       const st = getComputedStyle(q.sektion);
-      q.sektion.style.height = parseFloat(st.paddingTop) + q.buehne.offsetHeight + q.weg * q.tempo + parseFloat(st.paddingBottom) + "px";
+      q.pad = parseFloat(st.paddingTop);
+      q.oben = parseFloat(getComputedStyle(q.buehne).top) || 0;
+      const hoehe = Math.round(q.pad + q.buehne.offsetHeight + q.weg * q.tempo + parseFloat(st.paddingBottom));
+      if (q.sektion.style.height !== hoehe + "px") q.sektion.style.height = hoehe + "px";
+      if (!q.weg) q.leiste.style.transform = "";
     }
   };
 
   const querBewegen = () => {
     for (const q of quer) {
       if (!q.weg) continue;
-      const st = getComputedStyle(q.sektion);
-      const oben = parseFloat(getComputedStyle(q.buehne).top) || 0;
       const strecke = q.weg * q.tempo;
-      const p = Math.min(1, Math.max(0, (oben - q.sektion.getBoundingClientRect().top - parseFloat(st.paddingTop)) / strecke));
+      const p = Math.min(1, Math.max(0, (q.oben - q.sektion.getBoundingClientRect().top - q.pad) / strecke));
       q.leiste.style.transform = `translate3d(${-p * q.weg}px, 0, 0)`;
     }
   };
@@ -236,7 +244,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   const anstossen = () => { if (!geplant) { geplant = true; requestAnimationFrame(aktualisieren); } };
   window.addEventListener("scroll", anstossen, { passive: true });
-  window.addEventListener("resize", () => { querMessen(); radMessen(); anstossen(); });
+  // Safari löst beim Ein-/Ausfahren der Adressleiste „resize“ aus (nur die Höhe ändert sich) – das
+  // darf die Seite nicht neu aufbauen, sonst springt sie beim Scrollen. Neu gemessen wird nur bei geänderter Breite.
+  let letzteBreite = window.innerWidth;
+  window.addEventListener("resize", () => {
+    if (window.innerWidth === letzteBreite) return;
+    letzteBreite = window.innerWidth;
+    querMessen(); radMessen(); anstossen();
+  });
   window.addEventListener("load", () => { querMessen(); radMessen(); anstossen(); });
   querMessen();
   radMessen();

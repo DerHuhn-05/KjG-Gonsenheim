@@ -207,8 +207,8 @@
   .sub .stats ul { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
   .sub .team h2 { font-size: 36px; line-height: 42px; }
   .sub .person.left, .sub .person.right { grid-template-columns: 1fr; gap: 20px; }
-  /* Fotos mittig in voller Breite */
-  .sub .person .circle { position: static; grid-column: 1 !important; grid-row: 1 !important; justify-self: center; width: 100%; height: auto; aspect-ratio: 1 / 1; }
+  /* Fotos mittig, kleiner als die volle Breite */
+  .sub .person .circle { position: static; grid-column: 1 !important; grid-row: 1 !important; justify-self: center; width: min(62%, 240px); height: auto; aspect-ratio: 1 / 1; }   /* kleiner, mittig im Raster */
   .sub .person .text { grid-column: 1 !important; grid-row: 2 !important; }
   .sub .person h3 { font-size: 30px; line-height: 36px; }
   .sub .person p { font-size: 18px; line-height: 26px; }
@@ -262,7 +262,7 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .person.left, .sub .person.right { display: flex; flex-direction: column; gap: 20px; }
   .sub .person .text { display: contents; }
   .sub .person h3 { order: 1; }
-  .sub .person .circle { order: 2; }
+  .sub .person .circle { order: 2; align-self: center; }
   .sub .person p { order: 3; margin-top: 0; }
 }
 

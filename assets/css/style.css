@@ -233,8 +233,8 @@ html.menu-offen { overflow: hidden; }
 .z-hero .right { background: var(--teal); color: var(--white); padding: 199.26px 0 0 18.639%; }
 .z-hero h1 { font: 800 76px/76px var(--i); letter-spacing: -.1px; white-space: nowrap; }
 .z-hero .right p { margin-top: 32.99px; font: 400 23px/36px var(--o); letter-spacing: .41px; white-space: nowrap; }
-.z-hero .btn { display: block; width: 289px; height: 88px; margin-top: 16.75px; padding: 9px 0 0 38px;
-  background: var(--white); color: var(--teal); font: 400 38px/79px var(--o); letter-spacing: 1.6px; white-space: nowrap; }
+.z-hero .btn { display: inline-flex; align-items: center; justify-content: center; height: 56px; margin-top: 24px; padding: 0 36px;
+  background: var(--white); color: var(--teal); font: 400 24px/1 var(--o); letter-spacing: .5px; white-space: nowrap; text-align: center; }   /* kompakter, Text zentriert */
 .z-hero .btn:hover { background: #e9f3f3; }
 
 .z-jump { padding: 32.875px 0 87.125px; }
@@ -454,7 +454,7 @@ html.menu-offen { overflow: hidden; }
   .hero-btn { font-size: 15px; padding: 7px 14px; }
   .video-toggle { right: 8px; bottom: 8px; width: 32px; height: 32px; }
   .video-toggle img { width: 16px; height: 16px; }
-  .z-hero .btn { width: auto; display: inline-block; padding-right: 28px; font-size: 32px; }
+  .z-hero .btn { height: 52px; padding: 0 30px; font-size: 22px; }
   .z-hero h1 { font-size: 44px; line-height: 52px; }
 }
 

@@ -48,32 +48,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------------------------
-  // Zela 2027: Zeitleiste – Fläche bleibt stehen, Zeitleiste schiebt sich nach links
+  // Scrollytelling: Bereich bleibt beim Scrollen stehen, Inhalt schiebt sich seitlich durch,
+  // erst danach scrollt die Seite weiter.
+  //  - Zela 2027: Zeitleiste (alle Bildschirmgrößen)
+  //  - Startseite „Unser Angebot für euch“: Karten (nur mobil)
   // ---------------------------------------------------------------
-  const termine = document.querySelector(".z-termine");
-  const pin = termine && termine.querySelector(".z-termine-pin");
-  const leiste = termine && termine.querySelector(".z-timeline");
-  const TEMPO = 1.4;          // Scroll-Pixel pro Pixel Verschiebung (größer = langsamer)
-  let weg = 0;                // Verschiebung in Pixeln
+  const quer = [
+    { sektion: ".z-termine", buehne: ".z-termine-pin", leiste: ".z-timeline", tempo: 1.4,
+      ende: (b) => (b >= 1273 ? 205 : 40),                       // letzter Punkt endet am rechten Rasterrand
+      ziel: (l) => { const x = l.lastElementChild; return x.offsetLeft + x.offsetWidth / 2; } },
+    { sektion: ".cards-section.events", buehne: ".wrap", leiste: ".cards", tempo: 1.2, nur: "(max-width: 960px)",
+      ende: () => 16,                                              // letzte Karte endet am rechten Rand
+      ziel: (l) => { const x = l.lastElementChild; return x.offsetLeft + x.offsetWidth; } },
+  ].map((q) => {
+    const sektion = document.querySelector(q.sektion);
+    return sektion && { ...q, sektion, buehne: sektion.querySelector(q.buehne), leiste: sektion.querySelector(q.leiste), weg: 0 };
+  }).filter((q) => q && q.buehne && q.leiste);
 
-  const leisteMessen = () => {
-    if (!termine || !pin || !leiste) return;
-    if (ruhig) { termine.classList.add("static"); return; }
-    leiste.style.transform = "none";
-    const breite = pin.clientWidth;
-    const letzter = leiste.lastElementChild;
-    const mitteLetzter = leiste.offsetLeft + letzter.offsetLeft + letzter.offsetWidth / 2;
-    const rand = breite >= 1273 ? 205 : 40;          // Desktop: rechter Rasterrand (Spalte 12)
-    weg = Math.max(0, mitteLetzter - (breite - rand));
-    termine.style.height = pin.offsetHeight + weg * TEMPO + "px";
+  const querMessen = () => {
+    for (const q of quer) {
+      const aktiv = !q.nur || window.matchMedia(q.nur).matches;
+      q.leiste.style.transform = "";
+      q.sektion.style.height = "";
+      q.weg = 0;
+      if (!aktiv) continue;
+      if (ruhig) { q.sektion.classList.add("static"); continue; }
+      const breite = q.buehne.clientWidth;
+      const rechts = q.leiste.offsetLeft + q.ziel(q.leiste);
+      q.weg = Math.max(0, rechts - (breite - q.ende(breite)));
+      const st = getComputedStyle(q.sektion);
+      q.sektion.style.height = parseFloat(st.paddingTop) + q.buehne.offsetHeight + q.weg * q.tempo + parseFloat(st.paddingBottom) + "px";
+    }
   };
 
-  const leisteBewegen = () => {
-    if (!termine || !pin || !leiste || ruhig || !weg) return;
-    const oben = parseFloat(getComputedStyle(pin).top) || 0;
-    const strecke = termine.offsetHeight - pin.offsetHeight;
-    const p = Math.min(1, Math.max(0, (oben - termine.getBoundingClientRect().top) / strecke));
-    leiste.style.transform = `translate3d(${-p * weg}px, 0, 0)`;
+  const querBewegen = () => {
+    for (const q of quer) {
+      if (!q.weg) continue;
+      const st = getComputedStyle(q.sektion);
+      const oben = parseFloat(getComputedStyle(q.buehne).top) || 0;
+      const strecke = q.weg * q.tempo;
+      const p = Math.min(1, Math.max(0, (oben - q.sektion.getBoundingClientRect().top - parseFloat(st.paddingTop)) / strecke));
+      q.leiste.style.transform = `translate3d(${-p * q.weg}px, 0, 0)`;
+    }
   };
 
   // ---------------------------------------------------------------
@@ -154,13 +170,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let geplant = false;
   const aktualisieren = () => {
     headerPruefen();
-    leisteBewegen();
+    querBewegen();
     geplant = false;
   };
   const anstossen = () => { if (!geplant) { geplant = true; requestAnimationFrame(aktualisieren); } };
   window.addEventListener("scroll", anstossen, { passive: true });
-  window.addEventListener("resize", () => { leisteMessen(); anstossen(); });
-  window.addEventListener("load", () => { leisteMessen(); anstossen(); });
-  leisteMessen();
+  window.addEventListener("resize", () => { querMessen(); anstossen(); });
+  window.addEventListener("load", () => { querMessen(); anstossen(); });
+  querMessen();
   aktualisieren();
 });

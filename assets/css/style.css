@@ -4,27 +4,20 @@
    Spalte n beginnt bei x = 100 + (n-1) * 105
    ===================================================================== */
 
-@font-face { font-family: "Overpass"; font-weight: 100 900; font-display: swap;
-  src: url("../fonts/overpass-variable.woff2") format("woff2"); }
-@font-face { font-family: "Inter"; font-weight: 100 900; font-display: swap;
+/* Eine Schrift für die ganze Website: Inter (frei, Open Font License) – klar und minimalistisch, ähnlich Apples SF */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap;
   src: url("../fonts/inter-variable.woff2") format("woff2"); }
-@font-face { font-family: "Fira Sans"; font-weight: 400; font-display: swap;
-  src: url("../fonts/fira-sans-400.woff2") format("woff2"); }
-@font-face { font-family: "Fira Sans"; font-weight: 600; font-display: swap;
-  src: url("../fonts/fira-sans-600.woff2") format("woff2"); }
-@font-face { font-family: "Fira Sans"; font-weight: 700; font-display: swap;
-  src: url("../fonts/fira-sans-700.woff2") format("woff2"); }
-@font-face { font-family: "Fira Sans"; font-style: italic; font-weight: 700; font-display: swap;
-  src: url("../fonts/fira-sans-700-italic.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: italic; font-weight: 100 900; font-display: swap;
+  src: url("../fonts/inter-variable-italic.woff2") format("woff2"); }
 
 :root {
   --teal: #007576;
   --grey-tile: #787878;
   --placeholder: #d9d9d9;
   --white: #fff;
-  --o: "Overpass", system-ui, sans-serif;
-  --i: "Inter", system-ui, sans-serif;
-  --f: "Fira Sans", system-ui, sans-serif;
+  --i: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --o: var(--i);   /* frühere Overpass-Stellen */
+  --f: var(--i);   /* frühere Fira-Sans-Stellen */
   /* Raster */
   --page: 1440px;
   --margin: 100px;
@@ -361,13 +354,13 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .main-nav { display: none; }
   .lang { margin-left: auto; }
   /* Mobil: Video in voller Bildschirmbreite (16:9) direkt unter der Kopfzeile, nichts abgeschnitten.
-     Titel und Button liegen darüber – 40 px unterhalb der Videomitte. */
+     Titel und Button liegen mittig darüber. */
   .hero { height: auto; padding-top: 90px; }
   .hero video { position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
   .hero-content { position: absolute; left: 0; right: 0; top: 90px; z-index: 1; height: 56.25vw;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; transform: translateY(40px); }
-  .hero h1 { position: static; margin: 0; padding: 0 16px; font-size: 56px; line-height: 64px; letter-spacing: 1px; white-space: normal; }
-  .hero-btn { position: static; transform: none; width: auto; height: auto; padding: 14px 28px; font-size: 26px; line-height: 1.2; }
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .hero h1 { position: static; margin: 0; padding: 0 16px; font-size: 40px; line-height: 48px; white-space: normal; }
+  .hero-btn { position: static; transform: none; width: auto; height: auto; padding: 10px 20px; font-size: 20px; line-height: 1.2; }
   .video-toggle { right: 12px; bottom: 12px; width: 40px; height: 40px; }
   .jump { padding: 32px 0; }
   .jump ul { justify-content: flex-start; flex-direction: column; }
@@ -404,15 +397,15 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .lang a { font-size: 20px; }
   .hero { padding-top: 80px; }
   .hero-content { top: 80px; gap: 10px; }
-  .hero h1 { font-size: 40px; line-height: 48px; white-space: nowrap; }
-  .hero-btn { font-size: 22px; padding: 12px 22px; }
+  .hero h1 { font-size: 30px; line-height: 36px; white-space: nowrap; }
+  .hero-btn { font-size: 16px; padding: 8px 16px; }
   .tile h2 { font-size: 44px !important; line-height: 52px; }
   .site-footer .grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 360px) {
-  .hero h1 { font-size: 34px; line-height: 42px; }
-  .hero-btn { font-size: 20px; padding: 10px 18px; }
+  .hero h1 { font-size: 26px; line-height: 32px; }
+  .hero-btn { font-size: 15px; padding: 7px 14px; }
   .video-toggle { right: 8px; bottom: 8px; width: 32px; height: 32px; }
   .video-toggle img { width: 16px; height: 16px; }
   .z-hero .btn { width: auto; display: inline-block; padding-right: 28px; font-size: 32px; }
@@ -452,3 +445,31 @@ html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
+
+/* =====================================================================
+   Mobil (bis 960 px)
+   ===================================================================== */
+@media (max-width: 960px) {
+  /* Kopfzeile immer Petrol */
+  .site-header { background-color: var(--teal); }
+  .site-header::before { opacity: 0; }
+
+  /* Kapitel-Links mit Pfeilen kleiner */
+  .jump a, .z-jump a, .sub .jumplinks a { height: 34px; font-size: 17px; line-height: 34px; }
+  .jump .down, .z-jump .down, .sub .jumplinks .down { width: 13px; height: 20px; margin-top: 7px; }
+  .jump span, .z-jump span, .sub .jumplinks span { margin-left: 8px; }
+
+  /* „Unser Angebot für euch“: Karten nebeneinander, ziehen beim Scrollen seitlich durch (Scrollytelling, main.js) */
+  .events { position: relative; }
+  .events .wrap { position: sticky; top: 90px; width: 100%; max-width: none; padding: 0 16px; overflow: hidden; }
+  .events .cards { display: flex; gap: 16px; width: max-content; margin-top: 24px; will-change: transform; }
+  .events .card { width: min(78vw, 400px); flex: none; }
+  .events.static .wrap { position: relative; top: auto; overflow-x: auto; }
+}
+@media (max-width: 480px) {
+  .events .wrap { top: 80px; }
+}
+
+/* Inter mit ihren eigenen Laufweiten (die Werte aus dem Entwurf waren auf Overpass abgestimmt) */
+body * { letter-spacing: normal !important; }
+h1, h2 { letter-spacing: -0.01em !important; }

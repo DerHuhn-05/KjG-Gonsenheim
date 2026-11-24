@@ -342,4 +342,6 @@ EN = {
 "Header-Bild Unsere Angebote": "Header image: Our Activities",
 "Video pausieren": "Pause video",
 "Video abspielen": "Play video",
+"Unser Angebot für euch!": "What we offer you!",
+"Unser Angebot": "What we offer",
 }

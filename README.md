@@ -29,7 +29,7 @@ wechselt zur selben Seite in der anderen Sprache. Englische Seiten neu erzeugen:
 |---|---|
 | `assets/css/style.css` | Grundlayout, Kopf/Footer, Startseite, Zela 2027 |
 | `assets/css/unterseiten.css` | alle übrigen Seiten |
-| `assets/fonts/` | Overpass, Inter, Fira Sans – lokal, keine Verbindung zu Google |
+| `assets/fonts/` | Inter (normal und kursiv) – eine Schrift für die ganze Website, lokal, keine Verbindung zu Google |
 | `bilder/` | Bilder und Header-Video, siehe [`bilder/README.md`](bilder/README.md) |
 | `icons/` | Alle Icons als SVG, siehe [`icons/README.md`](icons/README.md) |
 

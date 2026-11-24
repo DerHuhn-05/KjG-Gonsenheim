@@ -256,13 +256,6 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 
 /* ---------- Mobil: in jedem Modul erst die Überschrift, dann das Bild, dann der Text ---------- */
 @media (max-width: 960px) {
-  .sub .event-tile, .sub .event-tile.reverse { display: flex; flex-direction: column; background: var(--teal); color: var(--white); }
-  .sub .event-tile .text, .sub .event-tile.reverse .text { display: contents; }
-  .sub .event-tile h2 { order: 1; padding: 48px 16px 24px; }
-  .sub .event-tile .media, .sub .event-tile.reverse .media { order: 2; }
-  .sub .event-tile p { order: 3; margin: 0 !important; padding: 24px 16px 0; max-width: none; }
-  .sub .event-tile .more { order: 4; align-self: flex-start; margin: 12px 16px 48px; }
-
   .sub .feature .text, .sub .feature.reverse .text { display: contents; }
   .sub .feature h2 { order: 1; }
   .sub .feature .media, .sub .feature.reverse .media { order: 2; }

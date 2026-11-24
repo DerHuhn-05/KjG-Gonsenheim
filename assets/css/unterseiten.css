@@ -80,7 +80,7 @@
 .sub .feature .media { background: var(--placeholder); }
 .sub .feature h2 { margin-top: 86.98px; color: var(--teal); font: 800 48px/48px var(--i); letter-spacing: .05px; white-space: nowrap; }
 .sub .feature.h143 h2 { margin-top: 101.48px; }
-.sub .feature .body { width: 612px; margin-top: 28.52px; color: var(--teal); font: 400 22px/29px var(--o); letter-spacing: 1.13px; white-space: nowrap; }
+.sub .feature .body { width: 612px; margin-top: 28.52px; color: #000; font: 400 22px/29px var(--o); letter-spacing: 1.13px; white-space: nowrap; }
 .sub .feature .body p + p { margin-top: 29px; }
 .sub .feature.tight .body p + p { margin-top: 0; }
 
@@ -140,10 +140,10 @@
 .sub .prose address { font-style: normal; }
 .sub .prose ul { list-style: disc; padding-left: 1.3em; }
 .sub .prose li { margin-bottom: .3em; }
-.sub .prose a { color: var(--teal); text-decoration: underline; }
+.sub .prose a { color: #000; text-decoration: underline; }
 .sub .prose .toc { list-style: none; padding: 0; columns: 2; column-gap: 32px; }
-.sub .prose .stand { color: var(--teal); font-size: 16px; margin-top: 3em; }
-.sub .ph { background: #fff2a8; color: var(--teal); padding: 0 .25em; border-radius: 3px; font-style: normal; }
+.sub .prose .stand { color: #000; font-size: 16px; margin-top: 3em; }
+.sub .ph { background: #fff2a8; color: #000; padding: 0 .25em; border-radius: 3px; font-style: normal; }
 .sub .notice { border-left: 5px solid #e0b000; background: #fffbe6; padding: 16px 20px; margin-bottom: 40px; font-size: 17px; }
 .sub .notice strong { display: block; margin-bottom: 4px; }
 
@@ -233,7 +233,7 @@ html[lang="en"] .sub .hero-split p, html[lang="en"] .sub .event-tile h2 { white-
 html[lang="en"] .sub .event-tile p { max-width: 432px; }
 html[lang="en"] .sub .event-tile .text { padding-right: 40px; }
 html[lang="en"] .sub .hero-split p { max-width: 560px; }
-.sub .lang-note { margin-bottom: 32px; color: var(--teal); font-size: 16px; }
+.sub .lang-note { margin-bottom: 32px; color: #000; font-size: 16px; }
 
 /* ---------- Unser Team: Bild füllt den Bildschirm, die Kennzahlen stoßen unten an den Rand ----------
    --stats-h = Höhe des Kennzahlen-Streifens (setzt main.js) */

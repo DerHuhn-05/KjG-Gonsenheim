@@ -28,7 +28,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-body { margin: 0; color: var(--teal); background: var(--white); font-family: var(--o);
+body { margin: 0; color: #000; background: var(--white); font-family: var(--o);
   -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -242,7 +242,6 @@ html.menu-offen { overflow: hidden; }
 .z-jump a { display: flex; align-items: flex-start; height: 49px; font: 400 22.5px/49px var(--o); letter-spacing: 1px; white-space: nowrap; }
 .z-jump .down { flex: none; margin-top: 16.5px; color: var(--teal); }
 .z-jump span { margin-left: 9px; }
-.z-jump a:hover span { color: var(--teal); }
 
 /* Termine als Zeitleiste mit Scrollytelling (Entwurf „Group 8“):
    Die Petrol-Fläche bleibt beim Scrollen stehen, die Zeitleiste schiebt sich nach links;
@@ -291,7 +290,7 @@ html.menu-offen { overflow: hidden; }
 .z-feature.h128 h2 { margin-top: 86.98px; }
 .z-feature.h143 h2 { margin-top: 101.48px; }
 .z-feature.h157 h2 { margin-top: 115.98px; }
-.z-feature .body { margin-top: 28.52px; color: var(--teal); font: 400 22px/29px var(--o); letter-spacing: 1.13px; white-space: nowrap; }
+.z-feature .body { margin-top: 28.52px; color: #000; font: 400 22px/29px var(--o); letter-spacing: 1.13px; white-space: nowrap; }
 .z-feature .body p + p { margin-top: 29px; }
 .z-feature.tight .body p + p { margin-top: 0; }
 #zusammen h2 { letter-spacing: -.19px; }
@@ -564,3 +563,8 @@ h1, h2 { letter-spacing: -0.01em !important; }
 @media (prefers-reduced-motion: reduce) {
   .jump .down, .z-jump .down, .sub .jumplinks .down, .tile-link .pfeil, .more .pfeil, .more-link .right, .faq-more .right { transition: none; }
 }
+
+/* ---------- Farbregel: Fließtext schwarz, Überschriften und Zwischenüberschriften Petrol (auf Petrol-Flächen weiß) ---------- */
+h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
+.hero h1, .hero-simple h1, .hero-split .content h1, .z-hero .right h1, .tile h2, .event-tile h2,
+.z-termine h2, .about h2, .site-footer h3, .z-quote h2 { color: var(--white); }

@@ -396,7 +396,7 @@ html.menu-offen { overflow: hidden; }
   .z-feature + .z-quote { margin-top: 64px; }
   .z-quote-inner, .z-quote.circle-right .z-quote-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
   /* Zitat-Fotos: so breit wie der Inhaltsbereich (Raster), mittig */
-  .z-quote .circle { width: 100%; height: auto; aspect-ratio: 1 / 1; align-self: center; }
+  .z-quote .circle { width: min(72%, 300px); height: auto; aspect-ratio: 1 / 1; align-self: center; }   /* etwas kleiner, mittig */
   .z-quote blockquote p { font-size: 24px; line-height: 34px; letter-spacing: .5px; }
   .z-content { padding-bottom: 80px; }
   .main-nav { display: none; }

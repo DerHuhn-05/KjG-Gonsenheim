@@ -321,7 +321,7 @@ EN = {
 "[Website / E-Mail]": "[website / email]",
 
 # ---------- Zela 2027: Zeitleiste ----------
-"Alle Termine auf einen Blick": "All dates at a glance",
+"Alle Infos auf einen Blick": "All the info at a glance",
 "24. Juni bis": "24 June to",
 "04. August 2027": "4 August 2027",
 "Faulbach-": "Faulbach-",

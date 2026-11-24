@@ -447,6 +447,16 @@ html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
 }
 
 /* =====================================================================
+   Ganze Module klickbar: der Link spannt eine unsichtbare Fläche über das ganze Modul
+   (Petrol-Kacheln, Angebots-Karten, Kacheln auf Angebote/Soziales, „Wer sind Wir?“)
+   ===================================================================== */
+.tile, .card, .about, .event-tile { position: relative; }
+.tile .tile-link::after, .card .more-link::after, .about .more-link::after, .event-tile .more::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; }
+.tile:hover .tile-link span, .event-tile:hover .more span, .card:hover .more-link span, .about:hover .more-link span { text-decoration: underline; }
+.card:hover .more-link span, .about:hover .more-link span { text-decoration-thickness: 2px; }
+
+/* =====================================================================
    Mobil (bis 960 px)
    ===================================================================== */
 @media (max-width: 960px) {

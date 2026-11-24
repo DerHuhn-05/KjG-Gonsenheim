@@ -94,9 +94,11 @@
 .sub .wer-flow { padding-bottom: 100px; }
 .sub .wer-flow > * + * { margin-top: 140px; }
 .sub .wer-flow .feature + .feature { margin-top: 140px; }
-.sub .tile.plain .text { padding-left: 22.177%; padding-top: 149.03px; }
-.sub .tile.plain h2 { font-size: 79px; letter-spacing: -.75px; }
-.sub .tile.plain p { margin-top: 16.11px; }
+@media (min-width: 961px) {   /* nur Desktop – mobil gelten dieselben Abstände wie bei allen Petrol-Kacheln */
+  .sub .tile.plain .text { padding-left: 22.177%; padding-top: 149.03px; }
+  .sub .tile.plain h2 { font-size: 79px; }
+  .sub .tile.plain p { margin-top: 16.11px; }
+}
 
 /* ---------- Unser Team: Zahlenband ---------- */
 .sub .stats { height: 212px; background: var(--teal); color: var(--white); }
@@ -206,7 +208,9 @@
   .sub .stats ul { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
   .sub .team h2 { font-size: 36px; line-height: 42px; }
   .sub .person.left, .sub .person.right { grid-template-columns: 1fr; gap: 20px; }
-  .sub .person .circle { position: static; grid-column: 1 !important; grid-row: 1 !important; width: 160px; height: 160px; }
+  /* Fotos mittig in voller Breite */
+  .sub .person .circle { position: static; grid-column: 1 !important; grid-row: 1 !important; justify-self: center; width: 100%; height: auto; aspect-ratio: 1 / 1; }
+  .sub .team .z-quote .circle { width: 100%; height: auto; aspect-ratio: 1 / 1; align-self: center; }
   .sub .person .text { grid-column: 1 !important; grid-row: 2 !important; }
   .sub .person h3 { font-size: 30px; line-height: 36px; }
   .sub .person p { font-size: 18px; line-height: 26px; }

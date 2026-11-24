@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
       q.sektion.style.height = "";
       q.weg = 0;
       if (!aktiv) continue;
-      if (ruhig) { q.sektion.classList.add("static"); continue; }
       const breite = q.buehne.clientWidth;
       const rechts = q.leiste.offsetLeft + q.ziel(q.leiste);
       q.weg = Math.max(0, rechts - (breite - q.ende(breite)));
@@ -112,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const radMessen = () => {
     if (!rad || !radPin || !radLeiste) return;
-    if (ruhig) { rad.classList.add("static"); return; }
+    // läuft auch bei „Bewegung reduzieren“: die Bewegung folgt nur dem eigenen Scrollen
     rad.classList.add("rad");
     const breite = rad.clientWidth;
     const kopf = breite >= 1273 ? 100 : 72;                    // Höhe der Petrol-Kopfzeile beim Scrollen

@@ -58,6 +58,10 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 /* Menü mit fünf Punkten auf allen Seiten, mittig zwischen Logo (endet bei x = 350) und Sprachwahl (beginnt bei x = 1165) */
 .main-nav { position: absolute; left: 250px; width: 815px; top: 56.5px; display: flex; justify-content: center; gap: 30px; transition: top .35s ease; }
 .main-nav a { position: static; }
+/* aktive Seite fett; unsichtbare fette Kopie hält die Breite fest, damit nichts springt */
+.main-nav a { display: inline-grid; }
+.main-nav a::after { content: attr(data-t); font-weight: 700; height: 0; visibility: hidden; overflow: hidden; }
+.main-nav a[aria-current="page"] { font-weight: 700; }
 .main-nav a:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
 .lang a { position: absolute; top: 52.25px; font: 400 31px/31px var(--o); letter-spacing: .5px; }
 .lang .de { left: 1065px; }
@@ -78,13 +82,14 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .mobile-nav > a, .mobile-nav > details { position: relative; }
 .mobile-nav > a::before, .mobile-nav > details::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 2px;
   background: linear-gradient(90deg, rgba(255,255,255,.35), rgba(255,255,255,.9) 50%, rgba(255,255,255,.35)); }
-.mobile-nav > a, .mobile-nav summary { display: block; padding: 14px 0 12px; font-size: 20px; font-weight: 700; }
+.mobile-nav > a, .mobile-nav summary { display: block; padding: 15px 0 13px; font-size: 24px; font-weight: 700; }
 .mobile-nav summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; }
 .mobile-nav summary::-webkit-details-marker { display: none; }
 .mobile-nav .mn-chev { flex: none; width: 22px; height: 13px; margin-right: 8px; transition: transform .2s; }
 .mobile-nav details[open] .mn-chev { transform: rotate(180deg); }
 .mobile-nav .mn-sub { padding: 0 0 8px 16px; }
-.mobile-nav .mn-sub a { display: block; padding: 9px 0; font-size: 17px; font-weight: 400; border-top: 1px solid rgba(255,255,255,.18); }
+.mobile-nav .mn-sub a { display: block; padding: 10px 0; font-size: 20px; font-weight: 400; border-top: 1px solid rgba(255,255,255,.18); }
+.mobile-nav .mn-sub a.mn-alle { font-weight: 700; }
 .mobile-nav details[open] .mn-sub { animation: mn-auf .25s ease; }
 @keyframes mn-auf { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .site-header.open .mobile-nav { display: block; }
@@ -270,6 +275,10 @@ html.menu-offen { overflow: hidden; }
           mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 78%, transparent 100%); }
 .z-termine.rad .z-timeline { left: 0; }
 .z-termine.rad .z-timeline li { transform-origin: 50% 70%; }
+@media (min-width: 961px) {   /* Desktop: deutlich mehr Luft zwischen Überschrift und Drehrad */
+  .z-termine.rad .z-termine-buehne { height: 481px; }
+  .z-termine.rad .z-rad { top: 232.5px; }
+}
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 .z-content { padding-bottom: 140px; }

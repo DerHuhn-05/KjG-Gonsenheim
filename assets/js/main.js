@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const ruhig = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const header = document.querySelector(".site-header");
+  document.querySelectorAll(".main-nav a").forEach((a) => { a.dataset.t = a.textContent; });   // für die feste Breite (fett = aktiv)
 
   // ---------------------------------------------------------------
   // Header: transparent oben, Petrol-Leiste sobald gescrollt wird

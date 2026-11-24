@@ -344,4 +344,9 @@ EN = {
 "Video abspielen": "Play video",
 "Unser Angebot für euch!": "What we offer you!",
 "Unser Angebot": "What we offer",
+"Alle Angebote": "All activities",
+"Alle sozialen Aktionen": "All social projects",
+"72h-Aktion": "72-Hour Project",
+"Trainee-Wochenende": "Trainee Weekend",
+"Kachel-Bild Zela 2027": "Tile image: Zela 2027",
 }

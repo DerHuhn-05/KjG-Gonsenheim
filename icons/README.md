@@ -10,6 +10,7 @@ Alle Icons der Website liegen hier als SVG-Datei. Die Seiten binden sie per Link
 | `pfeil-rechts-weiss.svg` | 33 × 17 | „weitere informationen (links)“ im Kasten „Wer sind Wir?“ |
 | `pfeil-rechts-klein-weiss.svg` | 13 × 5 | „genauere infos“ in den Kacheln Zela 2027 und Unser Team |
 | `chevron-unten.svg` | 22 × 13 | Aufklapp-Pfeil bei den FAQ-Fragen (dreht sich beim Öffnen) |
+| `chevron-unten-weiss.svg` | 22 × 13 | Aufklapp-Pfeil bei „Angebote“ und „Soziales“ im Menü |
 | `video-pause.svg` · `video-play.svg` | 20 × 20 | Knopf zum Pausieren/Abspielen des Startseiten-Videos |
 | `team-gruppenleiter.svg` | 48 × 36 | Zahlenband „Unser Team“: Gruppenleiter |
 | `team-zelte.svg` | 42 × 33 | Zahlenband „Unser Team“: Zelte |

@@ -69,7 +69,8 @@
 .sub .t3 .text { padding-top: 112.75px; }
 .sub .t3 h2 { font-size: 63px; line-height: 77px; letter-spacing: 2.2px; }
 .sub .t3 p { margin-top: 11.2px; letter-spacing: 0; }
-.sub .events-list { padding-bottom: 60px; }   /* + 40 px Kachelabstand = 100 px bis Footer */
+.sub .events-list { padding-bottom: 60px; }
+.sub .events-list > .tile { margin-bottom: 40px; }   /* Zela-Kachel auf „Angebote“ */   /* + 40 px Kachelabstand = 100 px bis Footer */
 
 /* ---------- Inhaltsblöcke (Bild + Text) ---------- */
 .sub .features { padding-bottom: 140px; }
@@ -243,7 +244,7 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 
 /* ---------- Desktop: 20 px mehr Abstand zwischen den Containern (Events, Soziales, Team) ---------- */
 @media (min-width: 961px) {
-  .sub .events-list .event-tile { margin-bottom: 60px; }
+  .sub .events-list .event-tile, .sub .events-list > .tile { margin-bottom: 60px; }
   .sub .events-list { padding-bottom: 40px; }     /* Abstand zum Footer bleibt 100 px */
   .sub .person + .person { margin-top: 64.48px; }
   .sub .team .section + .section { margin-top: 123.69px; }

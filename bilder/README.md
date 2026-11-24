@@ -44,6 +44,7 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | Datei | Wo auf der Seite |
 |---|---|
 | `events-1.jpg` | Header-Bild Unsere Angebote |
+| `events-5.jpg` | Kachel-Bild Zela 2027 |
 | `events-2.jpg` | Kachel-Bild Gruppenstunde |
 | `events-3.jpg` | Kachel-Bild MoWo |
 | `events-4.jpg` | Kachel-Bild Trainee-Wochenende |

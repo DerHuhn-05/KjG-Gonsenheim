@@ -73,7 +73,16 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .site-header.open .menu-toggle .bar1 { top: 5.5px; width: 30px; transform: rotate(45deg); }
 .site-header.open .menu-toggle .bar2 { top: 5.5px; width: 30px; transform: rotate(-45deg); }
 .mobile-nav { display: none; position: relative; background: var(--teal); padding: 8px 16px 24px; box-shadow: 0 12px 24px rgba(0,0,0,.25); }
-.mobile-nav a { display: block; padding: 12px 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,.25); }
+.mobile-nav a, .mobile-nav summary { display: block; padding: 12px 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,.25); }
+/* Aufklappbare Gruppen im Menü (Angebote, Soziales) */
+.mobile-nav summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; }
+.mobile-nav summary::-webkit-details-marker { display: none; }
+.mobile-nav .mn-chev { flex: none; margin-right: 4px; transition: transform .25s ease; }
+.mobile-nav details[open] .mn-chev { transform: rotate(180deg); }
+.mobile-nav .mn-sub { padding-left: 16px; }
+.mobile-nav .mn-sub a { font-size: 17px; padding: 10px 0; opacity: .92; }
+.mobile-nav details[open] .mn-sub { animation: mn-auf .25s ease; }
+@keyframes mn-auf { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .site-header.open .mobile-nav { display: block; }
 
 /* ---------- Bildflächen ---------- */

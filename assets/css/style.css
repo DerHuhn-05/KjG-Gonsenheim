@@ -519,16 +519,18 @@ html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
   .jump .down, .z-jump .down, .sub .jumplinks .down { width: 13px; height: 20px; margin-top: 7px; }
   .jump span, .z-jump span, .sub .jumplinks span { margin-left: 8px; }
 
-  /* „Unser Angebot für euch“: Karten nebeneinander, ziehen beim Scrollen seitlich durch (Scrollytelling, main.js) */
-  .events { position: relative; }
-  .events .wrap { position: sticky; top: 90px; width: 100%; max-width: none; padding: 0 16px; overflow: hidden; }
-  .events .cards { display: flex; gap: 16px; width: max-content; margin-top: 24px; will-change: transform; }
-  .events .card { width: min(78vw, 400px); flex: none; }
-  .events.static .wrap { position: relative; top: auto; overflow-x: auto; }
+  /* „Unser Angebot für euch“: Slider – Karten nebeneinander, mit dem Finger wischen, rasten mittig ein */
+  .events .cards { display: flex; grid-template-columns: none; gap: 16px; margin: 24px -16px 0; padding: 0 16px 8px;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 16px; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;
+    scrollbar-width: none; }
+  .events .cards::-webkit-scrollbar { display: none; }
+  .events .card { flex: none; width: min(78vw, 400px); scroll-snap-align: start; }
+  .events .card[data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }   /* Slider statt Einflug */
+  .slider-punkte { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+  .slider-punkte button { width: 12px; height: 12px; padding: 0; border: 2px solid var(--teal); border-radius: 50%; background: transparent; cursor: pointer; }
+  .slider-punkte button[aria-current="true"] { background: var(--teal); }
 }
-@media (max-width: 480px) {
-  .events .wrap { top: 80px; }
-}
+@media (min-width: 961px) { .slider-punkte { display: none; } }
 
 /* Inter mit ihren eigenen Laufweiten (die Werte aus dem Entwurf waren auf Overpass abgestimmt) */
 body * { letter-spacing: normal !important; }

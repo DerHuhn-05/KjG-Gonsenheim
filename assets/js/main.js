@@ -68,45 +68,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------------------------
-  // Scrollytelling: Bereich bleibt beim Scrollen stehen, Inhalt schiebt sich seitlich durch,
-  // erst danach scrollt die Seite weiter.
-  //  - Startseite „Unser Angebot für euch“: Karten (nur mobil)
+  // Startseite „Unser Angebot für euch“ (mobil): Slider mit Punkten (Wischen/Einrasten macht CSS)
   // ---------------------------------------------------------------
-  const quer = [
-    { sektion: ".cards-section.events", buehne: ".wrap", leiste: ".cards", tempo: 1.2, nur: "(max-width: 960px)",
-      ende: () => 16,                                              // letzte Karte endet am rechten Rand
-      ziel: (l) => { const x = l.lastElementChild; return x.offsetLeft + x.offsetWidth; } },
-  ].map((q) => {
-    const sektion = document.querySelector(q.sektion);
-    return sektion && { ...q, sektion, buehne: sektion.querySelector(q.buehne), leiste: sektion.querySelector(q.leiste), weg: 0 };
-  }).filter((q) => q && q.buehne && q.leiste);
-
-  const querMessen = () => {
-    for (const q of quer) {
-      const aktiv = !q.nur || window.matchMedia(q.nur).matches;
-      if (!aktiv) { q.leiste.style.transform = ""; q.sektion.style.height = ""; q.weg = 0; continue; }
-      // gemessen wird mit den bisherigen Werten (Höhe wird NICHT erst zurückgesetzt, sonst fällt die Seite
-      // kurz zusammen und der Browser springt beim Scrollen)
-      const breite = q.buehne.clientWidth;
-      const rechts = q.leiste.offsetLeft + q.ziel(q.leiste);   // offsetLeft/Width sind von transform unabhängig
-      q.weg = Math.max(0, rechts - (breite - q.ende(breite)));
-      const st = getComputedStyle(q.sektion);
-      q.pad = parseFloat(st.paddingTop);
-      q.oben = parseFloat(getComputedStyle(q.buehne).top) || 0;
-      const hoehe = Math.round(q.pad + q.buehne.offsetHeight + q.weg * q.tempo + parseFloat(st.paddingBottom));
-      if (q.sektion.style.height !== hoehe + "px") q.sektion.style.height = hoehe + "px";
-      if (!q.weg) q.leiste.style.transform = "";
-    }
-  };
-
-  const querBewegen = () => {
-    for (const q of quer) {
-      if (!q.weg) continue;
-      const strecke = q.weg * q.tempo;
-      const p = Math.min(1, Math.max(0, (q.oben - q.sektion.getBoundingClientRect().top - q.pad) / strecke));
-      q.leiste.style.transform = `translate3d(${-p * q.weg}px, 0, 0)`;
-    }
-  };
+  const sliderListe = document.querySelector(".events .cards");
+  if (sliderListe) {
+    const karten = [...sliderListe.children];
+    const en = document.documentElement.lang === "en";
+    const punkte = document.createElement("div");
+    punkte.className = "slider-punkte";
+    karten.forEach((k, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", (en ? "Show card " : "Karte ") + (i + 1) + (en ? "" : " anzeigen"));
+      b.addEventListener("click", () => sliderListe.scrollTo({ left: k.offsetLeft - karten[0].offsetLeft, behavior: ruhig ? "auto" : "smooth" }));
+      punkte.appendChild(b);
+    });
+    sliderListe.after(punkte);
+    const markieren = () => {
+      // aktive Karte = die, deren linke Kante der aktuellen Scroll-Position am nächsten liegt
+      let nah = 0, d = Infinity;
+      karten.forEach((k, i) => { const x = Math.abs(k.offsetLeft - karten[0].offsetLeft - sliderListe.scrollLeft); if (x < d) { d = x; nah = i; } });
+      if (sliderListe.scrollLeft + sliderListe.clientWidth >= sliderListe.scrollWidth - 2) nah = karten.length - 1;
+      [...punkte.children].forEach((b, i) => b.setAttribute("aria-current", String(i === nah)));
+    };
+    sliderListe.addEventListener("scroll", () => requestAnimationFrame(markieren), { passive: true });
+    window.addEventListener("resize", markieren);
+    markieren();
+  }
 
   // ---------------------------------------------------------------
   // Zela 2027: Termine als Drehrad
@@ -238,7 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let geplant = false;
   const aktualisieren = () => {
     headerPruefen();
-    querBewegen();
     radBewegen();
     geplant = false;
   };
@@ -250,10 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     if (window.innerWidth === letzteBreite) return;
     letzteBreite = window.innerWidth;
-    querMessen(); radMessen(); anstossen();
+    radMessen(); anstossen();
   });
-  window.addEventListener("load", () => { querMessen(); radMessen(); anstossen(); });
-  querMessen();
+  window.addEventListener("load", () => { radMessen(); anstossen(); });
   radMessen();
   aktualisieren();
 });

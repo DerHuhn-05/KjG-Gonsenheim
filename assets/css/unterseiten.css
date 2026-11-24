@@ -185,7 +185,7 @@
   .sub .hero-split .media { order: 2; height: 300px; }
   .sub .hero-split .content { padding: 140px 16px 56px; }
   .sub .event-tile, .sub .event-tile.reverse { grid-template-columns: 1fr; height: auto; }
-  .sub .event-tile.reverse .media { order: 2; }
+  .sub .event-tile .media, .sub .event-tile.reverse .media { order: -1; }   /* mobil: erst das Bild, dann die Petrol-Box */
   .sub .event-tile .text, .sub .event-tile.reverse .text { padding: 56px 16px; }
   .sub .event-tile .media { height: 280px; }
   .sub .event-tile h2 { font-size: 44px !important; line-height: 52px !important; }

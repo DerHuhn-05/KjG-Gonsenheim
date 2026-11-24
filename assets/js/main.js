@@ -16,8 +16,35 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.addEventListener("click", () => {
       const open = header.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
+      const en = document.documentElement.lang === "en";
+      toggle.setAttribute("aria-label", open ? (en ? "Close menu" : "Menü schließen") : (en ? "Open menu" : "Menü öffnen"));
       headerPruefen();
     });
+  }
+
+  // ---------------------------------------------------------------
+  // Startseite: Video spielt automatisch (stumm), Knopf zum Pausieren/Abspielen
+  // ---------------------------------------------------------------
+  const video = document.querySelector(".hero video");
+  const videoKnopf = document.querySelector(".video-toggle");
+  if (video) {
+    video.muted = true;                      // stumm ist Voraussetzung für Autoplay auf dem Handy
+    video.setAttribute("playsinline", "");
+    const starten = () => { const p = video.play(); if (p && p.catch) p.catch(() => {}); };
+    if (!ruhig) starten(); else video.pause();
+    if (videoKnopf) {
+      const en = document.documentElement.lang === "en";
+      const bild = videoKnopf.querySelector("img");
+      const anzeigen = () => {
+        const pausiert = video.paused;
+        bild.src = bild.src.replace(/video-(play|pause)\.svg/, pausiert ? "video-play.svg" : "video-pause.svg");
+        videoKnopf.setAttribute("aria-label", pausiert ? (en ? "Play video" : "Video abspielen") : (en ? "Pause video" : "Video pausieren"));
+      };
+      videoKnopf.addEventListener("click", () => { if (video.paused) starten(); else video.pause(); });
+      video.addEventListener("play", anzeigen);
+      video.addEventListener("pause", anzeigen);
+      anzeigen();
+    }
   }
 
   // ---------------------------------------------------------------
@@ -53,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Einflug-Animationen: Inhalte schieben sich beim Scrollen herein (nicht im Hero)
   // ---------------------------------------------------------------
   const EINFLIEGEN = [
-    ".jump li", ".jumplinks li", ".z-jump li",
     ".tile > .text", ".tile > .media",
     ".cards-section h2", ".card",
     ".about h2", ".about p", ".about .more-link",
@@ -84,8 +110,13 @@ document.addEventListener("DOMContentLoaded", () => {
       for (const e of eintraege) {
         if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
       }
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    }, { rootMargin: "0px 0px -40px 0px", threshold: 0 });   // erscheint, sobald 40 px im Bild sind
     elemente.forEach((el) => io.observe(el));
+
+    // Kapitelpfeile (Sprungmarken) fliegen direkt beim Laden herein
+    const pfeile = [...document.querySelectorAll(".jump li, .jumplinks li, .z-jump li")];
+    pfeile.forEach((el, i) => { el.dataset.reveal = "up"; el.style.setProperty("--reveal-delay", 150 + i * 80 + "ms"); });
+    requestAnimationFrame(() => requestAnimationFrame(() => pfeile.forEach((el) => el.classList.add("is-visible"))));
   }
 
   // ---------------------------------------------------------------

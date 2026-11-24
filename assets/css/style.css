@@ -72,7 +72,13 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .lang .sep { position: absolute; left: 1116px; top: 44px; width: 4px; height: 40px; background: var(--white); }
 .lang a.active { font-weight: 700; }   /* gewählte Sprache fett */
 .menu-toggle { position: absolute; left: 1200px; top: 57.5px; width: 30px; height: 14px; padding: 0; border: 0; background: none; cursor: pointer; }
-.menu-toggle img { display: block; width: 30px; height: 14px; }
+/* Menü-Button: zwei Striche, werden beim Öffnen animiert zu einem X */
+.menu-toggle span { position: absolute; right: 0; height: 3px; background: var(--white); border-radius: 1px;
+  transition: top .3s ease, width .3s ease, transform .3s ease; }
+.menu-toggle .bar1 { top: 0; width: 30px; }
+.menu-toggle .bar2 { top: 11px; width: 20px; }
+.site-header.open .menu-toggle .bar1 { top: 5.5px; width: 30px; transform: rotate(45deg); }
+.site-header.open .menu-toggle .bar2 { top: 5.5px; width: 30px; transform: rotate(-45deg); }
 .mobile-nav { display: none; position: relative; background: var(--teal); padding: 8px 16px 24px; box-shadow: 0 12px 24px rgba(0,0,0,.25); }
 .mobile-nav a { display: block; padding: 12px 0; font-size: 20px; border-bottom: 1px solid rgba(255,255,255,.25); }
 .site-header.open .mobile-nav { display: block; }
@@ -88,6 +94,13 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .hero { position: relative; height: 785px; overflow: hidden; color: var(--white); background: #120d14; }
 .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero .ph-label { place-items: end; padding: 16px 20px; color: rgba(255,255,255,.45); }
+.hero-content { display: contents; }   /* Desktop: Titel und Button behalten ihre Positionen aus dem Entwurf */
+/* Pause/Play für das Video (WCAG: automatisch laufende Videos müssen sich anhalten lassen) */
+.video-toggle { position: absolute; right: 24px; bottom: 24px; z-index: 2; display: grid; place-items: center;
+  width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,.7); border-radius: 50%;
+  background: rgba(0,0,0,.35); cursor: pointer; transition: background .15s; }
+.video-toggle:hover { background: rgba(0,0,0,.6); }
+.video-toggle img { width: 20px; height: 20px; }
 .hero h1, .hero-btn { z-index: 1; }
 .hero h1 {
   position: absolute; left: 0; right: 0; top: 333px; padding-left: .75px; margin-left: -4px;
@@ -347,13 +360,19 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .z-content { padding-bottom: 80px; }
   .main-nav { display: none; }
   .lang { margin-left: auto; }
-  .hero { height: 600px; }
-  .hero h1 { top: 210px; margin: 0; padding: 0 16px; font-size: 56px; line-height: 64px; letter-spacing: 1px; white-space: normal; }
-  .hero-btn { top: 292px; left: 50%; transform: translateX(-50%); width: auto; height: auto; padding: 14px 28px; font-size: 26px; line-height: 1.2; }
+  /* Mobil: Video in voller Bildschirmbreite (16:9) direkt unter der Kopfzeile, nichts abgeschnitten.
+     Titel und Button liegen darüber – 40 px unterhalb der Videomitte. */
+  .hero { height: auto; padding-top: 90px; }
+  .hero video { position: relative; inset: auto; display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .hero-content { position: absolute; left: 0; right: 0; top: 90px; z-index: 1; height: 56.25vw;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; transform: translateY(40px); }
+  .hero h1 { position: static; margin: 0; padding: 0 16px; font-size: 56px; line-height: 64px; letter-spacing: 1px; white-space: normal; }
+  .hero-btn { position: static; transform: none; width: auto; height: auto; padding: 14px 28px; font-size: 26px; line-height: 1.2; }
+  .video-toggle { right: 12px; bottom: 12px; width: 40px; height: 40px; }
   .jump { padding: 32px 0; }
   .jump ul { justify-content: flex-start; flex-direction: column; }
   .tile, .tile.reverse { grid-template-columns: 1fr; }
-  .tile.reverse .media { order: 2; }
+  .tile .media, .tile.reverse .media { order: -1; }   /* mobil: erst das Bild, dann die Petrol-Box */
   .tile .text, .tile.reverse .text { padding: 56px 16px; }
   .tile .media { height: 280px; }
   .tile h2 { font-size: 52px !important; line-height: 60px; }
@@ -383,14 +402,19 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .logo img { height: 34px; }
   .site-header .bar { gap: 10px; height: 80px; }
   .lang a { font-size: 20px; }
-  .hero h1 { top: 220px; font-size: 40px; line-height: 48px; white-space: nowrap; }
-  .hero-btn { top: 282px; font-size: 22px; padding: 12px 22px; }
+  .hero { padding-top: 80px; }
+  .hero-content { top: 80px; gap: 10px; }
+  .hero h1 { font-size: 40px; line-height: 48px; white-space: nowrap; }
+  .hero-btn { font-size: 22px; padding: 12px 22px; }
   .tile h2 { font-size: 44px !important; line-height: 52px; }
   .site-footer .grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 360px) {
   .hero h1 { font-size: 34px; line-height: 42px; }
+  .hero-btn { font-size: 20px; padding: 10px 18px; }
+  .video-toggle { right: 8px; bottom: 8px; width: 32px; height: 32px; }
+  .video-toggle img { width: 16px; height: 16px; }
   .z-hero .btn { width: auto; display: inline-block; padding-right: 28px; font-size: 32px; }
   .z-hero h1 { font-size: 44px; line-height: 52px; }
 }
@@ -412,7 +436,7 @@ html[lang="en"] .z-hero .right p { max-width: 400px; }
 html[lang="en"] .z-feature .body { max-width: 610px; }
 html[lang="en"] .z-quote.circle-left blockquote p { max-width: 600px; }
 html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
-html[lang="en"] .hero-btn { font-size: 34px; }
+@media (min-width: 961px) { html[lang="en"] .hero-btn { font-size: 34px; } }
 
 /* =====================================================================
    Einflug-Animationen beim Scrollen (alle Seiten, außer Seitentitel/Hero).

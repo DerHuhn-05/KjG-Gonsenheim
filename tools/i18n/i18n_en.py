@@ -340,4 +340,6 @@ EN = {
 "Unsere Angebote": "Our Activities",
 "Unsere Angebote – KjG Mainz-Gonsenheim": "Our Activities – KjG Mainz-Gonsenheim",
 "Header-Bild Unsere Angebote": "Header image: Our Activities",
+"Video pausieren": "Pause video",
+"Video abspielen": "Play video",
 }

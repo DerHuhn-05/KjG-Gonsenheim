@@ -244,7 +244,7 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 .z-termine .inner { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; padding-top: 44.48px; }
 .z-termine h2 { font: 800 48px/48px var(--i); }
 .z-rad { position: absolute; left: 0; right: 0; top: 112.5px; height: 158px; overflow-x: auto; }
-.z-timeline { position: relative; left: calc(50% - 295px); display: flex; width: calc(5 * var(--abstand, 300px));
+.z-timeline { position: relative; left: calc(50% - var(--abstand, 300px) / 2); display: flex;   /* erste Station startet mittig */ width: calc(5 * var(--abstand, 300px));
   margin: 0; padding: 0; list-style: none; will-change: transform; }
 .z-timeline::before { content: ""; position: absolute; left: calc(var(--abstand, 300px) / 2); right: calc(var(--abstand, 300px) / 2);
   top: 145px; height: 6px; background: var(--white); }
@@ -363,7 +363,6 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .z-jump { padding: 32px 0 40px; }
   .z-termine .inner { padding-top: 40px; }
   .z-termine h2, .z-feature h2 { font-size: 34px; line-height: 40px; }
-  .z-timeline { left: 16px; }
   .z-timeline p { width: 220px; margin-left: -110px; font-size: 15px; line-height: 21px; top: 66px; }
   .z-termine h2 { font-size: 28px; line-height: 34px; }
   .z-termine-buehne { height: 400px; }
@@ -378,7 +377,8 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
   .z-feature .body { font-size: 19px; line-height: 27px; letter-spacing: .6px; }
   .z-feature + .z-quote { margin-top: 64px; }
   .z-quote-inner, .z-quote.circle-right .z-quote-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
-  .z-quote .circle { width: 160px; height: 160px; }
+  /* Zitat-Fotos: so breit wie der Inhaltsbereich (Raster), mittig */
+  .z-quote .circle { width: 100%; height: auto; aspect-ratio: 1 / 1; align-self: center; }
   .z-quote blockquote p { font-size: 24px; line-height: 34px; letter-spacing: .5px; }
   .z-content { padding-bottom: 80px; }
   .main-nav { display: none; }

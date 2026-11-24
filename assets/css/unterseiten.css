@@ -211,7 +211,6 @@
   .sub .person.left, .sub .person.right { grid-template-columns: 1fr; gap: 20px; }
   /* Fotos mittig in voller Breite */
   .sub .person .circle { position: static; grid-column: 1 !important; grid-row: 1 !important; justify-self: center; width: 100%; height: auto; aspect-ratio: 1 / 1; }
-  .sub .team .z-quote .circle { width: 100%; height: auto; aspect-ratio: 1 / 1; align-self: center; }
   .sub .person .text { grid-column: 1 !important; grid-row: 2 !important; }
   .sub .person h3 { font-size: 30px; line-height: 36px; }
   .sub .person p { font-size: 18px; line-height: 26px; }

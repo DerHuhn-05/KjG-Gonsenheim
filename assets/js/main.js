@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const hoehe = Math.max(STREIFEN, window.innerHeight - kopf);
     const desktop = breite > 960;
     const abstand = desktop ? Math.min(480, Math.max(320, breite * 0.3)) : Math.max(190, breite * 0.55);
-    const [von, bis] = desktop ? [1, 3] : [0, radPunkte.length - 1];   // welche Station anfangs/am Ende in der Mitte steht
+    const [von, bis] = [0, radPunkte.length - 1];               // Station 1 steht anfangs in der Mitte, Station 5 am Ende
     const aufziehen = hoehe - STREIFEN;
     const drehen = (bis - von) * abstand * DREH_TEMPO;
     rad.style.setProperty("--kopf", kopf + "px");

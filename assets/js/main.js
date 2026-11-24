@@ -50,13 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---------------------------------------------------------------
   // Scrollytelling: Bereich bleibt beim Scrollen stehen, Inhalt schiebt sich seitlich durch,
   // erst danach scrollt die Seite weiter.
-  //  - Zela 2027: Zeitleiste (alle Bildschirmgrößen)
   //  - Startseite „Unser Angebot für euch“: Karten (nur mobil)
   // ---------------------------------------------------------------
   const quer = [
-    { sektion: ".z-termine", buehne: ".z-termine-pin", leiste: ".z-timeline", tempo: 1.4,
-      ende: (b) => (b >= 1273 ? 205 : 40),                       // letzter Punkt endet am rechten Rasterrand
-      ziel: (l) => { const x = l.lastElementChild; return x.offsetLeft + x.offsetWidth / 2; } },
     { sektion: ".cards-section.events", buehne: ".wrap", leiste: ".cards", tempo: 1.2, nur: "(max-width: 960px)",
       ende: () => 16,                                              // letzte Karte endet am rechten Rand
       ziel: (l) => { const x = l.lastElementChild; return x.offsetLeft + x.offsetWidth; } },
@@ -90,6 +86,58 @@ document.addEventListener("DOMContentLoaded", () => {
       const p = Math.min(1, Math.max(0, (oben - q.sektion.getBoundingClientRect().top - parseFloat(st.paddingTop)) / strecke));
       q.leiste.style.transform = `translate3d(${-p * q.weg}px, 0, 0)`;
     }
+  };
+
+  // ---------------------------------------------------------------
+  // Zela 2027: Termine als Drehrad
+  //  1. Petrol-Streifen bleibt in der Mitte stehen und zieht sich auf volle Höhe auf
+  //  2. dann drehen die Stationen seitlich durch (Desktop: immer drei sichtbar)
+  //  3. zu den Rändern werden sie blasser und kleiner (Karussell)
+  // ---------------------------------------------------------------
+  const rad = document.querySelector(".z-termine");
+  const radPin = rad && rad.querySelector(".z-termine-pin");
+  const radLeiste = rad && rad.querySelector(".z-timeline");
+  const radPunkte = radLeiste ? [...radLeiste.children] : [];
+  let STREIFEN = 361;        // Höhe des Petrol-Streifens im Ausgangszustand (mobil etwas höher)
+  const DREH_TEMPO = 1.4;    // Scroll-Pixel pro Pixel Drehung (größer = langsamer)
+  let radMass = null;
+
+  const radMessen = () => {
+    if (!rad || !radPin || !radLeiste) return;
+    if (ruhig) { rad.classList.add("static"); return; }
+    rad.classList.add("rad");
+    const breite = rad.clientWidth;
+    const kopf = breite >= 1273 ? 100 : 72;                    // Höhe der Petrol-Kopfzeile beim Scrollen
+    STREIFEN = radPin.querySelector(".z-termine-buehne").offsetHeight;
+    const hoehe = Math.max(STREIFEN, window.innerHeight - kopf);
+    const desktop = breite > 960;
+    const abstand = desktop ? Math.min(480, Math.max(320, breite * 0.3)) : Math.max(190, breite * 0.55);
+    const [von, bis] = desktop ? [1, 3] : [0, radPunkte.length - 1];   // welche Station anfangs/am Ende in der Mitte steht
+    const aufziehen = hoehe - STREIFEN;
+    const drehen = (bis - von) * abstand * DREH_TEMPO;
+    rad.style.setProperty("--kopf", kopf + "px");
+    rad.style.setProperty("--pin-h", hoehe + "px");
+    rad.style.setProperty("--abstand", abstand + "px");
+    rad.style.marginTop = (STREIFEN - hoehe) / 2 + "px";        // Streifen sitzt im Ablauf wie bisher
+    rad.style.height = hoehe + aufziehen + drehen + "px";
+    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen };
+  };
+
+  const radBewegen = () => {
+    if (!radMass) return;
+    const m = radMass;
+    const weg = m.kopf - rad.getBoundingClientRect().top;      // Scroll-Strecke seit dem Andocken
+    const auf = m.aufziehen > 0 ? Math.min(1, Math.max(0, weg / m.aufziehen)) : 1;
+    rad.style.setProperty("--clip", ((1 - auf) * (m.hoehe - STREIFEN)) / 2 + "px");
+    const dreh = Math.min(1, Math.max(0, (weg - m.aufziehen) / m.drehen));
+    const mitte = m.von + dreh * (m.bis - m.von);               // Index der Station in der Mitte
+    const x = m.breite / 2 - m.abstand / 2 - mitte * m.abstand;
+    radLeiste.style.transform = `translate3d(${x.toFixed(1)}px, 0, 0)`;
+    radPunkte.forEach((li, i) => {
+      const d = Math.min(1.6, Math.abs(i - mitte));             // Abstand zur Mitte in Stationen
+      li.style.transform = `scale(${(1 - 0.14 * d).toFixed(3)})`;
+      li.style.opacity = (1 - 0.3 * Math.max(0, d - 0.5)).toFixed(3);
+    });
   };
 
   // ---------------------------------------------------------------
@@ -171,12 +219,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const aktualisieren = () => {
     headerPruefen();
     querBewegen();
+    radBewegen();
     geplant = false;
   };
   const anstossen = () => { if (!geplant) { geplant = true; requestAnimationFrame(aktualisieren); } };
   window.addEventListener("scroll", anstossen, { passive: true });
-  window.addEventListener("resize", () => { querMessen(); anstossen(); });
-  window.addEventListener("load", () => { querMessen(); anstossen(); });
+  window.addEventListener("resize", () => { querMessen(); radMessen(); anstossen(); });
+  window.addEventListener("load", () => { querMessen(); radMessen(); anstossen(); });
   querMessen();
+  radMessen();
   aktualisieren();
 });

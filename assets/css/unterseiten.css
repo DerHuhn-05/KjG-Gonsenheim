@@ -44,7 +44,6 @@
 .sub .jumplinks a { display: flex; align-items: flex-start; height: 49px; font: 400 22.5px/49px var(--o); letter-spacing: 1px; white-space: nowrap; }
 .sub .jumplinks .down { flex: none; margin-top: 16.5px; }
 .sub .jumplinks span { margin-left: 9px; }
-.sub .jumplinks a:hover span { text-decoration: underline; }
 
 /* ---------- Kacheln (Unsere Events, Soziale Aktionen) ---------- */
 .sub .event-tile { display: grid; grid-template-columns: 735fr 705fr; height: 504px; margin-bottom: 40px; }
@@ -57,7 +56,6 @@
 .sub .event-tile p { font: 600 18px/27px var(--f); letter-spacing: .2px; white-space: nowrap; }
 .sub .event-tile .more { display: inline-flex; align-items: flex-start; margin-top: 12.5px; padding-left: 2.2px; font: 600 18px/27px var(--f); }
 .sub .event-tile .more .pfeil { flex: none; margin: 9px 8px 0 0; }
-.sub .event-tile .more:hover span { text-decoration: underline; }
 .sub .t1 .text { padding-top: 117.75px; }
 .sub .t1 h2 { font-size: 57px; line-height: 72px; letter-spacing: 4px; }
 .sub .t1 p { margin-top: 11.2px; letter-spacing: .25px; }
@@ -267,3 +265,9 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .person .circle { order: 2; }
   .sub .person p { order: 3; margin-top: 0; }
 }
+
+/* ---------- Team: Rollenzeile unter dem Namen ---------- */
+.sub .person .rolle { margin-top: 6px; color: var(--teal); font: 600 20px/26px var(--i); }
+.sub .person .rolle + p { margin-top: 18px; }
+.sub .person p + p { margin-top: 14px; }
+@media (max-width: 960px) { .sub .person .rolle { order: 1; font-size: 18px; margin-top: -8px; } .sub .person p + p { margin-top: 12px; } }

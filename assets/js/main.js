@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const pin = svg.querySelector(".k-pin");
     const linie = karteSek.querySelector(".karte-linie");
     const kLabel = karteSek.querySelector(".karte-label");
+    const detail = svg.querySelector(".k-detail");
     const MZ_W = 2400, MZ_H = 2607, GX = 794, GY = 666, GH = 835;   // Gesamtkarte, Standort, sichtbare Höhe beim Zoom (Karteneinheiten)
     const ansicht = (zoom) => {
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
@@ -143,8 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
       svg.setAttribute("viewBox", `${(c.cx - W * c.s / 2).toFixed(2)} ${(c.cy - H * c.s / 2).toFixed(2)} ${(W * c.s).toFixed(2)} ${(H * c.s).toFixed(2)}`);
       pin.setAttribute("transform", `translate(${GX} ${GY}) scale(${c.s.toFixed(4)})`);   // Pin bleibt in Bildschirmgröße
     };
-    // Kasten auf Höhe des Pins setzen und waagrechte Verbindungslinie von seiner rechten Kante zur Pin-Spitze ziehen
+    // Der Kasten hängt mit seiner Oberkante an der waagrechten Linie: Linie und Kastenoberkante liegen auf der Höhe der Pin-Spitze.
     // (Pin-Position im ganz gezoomten Zustand, in Bildschirmkoordinaten der Bühne)
+    let linienLaenge = 0;
     const linieSetzen = () => {
       if (!linie || !kLabel) return;
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1, z = ansicht(true);
@@ -154,15 +156,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const links = kLabel.getBoundingClientRect().left - b.left;
       kLabel.style.maxWidth = Math.max(190, Math.min(W - 32, px - 44 - links)) + "px";      // links vom Pin bleibt Platz für die Linie
       const hoehe = kLabel.offsetHeight;
-      kLabel.style.top = Math.max(8, Math.min(H - hoehe - 8, py - hoehe / 2)) + "px";       // Mitte des Kastens = Höhe der Pin-Spitze
+      kLabel.style.top = Math.max(8, Math.min(H - hoehe - 8, py)) + "px";                    // Oberkante des Kastens = Höhe der Pin-Spitze
       kLabel.style.bottom = "auto";
-      const l = kLabel.getBoundingClientRect();
-      const sx = l.right - b.left, sy = py;
+      const sx = kLabel.getBoundingClientRect().right - b.left;
       linie.setAttribute("viewBox", `0 0 ${W} ${H}`);
-      const d = `M${sx.toFixed(1)} ${sy.toFixed(1)}L${px.toFixed(1)} ${py.toFixed(1)}`;
+      const d = `M${px.toFixed(1)} ${py.toFixed(1)}L${sx.toFixed(1)} ${py.toFixed(1)}`;      // von der Pin-Spitze nach links bis zur Kastenecke
       linie.querySelectorAll("path").forEach((pf) => pf.setAttribute("d", d));          // Kontur und weiße Linie
-      linie.style.setProperty("--len", Math.ceil(Math.abs(px - sx) + 4) + "px");        // Länge für die Zeichen-Animation
+      linienLaenge = Math.ceil(Math.abs(px - sx) + 4);
+      linie.style.setProperty("--len", linienLaenge + "px");
       linie.querySelectorAll("circle").forEach((c) => { c.setAttribute("cx", px.toFixed(1)); c.setAttribute("cy", py.toFixed(1)); });
+    };
+    // Linie und Kasten fahren beim Scrollen aus: q = Fortschritt der Linie (0–1), r = Fortschritt des Kastens (0–1)
+    const ausfahren = (q, r) => {
+      if (!linie || !kLabel) return;
+      linie.querySelectorAll(".karte-linie-halo, .karte-linie-pfad").forEach((pf) => { pf.style.strokeDashoffset = (linienLaenge * (1 - q)).toFixed(1) + "px"; });
+      linie.querySelectorAll("circle").forEach((c) => { c.style.opacity = q > 0 ? 1 : 0; });
+      kLabel.style.clipPath = r >= 1 ? "none" : `inset(0 0 ${((1 - r) * 100).toFixed(1)}% 0)`;   // wächst von der Linie aus nach unten
+      kLabel.style.visibility = r > 0.02 ? "visible" : "hidden";
     };
     const zwischen = (von, ziel, p) => {
       const e = p * p * (3 - 2 * p);                                                    // weiche Kurve über den Scrollweg
@@ -171,45 +181,49 @@ document.addEventListener("DOMContentLoaded", () => {
       return { cx: von.cx + (ziel.cx - von.cx) * u, cy: von.cy + (ziel.cy - von.cy) * u, s };
     };
 
-    let mass = null, letztes = -1, ruheTimer = 0;
+    let mass = null, letztes = "";
     const karteMessen = () => {
       const kopf = window.innerWidth >= 1273 ? 100 : 72;
+      const vh = window.innerHeight;
       karteSek.style.setProperty("--kopf", kopf + "px");
       const hoeheB = buehne.offsetHeight;
-      const weg = Math.round(window.innerHeight * 1.1);                  // Scrollstrecke, während die Karte steht und zoomt
-      karteSek.style.height = hoeheB + weg + "px";
+      // Scrollstrecke, während die Karte steht: Zoom, dann Linie ausfahren, dann Kasten ausfahren, kurzer Halt
+      const zoomL = Math.round(vh * 0.88), linieL = Math.round(vh * 0.28), kastenL = Math.round(vh * 0.28), halt = Math.round(vh * 0.1);
+      karteSek.style.height = hoeheB + zoomL + linieL + kastenL + halt + "px";
       const oben = karteSek.getBoundingClientRect().top + window.scrollY;
       mass = {
-        start: oben - (window.innerHeight - 0.8 * hoeheB),               // 80 % der Karte sind sichtbar → Zoom beginnt
-        ende: oben - kopf + weg * 0.8,                                   // ganz herangezoomt (danach steht die Karte noch kurz still)
+        start: oben - (vh - 0.8 * hoeheB),                               // 80 % der Karte sind sichtbar → Zoom beginnt
+        zoomEnde: oben - kopf + zoomL,                                   // ganz herangezoomt: Pin ploppt auf
+        zoomL, linieL, kastenL,
       };
-      letztes = -1;
+      letztes = "";
       linieSetzen();
       karteBewegen();
     };
+    const klemmen = (v) => Math.min(1, Math.max(0, v));
     const karteBewegen = () => {
       if (!mass) return;
-      const p = Math.min(1, Math.max(0, (window.scrollY - mass.start) / (mass.ende - mass.start)));
-      if (p === letztes) return;
-      letztes = p;
+      const y = window.scrollY;
+      const p = klemmen((y - mass.start) / (mass.zoomEnde - mass.start));
+      const q = klemmen((y - mass.zoomEnde) / mass.linieL);
+      const r = klemmen((y - mass.zoomEnde - mass.linieL) / mass.kastenL);
+      const schluessel = p.toFixed(4) + q.toFixed(4) + r.toFixed(4);
+      if (schluessel === letztes) return;
+      letztes = schluessel;
       setzen(zwischen(ansicht(false), ansicht(true), p));
-      // Pin „ploppt“ erst auf, wenn ganz herangezoomt ist
-      karteSek.classList.toggle("zoom", p >= 1);
-      // Während des Scrollens nur die groben Straßen zeichnen (flüssig), im Stillstand kommen die feinen dazu
-      if (p > 0 && p < 1) karteSek.classList.add("bewegt");
-      clearTimeout(ruheTimer);
-      ruheTimer = setTimeout(karteRuhe, 160);
-      karteSek.classList.toggle("fein", p >= 1);
-    };
-    const karteRuhe = () => {
-      karteSek.classList.remove("bewegt");
-      karteSek.classList.toggle("fein", letztes > 0.5);
+      karteSek.classList.toggle("zoom", p >= 1);                         // Pin „ploppt“ erst auf, wenn ganz herangezoomt ist
+      // Straßen: die groben sind immer da (die Form der Stadt bleibt erkennbar), nur die allerkleinsten werden ab der Hälfte
+      // des Zooms an festen Scrollpositionen ergänzt – nicht zeitgesteuert, daher auch bei schnellem Scrollen ohne Lücken
+      if (detail) detail.style.opacity = klemmen((p - 0.5) / 0.3).toFixed(3);
+      ausfahren(q, r);
     };
     if (ruhig || !("IntersectionObserver" in window)) {
-      setzen(ansicht(true)); karteSek.classList.add("zoom", "fein");     // „Bewegung reduzieren“: gleich die gezoomte Karte, ohne Scrollytelling
-      linieSetzen();
-      window.addEventListener("load", () => { setzen(ansicht(true)); linieSetzen(); });
-      window.addEventListener("resize", () => { setzen(ansicht(true)); linieSetzen(); });
+      const fertig = () => { setzen(ansicht(true)); linieSetzen(); ausfahren(1, 1); };   // „Bewegung reduzieren“: gleich die fertige Karte, ohne Scrollytelling
+      karteSek.classList.add("zoom");
+      if (detail) detail.style.opacity = 1;
+      fertig();
+      window.addEventListener("load", fertig);
+      window.addEventListener("resize", fertig);
     } else {
       karteSek.classList.add("scrolly");
       setzen(ansicht(false));
@@ -240,6 +254,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const STREIFEN_V = 400;     // Höhe des Streifens mobil (vertikale Variante, passt zu --streifen im CSS)
   const LI_H = 190;           // Höhe (= Abstand) einer Station mobil
   const FOKUS_START = 78;     // mobil: Lage der aktiven Station im Streifen (von oben im Listenbereich)
+  // mobil: „Fischaugen“-Effekt – je näher eine Station der Mitte kommt, desto größer wird sie und desto mehr Abstand hat sie zu den Nachbarn
+  const G_MIN = 118, G_MAX = 290, SIGMA = 0.85;                // Abstand zwischen zwei Stationen: außen G_MIN px, in der Mitte G_MAX px
+  const fischY = (d) => Math.sign(d) * (G_MIN * Math.abs(d) + (G_MAX - G_MIN) * SIGMA * Math.atan(Math.abs(d) / SIGMA));   // Lage relativ zur Mitte (Integral des Abstands)
+  const fischSkala = (d) => 0.72 + 0.53 / (1 + (d / 0.8) * (d / 0.8));                // Mitte 1,25 → außen 0,72
+  const fischAlpha = (d) => 1 / (1 + 0.45 * d * d);
 
   const radMessen = () => {
     if (!rad || !radPin || !radLeiste) return;
@@ -260,6 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const oben = radPin.querySelector(".inner").offsetHeight + 12;
       listeH = hoehe - oben;
       rad.style.setProperty("--liste-oben", oben + "px");
+      rad.style.setProperty("--liste-h", listeH + "px");
     }
     rad.style.setProperty("--kopf", kopf + "px");
     rad.style.setProperty("--pin-h", hoehe + "px");
@@ -295,12 +315,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (clip !== L.versatz) { L.versatz = clip; radBuehne.style.transform = `translate3d(0, ${clip}px, 0)`; }
       // 2. Die aktive Station wandert dabei von oben in die Mitte des Listenbereichs, danach läuft die Liste nach oben durch
       const fokus = FOKUS_START + (m.listeH / 2 - FOKUS_START) * auf;
-      lage = `translate3d(0, ${(fokus - m.abstand / 2 - mitte * m.abstand).toFixed(1)}px, 0)`;
+      lage = "none";                                              // die Liste selbst bleibt stehen, jede Station wandert einzeln (Fischauge, siehe unten)
+      radPunkte.forEach((li, i) => {
+        const d = i - mitte;
+        const dy = fokus + fischY(d) - (i + 0.5) * m.abstand;     // Zielposition minus natürliche Lage in der Liste
+        const st = `translate3d(0, ${dy.toFixed(1)}px, 0) scale(${fischSkala(d).toFixed(3)})|${fischAlpha(d).toFixed(3)}`;
+        if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }
+      });
     } else {
       lage = `translate3d(${(m.breite / 2 - m.abstand / 2 - mitte * m.abstand).toFixed(1)}px, 0, 0)`;
     }
     if (lage !== L.lage) { L.lage = lage; radLeiste.style.transform = lage; }
-    radPunkte.forEach((li, i) => {
+    if (!m.vertikal) radPunkte.forEach((li, i) => {
       const d = Math.min(1.6, Math.abs(i - mitte));             // Abstand zur aktiven Station in Stationen
       const st = `scale(${(1 - 0.14 * d).toFixed(3)})|${(1 - 0.3 * Math.max(0, d - 0.5)).toFixed(3)}`;
       if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }

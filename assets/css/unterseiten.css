@@ -281,10 +281,7 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .karte .k-wasser { fill: var(--accent); }
 .karte .k-wasser-linie { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
 .karte .k-strassen, .karte .k-detail { fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; }
-.karte .k-detail { opacity: 0; transition: opacity .7s ease; }
-.karte .k-neben { transition: opacity .6s ease; }
-.karte-sektion.bewegt .k-neben { opacity: 0; transition: none; }   /* feine Straßen nur im Stillstand: hält den Zoom flüssig */
-.karte-sektion.fein .k-detail { opacity: 1; }                 /* Nebenstraßen erscheinen im Stillstand, sobald weit genug herangezoomt ist */
+.karte .k-detail { opacity: 0; }   /* die allerkleinsten Straßen blendet main.js scrollgesteuert ein */
 .karte .k-pin-form { fill: #fff; }
 .karte .k-pin-logo { fill: var(--teal); }
 .karte .k-pin-schatten { fill: #000; fill-opacity: .25; }
@@ -302,20 +299,19 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .karte-label h2 { font-size: 26px; line-height: 32px; }
   .karte-label p { font-size: 17px; line-height: 25px; }
 }
-@media (prefers-reduced-motion: reduce) { .karte .k-detail, .karte .k-neben { transition: none; } .karte-sektion.zoom .k-pin-i { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .karte-sektion.zoom .k-pin-i { animation: none; } }
 
 /* Verbindungslinie Kasten → Pin (Pfad setzt main.js) und Google-Maps-Knopf */
 .karte-linie { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.karte-linie-halo, .karte-linie-pfad { fill: none; stroke-linecap: round; stroke-dasharray: var(--len, 1200px); stroke-dashoffset: var(--len, 1200px); transition: stroke-dashoffset .6s ease; }
+.karte-linie-halo, .karte-linie-pfad { fill: none; stroke-linecap: butt; stroke-dasharray: var(--len, 1200px); stroke-dashoffset: var(--len, 1200px); }   /* Länge der Linie setzt main.js, ausgefahren wird beim Scrollen */
 .karte-linie-halo { stroke: var(--teal); stroke-width: 8; }      /* Petrol-Kontur: hebt die Linie von den weißen Straßen ab */
 .karte-linie-pfad { stroke: #fff; stroke-width: 3; }
-.karte-linie-halo-punkt { fill: var(--teal); opacity: 0; transition: opacity .3s ease; }
-.karte-linie-punkt { fill: #fff; opacity: 0; transition: opacity .3s ease; }
-.karte-sektion.zoom .karte-linie-halo, .karte-sektion.zoom .karte-linie-pfad { stroke-dashoffset: 0; transition-delay: .5s; }   /* Linie wird gezeichnet, nachdem der Pin aufgeploppt ist */
-.karte-sektion.zoom .karte-linie-halo-punkt, .karte-sektion.zoom .karte-linie-punkt { opacity: 1; transition-delay: 1s; }
+.karte-linie-halo-punkt { fill: var(--teal); }
+.karte-linie-punkt { fill: #fff; }
+.karte-linie circle { opacity: 0; }
+.karte-sektion.scrolly .karte-label { visibility: hidden; clip-path: inset(0 0 100% 0); }   /* fährt beim Scrollen aus (main.js) */
 .karte-btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; margin-top: 16px; padding: 0 22px; background: var(--white); color: var(--teal); font: 600 17px/1 var(--i); }
 .karte-btn:hover { background: #e9f3f3; }
-@media (prefers-reduced-motion: reduce) { .karte-linie-halo, .karte-linie-pfad, .karte-linie-halo-punkt, .karte-linie-punkt { transition: none; } }
 
 @media (max-width: 560px) {
   .karte-label { padding: 14px 16px 18px; }

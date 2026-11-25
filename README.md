@@ -44,7 +44,7 @@ In `mowo.html`, `trainee-wochenende.html`, `72h-aktion.html`, `aktion.html` und 
 ## Standort-Karte (Über uns)
 
 Die Karte auf `ueber-uns.html` ist ein reines SVG (bleibt auf jeder Zoomstufe scharf): Hintergrund Petrol, Straßen Weiß, Gewässer in der Akzentfarbe (Koralle `#F05B83`), dazu ein Pin mit dem KjG-Logo in Petrol.
-Sie funktioniert als Scrollytelling: Sobald 80 % der Karte sichtbar sind, beginnt der Zoom von Mainz nach Gonsenheim und folgt dem Scrollen (vor und zurück); die Karte bleibt dabei stehen. Erst wenn ganz herangezoomt ist, „ploppt“ der Pin auf (Steuerung in `assets/js/main.js`, Abschnitt „Über uns: Karte“).
+Sie funktioniert als Scrollytelling: Sobald 80 % der Karte sichtbar sind, beginnt der Zoom von Mainz nach Gonsenheim und folgt dem Scrollen (vor und zurück); die Karte bleibt dabei stehen. Erst wenn ganz herangezoomt ist, „ploppt“ der Pin auf; beim Weiterscrollen fährt die waagrechte Linie vom Pin aus und danach der Kasten „Wo Sie uns finden“ (Oberkante auf Höhe der Linie) nach unten aus. Die groben und mittleren Straßen sind immer sichtbar, nur die allerkleinsten werden scrollgesteuert ergänzt (Steuerung in `assets/js/main.js`, Abschnitt „Über uns: Karte“).
 Die eigenständige Datei liegt unter `assets/img/karte-mainz.svg`. Position des Pins (Karteneinheiten): `794, 666` – steht in `main.js` (`GX`, `GY`) und im Pin-Element der Seite.
 Kartendaten: © OpenStreetMap-Mitwirkende, ODbL (steht auf der Karte).
 

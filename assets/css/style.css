@@ -583,12 +583,12 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%);
           mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%); }
 .z-termine.rad.vertikal .z-timeline { display: block; width: auto; left: 0; }
-.z-termine.rad.vertikal .z-timeline::before { left: 32px; right: auto; top: calc(var(--abstand, 190px) / 2); bottom: calc(var(--abstand, 190px) / 2); width: 4px; height: auto; }   /* senkrechte Linie durch die Punkte */
+.z-termine.rad.vertikal .z-timeline::before { left: 32px; right: auto; top: 0; bottom: auto; width: 4px; height: var(--liste-h, 600px); }   /* senkrechte Linie durch die Punkte (Länge = Listenbereich) */
 .z-termine.rad.vertikal .z-timeline li { width: auto; height: var(--abstand, 190px); transform-origin: 34px 50%; }   /* Skalierung um die Linie, Punkte bleiben darauf */
 .z-termine.rad.vertikal .z-timeline .dot { left: 24px; top: calc(50% - 10px); }
-.z-termine.rad.vertikal .z-timeline img { left: 76px; top: calc(50% - 24px); }
-.z-termine.rad.vertikal .z-timeline p { left: 142px; right: 16px; width: auto; margin-left: 0; top: 50%; transform: translateY(-50%);
-  text-align: left; font-size: 19px; line-height: 26px; white-space: normal; }
+.z-termine.rad.vertikal .z-timeline img { left: 62px; top: calc(50% - 24px); }
+.z-termine.rad.vertikal .z-timeline p { left: 120px; right: calc((100% - 34px) * .2 + 12px); width: auto; margin-left: 0; top: 50%; transform: translateY(-50%);
+  text-align: left; font-size: 16px; line-height: 22px; white-space: normal; }   /* in der Mitte wird die Station auf 125 % vergrößert, rechts bleibt dafür Platz */
 
 /* Scrollytelling flüssig halten: eigene Ebenen für die bewegten Teile, Rest der Sektion bleibt unberührt */
 .z-termine.rad .z-termine-pin { contain: layout paint; }

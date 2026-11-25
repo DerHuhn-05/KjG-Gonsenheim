@@ -116,7 +116,7 @@ def tiles(pg, items, ids, start=0):   # start=1, wenn davor schon eine Kachel mi
     for k, (href, plain, h, cls, txt, extra) in enumerate(items):
         rev = " reverse" if (k + start) % 2 else ""   # Desktop: Bild abwechselnd rechts / links
         alt = f"Kachel-Bild {plain}"
-        out.append(tag_eventkachel(f"<h2{extra}>{h}</h2>\n<p>{txt}</p>", f"event-tile {cls}{rev}", href, bildname(pg, k + 2, alt), alt, id=ids[k]))
+        out.append(tag_eventkachel(f"<h2{extra}>{h}</h2>\n<p>{txt}</p>", f"event-tile {cls}{rev}", href, HERO_BILD[href], alt, id=ids[k]))
     return "\n".join(out)
 
 EV = [("gruppenstunde.html", "Gruppenstunde", "Gruppen-<br>stunde", "t1", ev("gruppenstunde"), ""),
@@ -127,7 +127,7 @@ page("events.html", "Unsere Angebote", "events.html", f'''{simple_hero("events",
 {jump(JUMP_EVENTS, "jump-events")}
 
 <div class="events-list">
-{tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", bildname("events", 5, "Kachel-Bild Zela 2027"), "Kachel-Bild Zela 2027", id="zela")}
+{tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Kachel-Bild Zela 2027", id="zela")}
 {tiles("events", EV, ["teaser", "vorbereitungen", "finanzen"], start=1)}
 </div>''')
 
@@ -183,13 +183,13 @@ page("ueber-uns.html", "Über uns", "", f'''{simple_hero("ueber-uns", "Über uns
 
 {KARTE}
 
-{tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", bildname("ueber-uns", 3, "Bild Zeltlager 2027"), "Bild Zeltlager 2027", id="vorbereitungen")}
+{tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Bild Zeltlager 2027", id="vorbereitungen")}
 
 <div class="container">
 {feature("ueber-uns", 4, WER_B[0], absaetze(WER_B[1]), reverse=True, id_="finanzen", cls="h143 tight")}
 </div>
 
-{tag_kachel("<h2>Unser Team</h2>\n<p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>", "tile reverse", "team.html", bildname("ueber-uns", 5, "Bild Unser Team"), "Bild Unser Team")}
+{tag_kachel("<h2>Unser Team</h2>\n<p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>", "tile reverse", "team.html", HERO_BILD["team.html"], "Bild Unser Team")}
 </div>''')
 
 # ===================== Unser Team =====================
@@ -215,7 +215,7 @@ def person(side, abschnitt, i, circle=True):
     return tag_person(inhalt, f"person {side}")
 
 _qd, _qn, _qr = QUOTE_TEAM[0], QUOTE_TEAM[1], QUOTE_TEAM[2]
-QUOTE = tag_zitat(f"<p>{quote_p(_qd)}</p>\n<strong>{_qn}</strong><span>{_qr}</span>", "circle-left", bildname("team", 1, "Foto Lena"), "Foto Lena")
+QUOTE = tag_zitat(f"<p>{quote_p(_qd)}</p>\n<strong>{_qn}</strong><span>{_qr}</span>", "circle-left", bildname("team", 10, "Foto Lena"), "Foto Lena")
 
 page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Team", short=True)}
 

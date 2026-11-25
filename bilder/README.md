@@ -16,19 +16,18 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | Datei | Wo auf der Seite |
 |---|---|
 | `startseite-video.mp4` | Video im Header (MP4, ohne Ton, möglichst < 10 MB) – Dateiname genau so, inkl. .mp4 |
-| `startseite-1.jpg` | Bild Zeltlager 2027 |
-| `startseite-2.jpg` | Bild Gruppenstunde |
-| `startseite-3.jpg` | Bild Monster Wochenende |
-| `startseite-4.jpg` | Bild Trainee Wochenende |
-| `startseite-5.jpg` | Bild Unser Team |
-| `startseite-6.jpg` | Bild 72 Stunden Aktion |
-| `startseite-7.jpg` | Bild Hilfe im Stadtteil |
-| `startseite-8.jpg` | Bild Klamottenspende |
+
+Die Kacheln und Karten (Zela, Team, Angebote, Soziale Aktionen) zeigen automatisch das **Header-Bild der Seite, auf die sie verlinken** – z. B. `zela-1.jpg`, `team-1.jpg`, `mowo-1.jpg` (siehe die Abschnitte der jeweiligen Seiten unten). Dafür gibt es keine eigenen Bilddateien.
 
 ## Zela 2027 (zela-2027.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
+| `zela-zeit-1.jpg` | Foto Zeitraum |
+| `zela-zeit-2.jpg` | Foto Zeltplatz |
+| `zela-zeit-3.jpg` | Foto Alter |
+| `zela-zeit-4.jpg` | Foto Geschwister |
+| `zela-zeit-5.jpg` | Foto Anmeldung |
 | `zela-1.jpg` | Header-Bild Zeltlager |
 | `zela-2.jpg` | Bild Programm |
 | `zela-3.jpg` | Foto Jonas |
@@ -43,19 +42,12 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | Datei | Wo auf der Seite |
 |---|---|
 | `events-1.jpg` | Header-Bild Unsere Angebote |
-| `events-5.jpg` | Kachel-Bild Zela 2027 |
-| `events-2.jpg` | Kachel-Bild Gruppenstunde |
-| `events-3.jpg` | Kachel-Bild MoWo |
-| `events-4.jpg` | Kachel-Bild Trainee-Wochenende |
 
 ### Soziale Aktionen (soziale-aktionen.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
 | `soziale-aktionen-1.jpg` | Header-Bild Soziale Aktionen |
-| `soziale-aktionen-2.jpg` | Kachel-Bild 72h Aktion |
-| `soziale-aktionen-3.jpg` | Kachel-Bild Hilfe im Stadtteil |
-| `soziale-aktionen-4.jpg` | Kachel-Bild Klamottenspende |
 
 ### MoWo (mowo.html)
 
@@ -111,15 +103,13 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 |---|---|
 | `ueber-uns-1.jpg` | Header-Bild Über uns |
 | `ueber-uns-2.jpg` | Bild Die KjG Gonsenheim |
-| `ueber-uns-3.jpg` | Bild Zeltlager 2027 |
 | `ueber-uns-4.jpg` | Bild KjG-Dachverband |
-| `ueber-uns-5.jpg` | Bild Unser Team |
 
 ### Unser Team (team.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
-| `team-1.jpg` | Foto Lena |
+| `team-10.jpg` | Foto Lena |
 | `team-1.jpg` | Header-Bild Unser Team |
 | `team-3.jpg` | Foto Jonas |
 | `team-4.jpg` | Foto Sophie |

@@ -268,7 +268,7 @@ html.menu-offen { overflow: hidden; }
 .z-timeline::before { content: ""; position: absolute; left: calc(var(--abstand, 300px) / 2); right: calc(var(--abstand, 300px) / 2);
   top: 145px; height: 6px; background: var(--white); }
 .z-timeline li { position: relative; flex: none; width: var(--abstand, 300px); height: 158px; }
-.z-timeline img { position: absolute; left: calc(50% - 24px); top: 0; width: 48px; height: 48px; }
+.z-timeline > li > img { position: absolute; left: calc(50% - 24px); top: 0; width: 48px; height: 48px; }   /* Icon der Station */
 .z-timeline p { position: absolute; left: 50%; width: 340px; margin-left: -170px; top: 66.2px; text-align: center; font: 400 22.5px/29px var(--i); white-space: nowrap; }
 .z-timeline .dot { position: absolute; left: calc(50% - 10px); top: 138px; width: 20px; height: 20px; border-radius: 50%; background: var(--white); }
 
@@ -282,8 +282,8 @@ html.menu-offen { overflow: hidden; }
 .z-termine.rad .z-timeline li { transform-origin: 50% 148px; }   /* Skalierung um die Linie, damit die Punkte darauf bleiben */
 .z-termine.rad:not(.vertikal) .z-timeline::before { left: 0; right: auto; width: var(--rad-breite, 100vw); }   /* Linie über die ganze Breite (die Stationen wandern einzeln) */
 @media (min-width: 961px) {   /* Desktop: deutlich mehr Luft zwischen Überschrift und Drehrad */
-  .z-termine.rad .z-termine-buehne { height: 481px; }
-  .z-termine.rad .z-rad { top: 232.5px; }
+  .z-termine.rad .z-termine-buehne { height: 560px; }
+  .z-termine.rad .z-rad { top: 296px; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
@@ -587,8 +587,8 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .z-termine.rad.vertikal .z-timeline::before { left: 32px; right: auto; top: 0; bottom: auto; width: 4px; height: var(--liste-h, 600px); }   /* senkrechte Linie durch die Punkte (Länge = Listenbereich) */
 .z-termine.rad.vertikal .z-timeline li { width: auto; height: var(--abstand, 190px); transform-origin: 34px 50%; }   /* Skalierung um die Linie, Punkte bleiben darauf */
 .z-termine.rad.vertikal .z-timeline .dot { left: 24px; top: calc(50% - 10px); }
-.z-termine.rad.vertikal .z-timeline img { left: 62px; top: calc(50% - 24px); }
-.z-termine.rad.vertikal .z-timeline p { left: 120px; right: calc((100% - 34px) * .2 + 12px); width: auto; margin-left: 0; top: 50%; transform: translateY(-50%);
+.z-termine.rad.vertikal .z-timeline > li > img { left: 138px; top: calc(50% - 44px); width: 36px; height: 36px; }   /* Icon sitzt über dem Text */
+.z-termine.rad.vertikal .z-timeline p { left: 138px; right: calc((100% - 34px) * .2 + 12px); width: auto; margin-left: 0; top: 50%; transform: none;
   text-align: left; font-size: 16px; line-height: 22px; white-space: normal; }   /* in der Mitte wird die Station auf 125 % vergrößert, rechts bleibt dafür Platz */
 
 /* Scrollytelling flüssig halten: eigene Ebenen für die bewegten Teile, Rest der Sektion bleibt unberührt */
@@ -608,3 +608,10 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .z-feature.solo, .z-feature.solo.reverse { grid-template-columns: 1fr; justify-items: center; }
 .z-feature.solo .text, .z-feature.solo.reverse .text { width: max-content; max-width: 100%; padding-left: 0; }
 @media (max-width: 960px) { .z-feature.solo, .z-feature.solo.reverse { justify-items: start; } .z-feature.solo .text { width: auto; } }
+
+/* Zela-Zeitleiste: rundes Foto je Station (wandert mit der Station, wird in der Mitte größer). Nur mit JavaScript-Zeitleiste sichtbar. */
+.z-timeline .zeit-bild { display: none; }
+.z-termine.rad .z-timeline .zeit-bild { display: block; position: absolute; left: calc(50% - 52px); top: -118px; width: 104px; height: 104px;
+  border-radius: 50%; background: var(--grey-tile); box-shadow: 0 0 0 3px rgba(255,255,255,.9); }
+.z-timeline .zeit-bild .ph-label { padding: 12px; font-size: 9px; line-height: 1.2; word-break: break-all; color: rgba(255,255,255,.55); }
+.z-termine.rad.vertikal .z-timeline .zeit-bild { left: 58px; top: calc(50% - 36px); width: 72px; height: 72px; box-shadow: 0 0 0 2px rgba(255,255,255,.9); }

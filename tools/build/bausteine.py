@@ -51,3 +51,11 @@ def tag_hero(titel_html, klasse, bild, bild_alt):
 
 def tag_hero_split(inhalt, klasse, bild, bild_alt):
     return f'<kjg-hero-split{_opt(klasse=klasse, bild=bild, bild_alt=bild_alt)}>\n{inhalt}\n</kjg-hero-split>'
+
+# Kacheln und Karten zeigen das Header-Bild der Seite, auf die sie verlinken (ein Bild, an einer Stelle hochladen)
+HERO_BILD = {
+    "zela-2027.html": "zela-1", "team.html": "team-1", "ueber-uns.html": "ueber-uns-1", "events.html": "events-1",
+    "soziale-aktionen.html": "soziale-aktionen-1", "gruppenstunde.html": "gruppenstunde-1", "mowo.html": "mowo-1",
+    "trainee-wochenende.html": "trainee-wochenende-1", "72h-aktion.html": "72h-aktion-1", "aktion.html": "aktion-1",
+    "klamottenspende.html": "klamottenspende-1",
+}

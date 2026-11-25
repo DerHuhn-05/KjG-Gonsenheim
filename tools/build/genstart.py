@@ -25,7 +25,7 @@ def cards(start, titles, links):
     for k, t_ in enumerate(titles):
         alt = f"Bild {t_}"
         reg(alt, "Image: " + PAIRS[key(normalize(t_))])
-        out.append(tag_karte(f"<h3>{t_}</h3>{card_text(t_)}", links[k], bildname(start + k, alt), alt, LINK_MEHR))
+        out.append(tag_karte(f"<h3>{t_}</h3>{card_text(t_)}", links[k], HERO_BILD[links[k]], alt, LINK_MEHR))
     return "\n".join(out)
 
 JUMP = [  # (Text, Ziel, Position des Pfeils links in px im 1440er-Raster, Zeile) – Texte = tatsächliche Kapitelüberschriften
@@ -72,7 +72,7 @@ html = f'''<!DOCTYPE html>
 
 {jump}
 
-{tag_kachel(f"<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", bildname(1, "Bild Zeltlager 2027"), "Bild Zeltlager 2027", id="zela")}
+{tag_kachel(f"<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Bild Zeltlager 2027", id="zela")}
 
 <section class="cards-section events" id="events">
   <div class="wrap">
@@ -91,7 +91,7 @@ html = f'''<!DOCTYPE html>
   </div>
 </section>
 
-{tag_kachel(f"<h2>Unser Team</h2>\n<p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>", "tile reverse", "team.html", bildname(5, "Bild Unser Team"), "Bild Unser Team", id="team")}
+{tag_kachel(f"<h2>Unser Team</h2>\n<p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>", "tile reverse", "team.html", HERO_BILD["team.html"], "Bild Unser Team", id="team")}
 
 <section class="cards-section social" id="soziale-aktionen">
   <div class="wrap">
@@ -129,6 +129,7 @@ lines = ["# Bilder-Ordner", "",
  "**Tipp:** Bilder auf ca. 1600–2000 px Breite verkleinern (< 500 KB). Das Video als MP4 (H.264) ohne Ton, möglichst unter 10 MB (Cloudflare Pages erlaubt max. 25 MB pro Datei).", "",
  "## Startseite (index.html)", "", "| Datei | Wo auf der Seite |", "|---|---|"]
 lines += [f"| `{n}` | {w} |" for n, w in REG]
+lines += ["", "Die Kacheln und Karten (Zela, Team, Angebote, Soziale Aktionen) zeigen automatisch das **Header-Bild der Seite, auf die sie verlinken** – z. B. `zela-1.jpg`, `team-1.jpg`, `mowo-1.jpg` (siehe die Abschnitte der jeweiligen Seiten unten). Dafür gibt es keine eigenen Bilddateien."]
 os.makedirs(os.path.join(root, "bilder"), exist_ok=True)
 open(os.path.join(root, "bilder", "README.md"), "w").write("\n".join(lines) + "\n")
 print("ok", len(REG))

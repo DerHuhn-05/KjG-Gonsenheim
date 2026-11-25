@@ -33,7 +33,6 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | `zela-2.jpg` | Bild Programm |
 | `zela-3.jpg` | Foto Jonas |
 | `zela-4.jpg` | Bild Zusammen lohnt’s sich! |
-| `zela-5.jpg` | Bild Vortreffen |
 | `zela-6.jpg` | Foto Sophie |
 | `zela-7.jpg` | Bild Du bist schon 14 Jahre? |
 

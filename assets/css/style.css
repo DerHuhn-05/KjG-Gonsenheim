@@ -603,3 +603,8 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .z-termine.rad:not(.vertikal) .z-rad::after { right: 0; top: -40px; bottom: -40px; width: 22%; background: linear-gradient(270deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
 .z-termine.rad.vertikal .z-rad::before { left: 0; right: 0; top: 0; height: 60px; background: linear-gradient(180deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
 .z-termine.rad.vertikal .z-rad::after { left: 0; right: 0; bottom: 0; height: 110px; background: linear-gradient(0deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
+
+/* Zela: Abschnitt ohne Bild („Vortreffen“) – Überschrift und Text bilden eine Gruppe, die mittig steht; die Überschrift ist in der Gruppe linksbündig */
+.z-feature.solo, .z-feature.solo.reverse { grid-template-columns: 1fr; justify-items: center; }
+.z-feature.solo .text, .z-feature.solo.reverse .text { width: max-content; max-width: 100%; padding-left: 0; }
+@media (max-width: 960px) { .z-feature.solo, .z-feature.solo.reverse { justify-items: start; } .z-feature.solo .text { width: auto; } }

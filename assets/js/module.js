@@ -17,7 +17,7 @@
      kjg-kachel (klasse, id, href, link, bild, bild-alt)        Petrol-Kachel mit Bild; Kinder: h2, p
      kjg-eventkachel (klasse, id, href, link, bild, bild-alt)   Angebots-Kachel; Kinder: h2, p
      kjg-karte (href, link, bild, bild-alt)                      Karte (Startseite); Kinder: h3, p …
-     kjg-abschnitt (klasse, id, bild, bild-alt)                 Text + Bild; Kinder: h2, p …
+     kjg-abschnitt (klasse, id, bild, bild-alt)                 Text + Bild (ohne bild: nur Text); Kinder: h2, p …
      kjg-person (klasse, bild, bild-alt)                        Team-Person; Kinder: h3, .rolle, p …
      kjg-zitat (klasse, bild, bild-alt)                         Zitat; Kinder: p, strong, span
      kjg-frage                          FAQ-Eintrag; Kinder: span (Frage), p (Antwort)
@@ -214,7 +214,7 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
   function abschnitt(el) {   // Text mit Bild (Zela, Detailseiten, Über uns)
     const h2 = el.querySelector(":scope > h2");
     const absaetze = [...el.querySelectorAll(":scope > p")];
-    const f = vorlage(`<section class="${esc(attr(el, "klasse", "feature"))}"${idAttr(el)}><div class="text"><div class="body"></div></div>${bildTag(el)}</section>`);
+    const f = vorlage(`<section class="${esc(attr(el, "klasse", "feature"))}"${idAttr(el)}><div class="text"><div class="body"></div></div>${el.hasAttribute("bild") ? bildTag(el) : ""}</section>`);
     f.querySelector(".body").append(...absaetze);
     f.querySelector(".text").prepend(h2);
     return f;

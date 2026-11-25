@@ -29,6 +29,8 @@ def feature(id_, title, paras, n, reverse=False, cls=""):
     inhalt = f"<h2>{title}</h2>\n" + "\n".join(f"<p>{lines(*p)}</p>" for p in paras)
     alt = f"Bild {re.sub('<[^>]+>','',title)}"
     klasse = "z-feature" + (" reverse" if reverse else "") + (f" {cls}" if cls else "")
+    if n is None:      # Abschnitt ohne Bild: Überschrift und Text stehen als Gruppe mittig (Überschrift linksbündig in der Gruppe)
+        return tag_abschnitt(inhalt, klasse + " solo", id=id_)
     return tag_abschnitt(inhalt, klasse, bildname(n, alt), alt, id=id_)
 
 def quote(side, n, q):
@@ -112,7 +114,7 @@ html = f'''<!DOCTYPE html>
 
 {feature("zusammen", "Zusammen lohnt’s sich!", ZUSAMMEN, 4, cls="h128")}
 
-{feature("vortreffen", "Vortreffen", PROGRAMM, 5, reverse=True, cls="tight h143")}
+{feature("vortreffen", "Vortreffen", PROGRAMM, None, reverse=True, cls="tight h143")}
 
 {quote("circle-right", 6, QUOTE_ZELA[1])}
 

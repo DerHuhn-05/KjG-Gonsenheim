@@ -34,7 +34,7 @@ def tag_eventkachel(inhalt, klasse, href, bild, bild_alt, link="genauere Infos",
 def tag_karte(inhalt, href, bild, bild_alt, link="Weitere Informationen"):
     return f'<kjg-karte{_opt(href=href, link=link, bild=bild, bild_alt=bild_alt)}>\n{inhalt}\n</kjg-karte>'
 
-def tag_abschnitt(inhalt, klasse, bild, bild_alt, id=None):
+def tag_abschnitt(inhalt, klasse, bild=None, bild_alt=None, id=None):
     return f'<kjg-abschnitt{_opt(klasse=klasse, id=id, bild=bild, bild_alt=bild_alt)}>\n{inhalt}\n</kjg-abschnitt>'
 
 def tag_person(inhalt, klasse, bild=None, bild_alt=None):

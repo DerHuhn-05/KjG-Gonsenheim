@@ -131,8 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let radMass = null;
 
   const STREIFEN_V = 400;     // Höhe des Streifens mobil (vertikale Variante, passt zu --streifen im CSS)
-  const LI_H = 140;           // Höhe einer Station mobil
-  const FOKUS_START = 100;    // mobil: Lage der aktiven Station im Streifen (von oben im Listenbereich)
+  const LI_H = 190;           // Höhe (= Abstand) einer Station mobil
+  const FOKUS_START = 78;     // mobil: Lage der aktiven Station im Streifen (von oben im Listenbereich)
 
   const radMessen = () => {
     if (!rad || !radPin || !radLeiste) return;
@@ -158,7 +158,8 @@ document.addEventListener("DOMContentLoaded", () => {
     rad.style.setProperty("--pin-h", hoehe + "px");
     rad.style.setProperty("--abstand", abstand + "px");
     rad.style.marginTop = (STREIFEN - hoehe) / 2 + "px";        // Streifen sitzt im Ablauf wie bisher
-    rad.style.height = hoehe + aufziehen + drehen + "px";
+    rad.style.marginBottom = (STREIFEN - hoehe) / 2 + "px";     // … und endet auch wieder dort (Streifen schließt am Ende)
+    rad.style.height = hoehe + 2 * aufziehen + drehen + "px";   // öffnen + durchdrehen + schließen
     radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen, vertikal, listeH };
   };
 
@@ -166,7 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!radMass) return;
     const m = radMass;
     const weg = m.kopf - rad.getBoundingClientRect().top;      // Scroll-Strecke seit dem Andocken
-    const auf = m.aufziehen > 0 ? Math.min(1, Math.max(0, weg / m.aufziehen)) : 1;
+    const oeffnen = m.aufziehen > 0 ? Math.min(1, Math.max(0, weg / m.aufziehen)) : 1;
+    const schliessen = m.aufziehen > 0 ? Math.min(1, Math.max(0, (weg - m.aufziehen - m.drehen) / m.aufziehen)) : 0;
+    const auf = oeffnen * (1 - schliessen);                     // 0 = Streifen, 1 = volle Höhe (Hin- und Rückweg)
     rad.style.setProperty("--clip", ((1 - auf) * (m.hoehe - STREIFEN)) / 2 + "px");
     const dreh = Math.min(1, Math.max(0, (weg - m.aufziehen) / m.drehen));
     const mitte = m.von + dreh * (m.bis - m.von);               // Index der aktiven Station

@@ -281,7 +281,6 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .karte .k-wasser { fill: var(--accent); }
 .karte .k-wasser-linie { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
 .karte .k-strassen, .karte .k-detail { fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; }
-.karte .k-grenze { fill: none; stroke: #fff; stroke-opacity: .35; stroke-width: 2; }
 .karte .k-detail { opacity: 0; transition: opacity .7s ease; }
 .karte .k-neben { transition: opacity .6s ease; }
 .karte-sektion.bewegt .k-neben { opacity: 0; transition: none; }   /* feine Straßen nur im Stillstand: hält den Zoom flüssig */
@@ -317,3 +316,10 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .karte-btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; margin-top: 16px; padding: 0 22px; background: var(--white); color: var(--teal); font: 600 17px/1 var(--i); }
 .karte-btn:hover { background: #e9f3f3; }
 @media (prefers-reduced-motion: reduce) { .karte-linie-halo, .karte-linie-pfad, .karte-linie-halo-punkt, .karte-linie-punkt { transition: none; } }
+
+@media (max-width: 560px) {
+  .karte-label { padding: 14px 16px 18px; }
+  .karte-label h2 { font-size: 22px; line-height: 28px; }
+  .karte-label p { font-size: 16px; line-height: 23px; }
+  .karte-btn { height: 40px; margin-top: 12px; padding: 0 14px; font-size: 15px; }
+}

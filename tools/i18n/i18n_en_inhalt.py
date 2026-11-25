@@ -1,6 +1,7 @@
 """Englische Texte der redaktionellen Inhalte (Entwurf für Eltern). Wird in i18n_en.py eingemischt."""
 EN_INHALT = {
 "(öffnet in neuem Tab)": "(opens in a new tab)",
+"55124 Mainz-Gonsenheim": "55124 Mainz-Gonsenheim",
 "72 Stunden Aktion": "72-Hour Project",
 "72-Stunden-Aktion": "72-Hour Project",
 "Ab welchem Alter können Kinder mitmachen?": "From what age can children take part?",
@@ -114,6 +115,7 @@ EN_INHALT = {
 "Ob Nachbarschaftshilfe, Aufräumaktion oder Unterstützung bei Gemeindefesten: Wir packen dort an, wo Hilfe gebraucht wird.": "Whether it is helping neighbours, tidying up or lending a hand at parish festivals, we pitch in where help is needed.",
 "Ob Nachbarschaftshilfe, eine Aufräumaktion im Park oder Unterstützung bei Gemeindefesten: Wir suchen uns gemeinsam mit den Kindern Aufgaben, bei denen Hilfe gebraucht wird.": "Whether it is helping neighbours, tidying up the park or supporting parish festivals, we choose tasks together with the children where help is needed.",
 "Organisation vor Ort": "On-site organisation",
+"Pfarrer-Grimm-Strasse 1": "Pfarrer-Grimm-Strasse 1",
 "Pfarrer-Grimm-Strasse 1 55124 Mainz-Gonsenheim": "Pfarrer-Grimm-Strasse 1, 55124 Mainz-Gonsenheim",
 "Pfarrleitung": "Parish liaison",
 "Planung und Termine": "Planning and dates",

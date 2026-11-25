@@ -135,25 +135,33 @@ document.addEventListener("DOMContentLoaded", () => {
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
       if (!zoom) return { cx: MZ_W / 2, cy: MZ_H / 2, s: Math.max(MZ_H / H, MZ_W / W) * 1.04 };
       const s = Math.max(GH / H, 1000 / W);
-      return { cx: GX, cy: GY - 0.07 * H * s, s };                    // Pin etwas unterhalb der Mitte, damit der Kopf Platz hat
+      const fx = W < 560 ? 0.76 : W < 960 ? 0.62 : 0.5;               // Pin liegt weiter rechts, damit links Platz für den Kasten bleibt (waagrechte Verbindungslinie)
+      return { cx: GX + (0.5 - fx) * W * s, cy: GY - 0.07 * H * s, s };   // Pin etwas unterhalb der Mitte, damit der Kopf Platz hat
     };
     const setzen = (c) => {
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
       svg.setAttribute("viewBox", `${(c.cx - W * c.s / 2).toFixed(2)} ${(c.cy - H * c.s / 2).toFixed(2)} ${(W * c.s).toFixed(2)} ${(H * c.s).toFixed(2)}`);
       pin.setAttribute("transform", `translate(${GX} ${GY}) scale(${c.s.toFixed(4)})`);   // Pin bleibt in Bildschirmgröße
     };
-    // Verbindungslinie vom Kasten zur Pin-Spitze (Pin-Position im ganz gezoomten Zustand, in Bildschirmkoordinaten der Bühne)
+    // Kasten auf Höhe des Pins setzen und waagrechte Verbindungslinie von seiner rechten Kante zur Pin-Spitze ziehen
+    // (Pin-Position im ganz gezoomten Zustand, in Bildschirmkoordinaten der Bühne)
     const linieSetzen = () => {
       if (!linie || !kLabel) return;
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1, z = ansicht(true);
       const px = W / 2 + (GX - z.cx) / z.s, py = H / 2 + (GY - z.cy) / z.s;
-      const b = buehne.getBoundingClientRect(), l = kLabel.getBoundingClientRect();
-      const lo = l.top - b.top, lli = l.left - b.left, lre = l.right - b.left;
-      const sx = Math.min(lre - 24, Math.max(lli + 24, px)), sy = lo;     // Start: Oberkante des Kastens, möglichst senkrecht unter dem Pin
+      kLabel.style.maxWidth = "";
+      const b = buehne.getBoundingClientRect();
+      const links = kLabel.getBoundingClientRect().left - b.left;
+      kLabel.style.maxWidth = Math.max(190, Math.min(W - 32, px - 44 - links)) + "px";      // links vom Pin bleibt Platz für die Linie
+      const hoehe = kLabel.offsetHeight;
+      kLabel.style.top = Math.max(8, Math.min(H - hoehe - 8, py - hoehe / 2)) + "px";       // Mitte des Kastens = Höhe der Pin-Spitze
+      kLabel.style.bottom = "auto";
+      const l = kLabel.getBoundingClientRect();
+      const sx = l.right - b.left, sy = py;
       linie.setAttribute("viewBox", `0 0 ${W} ${H}`);
       const d = `M${sx.toFixed(1)} ${sy.toFixed(1)}L${px.toFixed(1)} ${py.toFixed(1)}`;
       linie.querySelectorAll("path").forEach((pf) => pf.setAttribute("d", d));          // Kontur und weiße Linie
-      linie.style.setProperty("--len", Math.ceil(Math.hypot(px - sx, py - sy) + 4) + "px");   // Länge für die Zeichen-Animation
+      linie.style.setProperty("--len", Math.ceil(Math.abs(px - sx) + 4) + "px");        // Länge für die Zeichen-Animation
       linie.querySelectorAll("circle").forEach((c) => { c.setAttribute("cx", px.toFixed(1)); c.setAttribute("cy", py.toFixed(1)); });
     };
     const zwischen = (von, ziel, p) => {

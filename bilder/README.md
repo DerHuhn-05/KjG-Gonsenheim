@@ -106,15 +106,15 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | `trainee-wochenende-3.jpg` | Bild Gut zu wissen |
 | `trainee-wochenende-1.jpg` | Header-Bild Trainee-Wochenende |
 
-### Wer sind wir? (wer-sind-wir.html)
+### Über uns (ueber-uns.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
-| `wer-sind-wir-1.jpg` | Header-Bild KjG-Gonsenheim |
-| `wer-sind-wir-2.jpg` | Bild Wer wir sind |
-| `wer-sind-wir-3.jpg` | Bild Zeltlager 2027 |
-| `wer-sind-wir-4.jpg` | Bild KjG-Dachverband |
-| `wer-sind-wir-5.jpg` | Bild Unser Team |
+| `ueber-uns-1.jpg` | Header-Bild Über uns |
+| `ueber-uns-2.jpg` | Bild Wer wir sind |
+| `ueber-uns-3.jpg` | Bild Zeltlager 2027 |
+| `ueber-uns-4.jpg` | Bild KjG-Dachverband |
+| `ueber-uns-5.jpg` | Bild Unser Team |
 
 ### Unser Team (team.html)
 

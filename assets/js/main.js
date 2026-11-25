@@ -117,6 +117,60 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ---------------------------------------------------------------
+  // Über uns: Karte – zoomt beim Erscheinen von Mainz nach Gonsenheim.
+  // Es wird der viewBox des SVG animiert (nicht per CSS skaliert), damit alles auf jeder Stufe gestochen scharf bleibt.
+  // ---------------------------------------------------------------
+  const karteSek = document.querySelector(".karte-sektion");
+  if (karteSek) {
+    const svg = karteSek.querySelector("svg.karte");
+    const pin = svg.querySelector(".k-pin");
+    const MZ_W = 2400, MZ_H = 2607, GX = 794, GY = 666, GH = 835;   // Gesamtkarte, Standort, sichtbare Höhe beim Zoom (Karteneinheiten)
+    const ansicht = (zoom) => {
+      const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
+      if (!zoom) return { cx: MZ_W / 2, cy: MZ_H / 2, s: Math.max(MZ_H / H, MZ_W / W) * 1.04 };
+      const s = Math.max(GH / H, 1000 / W);
+      return { cx: GX, cy: GY - 0.07 * H * s, s };                    // Pin etwas unterhalb der Mitte, damit der Kopf Platz hat
+    };
+    const setzen = (c) => {
+      const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
+      svg.setAttribute("viewBox", `${(c.cx - W * c.s / 2).toFixed(2)} ${(c.cy - H * c.s / 2).toFixed(2)} ${(W * c.s).toFixed(2)} ${(H * c.s).toFixed(2)}`);
+      pin.setAttribute("transform", `translate(${GX} ${GY}) scale(${c.s.toFixed(4)})`);   // Pin bleibt in Bildschirmgröße
+    };
+    let zustand = "uebersicht", lauf = 0;
+    const zoomen = (nach) => {
+      const id = ++lauf;
+      karteSek.classList.remove("fein", "bewegt");
+      const von = zustand === "uebersicht" && nach === "zoom" ? ansicht(false) : ansicht(nach !== "zoom");
+      const ziel = ansicht(nach === "zoom");
+      zustand = nach;
+      if (nach === "zoom") karteSek.classList.add("zoom"); else karteSek.classList.remove("zoom");
+      if (ruhig || nach !== "zoom") { setzen(ziel); if (nach === "zoom") karteSek.classList.add("fein"); return; }
+      karteSek.classList.add("bewegt");
+      const t0 = performance.now(), DAUER = 2200;
+      const schritt = (jetzt) => {
+        if (id !== lauf) return;
+        const t = Math.min(1, (jetzt - t0) / DAUER);
+        const e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;            // sanft an- und auslaufend
+        const s = Math.exp(Math.log(von.s) + (Math.log(ziel.s) - Math.log(von.s)) * e);  // Zoom exponentiell (gleichmäßig wirkend)
+        const u = (1 / s - 1 / von.s) / (1 / ziel.s - 1 / von.s);                         // Mittelpunkt wandert passend zum Zoom
+        setzen({ cx: von.cx + (ziel.cx - von.cx) * u, cy: von.cy + (ziel.cy - von.cy) * u, s });
+        if (t < 1) requestAnimationFrame(schritt); else { karteSek.classList.remove("bewegt"); karteSek.classList.add("fein"); }
+      };
+      requestAnimationFrame(schritt);
+    };
+    setzen(ansicht(false));
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((e) => {
+        const r = e[0].intersectionRatio;
+        if (r >= 0.55 && zustand !== "zoom") zoomen("zoom");
+        else if (r < 0.05 && zustand === "zoom") zoomen("uebersicht");   // außer Sicht: zurück zur Übersicht, damit es beim nächsten Mal wieder zoomt
+      }, { threshold: [0, 0.05, 0.55] }).observe(karteSek);
+    } else { zustand = "zoom"; setzen(ansicht(true)); karteSek.classList.add("zoom", "fein"); }
+    let kb = window.innerWidth;
+    window.addEventListener("resize", () => { if (window.innerWidth !== kb) { kb = window.innerWidth; setzen(ansicht(zustand === "zoom")); } });
+  }
+
+  // ---------------------------------------------------------------
   // Zela 2027: Termine als Drehrad
   //  1. Petrol-Streifen bleibt in der Mitte stehen und zieht sich auf volle Höhe auf
   //  2. dann drehen die Stationen seitlich durch (Desktop: immer drei sichtbar)

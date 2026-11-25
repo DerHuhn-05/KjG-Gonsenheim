@@ -15,7 +15,7 @@ Startseite als statisches HTML/CSS (kein Build-Schritt), 1:1 nach dem Figma-Entw
 | `soziale-aktionen.html` | Soziale Aktionen (Übersicht) |
 | `72h-aktion.html` · `aktion.html` (Hilfe im Stadtteil) · `klamottenspende.html` | Detailseiten Soziale Aktionen |
 | `team.html` | Unser Team |
-| `wer-sind-wir.html` | Wer sind wir? |
+| `ueber-uns.html` | Über uns (früher „Wer sind wir?“), mit Standort-Karte |
 | `faq.html` | Häufig gestellte Fragen |
 | `impressum.html` · `datenschutz.html` | Impressum und Datenschutz (Muster mit gelb markierten Platzhaltern) |
 
@@ -39,3 +39,11 @@ Framework preset: **None** · Build command: **leer** · Build output directory:
 ## Anmelde-Links
 Zela 2027 (Startseite und `zela-2027.html`) führt auf das Google-Formular und öffnet es in einem neuen Tab.
 In `mowo.html`, `trainee-wochenende.html`, `72h-aktion.html`, `aktion.html` und `klamottenspende.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.
+
+
+## Standort-Karte (Über uns)
+
+Die Karte auf `ueber-uns.html` ist ein reines SVG (bleibt auf jeder Zoomstufe scharf): Hintergrund Petrol, Straßen Weiß, Gewässer in der Akzentfarbe (Koralle `#F05B83`), dazu ein Pin mit dem KjG-Logo in Petrol.
+Beim Erscheinen zoomt sie von Mainz nach Gonsenheim (Steuerung in `assets/js/main.js`, Abschnitt „Über uns: Karte“).
+Die eigenständige Datei liegt unter `assets/img/karte-mainz.svg`. Position des Pins (Karteneinheiten): `794, 666` – steht in `main.js` (`GX`, `GY`) und im Pin-Element der Seite.
+Kartendaten: © OpenStreetMap-Mitwirkende, ODbL (steht auf der Karte).

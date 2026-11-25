@@ -271,3 +271,33 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .person .rolle + p { margin-top: 18px; }
 .sub .person p + p { margin-top: 14px; }
 @media (max-width: 960px) { .sub .person .rolle { order: 1; font-size: 18px; margin-top: -8px; } .sub .person p + p { margin-top: 12px; } }
+
+/* ---------- Über uns: Standort-Karte (SVG, Zoom von Mainz nach Gonsenheim, Steuerung in main.js) ---------- */
+.sub .karte-sektion { background: var(--teal); color: var(--white); }
+.karte-buehne { position: relative; height: clamp(520px, 90vh, 880px); overflow: hidden; }
+.karte { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.karte .k-wasser { fill: var(--accent); }
+.karte .k-wasser-linie { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
+.karte .k-strassen, .karte .k-detail { fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; }
+.karte .k-grenze { fill: none; stroke: #fff; stroke-opacity: .35; stroke-width: 2; }
+.karte .k-detail { opacity: 0; transition: opacity .7s ease; }
+.karte .k-neben { transition: opacity .6s ease; }
+.karte-sektion.bewegt .k-neben { opacity: 0; transition: none; }   /* feine Straßen nur im Stillstand: hält den Zoom flüssig */
+.karte-sektion.fein .k-detail { opacity: 1; }                 /* Nebenstraßen erscheinen, sobald herangezoomt ist */
+.karte .k-pin-form { fill: #fff; }
+.karte .k-pin-logo { fill: var(--teal); }
+.karte .k-pin-schatten { fill: #000; fill-opacity: .25; }
+.karte-sektion.zoom .k-pin-i { animation: pin-huepf .7s cubic-bezier(.3, 1.5, .5, 1) both; }
+@keyframes pin-huepf { from { transform: translateY(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
+.karte-label { position: absolute; left: max(16px, calc((100% - 1240px) / 2)); bottom: 40px; max-width: calc(100% - 32px); padding: 20px 26px; background: var(--teal); color: var(--white); }
+.karte-label h2 { margin: 0; color: var(--white); font: 800 34px/40px var(--i); }
+.karte-label p { margin: 8px 0 0; font: 400 19px/28px var(--o); white-space: normal; }
+.karte-label br { display: inline; }
+.karte-quelle { position: absolute; right: 16px; bottom: 12px; margin: 0; padding: 3px 8px; background: var(--teal); font: 400 12px/18px var(--i); }
+@media (max-width: 960px) {
+  .karte-buehne { height: clamp(460px, 78vh, 700px); }
+  .karte-label { bottom: 44px; padding: 16px 20px; }
+  .karte-label h2 { font-size: 26px; line-height: 32px; }
+  .karte-label p { font-size: 17px; line-height: 25px; }
+}
+@media (prefers-reduced-motion: reduce) { .karte .k-detail, .karte .k-neben { transition: none; } .karte-sektion.zoom .k-pin-i { animation: none; } }

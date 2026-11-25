@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const FOKUS_START = 78;     // mobil: Lage der aktiven Station im Streifen (von oben im Listenbereich)
   // mobil: „Fischaugen“-Effekt – je näher eine Station der Mitte kommt, desto größer wird sie und desto mehr Abstand hat sie zu den Nachbarn
   const G_MIN = 118, G_MAX = 290, SIGMA = 0.85;                // Abstand zwischen zwei Stationen: außen G_MIN px, in der Mitte G_MAX px
-  const fischY = (d) => Math.sign(d) * (G_MIN * Math.abs(d) + (G_MAX - G_MIN) * SIGMA * Math.atan(Math.abs(d) / SIGMA));   // Lage relativ zur Mitte (Integral des Abstands)
+  const fischPos = (d, gmin, gmax) => Math.sign(d) * (gmin * Math.abs(d) + (gmax - gmin) * SIGMA * Math.atan(Math.abs(d) / SIGMA));   // Lage relativ zur Mitte (Integral des Abstands)
   const fischSkala = (d) => 0.72 + 0.53 / (1 + (d / 0.8) * (d / 0.8));                // Mitte 1,25 → außen 0,72
   const fischAlpha = (d) => 1 / (1 + 0.45 * d * d);
 
@@ -280,6 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
       rad.style.setProperty("--liste-oben", oben + "px");
       rad.style.setProperty("--liste-h", listeH + "px");
     }
+    rad.style.setProperty("--rad-breite", breite + "px");
     rad.style.setProperty("--kopf", kopf + "px");
     rad.style.setProperty("--pin-h", hoehe + "px");
     rad.style.setProperty("--abstand", abstand + "px");
@@ -317,19 +318,21 @@ document.addEventListener("DOMContentLoaded", () => {
       lage = "none";                                              // die Liste selbst bleibt stehen, jede Station wandert einzeln (Fischauge, siehe unten)
       radPunkte.forEach((li, i) => {
         const d = i - mitte;
-        const dy = fokus + fischY(d) - (i + 0.5) * m.abstand;     // Zielposition minus natürliche Lage in der Liste
+        const dy = fokus + fischPos(d, G_MIN, G_MAX) - (i + 0.5) * m.abstand;     // Zielposition minus natürliche Lage in der Liste
         const st = `translate3d(0, ${dy.toFixed(1)}px, 0) scale(${fischSkala(d).toFixed(3)})|${fischAlpha(d).toFixed(3)}`;
         if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }
       });
     } else {
-      lage = `translate3d(${(m.breite / 2 - m.abstand / 2 - mitte * m.abstand).toFixed(1)}px, 0, 0)`;
+      // Desktop: dasselbe Fischauge waagrecht – die mittlere Station ist am größten und hat den größten Abstand zu den Nachbarn
+      lage = "none";
+      radPunkte.forEach((li, i) => {
+        const d = i - mitte;
+        const dx = m.breite / 2 + fischPos(d, 0.6 * m.abstand, 1.2 * m.abstand) - (i + 0.5) * m.abstand;
+        const st = `translate3d(${dx.toFixed(1)}px, 0, 0) scale(${fischSkala(d).toFixed(3)})|${fischAlpha(d).toFixed(3)}`;
+        if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }
+      });
     }
     if (lage !== L.lage) { L.lage = lage; radLeiste.style.transform = lage; }
-    if (!m.vertikal) radPunkte.forEach((li, i) => {
-      const d = Math.min(1.6, Math.abs(i - mitte));             // Abstand zur aktiven Station in Stationen
-      const st = `scale(${(1 - 0.14 * d).toFixed(3)})|${(1 - 0.3 * Math.max(0, d - 0.5)).toFixed(3)}`;
-      if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }
-    });
   };
 
   // ---------------------------------------------------------------

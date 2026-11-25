@@ -282,13 +282,13 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .karte .k-wasser-linie { fill: none; stroke: var(--accent); stroke-linecap: round; stroke-linejoin: round; }
 .karte .k-strassen, .karte .k-detail { fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; }
 .karte .k-detail { opacity: 0; }   /* die allerkleinsten Straßen blendet main.js scrollgesteuert ein */
-.karte .k-pin-form { fill: #fff; }
+.karte .k-pin-form { fill: var(--accent); }
 .karte .k-pin-logo { fill: var(--teal); }
 .karte .k-pin-schatten { fill: #000; fill-opacity: .25; }
 .karte-sektion.scrolly .k-pin-i { opacity: 0; }                  /* Pin erscheint erst, wenn herangezoomt ist … */
 .karte-sektion.zoom .k-pin-i { animation: pin-huepf .7s cubic-bezier(.3, 1.5, .5, 1) both; }   /* … und „ploppt“ dann auf */
 @keyframes pin-huepf { from { transform: translateY(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
-.karte-label { position: absolute; z-index: 3; left: max(16px, calc((100% - 1240px) / 2)); bottom: 40px; max-width: calc(100% - 32px); padding: 20px 26px 24px; background: var(--teal); color: var(--white); border: 2px solid var(--white); }
+.karte-label { position: absolute; z-index: 3; left: max(16px, calc((100% - 1240px) / 2)); bottom: 40px; max-width: calc(100% - 32px); padding: 20px 26px 24px; background: var(--teal); color: var(--white); border: 3px solid var(--accent); }   /* Rahmen in Pink, gleich dick wie die Linie – beides geht ineinander über */
 .karte-label h2 { margin: 0; color: var(--white); font: 800 34px/40px var(--i); }
 .karte-label p { margin: 8px 0 0; font: 400 19px/28px var(--o); white-space: normal; }
 .karte-label br { display: inline; }
@@ -305,9 +305,9 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .karte-linie { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
 .karte-linie-halo, .karte-linie-pfad { fill: none; stroke-linecap: butt; stroke-dasharray: var(--len, 1200px); stroke-dashoffset: var(--len, 1200px); }   /* Länge der Linie setzt main.js, ausgefahren wird beim Scrollen */
 .karte-linie-halo { stroke: var(--teal); stroke-width: 8; }      /* Petrol-Kontur: hebt die Linie von den weißen Straßen ab */
-.karte-linie-pfad { stroke: #fff; stroke-width: 3; }
+.karte-linie-pfad { stroke: var(--accent); stroke-width: 3; }
 .karte-linie-halo-punkt { fill: var(--teal); }
-.karte-linie-punkt { fill: #fff; }
+.karte-linie-punkt { fill: var(--accent); }
 .karte-linie circle { opacity: 0; }
 .karte-sektion.scrolly .karte-label { visibility: hidden; clip-path: inset(0 0 100% 0); }   /* fährt beim Scrollen aus (main.js) */
 .karte-btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; margin-top: 16px; padding: 0 22px; background: var(--white); color: var(--teal); font: 600 17px/1 var(--i); }

@@ -156,9 +156,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const links = kLabel.getBoundingClientRect().left - b.left;
       kLabel.style.maxWidth = Math.max(190, Math.min(W - 32, px - 44 - links)) + "px";      // links vom Pin bleibt Platz für die Linie
       const hoehe = kLabel.offsetHeight;
-      kLabel.style.top = Math.max(8, Math.min(H - hoehe - 8, py)) + "px";                    // Oberkante des Kastens = Höhe der Pin-Spitze
+      const rahmen = parseFloat(getComputedStyle(kLabel).borderTopWidth) || 0;
+      kLabel.style.top = Math.max(8, Math.min(H - hoehe - 8, py - rahmen / 2)) + "px";       // Mitte des oberen Rahmens = Mitte der Linie (Höhe der Pin-Spitze)
       kLabel.style.bottom = "auto";
-      const sx = kLabel.getBoundingClientRect().right - b.left;
+      const sx = kLabel.getBoundingClientRect().right - b.left - rahmen / 2;                // Linie endet in der Mitte der Rahmenecke → beides geht ineinander über
       linie.setAttribute("viewBox", `0 0 ${W} ${H}`);
       const d = `M${px.toFixed(1)} ${py.toFixed(1)}L${sx.toFixed(1)} ${py.toFixed(1)}`;      // von der Pin-Spitze nach links bis zur Kastenecke
       linie.querySelectorAll("path").forEach((pf) => pf.setAttribute("d", d));          // Kontur und weiße Linie

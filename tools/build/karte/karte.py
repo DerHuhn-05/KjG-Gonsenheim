@@ -116,7 +116,7 @@ open(os.path.join(HIER, "karte_body.svgpart"), "w").write(KOERPER)
 STIL = (
     "<style>.k-bg{fill:#007576}.k-wasser{fill:#F05B83}.k-wasser-linie{fill:none;stroke:#F05B83;stroke-linecap:round;stroke-linejoin:round}"
     ".k-strassen,.k-detail{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round}"
-    ".k-pin-form{fill:#fff}.k-pin-logo{fill:#007576}.k-pin-schatten{fill:#000;fill-opacity:.25}</style>"
+    ".k-pin-form{fill:#F05B83}.k-pin-logo{fill:#007576}.k-pin-schatten{fill:#000;fill-opacity:.25}</style>"
 )
 svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 2607" role="img" aria-label="Karte von Mainz mit Gonsenheim">'
        "<title>Mainz – Straßen und Gewässer (© OpenStreetMap-Mitwirkende, ODbL)</title>" + STIL +

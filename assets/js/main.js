@@ -217,16 +217,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const zahlen = [...document.querySelectorAll(".stats .num")];
   if (zahlen.length && !ruhig) {
     const sprache = document.documentElement.lang === "en" ? "en-US" : "de-DE";
-    const DAUER = 1800; // Millisekunden
+    const DAUER = 2400;    // Gesamtdauer in Millisekunden
+    const LETZTER = 400;   // so lange steht der vorletzte Wert, bevor die Zahl auf den Endwert umschaltet (0,4 s)
     const hochzaehlen = (el) => {
       const text = el.textContent.trim();
       const ziel = parseInt(text.replace(/[.,\s]/g, ""), 10);
       if (!Number.isFinite(ziel)) return;
       const format = new Intl.NumberFormat(sprache, { useGrouping: /[.,]/.test(text) });
+      // Verlauf: schnell am Anfang, dann immer langsamer. Der Exponent wird je Zahl so gewählt, dass der
+      // Wert „Ziel − 1“ genau LETZTER Millisekunden sichtbar ist (bei 1977 ebenso wie bei 21).
+      const p = Math.max(1.5, Math.log(ziel) / Math.log(DAUER / LETZTER));
       const start = performance.now();
       const schritt = (jetzt) => {
         const t = Math.min(1, (jetzt - start) / DAUER);
-        const wert = Math.round(ziel * (1 - Math.pow(1 - t, 3)));   // erst schnell, dann langsam
+        const wert = t >= 1 ? ziel : Math.floor(ziel * (1 - Math.pow(1 - t, p)));
         el.textContent = format.format(wert);
         if (t < 1) requestAnimationFrame(schritt); else el.textContent = text;
       };

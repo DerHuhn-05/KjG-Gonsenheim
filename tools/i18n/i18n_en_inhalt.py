@@ -1,5 +1,6 @@
 """Englische Texte der redaktionellen Inhalte (Entwurf für Eltern). Wird in i18n_en.py eingemischt."""
 EN_INHALT = {
+"(öffnet in neuem Tab)": "(opens in a new tab)",
 "72 Stunden Aktion": "72-Hour Project",
 "72-Stunden-Aktion": "72-Hour Project",
 "Ab welchem Alter können Kinder mitmachen?": "From what age can children take part?",
@@ -75,6 +76,7 @@ EN_INHALT = {
 "Hilfe im Stadtteil – KjG Mainz-Gonsenheim": "Help in the Neighbourhood – KjG Mainz-Gonsenheim",
 "Ihr ist wichtig, dass jedes Kind sicher und gut aufgehoben ist und dass sich auch die Eltern gut informiert fühlen. Sie freut sich über jede Rückmeldung.": "It matters to her that every child is safe and well looked after and that parents feel well informed too. She is glad of any feedback.",
 "Ihr könnt jederzeit unverbindlich vorbeischauen. Schreibt uns einfach eine E-Mail, dann sagen wir euch, wann sich welche Gruppe trifft.": "You are welcome to drop by at any time without obligation. Just send us an email and we will tell you when each group meets.",
+"In Google Maps öffnen": "Open in Google Maps",
 "In der Gruppenstunde treffen sich die Kinder regelmäßig in ihrer Altersgruppe. Wir spielen, basteln, singen, backen oder gehen raus in die Natur – je nachdem, worauf die Gruppe Lust hat.": "At group meetings the children meet regularly in their age group. We play, craft, sing, bake or head out into nature, depending on what the group feels like.",
 "Ja, sehr gerne! Geschwisterkinder können zusammen mitkommen. Details findet ihr bei den jeweiligen Angeboten.": "Yes, gladly! Siblings can come together. You will find details on the pages of the individual activities.",
 "Jede Gruppe wird von mehreren geschulten Gruppenleiterinnen und Gruppenleitern begleitet. Eure Kinder sind in einem geschützten Rahmen unterwegs und haben feste Ansprechpersonen.": "Each group is accompanied by several trained group leaders. Your children are in a protected setting and have fixed contact persons.",

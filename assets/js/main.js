@@ -128,6 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const svg = karteSek.querySelector("svg.karte");
     const buehne = karteSek.querySelector(".karte-buehne");
     const pin = svg.querySelector(".k-pin");
+    const linie = karteSek.querySelector(".karte-linie");
+    const kLabel = karteSek.querySelector(".karte-label");
     const MZ_W = 2400, MZ_H = 2607, GX = 794, GY = 666, GH = 835;   // Gesamtkarte, Standort, sichtbare Höhe beim Zoom (Karteneinheiten)
     const ansicht = (zoom) => {
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
@@ -139,6 +141,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
       svg.setAttribute("viewBox", `${(c.cx - W * c.s / 2).toFixed(2)} ${(c.cy - H * c.s / 2).toFixed(2)} ${(W * c.s).toFixed(2)} ${(H * c.s).toFixed(2)}`);
       pin.setAttribute("transform", `translate(${GX} ${GY}) scale(${c.s.toFixed(4)})`);   // Pin bleibt in Bildschirmgröße
+    };
+    // Verbindungslinie vom Kasten zur Pin-Spitze (Pin-Position im ganz gezoomten Zustand, in Bildschirmkoordinaten der Bühne)
+    const linieSetzen = () => {
+      if (!linie || !kLabel) return;
+      const W = svg.clientWidth || 1, H = svg.clientHeight || 1, z = ansicht(true);
+      const px = W / 2 + (GX - z.cx) / z.s, py = H / 2 + (GY - z.cy) / z.s;
+      const b = buehne.getBoundingClientRect(), l = kLabel.getBoundingClientRect();
+      const lo = l.top - b.top, lli = l.left - b.left, lre = l.right - b.left;
+      const sx = Math.min(lre - 24, Math.max(lli + 24, px)), sy = lo;     // Start: Oberkante des Kastens, möglichst senkrecht unter dem Pin
+      linie.setAttribute("viewBox", `0 0 ${W} ${H}`);
+      const d = `M${sx.toFixed(1)} ${sy.toFixed(1)}L${px.toFixed(1)} ${py.toFixed(1)}`;
+      linie.querySelectorAll("path").forEach((pf) => pf.setAttribute("d", d));          // Kontur und weiße Linie
+      linie.style.setProperty("--len", Math.ceil(Math.hypot(px - sx, py - sy) + 4) + "px");   // Länge für die Zeichen-Animation
+      linie.querySelectorAll("circle").forEach((c) => { c.setAttribute("cx", px.toFixed(1)); c.setAttribute("cy", py.toFixed(1)); });
     };
     const zwischen = (von, ziel, p) => {
       const e = p * p * (3 - 2 * p);                                                    // weiche Kurve über den Scrollweg
@@ -160,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ende: oben - kopf + weg * 0.8,                                   // ganz herangezoomt (danach steht die Karte noch kurz still)
       };
       letztes = -1;
+      linieSetzen();
       karteBewegen();
     };
     const karteBewegen = () => {
@@ -182,6 +199,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     if (ruhig || !("IntersectionObserver" in window)) {
       setzen(ansicht(true)); karteSek.classList.add("zoom", "fein");     // „Bewegung reduzieren“: gleich die gezoomte Karte, ohne Scrollytelling
+      linieSetzen();
+      window.addEventListener("load", () => { setzen(ansicht(true)); linieSetzen(); });
+      window.addEventListener("resize", () => { setzen(ansicht(true)); linieSetzen(); });
     } else {
       karteSek.classList.add("scrolly");
       setzen(ansicht(false));

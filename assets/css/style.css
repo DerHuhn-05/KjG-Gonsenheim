@@ -165,7 +165,8 @@ html.menu-offen { overflow: hidden; }
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 43.6px; }  /* je 4 Spalten = 400 px */
 .card .media { height: 270px; background: var(--placeholder); }
 .card h3 { margin-top: 21.7px; font: 600 20px/20px var(--i); }
-.card-text { margin-top: 22.78px; font: 400 16.5px/19px var(--i); letter-spacing: -.24px; white-space: nowrap; }
+.card-text { margin-top: 22.78px; font: 400 16.5px/1.5 var(--i); letter-spacing: -.24px; white-space: nowrap; }   /* Zeilenabstand 150 % wie bei den übrigen Texten */
+.card-text p + p { margin-top: .75em; }
 .more-link { display: inline-flex; align-items: flex-start; color: var(--teal); }
 .more-link .right { flex: none; margin-top: 3.5px; }
 .more-link span { margin-left: 9px; font: 400 16px/19px var(--i); }
@@ -540,8 +541,7 @@ h1, h2 { letter-spacing: -0.01em !important; }
   .card { display: flex; flex-direction: column; }
   .card h3 { order: 1; margin: 0 0 16px; }
   .card .media { order: 2; }
-  .card .card-text { order: 3; font-size: 17px; line-height: 27px; }   /* Slider: luftigerer Zeilenabstand */
-  .card-text p + p { margin-top: 12px; }
+  .card .card-text { order: 3; font-size: 17px; }   /* Slider: gleicher Zeilenabstand (150 %) wie überall */
   .card .more-link { order: 4; align-self: flex-start; }
 
   .z-feature .text, .z-feature.reverse .text { display: contents; }

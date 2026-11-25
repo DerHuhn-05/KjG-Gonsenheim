@@ -1,0 +1,58 @@
+<main>
+<section class="hero-simple"><h1>Impressum</h1></section>
+
+<div class="container prose">
+  <div class="notice">
+    <strong>Muster mit Platzhaltern</strong>
+    Gelb markierte Angaben <span class="ph">[so]</span> bitte ersetzen und das Impressum vor der Veröffentlichung prüfen lassen (z.&nbsp;B. durch Pfarrbüro, Diözesanverband oder Datenschutzbeauftragte*n). Dieser Hinweis kann danach gelöscht werden.
+  </div>
+
+  <h2>Angaben gemäß § 5 DDG</h2>
+  <address>
+    KjG Mainz-Gonsenheim<br>
+    <span class="ph">[Pfarrgruppe / Ortsgruppe]</span> der Katholischen jungen Gemeinde im Bistum Mainz<br>
+    Pfarrer-Grimm-Strasse 1<br>
+    55124 Mainz
+  </address>
+
+  <h3>Rechtsträger</h3>
+  <address>
+    <span class="ph">[Name des Rechtsträgers, z.&nbsp;B. Katholische Pfarrei … Mainz-Gonsenheim oder KjG Diözesanverband Mainz e.&nbsp;V.]</span><br>
+    <span class="ph">[Straße Hausnummer]</span><br>
+    <span class="ph">[PLZ Ort]</span>
+  </address>
+
+  <h3>Vertreten durch</h3>
+  <p><span class="ph">[Vor- und Nachname, Funktion – z.&nbsp;B. Pfarrer / Vorstand / Pfarrleitung]</span></p>
+
+  <h3>Kontakt</h3>
+  <p>
+    E-Mail: <a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@gmail.com</a><br>
+    Telefon: <span class="ph">[optional: Telefonnummer]</span>
+  </p>
+
+  <h3>Registereintrag</h3>
+  <p><span class="ph">[Nur falls vorhanden: Eingetragen im Vereinsregister, Registergericht: Amtsgericht …, Registernummer: VR …]</span></p>
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <address>
+    <span class="ph">[Vor- und Nachname, z.&nbsp;B. Pfarrleitung der KjG Mainz-Gonsenheim]</span><br>
+    Pfarrer-Grimm-Strasse 1<br>
+    55124 Mainz
+  </address>
+
+  <h2>Haftung für Inhalte</h2>
+  <p>Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Sobald uns Rechtsverletzungen bekannt werden, entfernen wir die betreffenden Inhalte umgehend.</p>
+
+  <h2>Haftung für Links</h2>
+  <p>Diese Website enthält Links zu externen Websites Dritter (z.&nbsp;B. Instagram und Facebook), auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Werden uns Rechtsverletzungen bekannt, entfernen wir derartige Links umgehend.</p>
+
+  <h2>Urheberrecht</h2>
+  <p>Die auf dieser Website veröffentlichten Texte, Fotos und Grafiken unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung und Verbreitung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung der jeweiligen Urheber*innen. Das KjG-Logo ist Eigentum der Katholischen jungen Gemeinde.</p>
+
+  <h3>Bildnachweise</h3>
+  <p><span class="ph">[z.&nbsp;B. Fotos: KjG Mainz-Gonsenheim / Name der Fotografin bzw. des Fotografen]</span></p>
+
+  <p class="stand">Stand: <span class="ph">[Monat Jahr]</span></p>
+</div>
+</main>

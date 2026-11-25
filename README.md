@@ -47,3 +47,35 @@ Die Karte auf `ueber-uns.html` ist ein reines SVG (bleibt auf jeder Zoomstufe sc
 Sie funktioniert als Scrollytelling: Sobald 80 % der Karte sichtbar sind, beginnt der Zoom von Mainz nach Gonsenheim und folgt dem Scrollen (vor und zurück); die Karte bleibt dabei stehen. Erst wenn ganz herangezoomt ist, „ploppt“ der Pin auf (Steuerung in `assets/js/main.js`, Abschnitt „Über uns: Karte“).
 Die eigenständige Datei liegt unter `assets/img/karte-mainz.svg`. Position des Pins (Karteneinheiten): `794, 666` – steht in `main.js` (`GX`, `GY`) und im Pin-Element der Seite.
 Kartendaten: © OpenStreetMap-Mitwirkende, ODbL (steht auf der Karte).
+
+
+## Aufbau: wiederkehrende Bausteine als Module
+
+Header, Footer, Bildflächen, Sprungmarken, Kacheln, Karten, Text-Bild-Abschnitte, Personen, Zitate, FAQ-Einträge und Seitenköpfe
+stehen **einmal** in `assets/js/module.js`. In den Seiten genügt ein kurzer Tag, z. B.
+
+```html
+<kjg-header seite="team.html" aktiv="team.html"></kjg-header>
+<kjg-kachel klasse="tile" id="zela" href="zela-2027.html" link="genauere infos" bild="startseite-1" bild-alt="Bild Zeltlager 2027">
+  <h2>Zela 2027</h2>
+  <p>Auch in diesem Jahr veranstalten wir ein Zeltlager …</p>
+</kjg-kachel>
+<kjg-footer></kjg-footer>
+```
+
+Beim Laden ersetzt `module.js` jeden Tag durch das fertige Markup (identisch zu handgeschriebenem HTML, CSS und `main.js` bleiben unverändert).
+Texte einer Seite bleiben als Kinder der Tags im HTML, Texte, die in jedem Modul gleich sind (Menü, Footer, „genauere infos“ …), stehen
+in `module.js` in Deutsch und Englisch. Alle Attribute sind im Kopf von `module.js` dokumentiert.
+Menüpunkte, Footer-Links, Instagram-/Facebook-/Google-Maps-Adresse ändert man dort an **einer** Stelle für alle Seiten.
+Ohne JavaScript bleibt der Seiteninhalt lesbar, Header und Footer fehlen dann.
+
+### Seiten neu erzeugen
+
+Die Seiten (`*.html` und `en/*.html`) werden aus `tools/build/` erzeugt (Texte in `inhalt.py`, Seitenaufbau in `gen*.py`, englische Fassung über `tools/i18n/`):
+
+```bash
+sh tools/build/bauen.sh
+```
+
+Neue deutsche Texte brauchen eine englische Übersetzung (`inhalt.py` bzw. `tools/i18n/i18n_en.py`), sonst bricht der Bau mit einer Liste der fehlenden Texte ab.
+Die Kartenquelle für `tools/build/karte/karte.py` (OpenStreetMap-Auszug) liegt nicht im Repository; fertig aufbereitet ist die Karte in `tools/build/karte/karte_body.svgpart`.

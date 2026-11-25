@@ -9,51 +9,13 @@
   <link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="alternate" hreflang="de" href="index.html">
   <link rel="alternate" hreflang="en" href="en/index.html">
-  <link rel="stylesheet" href="assets/css/style.css?v=57544583">
+  <link rel="stylesheet" href="assets/css/style.css?v=e97b41b3">
   <script src="assets/js/bilder.js?v=e1756519"></script>
+  <script src="assets/js/module.js?v=d349243d"></script>
   <script src="assets/js/main.js?v=54de028f" defer></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="bar">
-    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Startseite"><img src="assets/img/logo-header.svg" width="250" height="49" alt="KjG – Katholische junge Gemeinde"></a>
-    <nav class="main-nav" aria-label="Hauptnavigation">
-      <a href="zela-2027.html">Zela 2027</a>
-      <a href="events.html">Angebote</a>
-      <a href="team.html">Team</a>
-      <a href="soziale-aktionen.html">Soziales</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
-    <div class="lang"><a href="index.html" class="de active" lang="de" hreflang="de" aria-current="true">DE</a><span class="sep"></span><a href="en/index.html" class="en" lang="en" hreflang="en">EN</a></div>
-    <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false"><span class="bar1"></span><span class="bar2"></span></button>
-  </div>
-  <nav class="mobile-nav" aria-label="Mobile Navigation">
-    <a href="index.html">Startseite</a>
-    <a href="zela-2027.html">Zela 2027</a>
-    <details class="mn-group">
-      <summary>Angebote<img class="mn-chev" src="icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="events.html">Alle Angebote</a>
-        <a href="zela-2027.html">Zela 2027</a>
-        <a href="gruppenstunde.html">Gruppenstunde</a>
-        <a href="mowo.html">MoWo</a>
-        <a href="trainee-wochenende.html">Trainee-Wochenende</a>
-      </div>
-    </details>
-    <a href="team.html">Team</a>
-    <details class="mn-group">
-      <summary>Soziales<img class="mn-chev" src="icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="soziale-aktionen.html">Alle sozialen Aktionen</a>
-        <a href="72h-aktion.html">72h-Aktion</a>
-        <a href="aktion.html">Hilfe im Stadtteil</a>
-        <a href="klamottenspende.html">Klamottenspende</a>
-      </div>
-    </details>
-    <a href="faq.html">FAQ</a>
-    <a href="ueber-uns.html">Über uns</a>
-  </nav>
-</header>
+<kjg-header seite="index.html"></kjg-header>
 
 <main>
 <section class="hero">
@@ -68,50 +30,33 @@
   </div>
 </section>
 
-<nav class="jump" aria-label="Inhalt">
-  <div class="wrap">
-    <ul>
-      <li class="r1" style="--x:210px"><a href="#zela"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Zela 2027</span></a></li>
-      <li class="r1" style="--x:403px"><a href="#events"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Unser Angebot für euch</span></a></li>
-      <li class="r1" style="--x:746px"><a href="#ueber-uns"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Über uns</span></a></li>
-      <li class="r2" style="--x:315px"><a href="#team"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Unser Team</span></a></li>
-      <li class="r2" style="--x:540px"><a href="#soziale-aktionen"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Soziale Aktionen</span></a></li>
-      <li class="r2" style="--x:839px"><a href="#faq"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Häufig gestellte Fragen</span></a></li>
-    </ul>
-  </div>
-</nav>
+<kjg-sprung variante="start">
+  <a href="#zela" x="210" r="1">Zela 2027</a>
+  <a href="#events" x="403" r="1">Unser Angebot für euch</a>
+  <a href="#ueber-uns" x="746" r="1">Über uns</a>
+  <a href="#team" x="315" r="2">Unser Team</a>
+  <a href="#soziale-aktionen" x="540" r="2">Soziale Aktionen</a>
+  <a href="#faq" x="839" r="2">Häufig gestellte Fragen</a>
+</kjg-sprung>
 
-<section class="tile" id="zela">
-  <div class="text">
-    <h2>Zela 2027</h2>
-    <p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>
-    <a class="tile-link" href="zela-2027.html"><img class="pfeil" src="icons/pfeil-rechts-klein-weiss.svg" width="14" height="10" alt=""><span>genauere infos</span></a>
-  </div>
-  <div class="media"><span class="ph-label">bilder/startseite-1.jpg</span><img src="bilder/startseite-1.jpg" data-base="bilder/startseite-1" alt="Bild Zeltlager 2027" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-kachel klasse="tile" id="zela" href="zela-2027.html" link="genauere infos" bild="startseite-1" bild-alt="Bild Zeltlager 2027">
+<h2>Zela 2027</h2>
+<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>
+</kjg-kachel>
 
 <section class="cards-section events" id="events">
   <div class="wrap">
     <h2>Unser Angebot für euch!</h2>
     <div class="cards">
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-2.jpg</span><img src="bilder/startseite-2.jpg" data-base="bilder/startseite-2" alt="Bild Gruppenstunde" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Gruppenstunde</h3>
-      <div class="card-text"><p>Regelmäßig treffen sich die Kinder in<br> ihrer Altersgruppe zum Spielen, Basteln,<br> Singen und Quatschen.</p><p>Betreut werden sie von geschulten<br> Gruppenleiterinnen und Gruppenleitern – in<br> einem geschützten Rahmen, in dem euer Kind<br> neue Freunde findet.</p></div>
-      <a class="more-link" href="gruppenstunde.html"><img class="right" src="icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>Weitere Informationen</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-3.jpg</span><img src="bilder/startseite-3.jpg" data-base="bilder/startseite-3" alt="Bild Monster Wochenende" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Monster Wochenende</h3>
-      <div class="card-text"><p>Jedes Jahr im Herbst fahren wir mit den<br> Kindern für ein Wochenende in ein<br> Jugendhaus – mit Spielen, Geschichten und<br> ein bisschen Gruselspaß.</p><p>Über das ganze Wochenende sind die Kinder<br> rund um die Uhr gut betreut.</p></div>
-      <a class="more-link" href="mowo.html"><img class="right" src="icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>Weitere Informationen</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-4.jpg</span><img src="bilder/startseite-4.jpg" data-base="bilder/startseite-4" alt="Bild Trainee Wochenende" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Trainee Wochenende</h3>
-      <div class="card-text"><p>Unsere ältesten Kinder und Jugendlichen<br> lernen hier, wie man eine Gruppe leitet,<br> Spiele plant und Verantwortung übernimmt.</p><p>So wachsen sie Schritt für Schritt zu<br> Gruppenleiterinnen und Gruppenleitern<br> heran – begleitet von erfahrenen Teamern.</p></div>
-      <a class="more-link" href="trainee-wochenende.html"><img class="right" src="icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>Weitere Informationen</span></a>
-    </article>
+<kjg-karte href="gruppenstunde.html" link="Weitere Informationen" bild="startseite-2" bild-alt="Bild Gruppenstunde">
+<h3>Gruppenstunde</h3><p>Regelmäßig treffen sich die Kinder in<br> ihrer Altersgruppe zum Spielen, Basteln,<br> Singen und Quatschen.</p><p>Betreut werden sie von geschulten<br> Gruppenleiterinnen und Gruppenleitern – in<br> einem geschützten Rahmen, in dem euer Kind<br> neue Freunde findet.</p>
+</kjg-karte>
+<kjg-karte href="mowo.html" link="Weitere Informationen" bild="startseite-3" bild-alt="Bild Monster Wochenende">
+<h3>Monster Wochenende</h3><p>Jedes Jahr im Herbst fahren wir mit den<br> Kindern für ein Wochenende in ein<br> Jugendhaus – mit Spielen, Geschichten und<br> ein bisschen Gruselspaß.</p><p>Über das ganze Wochenende sind die Kinder<br> rund um die Uhr gut betreut.</p>
+</kjg-karte>
+<kjg-karte href="trainee-wochenende.html" link="Weitere Informationen" bild="startseite-4" bild-alt="Bild Trainee Wochenende">
+<h3>Trainee Wochenende</h3><p>Unsere ältesten Kinder und Jugendlichen<br> lernen hier, wie man eine Gruppe leitet,<br> Spiele plant und Verantwortung übernimmt.</p><p>So wachsen sie Schritt für Schritt zu<br> Gruppenleiterinnen und Gruppenleitern<br> heran – begleitet von erfahrenen Teamern.</p>
+</kjg-karte>
     </div>
   </div>
 </section>
@@ -120,41 +65,28 @@
   <div class="wrap">
     <h2>Über uns</h2>
     <p>Wer im Mainzer Stadtteil Gonsenheim lebt oder mit ihm verbunden ist, kennt<br> die legendären Sommerzeltlager. Jedes Jahr brechen wir zu einem<br> spannenden Abenteuer auf. Neben zahlreichen Gruppenkinderaktionen<br> findet zudem jährlich unser "Monsterwochenende" statt.<br> Doch das ist lange noch nicht alles! Neugierig?</p>
-    <a class="more-link" href="ueber-uns.html"><img class="right" src="icons/pfeil-rechts-weiss.svg" width="22" height="12" alt=""><span>weitere informationen (links)</span></a>
+    <a class="more-link" href="ueber-uns.html"><img class="right" src="icons/pfeil-rechts-weiss.svg" width="22" height="12" alt=""><span>Weitere Informationen</span></a>
   </div>
 </section>
 
-<section class="tile reverse" id="team">
-  <div class="text">
-    <h2>Unser Team</h2>
-    <p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>
-    <a class="tile-link" href="team.html"><img class="pfeil" src="icons/pfeil-rechts-klein-weiss.svg" width="14" height="10" alt=""><span>genauere infos</span></a>
-  </div>
-  <div class="media"><span class="ph-label">bilder/startseite-5.jpg</span><img src="bilder/startseite-5.jpg" data-base="bilder/startseite-5" alt="Bild Unser Team" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-kachel klasse="tile reverse" id="team" href="team.html" link="genauere infos" bild="startseite-5" bild-alt="Bild Unser Team">
+<h2>Unser Team</h2>
+<p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>
+</kjg-kachel>
 
 <section class="cards-section social" id="soziale-aktionen">
   <div class="wrap">
     <h2>Soziale Aktionen</h2>
     <div class="cards">
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-6.jpg</span><img src="bilder/startseite-6.jpg" data-base="bilder/startseite-6" alt="Bild 72 Stunden Aktion" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>72 Stunden Aktion</h3>
-      <div class="card-text"><p>Bei der 72-Stunden-Aktion setzen wir uns<br> drei Tage lang gemeinsam mit anderen<br> Jugendgruppen für ein Projekt in unserem<br> Stadtteil ein.</p><p>Eure Kinder erleben, wie viel man<br> gemeinsam bewegen kann – von der Planung<br> bis zum fertigen Ergebnis.</p></div>
-      <a class="more-link" href="72h-aktion.html"><img class="right" src="icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>Weitere Informationen</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-7.jpg</span><img src="bilder/startseite-7.jpg" data-base="bilder/startseite-7" alt="Bild Hilfe im Stadtteil" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Hilfe im Stadtteil</h3>
-      <div class="card-text"><p>Ob Nachbarschaftshilfe, Aufräumaktion oder<br> Unterstützung bei Gemeindefesten: Wir<br> packen dort an, wo Hilfe gebraucht wird.</p><p>Die Kinder lernen spielerisch, dass kleine<br> Taten viel bewirken – immer in der Gruppe<br> und gut begleitet.</p></div>
-      <a class="more-link" href="aktion.html"><img class="right" src="icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>Weitere Informationen</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-8.jpg</span><img src="bilder/startseite-8.jpg" data-base="bilder/startseite-8" alt="Bild Klamottenspende" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Klamottenspende</h3>
-      <div class="card-text"><p>Wir sammeln gut erhaltene Kleidung und<br> geben sie an Menschen weiter, die sie<br> dringend brauchen.</p><p>Eure Kinder sortieren und verpacken mit<br> und lernen dabei, was Teilen bedeutet.<br> Spenden sind herzlich willkommen!</p></div>
-      <a class="more-link" href="klamottenspende.html"><img class="right" src="icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>Weitere Informationen</span></a>
-    </article>
+<kjg-karte href="72h-aktion.html" link="Weitere Informationen" bild="startseite-6" bild-alt="Bild 72 Stunden Aktion">
+<h3>72 Stunden Aktion</h3><p>Bei der 72-Stunden-Aktion setzen wir uns<br> drei Tage lang gemeinsam mit anderen<br> Jugendgruppen für ein Projekt in unserem<br> Stadtteil ein.</p><p>Eure Kinder erleben, wie viel man<br> gemeinsam bewegen kann – von der Planung<br> bis zum fertigen Ergebnis.</p>
+</kjg-karte>
+<kjg-karte href="aktion.html" link="Weitere Informationen" bild="startseite-7" bild-alt="Bild Hilfe im Stadtteil">
+<h3>Hilfe im Stadtteil</h3><p>Ob Nachbarschaftshilfe, Aufräumaktion oder<br> Unterstützung bei Gemeindefesten: Wir<br> packen dort an, wo Hilfe gebraucht wird.</p><p>Die Kinder lernen spielerisch, dass kleine<br> Taten viel bewirken – immer in der Gruppe<br> und gut begleitet.</p>
+</kjg-karte>
+<kjg-karte href="klamottenspende.html" link="Weitere Informationen" bild="startseite-8" bild-alt="Bild Klamottenspende">
+<h3>Klamottenspende</h3><p>Wir sammeln gut erhaltene Kleidung und<br> geben sie an Menschen weiter, die sie<br> dringend brauchen.</p><p>Eure Kinder sortieren und verpacken mit<br> und lernen dabei, was Teilen bedeutet.<br> Spenden sind herzlich willkommen!</p>
+</kjg-karte>
     </div>
   </div>
 </section>
@@ -163,55 +95,15 @@
   <div class="faq-wrap">
     <h2>Häufig gestellte Fragen</h2>
     <div class="faq-list">
-      <details class="faq-item">
-        <summary><span>Ab welchem Alter können Kinder mitmachen?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Bei der Gruppenstunde und bei unseren Wochenenden sind Kinder ab dem Grundschulalter willkommen. Das Alter für das Zeltlager findet ihr auf der Seite Zela 2027.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Muss mein Kind katholisch oder getauft sein?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Nein. Wir sind ein katholischer Verband, aber bei uns ist jedes Kind willkommen – unabhängig von Konfession, Religion oder Herkunft.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Wer betreut die Kinder?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Unsere Gruppenleiterinnen und Gruppenleiter sind Jugendliche und junge Erwachsene, die sich ehrenamtlich engagieren und für ihre Aufgabe geschult sind. Bei Fahrten ist zusätzlich immer eine Lagerleitung vor Ort.</p></div>
-      </details>
+      <kjg-frage><span>Ab welchem Alter können Kinder mitmachen?</span><p>Bei der Gruppenstunde und bei unseren Wochenenden sind Kinder ab dem Grundschulalter willkommen. Das Alter für das Zeltlager findet ihr auf der Seite Zela 2027.</p></kjg-frage>
+      <kjg-frage><span>Muss mein Kind katholisch oder getauft sein?</span><p>Nein. Wir sind ein katholischer Verband, aber bei uns ist jedes Kind willkommen – unabhängig von Konfession, Religion oder Herkunft.</p></kjg-frage>
+      <kjg-frage><span>Wer betreut die Kinder?</span><p>Unsere Gruppenleiterinnen und Gruppenleiter sind Jugendliche und junge Erwachsene, die sich ehrenamtlich engagieren und für ihre Aufgabe geschult sind. Bei Fahrten ist zusätzlich immer eine Lagerleitung vor Ort.</p></kjg-frage>
     </div>
     <a class="faq-more" href="faq.html"><img class="right" src="icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>Weiterer Fragen</span></a>
   </div>
 </section>
 </main>
 
-<footer class="site-footer">
-  <div class="grid">
-    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" width="192" height="190" alt="KjG Logo – zur Startseite"></a></div>
-    <div class="col">
-      <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Adresse</a></h3>
-      <ul><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Pfarrer-Grimm-Strasse 1</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">55124 Mainz</a></li></ul>
-    </div>
-    <div class="col">
-      <h3>Kontaket</h3>
-      <ul>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Quicklinks</h3>
-      <ul>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-      </ul>
-    </div>
-    <div class="col col-faq">
-      <h3>FAQ</h3>
-      <ul>
-        <li><a href="faq.html">Häufig gestellte Fragen</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+<kjg-footer></kjg-footer>
 </body>
 </html>

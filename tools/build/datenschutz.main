@@ -1,0 +1,113 @@
+<main>
+<section class="hero-simple"><h1>Datenschutz</h1></section>
+
+<div class="container prose">
+  <div class="notice">
+    <strong>Muster mit Platzhaltern</strong>
+    Gelb markierte Angaben <span class="ph">[so]</span> bitte ersetzen. Als katholischer Jugendverband gilt für die KjG in der Regel das <em>Gesetz über den Kirchlichen Datenschutz (KDG)</em> statt der DSGVO. Bitte mit Pfarrei bzw. Diözesanverband klären, welches Recht gilt, und die Erklärung vor der Veröffentlichung von der zuständigen Stelle prüfen lassen. Dieser Hinweis kann danach gelöscht werden.
+  </div>
+
+  <ul class="toc">
+    <li><a href="#verantwortlich">1. Verantwortliche Stelle</a></li>
+    <li><a href="#dsb">2. Datenschutzbeauftragte*r</a></li>
+    <li><a href="#grundlagen">3. Rechtsgrundlagen</a></li>
+    <li><a href="#hosting">4. Hosting &amp; Server-Logfiles</a></li>
+    <li><a href="#cookies">5. Cookies &amp; Schriftarten</a></li>
+    <li><a href="#email">6. Kontakt per E-Mail</a></li>
+    <li><a href="#anmeldung">7. Anmeldung zu Veranstaltungen</a></li>
+    <li><a href="#fotos">8. Fotos &amp; Veröffentlichungen</a></li>
+    <li><a href="#social">9. Links zu sozialen Netzwerken</a></li>
+    <li><a href="#rechte">10. Deine Rechte</a></li>
+    <li><a href="#beschwerde">11. Beschwerderecht</a></li>
+  </ul>
+
+  <p>Der Schutz deiner persönlichen Daten ist uns wichtig. Hier erklären wir, welche Daten wir beim Besuch dieser Website und bei der Teilnahme an unseren Angeboten verarbeiten, wofür wir sie nutzen und welche Rechte du hast.</p>
+
+  <h2 id="verantwortlich">1. Verantwortliche Stelle</h2>
+  <address>
+    <span class="ph">[Name des Rechtsträgers, z.&nbsp;B. Katholische Pfarrei … Mainz-Gonsenheim / KjG Diözesanverband Mainz e.&nbsp;V.]</span><br>
+    für die KjG Mainz-Gonsenheim<br>
+    Pfarrer-Grimm-Strasse 1<br>
+    55124 Mainz<br>
+    E-Mail: <a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@gmail.com</a>
+  </address>
+  <p>Vertreten durch: <span class="ph">[Vor- und Nachname, Funktion]</span></p>
+
+  <h2 id="dsb">2. Datenschutzbeauftragte*r</h2>
+  <address>
+    <span class="ph">[Name der/des zuständigen Datenschutzbeauftragten, z.&nbsp;B. betriebliche*r Datenschutzbeauftragte*r der Pfarrei bzw. des Bistums Mainz]</span><br>
+    <span class="ph">[Anschrift]</span><br>
+    E-Mail: <span class="ph">[E-Mail-Adresse]</span>
+  </address>
+
+  <h2 id="grundlagen">3. Rechtsgrundlagen</h2>
+  <p>Wir verarbeiten personenbezogene Daten auf Grundlage des <span class="ph">[Gesetzes über den Kirchlichen Datenschutz (KDG) / der Datenschutz-Grundverordnung (DSGVO)]</span>, insbesondere</p>
+  <ul>
+    <li>aufgrund deiner Einwilligung (§ 6 Abs. 1 lit. b KDG bzw. Art. 6 Abs. 1 lit. a DSGVO),</li>
+    <li>zur Durchführung einer Veranstaltung, für die du dich angemeldet hast (§ 6 Abs. 1 lit. c KDG bzw. Art. 6 Abs. 1 lit. b DSGVO),</li>
+    <li>zur Erfüllung rechtlicher Pflichten (§ 6 Abs. 1 lit. d KDG bzw. Art. 6 Abs. 1 lit. c DSGVO),</li>
+    <li>aufgrund unseres berechtigten Interesses, z.&nbsp;B. am sicheren Betrieb dieser Website (§ 6 Abs. 1 lit. g KDG bzw. Art. 6 Abs. 1 lit. f DSGVO).</li>
+  </ul>
+
+  <h2 id="hosting">4. Hosting &amp; Server-Logfiles</h2>
+  <p>Diese Website wird über <span class="ph">[Cloudflare Pages, einen Dienst der Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA – Anschrift bitte prüfen]</span> bereitgestellt. Beim Aufruf der Seiten werden automatisch technische Daten verarbeitet, die dein Browser übermittelt:</p>
+  <ul>
+    <li>IP-Adresse,</li>
+    <li>Datum und Uhrzeit des Zugriffs,</li>
+    <li>aufgerufene Seite bzw. Datei,</li>
+    <li>Browsertyp, Betriebssystem und ggf. Referrer-URL.</li>
+  </ul>
+  <p>Diese Daten werden benötigt, um die Website auszuliefern und ihre Sicherheit zu gewährleisten (berechtigtes Interesse). Dabei kann eine Übermittlung in die USA stattfinden. Cloudflare ist unter dem EU-U.S. Data Privacy Framework zertifiziert <span class="ph">[bitte prüfen]</span>. Weitere Informationen: <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noopener">Datenschutzerklärung von Cloudflare</a>. Wir selbst werten diese Daten nicht aus und führen keine Statistiken oder Nutzungsanalysen durch.</p>
+
+  <h2 id="cookies">5. Cookies &amp; Schriftarten</h2>
+  <p>Diese Website setzt keine Cookies und verwendet keine Analyse- oder Tracking-Werkzeuge. Die verwendeten Schriftarten sind lokal auf unserem Server gespeichert; beim Aufruf der Website wird keine Verbindung zu Servern Dritter (z.&nbsp;B. Google Fonts) aufgebaut.</p>
+
+  <h2 id="email">6. Kontakt per E-Mail</h2>
+  <p>Wenn du uns eine E-Mail schreibst, verarbeiten wir deine E-Mail-Adresse und die Angaben aus deiner Nachricht, um deine Anfrage zu beantworten. Unser E-Mail-Postfach wird bei <span class="ph">[Google Gmail, Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland]</span> betrieben; dabei kann eine Verarbeitung auch in den USA erfolgen. Deine Nachrichten löschen wir, sobald sie nicht mehr benötigt werden, spätestens jedoch nach <span class="ph">[Zeitraum, z.&nbsp;B. 12 Monaten]</span>, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+
+  <h2 id="anmeldung">7. Anmeldung zu Veranstaltungen</h2>
+  <p>Für die Anmeldung zu unseren Veranstaltungen (z.&nbsp;B. MoWo, 72h-Aktion, Trainee-Wochenende) nutzen wir <span class="ph">[Anmeldeformular / Tool, z.&nbsp;B. Papierformular, Google Forms, …, inkl. Anbieter und Sitz]</span>. Dabei verarbeiten wir:</p>
+  <ul>
+    <li>Name, Geburtsdatum und Anschrift der teilnehmenden Person,</li>
+    <li>Kontaktdaten der Erziehungsberechtigten (Telefon, E-Mail) für Notfälle,</li>
+    <li>Angaben zu Allergien, Unverträglichkeiten, Medikamenten und sonstige gesundheitliche Hinweise, sofern du sie uns mitteilst,</li>
+    <li>Angaben zur Zahlung des Teilnahmebeitrags,</li>
+    <li><span class="ph">[ggf. weitere Angaben, z.&nbsp;B. Schwimmerlaubnis, Name eines mitgebrachten Freundes]</span>.</li>
+  </ul>
+  <p>Diese Daten nutzen wir ausschließlich zur Planung und Durchführung der Veranstaltung sowie zur Sicherheit der Teilnehmenden. Gesundheitsdaten verarbeiten wir nur mit ausdrücklicher Einwilligung der Erziehungsberechtigten und geben sie nur an die verantwortlichen Gruppenleiter*innen weiter. Bei Zuschussanträgen (z.&nbsp;B. an <span class="ph">[Stadt Mainz / Bistum / Land]</span>) geben wir die dafür erforderlichen Daten in Teilnehmendenlisten weiter. Die Anmeldedaten löschen wir <span class="ph">[Zeitraum, z.&nbsp;B. 3 Monate nach der Veranstaltung]</span>, soweit keine Aufbewahrungspflichten (z.&nbsp;B. für Zuschussabrechnungen) entgegenstehen.</p>
+
+  <h2 id="fotos">8. Fotos &amp; Veröffentlichungen</h2>
+  <p>Bei unseren Veranstaltungen entstehen Fotos. Diese veröffentlichen wir auf dieser Website und auf unseren Social-Media-Kanälen nur, wenn eine Einwilligung der abgebildeten Person bzw. ihrer Erziehungsberechtigten vorliegt. Die Einwilligung kann jederzeit mit Wirkung für die Zukunft per E-Mail an <a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@gmail.com</a> widerrufen werden; wir entfernen die betreffenden Bilder dann zeitnah.</p>
+
+  <h2 id="social">9. Links zu sozialen Netzwerken</h2>
+  <p>Auf dieser Website verlinken wir auf unsere Auftritte bei Instagram und Facebook (Meta Platforms Ireland Limited, Merrion Road, Dublin 4, Irland). Es handelt sich um einfache Links – es werden keine Inhalte oder Plugins dieser Dienste in unsere Seite eingebunden und beim bloßen Besuch unserer Website keine Daten an Meta übertragen. Erst wenn du einem Link folgst, gelten die Datenschutzbestimmungen des jeweiligen Anbieters.</p>
+
+  <h2 id="rechte">10. Deine Rechte</h2>
+  <p>Du hast im Rahmen der gesetzlichen Vorgaben das Recht auf</p>
+  <ul>
+    <li>Auskunft über die zu deiner Person gespeicherten Daten,</li>
+    <li>Berichtigung unrichtiger Daten,</li>
+    <li>Löschung deiner Daten,</li>
+    <li>Einschränkung der Verarbeitung,</li>
+    <li>Datenübertragbarkeit,</li>
+    <li>Widerspruch gegen die Verarbeitung, die auf unserem berechtigten Interesse beruht,</li>
+    <li>Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft.</li>
+  </ul>
+  <p>Wende dich dazu einfach an <a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@gmail.com</a> oder an die oben genannte Datenschutzbeauftragte bzw. den oben genannten Datenschutzbeauftragten.</p>
+
+  <h2 id="beschwerde">11. Beschwerderecht</h2>
+  <p>Du hast das Recht, dich bei einer Datenschutzaufsicht zu beschweren. Zuständig ist <span class="ph">[bitte die zutreffende Stelle stehen lassen und Anschrift prüfen]</span>:</p>
+  <p><strong>Bei Geltung des KDG:</strong><br>
+    Katholisches Datenschutzzentrum Frankfurt/M. KdöR<br>
+    <span class="ph">[Anschrift]</span><br>
+    <span class="ph">[Website / E-Mail]</span>
+  </p>
+  <p><strong>Bei Geltung der DSGVO:</strong><br>
+    Der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Rheinland-Pfalz<br>
+    <span class="ph">[Anschrift]</span><br>
+    <span class="ph">[Website / E-Mail]</span>
+  </p>
+
+  <p class="stand">Stand: <span class="ph">[Monat Jahr]</span></p>
+</div>
+</main>

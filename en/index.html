@@ -9,51 +9,13 @@
   <link rel="preload" href="../assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="alternate" hreflang="de" href="../index.html">
   <link rel="alternate" hreflang="en" href="index.html">
-  <link rel="stylesheet" href="../assets/css/style.css?v=57544583">
+  <link rel="stylesheet" href="../assets/css/style.css?v=e97b41b3">
   <script src="../assets/js/bilder.js?v=e1756519"></script>
+  <script src="../assets/js/module.js?v=d349243d"></script>
   <script src="../assets/js/main.js?v=54de028f" defer></script>
 </head>
 <body>
-<header class="site-header">
-  <div class="bar">
-    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Home"><img src="../assets/img/logo-header.svg" width="250" height="49" alt="KjG – Catholic Young Community"></a>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="zela-2027.html">Zela 2027</a>
-      <a href="events.html">Activities</a>
-      <a href="team.html">Team</a>
-      <a href="soziale-aktionen.html">Social</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
-    <div class="lang"><a href="../index.html" class="de" lang="de" hreflang="de">DE</a><span class="sep"></span><a href="index.html" class="en active" lang="en" hreflang="en" aria-current="true">EN</a></div>
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="bar1"></span><span class="bar2"></span></button>
-  </div>
-  <nav class="mobile-nav" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="zela-2027.html">Zela 2027</a>
-    <details class="mn-group">
-      <summary>Activities<img class="mn-chev" src="../icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="events.html">All activities</a>
-        <a href="zela-2027.html">Zela 2027</a>
-        <a href="gruppenstunde.html">Group Meetings</a>
-        <a href="mowo.html">MoWo</a>
-        <a href="trainee-wochenende.html">Trainee Weekend</a>
-      </div>
-    </details>
-    <a href="team.html">Team</a>
-    <details class="mn-group">
-      <summary>Social<img class="mn-chev" src="../icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="soziale-aktionen.html">All social projects</a>
-        <a href="72h-aktion.html">72-Hour Project</a>
-        <a href="aktion.html">Help in the Neighbourhood</a>
-        <a href="klamottenspende.html">Clothing Donation</a>
-      </div>
-    </details>
-    <a href="faq.html">FAQ</a>
-    <a href="ueber-uns.html">About us</a>
-  </nav>
-</header>
+<kjg-header seite="index.html"></kjg-header>
 
 <main>
 <section class="hero">
@@ -68,50 +30,33 @@
   </div>
 </section>
 
-<nav class="jump" aria-label="Contents">
-  <div class="wrap">
-    <ul>
-      <li class="r1" style="--x:210px"><a href="#zela"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Zela 2027</span></a></li>
-      <li class="r1" style="--x:403px"><a href="#events"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>What we offer you</span></a></li>
-      <li class="r1" style="--x:746px"><a href="#ueber-uns"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>About us</span></a></li>
-      <li class="r2" style="--x:315px"><a href="#team"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Our Team</span></a></li>
-      <li class="r2" style="--x:540px"><a href="#soziale-aktionen"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Social Projects</span></a></li>
-      <li class="r2" style="--x:839px"><a href="#faq"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Frequently asked questions</span></a></li>
-    </ul>
-  </div>
-</nav>
+<kjg-sprung variante="start">
+  <a href="#zela" x="210" r="1">Zela 2027</a>
+  <a href="#events" x="403" r="1">What we offer you</a>
+  <a href="#ueber-uns" x="746" r="1">About us</a>
+  <a href="#team" x="315" r="2">Our Team</a>
+  <a href="#soziale-aktionen" x="540" r="2">Social Projects</a>
+  <a href="#faq" x="839" r="2">Frequently asked questions</a>
+</kjg-sprung>
 
-<section class="tile" id="zela">
-  <div class="text">
-    <h2>Zela 2027</h2>
-    <p>This year, too, we are organising a tent camp that everyone can join!</p>
-    <a class="tile-link" href="zela-2027.html"><img class="pfeil" src="../icons/pfeil-rechts-klein-weiss.svg" width="14" height="10" alt=""><span>more info</span></a>
-  </div>
-  <div class="media"><span class="ph-label">bilder/startseite-1.jpg</span><img src="../bilder/startseite-1.jpg" data-base="../bilder/startseite-1" alt="Image: Summer camp 2027" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-kachel klasse="tile" id="zela" href="zela-2027.html" link="more info" bild="startseite-1" bild-alt="Image: Summer camp 2027">
+<h2>Zela 2027</h2>
+<p>This year, too, we are organising a tent camp that everyone can join!</p>
+</kjg-kachel>
 
 <section class="cards-section events" id="events">
   <div class="wrap">
     <h2>What we offer you!</h2>
     <div class="cards">
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-2.jpg</span><img src="../bilder/startseite-2.jpg" data-base="../bilder/startseite-2" alt="Image: Group Meetings" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Group Meetings</h3>
-      <div class="card-text"><p>Children meet regularly in their age group to play, craft, sing and chat.</p><p>They are looked after by trained group leaders, in a safe setting where your child can make new friends.</p></div>
-      <a class="more-link" href="gruppenstunde.html"><img class="right" src="../icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>More information</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-3.jpg</span><img src="../bilder/startseite-3.jpg" data-base="../bilder/startseite-3" alt="Image: Monster Weekend" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Monster Weekend</h3>
-      <div class="card-text"><p>Every autumn we take the children to a youth hostel for a weekend of games, stories and a little spooky fun.</p><p>The children are well looked after around the clock throughout the weekend.</p></div>
-      <a class="more-link" href="mowo.html"><img class="right" src="../icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>More information</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-4.jpg</span><img src="../bilder/startseite-4.jpg" data-base="../bilder/startseite-4" alt="Image: Trainee Weekend" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Trainee Weekend</h3>
-      <div class="card-text"><p>Our oldest children and teenagers learn here how to lead a group, plan games and take on responsibility.</p><p>Step by step they grow into group leaders, supported by experienced team members.</p></div>
-      <a class="more-link" href="trainee-wochenende.html"><img class="right" src="../icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>More information</span></a>
-    </article>
+<kjg-karte href="gruppenstunde.html" link="More information" bild="startseite-2" bild-alt="Image: Group Meetings">
+<h3>Group Meetings</h3><p>Children meet regularly in their age group to play, craft, sing and chat.</p><p>They are looked after by trained group leaders, in a safe setting where your child can make new friends.</p>
+</kjg-karte>
+<kjg-karte href="mowo.html" link="More information" bild="startseite-3" bild-alt="Image: Monster Weekend">
+<h3>Monster Weekend</h3><p>Every autumn we take the children to a youth hostel for a weekend of games, stories and a little spooky fun.</p><p>The children are well looked after around the clock throughout the weekend.</p>
+</kjg-karte>
+<kjg-karte href="trainee-wochenende.html" link="More information" bild="startseite-4" bild-alt="Image: Trainee Weekend">
+<h3>Trainee Weekend</h3><p>Our oldest children and teenagers learn here how to lead a group, plan games and take on responsibility.</p><p>Step by step they grow into group leaders, supported by experienced team members.</p>
+</kjg-karte>
     </div>
   </div>
 </section>
@@ -120,41 +65,28 @@
   <div class="wrap">
     <h2>About us</h2>
     <p>Anyone who lives in or is connected to the Mainz district of Gonsenheim knows our legendary summer camps. Every year we set off on an exciting adventure. Alongside many activities for our children’s groups, our “Monster Weekend” takes place every year. But that’s far from everything! Curious?</p>
-    <a class="more-link" href="ueber-uns.html"><img class="right" src="../icons/pfeil-rechts-weiss.svg" width="22" height="12" alt=""><span>more information (links)</span></a>
+    <a class="more-link" href="ueber-uns.html"><img class="right" src="../icons/pfeil-rechts-weiss.svg" width="22" height="12" alt=""><span>More information</span></a>
   </div>
 </section>
 
-<section class="tile reverse" id="team">
-  <div class="text">
-    <h2>Our Team</h2>
-    <p>Find out here who we are and what everyone does</p>
-    <a class="tile-link" href="team.html"><img class="pfeil" src="../icons/pfeil-rechts-klein-weiss.svg" width="14" height="10" alt=""><span>more info</span></a>
-  </div>
-  <div class="media"><span class="ph-label">bilder/startseite-5.jpg</span><img src="../bilder/startseite-5.jpg" data-base="../bilder/startseite-5" alt="Image: Our Team" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-kachel klasse="tile reverse" id="team" href="team.html" link="more info" bild="startseite-5" bild-alt="Image: Our Team">
+<h2>Our Team</h2>
+<p>Find out here who we are and what everyone does</p>
+</kjg-kachel>
 
 <section class="cards-section social" id="soziale-aktionen">
   <div class="wrap">
     <h2>Social Projects</h2>
     <div class="cards">
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-6.jpg</span><img src="../bilder/startseite-6.jpg" data-base="../bilder/startseite-6" alt="Image: 72-Hour Project" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>72-Hour Project</h3>
-      <div class="card-text"><p>In the 72-Hour Project we spend three days working with other youth groups on a project in our neighbourhood.</p><p>Your children experience how much can be achieved together, from planning to the finished result.</p></div>
-      <a class="more-link" href="72h-aktion.html"><img class="right" src="../icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>More information</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-7.jpg</span><img src="../bilder/startseite-7.jpg" data-base="../bilder/startseite-7" alt="Image: Help in the Neighbourhood" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Help in the Neighbourhood</h3>
-      <div class="card-text"><p>Whether it is helping neighbours, tidying up or lending a hand at parish festivals, we pitch in where help is needed.</p><p>The children learn through play that small deeds can make a big difference, always in a group and well supervised.</p></div>
-      <a class="more-link" href="aktion.html"><img class="right" src="../icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>More information</span></a>
-    </article>
-    <article class="card">
-      <div class="media"><span class="ph-label">bilder/startseite-8.jpg</span><img src="../bilder/startseite-8.jpg" data-base="../bilder/startseite-8" alt="Image: Clothing Donation" loading="lazy" onerror="kjgBild(this)"></div>
-      <h3>Clothing Donation</h3>
-      <div class="card-text"><p>We collect clothes in good condition and pass them on to people who urgently need them.</p><p>Your children help sort and pack, learning what sharing means. Donations are very welcome!</p></div>
-      <a class="more-link" href="klamottenspende.html"><img class="right" src="../icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>More information</span></a>
-    </article>
+<kjg-karte href="72h-aktion.html" link="More information" bild="startseite-6" bild-alt="Image: 72-Hour Project">
+<h3>72-Hour Project</h3><p>In the 72-Hour Project we spend three days working with other youth groups on a project in our neighbourhood.</p><p>Your children experience how much can be achieved together, from planning to the finished result.</p>
+</kjg-karte>
+<kjg-karte href="aktion.html" link="More information" bild="startseite-7" bild-alt="Image: Help in the Neighbourhood">
+<h3>Help in the Neighbourhood</h3><p>Whether it is helping neighbours, tidying up or lending a hand at parish festivals, we pitch in where help is needed.</p><p>The children learn through play that small deeds can make a big difference, always in a group and well supervised.</p>
+</kjg-karte>
+<kjg-karte href="klamottenspende.html" link="More information" bild="startseite-8" bild-alt="Image: Clothing Donation">
+<h3>Clothing Donation</h3><p>We collect clothes in good condition and pass them on to people who urgently need them.</p><p>Your children help sort and pack, learning what sharing means. Donations are very welcome!</p>
+</kjg-karte>
     </div>
   </div>
 </section>
@@ -163,55 +95,15 @@
   <div class="faq-wrap">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">
-      <details class="faq-item">
-        <summary><span>From what age can children take part?</span><img class="chev" src="../icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Children are welcome at group meetings and our weekends from primary-school age. You will find the age for the summer camp on the Zela 2027 page.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Does my child have to be Catholic or baptised?</span><img class="chev" src="../icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>No. We are a Catholic association, but every child is welcome, regardless of denomination, religion or background.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Who looks after the children?</span><img class="chev" src="../icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Our group leaders are teenagers and young adults who volunteer their time and are trained for the role. On trips there is always a camp management team on site as well.</p></div>
-      </details>
+      <kjg-frage><span>From what age can children take part?</span><p>Children are welcome at group meetings and our weekends from primary-school age. You will find the age for the summer camp on the Zela 2027 page.</p></kjg-frage>
+      <kjg-frage><span>Does my child have to be Catholic or baptised?</span><p>No. We are a Catholic association, but every child is welcome, regardless of denomination, religion or background.</p></kjg-frage>
+      <kjg-frage><span>Who looks after the children?</span><p>Our group leaders are teenagers and young adults who volunteer their time and are trained for the role. On trips there is always a camp management team on site as well.</p></kjg-frage>
     </div>
     <a class="faq-more" href="faq.html"><img class="right" src="../icons/pfeil-rechts.svg" width="22" height="12" alt=""><span>More questions</span></a>
   </div>
 </section>
 </main>
 
-<footer class="site-footer">
-  <div class="grid">
-    <div class="brand"><a href="index.html"><img class="footer-logo" src="../assets/img/logo-icon.svg" width="192" height="190" alt="KjG logo – to the home page"></a></div>
-    <div class="col">
-      <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Address</a></h3>
-      <ul><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Pfarrer-Grimm-Strasse 1</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">55124 Mainz</a></li></ul>
-    </div>
-    <div class="col">
-      <h3>Contact</h3>
-      <ul>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Quick links</h3>
-      <ul>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-      </ul>
-    </div>
-    <div class="col col-faq">
-      <h3>FAQ</h3>
-      <ul>
-        <li><a href="faq.html">Frequently asked questions</a></li>
-        <li><a href="impressum.html">Legal notice</a></li>
-        <li><a href="datenschutz.html">Privacy policy</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+<kjg-footer></kjg-footer>
 </body>
 </html>

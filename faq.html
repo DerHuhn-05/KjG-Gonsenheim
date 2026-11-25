@@ -9,135 +9,38 @@
   <link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="alternate" hreflang="de" href="faq.html">
   <link rel="alternate" hreflang="en" href="en/faq.html">
-  <link rel="stylesheet" href="assets/css/style.css?v=57544583">
+  <link rel="stylesheet" href="assets/css/style.css?v=e97b41b3">
   <link rel="stylesheet" href="assets/css/unterseiten.css?v=83cba0ca">
   <script src="assets/js/bilder.js?v=e1756519"></script>
+  <script src="assets/js/module.js?v=d349243d"></script>
   <script src="assets/js/main.js?v=54de028f" defer></script>
 </head>
 <body class="sub nav-alt">
-<header class="site-header">
-  <div class="bar">
-    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Startseite"><img src="assets/img/logo-header.svg" width="250" height="49" alt="KjG – Katholische junge Gemeinde"></a>
-    <nav class="main-nav" aria-label="Hauptnavigation">
-      <a href="zela-2027.html">Zela 2027</a>
-      <a href="events.html">Angebote</a>
-      <a href="team.html">Team</a>
-      <a href="soziale-aktionen.html">Soziales</a>
-      <a href="faq.html" aria-current="page">FAQ</a>
-    </nav>
-    <div class="lang"><a href="faq.html" class="de active" lang="de" hreflang="de" aria-current="true">DE</a><span class="sep"></span><a href="en/faq.html" class="en" lang="en" hreflang="en">EN</a></div>
-    <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false"><span class="bar1"></span><span class="bar2"></span></button>
-  </div>
-  <nav class="mobile-nav" aria-label="Mobile Navigation">
-    <a href="index.html">Startseite</a>
-    <a href="zela-2027.html">Zela 2027</a>
-    <details class="mn-group">
-      <summary>Angebote<img class="mn-chev" src="icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="events.html">Alle Angebote</a>
-        <a href="zela-2027.html">Zela 2027</a>
-        <a href="gruppenstunde.html">Gruppenstunde</a>
-        <a href="mowo.html">MoWo</a>
-        <a href="trainee-wochenende.html">Trainee-Wochenende</a>
-      </div>
-    </details>
-    <a href="team.html">Team</a>
-    <details class="mn-group">
-      <summary>Soziales<img class="mn-chev" src="icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="soziale-aktionen.html">Alle sozialen Aktionen</a>
-        <a href="72h-aktion.html">72h-Aktion</a>
-        <a href="aktion.html">Hilfe im Stadtteil</a>
-        <a href="klamottenspende.html">Klamottenspende</a>
-      </div>
-    </details>
-    <a href="faq.html">FAQ</a>
-    <a href="ueber-uns.html">Über uns</a>
-  </nav>
-</header>
+<kjg-header seite="faq.html" aktiv="faq.html"></kjg-header>
 
 <main>
-<section class="hero-simple">
-  <div class="hero-bg"><span class="ph-label">bilder/faq-1.jpg</span><img src="bilder/faq-1.jpg" data-base="bilder/faq-1" alt="Header-Bild FAQ" onerror="kjgBild(this)"></div>
-  <h1>FAQ</h1>
-</section>
+<kjg-hero klasse="hero-simple" bild="faq-1" bild-alt="Header-Bild FAQ">
+<h1>FAQ</h1>
+</kjg-hero>
 
 <section class="faq">
   <div class="container">
     <h2>Häufig gestellte Fragen</h2>
     <div class="faq-list">
-      <details class="faq-item">
-        <summary><span>Ab welchem Alter können Kinder mitmachen?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Bei der Gruppenstunde und bei unseren Wochenenden sind Kinder ab dem Grundschulalter willkommen. Das Alter für das Zeltlager findet ihr auf der Seite Zela 2027.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Muss mein Kind katholisch oder getauft sein?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Nein. Wir sind ein katholischer Verband, aber bei uns ist jedes Kind willkommen – unabhängig von Konfession, Religion oder Herkunft.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Wer betreut die Kinder?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Unsere Gruppenleiterinnen und Gruppenleiter sind Jugendliche und junge Erwachsene, die sich ehrenamtlich engagieren und für ihre Aufgabe geschult sind. Bei Fahrten ist zusätzlich immer eine Lagerleitung vor Ort.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Wie sorgt ihr für die Sicherheit der Kinder?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Alle Verantwortlichen haben ein erweitertes Führungszeugnis vorgelegt und eine Präventionsschulung besucht. Bei jeder Fahrt gibt es feste Regeln und klare Ansprechpersonen.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Was kostet die Teilnahme?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Die Kosten hängen vom Angebot ab und stehen bei der jeweiligen Anmeldung. Kein Kind soll aus finanziellen Gründen zu Hause bleiben müssen – sprecht uns einfach an.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Wie melde ich mein Kind an?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Über die Anmelde-Buttons auf den Seiten der Angebote. Für das Zela 2027 geht das direkt über das Formular auf der Zela-Seite. Danach melden wir uns bei euch.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Was ist, wenn mein Kind Allergien hat oder Medikamente braucht?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Bitte tragt das bei der Anmeldung ein. Wir stimmen alles vorab mit euch ab, damit euer Kind gut versorgt ist.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Können Geschwister zusammen mitkommen?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Ja, sehr gerne! Geschwisterkinder können zusammen mitkommen. Details findet ihr bei den jeweiligen Angeboten.</p></div>
-      </details>
-      <details class="faq-item">
-        <summary><span>Wie erreiche ich euch bei weiteren Fragen?</span><img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt=""></summary>
-        <div class="answer"><p>Schreibt uns eine E-Mail an kjg.mainzgonsenheim@gmail.com oder meldet euch über Instagram. Wir antworten so schnell wir können.</p></div>
-      </details>
+      <kjg-frage><span>Ab welchem Alter können Kinder mitmachen?</span><p>Bei der Gruppenstunde und bei unseren Wochenenden sind Kinder ab dem Grundschulalter willkommen. Das Alter für das Zeltlager findet ihr auf der Seite Zela 2027.</p></kjg-frage>
+      <kjg-frage><span>Muss mein Kind katholisch oder getauft sein?</span><p>Nein. Wir sind ein katholischer Verband, aber bei uns ist jedes Kind willkommen – unabhängig von Konfession, Religion oder Herkunft.</p></kjg-frage>
+      <kjg-frage><span>Wer betreut die Kinder?</span><p>Unsere Gruppenleiterinnen und Gruppenleiter sind Jugendliche und junge Erwachsene, die sich ehrenamtlich engagieren und für ihre Aufgabe geschult sind. Bei Fahrten ist zusätzlich immer eine Lagerleitung vor Ort.</p></kjg-frage>
+      <kjg-frage><span>Wie sorgt ihr für die Sicherheit der Kinder?</span><p>Alle Verantwortlichen haben ein erweitertes Führungszeugnis vorgelegt und eine Präventionsschulung besucht. Bei jeder Fahrt gibt es feste Regeln und klare Ansprechpersonen.</p></kjg-frage>
+      <kjg-frage><span>Was kostet die Teilnahme?</span><p>Die Kosten hängen vom Angebot ab und stehen bei der jeweiligen Anmeldung. Kein Kind soll aus finanziellen Gründen zu Hause bleiben müssen – sprecht uns einfach an.</p></kjg-frage>
+      <kjg-frage><span>Wie melde ich mein Kind an?</span><p>Über die Anmelde-Buttons auf den Seiten der Angebote. Für das Zela 2027 geht das direkt über das Formular auf der Zela-Seite. Danach melden wir uns bei euch.</p></kjg-frage>
+      <kjg-frage><span>Was ist, wenn mein Kind Allergien hat oder Medikamente braucht?</span><p>Bitte tragt das bei der Anmeldung ein. Wir stimmen alles vorab mit euch ab, damit euer Kind gut versorgt ist.</p></kjg-frage>
+      <kjg-frage><span>Können Geschwister zusammen mitkommen?</span><p>Ja, sehr gerne! Geschwisterkinder können zusammen mitkommen. Details findet ihr bei den jeweiligen Angeboten.</p></kjg-frage>
+      <kjg-frage><span>Wie erreiche ich euch bei weiteren Fragen?</span><p>Schreibt uns eine E-Mail an kjg.mainzgonsenheim@gmail.com oder meldet euch über Instagram. Wir antworten so schnell wir können.</p></kjg-frage>
     </div>
   </div>
 </section>
 </main>
 
-<footer class="site-footer">
-  <div class="grid">
-    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" width="192" height="190" alt="KjG Logo – zur Startseite"></a></div>
-    <div class="col">
-      <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Adresse</a></h3>
-      <ul><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Pfarrer-Grimm-Strasse 1</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">55124 Mainz</a></li></ul>
-    </div>
-    <div class="col">
-      <h3>Kontaket</h3>
-      <ul>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Quicklinks</h3>
-      <ul>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-      </ul>
-    </div>
-    <div class="col col-faq">
-      <h3>FAQ</h3>
-      <ul>
-        <li><a href="faq.html">Häufig gestellte Fragen</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+<kjg-footer></kjg-footer>
 </body>
 </html>

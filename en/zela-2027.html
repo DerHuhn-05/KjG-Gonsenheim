@@ -9,56 +9,18 @@
   <link rel="preload" href="../assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="alternate" hreflang="de" href="../zela-2027.html">
   <link rel="alternate" hreflang="en" href="zela-2027.html">
-  <link rel="stylesheet" href="../assets/css/style.css?v=57544583">
+  <link rel="stylesheet" href="../assets/css/style.css?v=e97b41b3">
   <script src="../assets/js/bilder.js?v=e1756519"></script>
+  <script src="../assets/js/module.js?v=d349243d"></script>
   <script src="../assets/js/main.js?v=54de028f" defer></script>
 </head>
 <body class="page-zela nav-alt">
-<header class="site-header">
-  <div class="bar">
-    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Home"><img src="../assets/img/logo-header.svg" width="250" height="49" alt="KjG – Catholic Young Community"></a>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="zela-2027.html" aria-current="page">Zela 2027</a>
-      <a href="events.html">Activities</a>
-      <a href="team.html">Team</a>
-      <a href="soziale-aktionen.html">Social</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
-    <div class="lang"><a href="../zela-2027.html" class="de" lang="de" hreflang="de">DE</a><span class="sep"></span><a href="zela-2027.html" class="en active" lang="en" hreflang="en" aria-current="true">EN</a></div>
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="bar1"></span><span class="bar2"></span></button>
-  </div>
-  <nav class="mobile-nav" aria-label="Mobile navigation">
-    <a href="index.html">Home</a>
-    <a href="zela-2027.html">Zela 2027</a>
-    <details class="mn-group">
-      <summary>Activities<img class="mn-chev" src="../icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="events.html">All activities</a>
-        <a href="zela-2027.html">Zela 2027</a>
-        <a href="gruppenstunde.html">Group Meetings</a>
-        <a href="mowo.html">MoWo</a>
-        <a href="trainee-wochenende.html">Trainee Weekend</a>
-      </div>
-    </details>
-    <a href="team.html">Team</a>
-    <details class="mn-group">
-      <summary>Social<img class="mn-chev" src="../icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="soziale-aktionen.html">All social projects</a>
-        <a href="72h-aktion.html">72-Hour Project</a>
-        <a href="aktion.html">Help in the Neighbourhood</a>
-        <a href="klamottenspende.html">Clothing Donation</a>
-      </div>
-    </details>
-    <a href="faq.html">FAQ</a>
-    <a href="ueber-uns.html">About us</a>
-  </nav>
-</header>
+<kjg-header seite="zela-2027.html" aktiv="zela-2027.html"></kjg-header>
 
 <main>
 <section class="z-hero">
   <div class="left">
-    <div class="media"><span class="ph-label">bilder/zela-1.jpg</span><img src="../bilder/zela-1.jpg" data-base="../bilder/zela-1" alt="Header image: summer camp" onerror="kjgBild(this)"></div>
+    <kjg-bild name="zela-1" alt="Header image: summer camp" eager></kjg-bild>
   </div>
   <div class="right">
     <h1>Zela 2027</h1>
@@ -68,15 +30,13 @@
   </div>
 </section>
 
-<nav class="z-jump" aria-label="Contents">
-  <ul>
-      <li><a href="#termine"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>All the info</span></a></li>
-      <li><a href="#programm"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Programme</span></a></li>
-      <li><a href="#zusammen"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Better together</span></a></li>
-      <li><a href="#vortreffen"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Pre-camp meeting</span></a></li>
-      <li><a href="#vierzehn"><img class="down" src="../icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Already 14?</span></a></li>
-  </ul>
-</nav>
+<kjg-sprung variante="zela">
+  <a href="#termine">All the info</a>
+  <a href="#programm">Programme</a>
+  <a href="#zusammen">Better together</a>
+  <a href="#vortreffen">Pre-camp meeting</a>
+  <a href="#vierzehn">Already 14?</a>
+</kjg-sprung>
 
 <section class="z-termine" id="termine">
   <div class="z-termine-pin">
@@ -96,102 +56,41 @@
 </section>
 
 <div class="z-content">
-<section class="z-feature tight h143" id="programm">
-  <div class="text">
-    <h2>Programme</h2>
-    <div class="body">
-        <p>There will also be a meeting before the camp, where the children can get to know their group leaders and make first friends. A separate invitation with all further details about the meeting will follow in good time.</p>
-        <p>We look forward to seeing many familiar and new faces and to an unforgettable summer camp 2027 full of good spirits, great activities and wonderful shared memories!</p>
-    </div>
-  </div>
-  <div class="media"><span class="ph-label">bilder/zela-2.jpg</span><img src="../bilder/zela-2.jpg" data-base="../bilder/zela-2" alt="Image: Programme" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-abschnitt klasse="z-feature tight h143" id="programm" bild="zela-2" bild-alt="Image: Programme">
+<h2>Programme</h2>
+<p>There will also be a meeting before the camp, where the children can get to know their group leaders and make first friends. A separate invitation with all further details about the meeting will follow in good time.</p>
+<p>We look forward to seeing many familiar and new faces and to an unforgettable summer camp 2027 full of good spirits, great activities and wonderful shared memories!</p>
+</kjg-abschnitt>
 
-<section class="z-quote circle-left">
-  <div class="z-quote-inner">
-    <div class="circle"><div class="media round"><span class="ph-label">bilder/zela-3.jpg</span><img src="../bilder/zela-3.jpg" data-base="../bilder/zela-3" alt="Photo of Jonas" loading="lazy" onerror="kjgBild(this)"></div></div>
-    <blockquote>
-      <p>“When the campfire is burning in the evening and everyone sings together, I know why I come back every year.”</p>
-      <footer><strong>Jonas,</strong><span>Group leader</span></footer>
-    </blockquote>
-  </div>
-</section>
+<kjg-zitat klasse="circle-left" bild="zela-3" bild-alt="Photo of Jonas">
+<p>“When the campfire is burning in the evening and everyone sings together, I know why I come back every year.”</p>
+<strong>Jonas,</strong><span>Group leader</span>
+</kjg-zitat>
 
-<section class="z-feature h128" id="zusammen">
-  <div class="text">
-    <h2>Better together!</h2>
-    <div class="body">
-        <p>Bringing friends pays off! This year there is a special offer: anyone who brings along a friend who has never been to one of our camps before saves €20 on the participation fee!</p>
-        <p>The online registration form has a field where you can enter the name of the friend you are bringing along.</p>
-    </div>
-  </div>
-  <div class="media"><span class="ph-label">bilder/zela-4.jpg</span><img src="../bilder/zela-4.jpg" data-base="../bilder/zela-4" alt="Image: Better together!" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-abschnitt klasse="z-feature h128" id="zusammen" bild="zela-4" bild-alt="Image: Better together!">
+<h2>Better together!</h2>
+<p>Bringing friends pays off! This year there is a special offer: anyone who brings along a friend who has never been to one of our camps before saves €20 on the participation fee!</p>
+<p>The online registration form has a field where you can enter the name of the friend you are bringing along.</p>
+</kjg-abschnitt>
 
-<section class="z-feature reverse tight h143" id="vortreffen">
-  <div class="text">
-    <h2>Pre-camp meeting</h2>
-    <div class="body">
-        <p>There will also be a meeting before the camp, where the children can get to know their group leaders and make first friends. A separate invitation with all further details about the meeting will follow in good time.</p>
-        <p>We look forward to seeing many familiar and new faces and to an unforgettable summer camp 2027 full of good spirits, great activities and wonderful shared memories!</p>
-    </div>
-  </div>
-  <div class="media"><span class="ph-label">bilder/zela-5.jpg</span><img src="../bilder/zela-5.jpg" data-base="../bilder/zela-5" alt="Image: Pre-camp meeting" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-abschnitt klasse="z-feature reverse tight h143" id="vortreffen" bild="zela-5" bild-alt="Image: Pre-camp meeting">
+<h2>Pre-camp meeting</h2>
+<p>There will also be a meeting before the camp, where the children can get to know their group leaders and make first friends. A separate invitation with all further details about the meeting will follow in good time.</p>
+<p>We look forward to seeing many familiar and new faces and to an unforgettable summer camp 2027 full of good spirits, great activities and wonderful shared memories!</p>
+</kjg-abschnitt>
 
-<section class="z-quote circle-right">
-  <div class="z-quote-inner">
-    <div class="circle"><div class="media round"><span class="ph-label">bilder/zela-6.jpg</span><img src="../bilder/zela-6.jpg" data-base="../bilder/zela-6" alt="Photo of Sophie" loading="lazy" onerror="kjgBild(this)"></div></div>
-    <blockquote>
-      <p>“Parents can rest assured: we look after your children as if they were our own siblings.”</p>
-      <footer><strong>Sophie,</strong><span>Group leader</span></footer>
-    </blockquote>
-  </div>
-</section>
+<kjg-zitat klasse="circle-right" bild="zela-6" bild-alt="Photo of Sophie">
+<p>“Parents can rest assured: we look after your children as if they were our own siblings.”</p>
+<strong>Sophie,</strong><span>Group leader</span>
+</kjg-zitat>
 
-<section class="z-feature reverse h157" id="vierzehn">
-  <div class="text">
-    <h2>Already 14 years old?</h2>
-    <div class="body">
-        <p>All children who are already 14 at the time of the camp can come along as so-called “Latees”. This means they cycle to the campsite together and start the camp in a slightly different way. We will announce more information and details at a later date.</p>
-    </div>
-  </div>
-  <div class="media"><span class="ph-label">bilder/zela-7.jpg</span><img src="../bilder/zela-7.jpg" data-base="../bilder/zela-7" alt="Image: Already 14 years old?" loading="lazy" onerror="kjgBild(this)"></div>
-</section>
+<kjg-abschnitt klasse="z-feature reverse h157" id="vierzehn" bild="zela-7" bild-alt="Image: Already 14 years old?">
+<h2>Already 14 years old?</h2>
+<p>All children who are already 14 at the time of the camp can come along as so-called “Latees”. This means they cycle to the campsite together and start the camp in a slightly different way. We will announce more information and details at a later date.</p>
+</kjg-abschnitt>
 </div>
 </main>
 
-<footer class="site-footer">
-  <div class="grid">
-    <div class="brand"><a href="index.html"><img class="footer-logo" src="../assets/img/logo-icon.svg" width="192" height="190" alt="KjG logo – to the home page"></a></div>
-    <div class="col">
-      <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Address</a></h3>
-      <ul><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Pfarrer-Grimm-Strasse 1</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">55124 Mainz</a></li></ul>
-    </div>
-    <div class="col">
-      <h3>Contact</h3>
-      <ul>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Quick links</h3>
-      <ul>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-      </ul>
-    </div>
-    <div class="col col-faq">
-      <h3>FAQ</h3>
-      <ul>
-        <li><a href="faq.html">Frequently asked questions</a></li>
-        <li><a href="impressum.html">Legal notice</a></li>
-        <li><a href="datenschutz.html">Privacy policy</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+<kjg-footer></kjg-footer>
 </body>
 </html>

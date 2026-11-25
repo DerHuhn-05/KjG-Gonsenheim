@@ -9,128 +9,42 @@
   <link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="alternate" hreflang="de" href="mowo.html">
   <link rel="alternate" hreflang="en" href="en/mowo.html">
-  <link rel="stylesheet" href="assets/css/style.css?v=57544583">
+  <link rel="stylesheet" href="assets/css/style.css?v=e97b41b3">
   <link rel="stylesheet" href="assets/css/unterseiten.css?v=83cba0ca">
   <script src="assets/js/bilder.js?v=e1756519"></script>
+  <script src="assets/js/module.js?v=d349243d"></script>
   <script src="assets/js/main.js?v=54de028f" defer></script>
 </head>
 <body class="sub nav-alt">
-<header class="site-header">
-  <div class="bar">
-    <a class="logo" href="index.html" aria-label="KjG Mainz-Gonsenheim – Startseite"><img src="assets/img/logo-header.svg" width="250" height="49" alt="KjG – Katholische junge Gemeinde"></a>
-    <nav class="main-nav" aria-label="Hauptnavigation">
-      <a href="zela-2027.html">Zela 2027</a>
-      <a href="events.html">Angebote</a>
-      <a href="team.html">Team</a>
-      <a href="soziale-aktionen.html">Soziales</a>
-      <a href="faq.html">FAQ</a>
-    </nav>
-    <div class="lang"><a href="mowo.html" class="de active" lang="de" hreflang="de" aria-current="true">DE</a><span class="sep"></span><a href="en/mowo.html" class="en" lang="en" hreflang="en">EN</a></div>
-    <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false"><span class="bar1"></span><span class="bar2"></span></button>
-  </div>
-  <nav class="mobile-nav" aria-label="Mobile Navigation">
-    <a href="index.html">Startseite</a>
-    <a href="zela-2027.html">Zela 2027</a>
-    <details class="mn-group">
-      <summary>Angebote<img class="mn-chev" src="icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="events.html">Alle Angebote</a>
-        <a href="zela-2027.html">Zela 2027</a>
-        <a href="gruppenstunde.html">Gruppenstunde</a>
-        <a href="mowo.html">MoWo</a>
-        <a href="trainee-wochenende.html">Trainee-Wochenende</a>
-      </div>
-    </details>
-    <a href="team.html">Team</a>
-    <details class="mn-group">
-      <summary>Soziales<img class="mn-chev" src="icons/chevron-unten-weiss.svg" width="22" height="13" alt=""></summary>
-      <div class="mn-sub">
-        <a class="mn-alle" href="soziale-aktionen.html">Alle sozialen Aktionen</a>
-        <a href="72h-aktion.html">72h-Aktion</a>
-        <a href="aktion.html">Hilfe im Stadtteil</a>
-        <a href="klamottenspende.html">Klamottenspende</a>
-      </div>
-    </details>
-    <a href="faq.html">FAQ</a>
-    <a href="ueber-uns.html">Über uns</a>
-  </nav>
-</header>
+<kjg-header seite="mowo.html"></kjg-header>
 
 <main>
-<section class="hero-split">
-  <div class="media"><span class="ph-label">bilder/mowo-1.jpg</span><img src="bilder/mowo-1.jpg" data-base="bilder/mowo-1" alt="Header-Bild MoWo – Monsterwochenende" onerror="kjgBild(this)"></div>
-  <div class="content">
-    <h1 class="wide">MoWo</h1>
-    <p>Ein Wochenende voller Spiel, Spaß und<br> ein bisschen Gruselspaß: das<br> Monsterwochenende ist unser<br> Herbst-Highlight für Kinder.</p>
-    <!-- ANMELDE-LINK MoWo – Monsterwochenende: #ANMELDE-LINK-HIER-EINTRAGEN durch die Adresse der Anmeldung ersetzen -->
-    <a class="btn" href="#ANMELDE-LINK-HIER-EINTRAGEN">Anmeldung</a>
-  </div>
-</section>
+<kjg-hero-split klasse="hero-split" bild="mowo-1" bild-alt="Header-Bild MoWo – Monsterwochenende">
+<h1 class="wide">MoWo</h1>
+<p>Ein Wochenende voller Spiel, Spaß und<br> ein bisschen Gruselspaß: das<br> Monsterwochenende ist unser<br> Herbst-Highlight für Kinder.</p>
+<!-- ANMELDE-LINK MoWo – Monsterwochenende: #ANMELDE-LINK-HIER-EINTRAGEN durch die Adresse der Anmeldung ersetzen -->
+<a class="btn" href="#ANMELDE-LINK-HIER-EINTRAGEN">Anmeldung</a>
+</kjg-hero-split>
 
-<section class="jump-section jump-detail">
-  <div class="container">
-    <ul class="jumplinks">
-      <li><a href="#teaser"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Worum geht’s?</span></a></li>
-      <li><a href="#vorbereitungen"><img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt=""><span>Gut zu wissen</span></a></li>
-    </ul>
-  </div>
-</section>
+<kjg-sprung variante="unter" klasse="jump-detail">
+  <a href="#teaser">Worum geht’s?</a>
+  <a href="#vorbereitungen">Gut zu wissen</a>
+</kjg-sprung>
 
 <div class="container features">
-  <section class="feature" id="teaser">
-    <div class="text">
-      <h2>Worum geht’s?</h2>
-      <div class="body">
-        <p>Jedes Jahr im Herbst fahren wir mit den Kindern<br> in ein Jugendhaus. Zwei Tage lang stehen Spiele,<br> Geschichten, Basteln und eine Nachtwanderung auf<br> dem Programm – alles rund um das Motto<br> „Monster“.</p>
-        <p>Dabei muss sich niemand fürchten: Es geht um<br> Spaß, nicht ums Gruseln. Die Gruppen werden von<br> unseren Gruppenleiterinnen und Gruppenleitern<br> begleitet.</p>
-      </div>
-    </div>
-    <div class="media"><span class="ph-label">bilder/mowo-2.jpg</span><img src="bilder/mowo-2.jpg" data-base="bilder/mowo-2" alt="Bild Worum geht’s?" loading="lazy" onerror="kjgBild(this)"></div>
-  </section>
-  <section class="feature reverse" id="vorbereitungen">
-    <div class="text">
-      <h2>Gut zu wissen</h2>
-      <div class="body">
-        <p>Die Kinder schlafen im Jugendhaus und sind rund<br> um die Uhr betreut. Die Verpflegung ist<br> organisiert; Allergien und Unverträglichkeiten<br> tragt ihr bitte bei der Anmeldung ein.</p>
-        <p>Die Anmeldung läuft digital. Alle Informationen<br> zu Termin, Kosten und Packliste bekommt ihr<br> rechtzeitig vorab.</p>
-      </div>
-    </div>
-    <div class="media"><span class="ph-label">bilder/mowo-3.jpg</span><img src="bilder/mowo-3.jpg" data-base="bilder/mowo-3" alt="Bild Gut zu wissen" loading="lazy" onerror="kjgBild(this)"></div>
-  </section>
+<kjg-abschnitt klasse="feature" id="teaser" bild="mowo-2" bild-alt="Bild Worum geht’s?">
+<h2>Worum geht’s?</h2>
+<p>Jedes Jahr im Herbst fahren wir mit den Kindern<br> in ein Jugendhaus. Zwei Tage lang stehen Spiele,<br> Geschichten, Basteln und eine Nachtwanderung auf<br> dem Programm – alles rund um das Motto<br> „Monster“.</p>
+<p>Dabei muss sich niemand fürchten: Es geht um<br> Spaß, nicht ums Gruseln. Die Gruppen werden von<br> unseren Gruppenleiterinnen und Gruppenleitern<br> begleitet.</p>
+</kjg-abschnitt>
+<kjg-abschnitt klasse="feature reverse" id="vorbereitungen" bild="mowo-3" bild-alt="Bild Gut zu wissen">
+<h2>Gut zu wissen</h2>
+<p>Die Kinder schlafen im Jugendhaus und sind rund<br> um die Uhr betreut. Die Verpflegung ist<br> organisiert; Allergien und Unverträglichkeiten<br> tragt ihr bitte bei der Anmeldung ein.</p>
+<p>Die Anmeldung läuft digital. Alle Informationen<br> zu Termin, Kosten und Packliste bekommt ihr<br> rechtzeitig vorab.</p>
+</kjg-abschnitt>
 </div>
 </main>
 
-<footer class="site-footer">
-  <div class="grid">
-    <div class="brand"><a href="index.html"><img class="footer-logo" src="assets/img/logo-icon.svg" width="192" height="190" alt="KjG Logo – zur Startseite"></a></div>
-    <div class="col">
-      <h3><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Adresse</a></h3>
-      <ul><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">Pfarrer-Grimm-Strasse 1</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz" target="_blank" rel="noopener">55124 Mainz</a></li></ul>
-    </div>
-    <div class="col">
-      <h3>Kontaket</h3>
-      <ul>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
-      </ul>
-    </div>
-    <div class="col">
-      <h3>Quicklinks</h3>
-      <ul>
-        <li><a href="https://www.instagram.com/kjg_gonsenheim" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="mailto:kjg.mainzgonsenheim@gmail.com">kjg.mainzgonsenheim@<br>gmail.com</a></li>
-      </ul>
-    </div>
-    <div class="col col-faq">
-      <h3>FAQ</h3>
-      <ul>
-        <li><a href="faq.html">Häufig gestellte Fragen</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="datenschutz.html">Datenschutz</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+<kjg-footer></kjg-footer>
 </body>
 </html>

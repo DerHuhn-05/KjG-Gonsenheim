@@ -16,4 +16,4 @@ def translatable(text):
     if k.startswith('bilder/') or k.startswith('Video: bilder/') or '@' in k and ' ' not in k: return False
     if k.startswith('&') and k.endswith(';'): return False
     return True
-ATTRS = re.compile(r'\b(alt|aria-label|content)="([^"]*)"')
+ATTRS = re.compile(r'\b(alt|aria-label|content|link)="([^"]*)"')

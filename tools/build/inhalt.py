@@ -1,0 +1,349 @@
+"""Redaktionelle Texte (Entwurf) für Eltern – Deutsch + Englisch an einer Stelle.
+Zela-2027-Texte stehen NICHT hier (final, bleiben unverändert).
+w(de, en, breite) gibt den deutschen Text mit Design-Zeilenumbrüchen (<br> + Leerzeichen) zurück und merkt sich die Übersetzung."""
+import os, re, sys, textwrap
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "i18n"))
+from i18n_tok import key, normalize
+
+PAIRS = {}
+
+def reg(de, en):
+    PAIRS[key(normalize(de))] = en
+
+def t(de, en):
+    """einfacher Text ohne Umbruch"""
+    reg(de, en)
+    return de
+
+def w(de, en, breite=48):
+    """Fließtext mit gestalterischen Zeilenumbrüchen (nur Desktop; mobil und Englisch brechen automatisch um)"""
+    reg(de, en)
+    return "<br> ".join(textwrap.wrap(de, breite, break_on_hyphens=False))
+
+def absaetze(paare, breite=48):
+    return [w(d, e, breite).split("<br> ") for d, e in paare]
+
+# ============================ Startseite: Karten ============================
+LINK_MEHR = t("Weitere Informationen", "More information")
+
+CARD = {
+ "Gruppenstunde": [
+  ("Regelmäßig treffen sich die Kinder in ihrer Altersgruppe zum Spielen, Basteln, Singen und Quatschen.",
+   "Children meet regularly in their age group to play, craft, sing and chat."),
+  ("Betreut werden sie von geschulten Gruppenleiterinnen und Gruppenleitern – in einem geschützten Rahmen, in dem euer Kind neue Freunde findet.",
+   "They are looked after by trained group leaders, in a safe setting where your child can make new friends.")],
+ "Monster Wochenende": [
+  ("Jedes Jahr im Herbst fahren wir mit den Kindern für ein Wochenende in ein Jugendhaus – mit Spielen, Geschichten und ein bisschen Gruselspaß.",
+   "Every autumn we take the children to a youth hostel for a weekend of games, stories and a little spooky fun."),
+  ("Über das ganze Wochenende sind die Kinder rund um die Uhr gut betreut.",
+   "The children are well looked after around the clock throughout the weekend.")],
+ "Trainee Wochenende": [
+  ("Unsere ältesten Kinder und Jugendlichen lernen hier, wie man eine Gruppe leitet, Spiele plant und Verantwortung übernimmt.",
+   "Our oldest children and teenagers learn here how to lead a group, plan games and take on responsibility."),
+  ("So wachsen sie Schritt für Schritt zu Gruppenleiterinnen und Gruppenleitern heran – begleitet von erfahrenen Teamern.",
+   "Step by step they grow into group leaders, supported by experienced team members.")],
+ "72 Stunden Aktion": [
+  ("Bei der 72-Stunden-Aktion setzen wir uns drei Tage lang gemeinsam mit anderen Jugendgruppen für ein Projekt in unserem Stadtteil ein.",
+   "In the 72-Hour Project we spend three days working with other youth groups on a project in our neighbourhood."),
+  ("Eure Kinder erleben, wie viel man gemeinsam bewegen kann – von der Planung bis zum fertigen Ergebnis.",
+   "Your children experience how much can be achieved together, from planning to the finished result.")],
+ "Hilfe im Stadtteil": [
+  ("Ob Nachbarschaftshilfe, Aufräumaktion oder Unterstützung bei Gemeindefesten: Wir packen dort an, wo Hilfe gebraucht wird.",
+   "Whether it is helping neighbours, tidying up or lending a hand at parish festivals, we pitch in where help is needed."),
+  ("Die Kinder lernen spielerisch, dass kleine Taten viel bewirken – immer in der Gruppe und gut begleitet.",
+   "The children learn through play that small deeds can make a big difference, always in a group and well supervised.")],
+ "Klamottenspende": [
+  ("Wir sammeln gut erhaltene Kleidung und geben sie an Menschen weiter, die sie dringend brauchen.",
+   "We collect clothes in good condition and pass them on to people who urgently need them."),
+  ("Eure Kinder sortieren und verpacken mit und lernen dabei, was Teilen bedeutet. Spenden sind herzlich willkommen!",
+   "Your children help sort and pack, learning what sharing means. Donations are very welcome!")],
+}
+def card_text(titel):
+    return "".join(f"<p>{w(d, e, 42)}</p>" for d, e in CARD[titel])
+
+# Namen der Karten / Aktionen
+T_HILFE = t("Hilfe im Stadtteil", "Help in the Neighbourhood")
+T_KLAMOTTEN = t("Klamottenspende", "Clothing Donation")
+T_72 = t("72-Stunden-Aktion", "72-Hour Project")
+T_72_CARD = t("72 Stunden Aktion", "72-Hour Project")
+reg("Monster Wochenende", "Monster Weekend")
+reg("Trainee Wochenende", "Trainee Weekend")
+reg("Hilfe im Stadtteil", "Help in the Neighbourhood")
+reg("Klamottenspende", "Clothing Donation")
+reg("Hilfe im<br> Stadtteil", "Help in the Neighbourhood")
+reg("Klamotten-<br>spende", "Clothing Donation")
+
+# ============================ FAQ ============================
+FAQS = [
+ ("Ab welchem Alter können Kinder mitmachen?", "From what age can children take part?",
+  "Bei der Gruppenstunde und bei unseren Wochenenden sind Kinder ab dem Grundschulalter willkommen. Das Alter für das Zeltlager findet ihr auf der Seite Zela 2027.",
+  "Children are welcome at group meetings and our weekends from primary-school age. You will find the age for the summer camp on the Zela 2027 page."),
+ ("Muss mein Kind katholisch oder getauft sein?", "Does my child have to be Catholic or baptised?",
+  "Nein. Wir sind ein katholischer Verband, aber bei uns ist jedes Kind willkommen – unabhängig von Konfession, Religion oder Herkunft.",
+  "No. We are a Catholic association, but every child is welcome, regardless of denomination, religion or background."),
+ ("Wer betreut die Kinder?", "Who looks after the children?",
+  "Unsere Gruppenleiterinnen und Gruppenleiter sind Jugendliche und junge Erwachsene, die sich ehrenamtlich engagieren und für ihre Aufgabe geschult sind. Bei Fahrten ist zusätzlich immer eine Lagerleitung vor Ort.",
+  "Our group leaders are teenagers and young adults who volunteer their time and are trained for the role. On trips there is always a camp management team on site as well."),
+ ("Wie sorgt ihr für die Sicherheit der Kinder?", "How do you keep the children safe?",
+  "Alle Verantwortlichen haben ein erweitertes Führungszeugnis vorgelegt und eine Präventionsschulung besucht. Bei jeder Fahrt gibt es feste Regeln und klare Ansprechpersonen.",
+  "Everyone in charge has presented an extended police clearance certificate and attended safeguarding training. On every trip there are clear rules and named contact persons."),
+ ("Was kostet die Teilnahme?", "How much does it cost to take part?",
+  "Die Kosten hängen vom Angebot ab und stehen bei der jeweiligen Anmeldung. Kein Kind soll aus finanziellen Gründen zu Hause bleiben müssen – sprecht uns einfach an.",
+  "The cost depends on the activity and is shown on the registration page. No child should have to stay at home for financial reasons, so please just talk to us."),
+ ("Wie melde ich mein Kind an?", "How do I register my child?",
+  "Über die Anmelde-Buttons auf den Seiten der Angebote. Für das Zela 2027 geht das direkt über das Formular auf der Zela-Seite. Danach melden wir uns bei euch.",
+  "Use the registration buttons on the activity pages. For Zela 2027 you can register directly via the form on the Zela page. We will get back to you afterwards."),
+ ("Was ist, wenn mein Kind Allergien hat oder Medikamente braucht?", "What if my child has allergies or needs medication?",
+  "Bitte tragt das bei der Anmeldung ein. Wir stimmen alles vorab mit euch ab, damit euer Kind gut versorgt ist.",
+  "Please enter this when you register. We will agree everything with you beforehand so your child is well looked after."),
+ ("Können Geschwister zusammen mitkommen?", "Can siblings come together?",
+  "Ja, sehr gerne! Geschwisterkinder können zusammen mitkommen. Details findet ihr bei den jeweiligen Angeboten.",
+  "Yes, gladly! Siblings can come together. You will find details on the pages of the individual activities."),
+ ("Wie erreiche ich euch bei weiteren Fragen?", "How can I reach you if I have more questions?",
+  "Schreibt uns eine E-Mail an kjg.mainzgonsenheim@gmail.com oder meldet euch über Instagram. Wir antworten so schnell wir können.",
+  "Send us an email at kjg.mainzgonsenheim@gmail.com or get in touch via Instagram. We will reply as quickly as we can."),
+]
+for q, qe, a, ae in FAQS:
+    reg(q, qe); reg(a, ae)
+
+def faq_html(n):
+    return "\n".join(f"      <kjg-frage><span>{q}</span><p>{a}</p></kjg-frage>" for q, qe, a, ae in FAQS[:n])
+
+# ============================ Übersichtskacheln ============================
+EV_TXT = {
+ "gruppenstunde": ("Spielen, basteln und neue Freunde finden – regelmäßig und betreut von geschulten Gruppenleitern.",
+                   "Playing, crafting and making new friends, regularly and supervised by trained group leaders."),
+ "mowo": ("Jedes Jahr im Herbst fahren wir mit den Kindern für ein Wochenende in ein Jugendhaus.",
+          "Every autumn we take the children to a youth hostel for a weekend."),
+ "trainee": ("Unsere ältesten Kinder lernen, wie man eine Gruppe leitet, und werden zu Gruppenleitern.",
+             "Our oldest children learn how to lead a group and become group leaders."),
+ "72h": ("Drei Tage, ein Projekt: Gemeinsam mit anderen Jugendgruppen helfen wir in unserem Stadtteil.",
+         "Three days, one project: together with other youth groups we help in our neighbourhood."),
+ "hilfe": ("Nachbarschaftshilfe, Aufräumaktionen und Unterstützung bei Festen – wir packen an.",
+           "Helping neighbours, tidying up and supporting festivals: we roll up our sleeves."),
+ "klamotten": ("Wir sammeln gut erhaltene Kleidung und geben sie an Menschen in Not weiter.",
+               "We collect clothes in good condition and pass them on to people in need."),
+}
+def ev(k):
+    d, e = EV_TXT[k]
+    return w(d, e, 46)
+
+# Sprungmarken
+JUMP_EVENTS = [("teaser", t("Gruppenstunde", "Group Meetings")), ("vorbereitungen", t("MoWo", "MoWo")), ("finanzen", t("Trainee-Wochenende", "Trainee Weekend"))]
+JUMP_WER = [("teaser", t("Die KjG Gonsenheim", "The KjG Gonsenheim")), ("karte", t("Wo Sie uns finden", "Where to find us")), ("vorbereitungen", t("Zela 2027", "Zela 2027")), ("finanzen", t("KjG-Dachverband", "KjG Federation"))]
+JUMP_SOZ = [("aktion-72h", T_72), ("aktion-2", T_HILFE), ("aktion-3", T_KLAMOTTEN)]
+JUMP_TEAM = [("lagerleitung", t("Lagerleitung", "Camp management")), ("planungsleitung", t("Planungsleitung", "Planning team")), ("pfarrleitung", t("Pfarrleitung", "Parish liaison"))]
+
+# ============================ Detailseiten ============================
+# je Seite: Hero-Text + 2 Abschnitte (Überschrift, [Absätze])
+H_WORUM = t("Worum geht’s?", "What is it about?")
+H_WISSEN = t("Gut zu wissen", "Good to know")
+DETAIL = {
+ "mowo": dict(
+  hero=("Ein Wochenende voller Spiel, Spaß und ein bisschen Gruselspaß: das Monsterwochenende ist unser Herbst-Highlight für Kinder.",
+        "A weekend full of games, fun and a little spooky thrill: the Monster Weekend is our autumn highlight for children."),
+  a=(H_WORUM, [
+   ("Jedes Jahr im Herbst fahren wir mit den Kindern in ein Jugendhaus. Zwei Tage lang stehen Spiele, Geschichten, Basteln und eine Nachtwanderung auf dem Programm – alles rund um das Motto „Monster“.",
+    "Every autumn we take the children to a youth hostel. For two days the programme is full of games, stories, crafts and a night walk, all around the theme of “monsters”."),
+   ("Dabei muss sich niemand fürchten: Es geht um Spaß, nicht ums Gruseln. Die Gruppen werden von unseren Gruppenleiterinnen und Gruppenleitern begleitet.",
+    "Nobody needs to be afraid: it is about fun, not fear. The groups are accompanied by our group leaders.")]),
+  b=(H_WISSEN, [
+   ("Die Kinder schlafen im Jugendhaus und sind rund um die Uhr betreut. Die Verpflegung ist organisiert; Allergien und Unverträglichkeiten tragt ihr bitte bei der Anmeldung ein.",
+    "The children sleep at the youth hostel and are looked after around the clock. Meals are taken care of; please note any allergies or intolerances when you register."),
+   ("Die Anmeldung läuft digital. Alle Informationen zu Termin, Kosten und Packliste bekommt ihr rechtzeitig vorab.",
+    "Registration is online. You will receive all information about the date, cost and packing list in good time.")])),
+ "72h-aktion": dict(
+  hero=("Drei Tage, ein Ziel: Gemeinsam mit vielen Jugendgruppen packen wir ein soziales Projekt in unserem Stadtteil an.",
+        "Three days, one goal: together with many youth groups we take on a social project in our neighbourhood."),
+  a=(H_WORUM, [
+   ("Die 72-Stunden-Aktion ist eine bundesweite Sozialaktion katholischer Jugendverbände. Innerhalb von 72 Stunden setzen Kinder und Jugendliche ein Projekt um, das ihrem Stadtteil guttut.",
+    "The 72-Hour Project is a nationwide social action run by Catholic youth associations. Within 72 hours children and young people carry out a project that benefits their neighbourhood."),
+   ("Eure Kinder erleben dabei, wie viel man gemeinsam erreichen kann – und dass Helfen richtig Spaß macht.",
+    "Your children experience how much can be achieved together, and that helping is great fun.")]),
+  b=(H_WISSEN, [
+   ("Die Kinder arbeiten in ihrer vertrauten Gruppe, mit ihren Gruppenleiterinnen und Gruppenleitern, und werden verpflegt. Die Einsatzzeiten richten sich nach dem Alter.",
+    "The children work in their familiar group with their group leaders and are provided with meals. Working hours depend on age."),
+   ("Wenn euer Kind mitmachen möchte, meldet es einfach an. Vorab informieren wir euch über Ablauf, Treffpunkt und Abholzeiten.",
+    "If your child would like to join in, simply register them. Beforehand we will tell you about the schedule, meeting point and pick-up times.")])),
+ "aktion": dict(
+  hero=("Kleine Taten, große Wirkung: Wir helfen dort, wo es im Stadtteil gebraucht wird.",
+        "Small deeds, big impact: we help where we are needed in the neighbourhood."),
+  a=(H_WORUM, [
+   ("Ob Nachbarschaftshilfe, eine Aufräumaktion im Park oder Unterstützung bei Gemeindefesten: Wir suchen uns gemeinsam mit den Kindern Aufgaben, bei denen Hilfe gebraucht wird.",
+    "Whether it is helping neighbours, tidying up the park or supporting parish festivals, we choose tasks together with the children where help is needed."),
+   ("So erleben die Kinder, dass sie selbst etwas bewirken können – und dass Zusammenhalt im Viertel etwas Schönes ist.",
+    "This way the children experience that they can make a difference themselves, and that community spirit in the neighbourhood is something wonderful.")]),
+  b=(H_WISSEN, [
+   ("Die Einsätze finden in der Gruppe statt und sind altersgerecht. Gruppenleiterinnen und Gruppenleiter begleiten die Kinder von Anfang bis Ende.",
+    "The activities take place in a group and are suitable for the children’s age. Group leaders accompany the children from start to finish."),
+   ("Termine und Treffpunkte teilen wir euch rechtzeitig mit. Bei Fragen schreibt uns einfach eine E-Mail.",
+    "We will let you know dates and meeting points in good time. If you have questions, just send us an email.")])),
+ "klamottenspende": dict(
+  hero=("Aus Kleidung, die bei euch zu klein geworden ist, wird Hilfe für Menschen, die sie brauchen.",
+        "Clothes that are too small for your children become help for people who need them."),
+  a=(H_WORUM, [
+   ("Wir sammeln saubere, gut erhaltene Kleidung und geben sie an soziale Einrichtungen weiter. Die Kinder sortieren die Spenden mit, packen sie ein und erfahren, wo sie am Ende ankommen.",
+    "We collect clean clothes in good condition and pass them on to social organisations. The children help sort the donations, pack them and find out where they end up."),
+   ("Ganz nebenbei lernen sie, was Teilen bedeutet und wie viel eine Gemeinschaft bewegen kann.",
+    "Along the way they learn what sharing means and how much a community can achieve.")]),
+  b=(H_WISSEN, [
+   ("Gesammelt wird saubere Kleidung für Kinder und Erwachsene, bitte keine beschädigten Stücke und keine Schuhe mit Löchern. Wann und wo ihr die Spenden abgeben könnt, geben wir rechtzeitig bekannt.",
+    "We collect clean clothing for children and adults; please no damaged items or shoes with holes. We will announce in good time when and where you can drop off your donations."),
+   ("Kinder, die beim Sortieren helfen möchten, melden sich einfach bei uns an. Natürlich sind sie dabei immer in Begleitung.",
+    "Children who would like to help with sorting simply register with us. Of course they are always accompanied.")])),
+ "gruppenstunde": dict(
+  hero=("Spielen, basteln, lachen und neue Freunde finden: In der Gruppenstunde ist für jedes Kind etwas dabei.",
+        "Playing, crafting, laughing and making new friends: there is something for every child at group meetings."),
+  a=(t("Was wird gemacht", "What happens"), [
+   ("In der Gruppenstunde treffen sich die Kinder regelmäßig in ihrer Altersgruppe. Wir spielen, basteln, singen, backen oder gehen raus in die Natur – je nachdem, worauf die Gruppe Lust hat.",
+    "At group meetings the children meet regularly in their age group. We play, craft, sing, bake or head out into nature, depending on what the group feels like."),
+   ("Die Kinder dürfen mitbestimmen, was passiert. So lernen sie, eigene Ideen einzubringen und Rücksicht aufeinander zu nehmen.",
+    "The children have a say in what happens. This way they learn to contribute their own ideas and to be considerate of one another.")]),
+  b=(H_WISSEN, [
+   ("Jede Gruppe wird von mehreren geschulten Gruppenleiterinnen und Gruppenleitern begleitet. Eure Kinder sind in einem geschützten Rahmen unterwegs und haben feste Ansprechpersonen.",
+    "Each group is accompanied by several trained group leaders. Your children are in a protected setting and have fixed contact persons."),
+   ("Ihr könnt jederzeit unverbindlich vorbeischauen. Schreibt uns einfach eine E-Mail, dann sagen wir euch, wann sich welche Gruppe trifft.",
+    "You are welcome to drop by at any time without obligation. Just send us an email and we will tell you when each group meets.")])),
+ "trainee-wochenende": dict(
+  hero=("Vom Gruppenkind zur Gruppenleiterin: Beim Trainee-Wochenende wachsen Jugendliche in ihre Verantwortung hinein.",
+        "From group member to group leader: at the Trainee Weekend young people grow into their responsibility."),
+  a=(t("Das Wochenende", "The weekend"), [
+   ("Das Trainee-Wochenende richtet sich an unsere ältesten Kinder und Jugendlichen. Sie lernen, wie man eine Gruppenstunde plant, Spiele anleitet und in schwierigen Situationen ruhig bleibt.",
+    "The Trainee Weekend is aimed at our oldest children and teenagers. They learn how to plan a group meeting, lead games and stay calm in difficult situations."),
+   ("Erfahrene Gruppenleiterinnen und Gruppenleiter begleiten sie dabei und geben Tipps aus der Praxis.",
+    "Experienced group leaders accompany them and share practical tips.")]),
+  b=(H_WISSEN, [
+   ("Wer das Wochenende besucht hat, kann danach als Gruppenleiterin oder Gruppenleiter in der KjG mitwirken – muss es aber nicht. Niemand wird zu etwas gedrängt.",
+    "Anyone who has attended the weekend can afterwards help out as a group leader in the KjG, but does not have to. Nobody is pushed into anything."),
+   ("Ein Gewinn für alle Jugendlichen: Selbstvertrauen, Teamfähigkeit und Verantwortungsgefühl helfen auch in Schule und Alltag.",
+    "A gain for every young person: self-confidence, teamwork and a sense of responsibility also help at school and in everyday life.")])),
+}
+
+# ============================ Wer sind wir ============================
+WER_A = ("Die KjG Gonsenheim", [
+ ("Die KjG – Katholische junge Gemeinde – ist ein Kinder- und Jugendverband. In Mainz-Gonsenheim organisieren wir Gruppenstunden, Wochenenden und unser Sommerzeltlager.",
+  "The KjG (Katholische junge Gemeinde) is a children’s and youth association. In Mainz-Gonsenheim we organise group meetings, weekends and our summer camp."),
+ ("Bei uns engagieren sich junge Menschen ehrenamtlich für Kinder. Uns ist wichtig, dass sich jedes Kind willkommen fühlt – egal, woher es kommt.",
+  "Here young people volunteer for children. It matters to us that every child feels welcome, no matter where they come from.")])
+WER_B = ("KjG-Dachverband", [
+ ("Wir sind Teil der KjG Deutschland, einem der großen katholischen Kinder- und Jugendverbände mit Gruppen in ganz Deutschland. Gemeinsame Werte sind Mitbestimmung, Solidarität und Verantwortung.",
+  "We are part of KjG Germany, one of the large Catholic children’s and youth associations with groups across the country. Shared values are participation, solidarity and responsibility."),
+ ("Als Teil des Verbands profitieren unsere Gruppenleiterinnen und Gruppenleiter von Schulungen, Materialien und einem Netzwerk, das bei Fragen unterstützt.",
+  "As part of the association our group leaders benefit from training, materials and a network that helps with questions.")])
+reg("Die KjG Gonsenheim", "The KjG Gonsenheim")
+reg("KjG-Dachverband", "KjG Federation")
+
+# ============================ Team ============================
+# (Name, Rolle DE, Rolle EN, Absatz 1 DE, EN, Absatz 2 DE, EN)
+TEAM = {
+ "lagerleitung": [
+  ("Lena", "Leitung Zeltlager", "Camp director",
+   "Lena trägt die Gesamtverantwortung für das Zeltlager. Sie plant den Ablauf gemeinsam mit dem Team, leitet die Lagerbesprechungen und ist die erste Ansprechpartnerin für alle Fragen rund ums Lager – vor, während und nach der Fahrt.",
+   "Lena has overall responsibility for the summer camp. She plans the schedule together with the team, leads the camp meetings and is the first contact for all questions about the camp, before, during and after the trip.",
+   "Seit ihrer Kindheit ist Lena bei der KjG dabei und kennt jeden Winkel des Zeltplatzes. Ihr Lieblingsmoment: der Abend am Lagerfeuer, wenn alle gemeinsam singen und auch die Jüngsten stolz von ihrem Tag erzählen.",
+   "Lena has been with the KjG since childhood and knows every corner of the campsite. Her favourite moment: the evening around the campfire when everyone sings together and even the youngest proudly tell the story of their day."),
+  ("Jonas", "Organisation vor Ort", "On-site organisation",
+   "Jonas kümmert sich um alles, was vor Ort funktionieren muss: Zeltaufbau, Einkauf, Küche und Zeitplan. Er koordiniert die Helferinnen und Helfer und sorgt dafür, dass alles reibungslos läuft.",
+   "Jonas takes care of everything that has to work on site: pitching tents, shopping, the kitchen and the schedule. He coordinates the helpers and makes sure everything runs smoothly.",
+   "Eltern erreichen ihn bei Fragen zu Anreise, Gepäck und Abholung. Seine Spezialität: Nudeln für 60 Personen in unter einer Stunde – und das immer mit einem Lächeln.",
+   "Parents can reach him with questions about arrival, luggage and pick-up. His speciality: pasta for 60 people in under an hour, always with a smile."),
+  ("Sophie", "Programm und Aktionen", "Programme and activities",
+   "Sophie denkt sich Spiele, Wettbewerbe, Workshops und Abendaktionen aus und achtet darauf, dass für jedes Alter etwas dabei ist. Sie stimmt das Programm mit den Gruppenleiterinnen und Gruppenleitern ab.",
+   "Sophie thinks up games, competitions, workshops and evening activities and makes sure there is something for every age. She coordinates the programme with the group leaders.",
+   "Wenn ihr wissen möchtet, wie ein typischer Tag im Lager aussieht, ist Sophie die Richtige. Am liebsten erfindet sie Geländespiele, bei denen am Ende alle gewonnen haben.",
+   "If you would like to know what a typical day at camp looks like, Sophie is the right person. She loves inventing outdoor games where in the end everybody has won."),
+ ],
+ "planungsleitung": [
+  ("Max", "Planung und Termine", "Planning and dates",
+   "Max plant das KjG-Jahr: Termine, Räume und Absprachen mit der Gemeinde und der Stadt. Er verschickt die Einladungen und hält die Kommunikation mit den Eltern in Gang.",
+   "Max plans the KjG year: dates, rooms and arrangements with the parish and the city. He sends out the invitations and keeps communication with the parents going.",
+   "Er ist die Anlaufstelle, wenn ihr wissen möchtet, wann welches Angebot stattfindet. Im Team ist er der Mann mit dem Kalender – und mit einer Vorliebe für To-do-Listen.",
+   "He is the person to ask when you want to know when an activity takes place. In the team he is the one with the calendar, and with a soft spot for to-do lists."),
+  ("Hanna", "Betreuung der Gruppenleiter und Kinderschutz", "Support for group leaders and child protection",
+   "Hanna begleitet die Gruppenleiterinnen und Gruppenleiter und organisiert Schulungen, zum Beispiel zu Erster Hilfe, Aufsichtspflicht und Kinderschutz. Sie ist Ansprechperson, wenn jemand ein ungutes Gefühl hat.",
+   "Hanna supports the group leaders and organises training, for example in first aid, duty of care and child protection. She is the contact person if anyone has an uneasy feeling.",
+   "Ihr ist wichtig, dass jedes Kind sicher und gut aufgehoben ist und dass sich auch die Eltern gut informiert fühlen. Sie freut sich über jede Rückmeldung.",
+   "It matters to her that every child is safe and well looked after and that parents feel well informed too. She is glad of any feedback."),
+  ("Felix", "Material, Technik und Fotos", "Equipment, technology and photos",
+   "Felix verwaltet unser Material: Zelte, Spiele, Beamer und Musikanlage. Er repariert, packt und fährt den Anhänger – und fotografiert das Lagerleben für unsere Erinnerungen.",
+   "Felix looks after our equipment: tents, games, projector and sound system. He repairs, packs and drives the trailer, and photographs camp life for our memories.",
+   "Fotos veröffentlichen wir nur, wenn die Eltern zugestimmt haben. Wer Bilder seines Kindes sehen oder entfernen lassen möchte, wendet sich an Felix.",
+   "We only publish photos if the parents have agreed. Anyone who would like to see or remove pictures of their child can contact Felix."),
+ ],
+ "pfarrleitung": [
+  ("Anna", "Verbindung zur Pfarrei", "Link to the parish",
+   "Anna begleitet die KjG von Seiten der Pfarrei. Sie unterstützt uns bei Räumen, Genehmigungen und Finanzfragen und sorgt dafür, dass unsere Angebote im Gemeindeleben sichtbar sind.",
+   "Anna supports the KjG on behalf of the parish. She helps us with rooms, permits and financial questions and makes sure our activities are visible in parish life.",
+   "So können wir uns ganz auf die Kinder konzentrieren. Wenn ihr Fragen zur Zusammenarbeit von KjG und Pfarrei habt, wendet euch gern an sie.",
+   "That way we can concentrate fully on the children. If you have questions about how the KjG and the parish work together, feel free to contact her."),
+  ("Thomas", "Seelsorge und Ansprechperson", "Pastoral care and contact person",
+   "Thomas ist als Seelsorger Ansprechperson für alle Anliegen, die über das Organisatorische hinausgehen. Er gestaltet Impulse und Gottesdienste im Lager mit – kindgerecht und ohne Zwang.",
+   "As a pastor, Thomas is the contact person for all concerns beyond organisation. He helps shape reflections and services at camp, child-friendly and without pressure.",
+   "Er hört zu, wenn es Sorgen gibt, und steht Eltern und Kindern bei persönlichen Fragen zur Seite. Niemand muss religiös sein, um bei uns dabei zu sein.",
+   "He listens when there are worries and supports parents and children with personal questions. Nobody has to be religious to be part of what we do."),
+ ],
+}
+for k, lst in TEAM.items():
+    for n, r, re_, d1, e1, d2, e2 in lst:
+        reg(r, re_); reg(d1, e1); reg(d2, e2)
+def person_text(d):
+    return "<br> ".join(textwrap.wrap(d, 44, break_on_hyphens=False))
+
+reg("Unsere Lagerleitung", "Our camp management")
+reg("Unsere Planungsleitung", "Our planning team")
+reg("Unsere Pfarrleitung", "Our parish liaison")
+reg("Lena", "Lena"); reg("Jonas", "Jonas"); reg("Sophie", "Sophie"); reg("Max", "Max"); reg("Hanna", "Hanna"); reg("Felix", "Felix"); reg("Anna", "Anna"); reg("Thomas", "Thomas")
+
+# ============================ Zitate ============================
+QUOTE_TEAM = ("Bei uns darf jedes Kind so sein, wie es ist. Genau das macht unsere Gruppen so besonders.", "Lena,", "Gruppenleiterin",
+              "Every child can be just who they are with us. That is exactly what makes our groups so special.", "Group leader")
+QUOTE_ZELA = [
+ ("Wenn abends das Lagerfeuer brennt und alle gemeinsam singen, weiß ich, warum ich jedes Jahr wieder dabei bin.", "Jonas,", "Gruppenleiter",
+  "When the campfire is burning in the evening and everyone sings together, I know why I come back every year.", "Group leader"),
+ ("Eltern dürfen sicher sein: Wir passen auf eure Kinder auf, als wären es unsere eigenen Geschwister.", "Sophie,", "Gruppenleiterin",
+  "Parents can rest assured: we look after your children as if they were our own siblings.", "Group leader"),
+]
+def quote_p(d):
+    return "<br> ".join(textwrap.wrap("„" + d + "”", 40, break_on_hyphens=False))
+for d, n, r, e, re_ in [QUOTE_TEAM] + QUOTE_ZELA:
+    reg("„" + d + "”", "“" + e + "”")
+    reg(n, n); reg(r, re_)
+reg("Gruppenleiterin", "Group leader"); reg("Gruppenleiter", "Group leader")
+
+# Alt-Texte, Titel, Fragmente
+reg("Klamotten-", "Clothing"); reg("spende", "Donation")
+for de, en in [("Das Wochenende", "The weekend"), ("Gut zu wissen", "Good to know"), ("Die KjG Gonsenheim", "The KjG Gonsenheim"), ("Worum geht’s?", "What is it about?")]:
+    reg("Bild " + de, "Image: " + en)
+for de, en in [("Hilfe im Stadtteil", "Help in the Neighbourhood"), ("Klamottenspende", "Clothing Donation")]:
+    reg("Header-Bild " + de, "Header image: " + en)
+    reg("Kachel-Bild " + de, "Tile image: " + en)
+    reg(de + " – KjG Mainz-Gonsenheim", en + " – KjG Mainz-Gonsenheim")
+
+# ---- Übersetzungen über alle Generator-Läufe sammeln ----
+import atexit, json, os
+_PFAD = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pairs.json")
+def _speichern():
+    alt = json.load(open(_PFAD)) if os.path.exists(_PFAD) else {}
+    alt.update(PAIRS)
+    json.dump(alt, open(_PFAD, "w"), ensure_ascii=False, indent=0)
+atexit.register(_speichern)
+
+# Sprungmarken
+reg("Alle Infos", "All the info"); reg("Unser Angebot für euch", "What we offer you"); reg("Zusammen lohnt’s sich", "Better together")
+
+# Seite „Über uns“ (früher „Wer sind wir?“) und Standort-Karte
+reg("Über uns", "About us")
+reg("Über uns – KjG Mainz-Gonsenheim", "About us – KjG Mainz-Gonsenheim")
+reg("Header-Bild Über uns", "Header image: About us")
+KARTE_TITEL = t("Wo Sie uns finden", "Where to find us")
+KARTE_ADRESSE = ("Pfarrer-Grimm-Strasse 1", "55124 Mainz-Gonsenheim")
+reg(" ".join(KARTE_ADRESSE), "Pfarrer-Grimm-Strasse 1, 55124 Mainz-Gonsenheim")
+KARTE_ALT = t("Karte von Mainz: Straßen in Weiß, der Rhein in Koralle, mit dem Standort der KjG in Gonsenheim", "Map of Mainz: roads in white, the Rhine in coral, with the KjG location in Gonsenheim")
+KARTE_QUELLE = t("Kartendaten © OpenStreetMap-Mitwirkende", "Map data © OpenStreetMap contributors")
+
+# Google Maps: genau diese Adresse (Footer, Karte)
+MAPS_URL = "https://www.google.com/maps/search/?api=1&amp;query=Pfarrer-Grimm-Strasse+1%2C+55124+Mainz"
+MAPS_BTN = t("In Google Maps öffnen", "Open in Google Maps")
+MAPS_NEU = t("(öffnet in neuem Tab)", "(opens in a new tab)")
+
+reg(KARTE_ADRESSE[0], KARTE_ADRESSE[0]); reg(KARTE_ADRESSE[1], KARTE_ADRESSE[1])   # Adresse bricht in beiden Sprachen nach der Straße um

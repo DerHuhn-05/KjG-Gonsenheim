@@ -584,3 +584,16 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .z-termine.rad.vertikal .z-timeline img { left: 76px; top: calc(50% - 24px); }
 .z-termine.rad.vertikal .z-timeline p { left: 142px; right: 16px; width: auto; margin-left: 0; top: 50%; transform: translateY(-50%);
   text-align: left; font-size: 19px; line-height: 26px; white-space: normal; }
+
+/* Scrollytelling flüssig halten: eigene Ebenen für die bewegten Teile, Rest der Sektion bleibt unberührt */
+.z-termine.rad .z-termine-pin { contain: layout paint; }
+.z-termine.rad .z-termine-buehne, .z-termine.rad .z-timeline, .z-termine.rad .z-timeline li { will-change: transform; }
+.z-termine.rad .z-timeline li { backface-visibility: hidden; }
+
+/* Ränder blenden über feste Petrol-Verläufe aus statt über eine Maske (Masken müssen bei jeder Bewegung neu gezeichnet werden) */
+.z-termine.rad .z-rad, .z-termine.rad.vertikal .z-rad { -webkit-mask-image: none; mask-image: none; }
+.z-termine.rad .z-rad::before, .z-termine.rad .z-rad::after { content: ""; position: absolute; z-index: 2; pointer-events: none; }
+.z-termine.rad:not(.vertikal) .z-rad::before { left: 0; top: -40px; bottom: -40px; width: 22%; background: linear-gradient(90deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
+.z-termine.rad:not(.vertikal) .z-rad::after { right: 0; top: -40px; bottom: -40px; width: 22%; background: linear-gradient(270deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
+.z-termine.rad.vertikal .z-rad::before { left: 0; right: 0; top: 0; height: 60px; background: linear-gradient(180deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
+.z-termine.rad.vertikal .z-rad::after { left: 0; right: 0; bottom: 0; height: 110px; background: linear-gradient(0deg, var(--teal) 0, rgba(0,117,118,0) 100%); }

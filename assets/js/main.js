@@ -128,7 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const radPunkte = radLeiste ? [...radLeiste.children] : [];
   let STREIFEN = 361;        // Höhe des Petrol-Streifens im Ausgangszustand (mobil etwas höher)
   const DREH_TEMPO = 1.4;    // Scroll-Pixel pro Pixel Drehung (größer = langsamer)
+  const radBuehne = radPin && radPin.querySelector(".z-termine-buehne");
   let radMass = null;
+  let radLetzte = { weg: null, clip: null, versatz: null, lage: null, st: [] };   // zuletzt gesetzte Werte – unveränderte werden nicht neu geschrieben
 
   const STREIFEN_V = 400;     // Höhe des Streifens mobil (vertikale Variante, passt zu --streifen im CSS)
   const LI_H = 190;           // Höhe (= Abstand) einer Station mobil
@@ -160,34 +162,43 @@ document.addEventListener("DOMContentLoaded", () => {
     rad.style.marginTop = (STREIFEN - hoehe) / 2 + "px";        // Streifen sitzt im Ablauf wie bisher
     rad.style.marginBottom = (STREIFEN - hoehe) / 2 + "px";     // … und endet auch wieder dort (Streifen schließt am Ende)
     rad.style.height = hoehe + 2 * aufziehen + drehen + "px";   // öffnen + durchdrehen + schließen
-    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen, vertikal, listeH };
+    if (radBuehne) radBuehne.style.transform = "";             // beim Wechsel Desktop ↔ mobil Inline-Stil zurücksetzen
+    radLetzte = { weg: null, clip: null, versatz: null, lage: null, st: [] };
+    // Dokumentposition einmal merken – so braucht jedes Frame keine Layout-Abfrage mehr
+    const rect = rad.getBoundingClientRect();
+    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen, vertikal, listeH, anfang: rect.top + window.scrollY };
   };
 
   const radBewegen = () => {
     if (!radMass) return;
     const m = radMass;
-    const weg = m.kopf - rad.getBoundingClientRect().top;      // Scroll-Strecke seit dem Andocken
+    const L = radLetzte;
+    const gesamt = 2 * m.aufziehen + m.drehen;
+    const weg = Math.min(gesamt + 1, Math.max(-1, window.scrollY - (m.anfang - m.kopf)));   // Strecke seit dem Andocken, vor/nach der Sektion festgehalten
+    if (weg === L.weg) return;                                  // nichts zu tun, solange man weit weg ist
+    L.weg = weg;
     const oeffnen = m.aufziehen > 0 ? Math.min(1, Math.max(0, weg / m.aufziehen)) : 1;
     const schliessen = m.aufziehen > 0 ? Math.min(1, Math.max(0, (weg - m.aufziehen - m.drehen) / m.aufziehen)) : 0;
     const auf = oeffnen * (1 - schliessen);                     // 0 = Streifen, 1 = volle Höhe (Hin- und Rückweg)
-    rad.style.setProperty("--clip", ((1 - auf) * (m.hoehe - STREIFEN)) / 2 + "px");
+    const clip = Math.round(((1 - auf) * (m.hoehe - STREIFEN)) / 2 * 2) / 2;
+    if (clip !== L.clip) { L.clip = clip; radPin.style.clipPath = `inset(${clip}px 0)`; }   // direkt am Element, keine Variable im ganzen Baum
     const dreh = Math.min(1, Math.max(0, (weg - m.aufziehen) / m.drehen));
     const mitte = m.von + dreh * (m.bis - m.von);               // Index der aktiven Station
+    let lage;
     if (m.vertikal) {
       // 1. Der Hintergrund füllt sich: der Inhalt rückt vom Streifen nach oben, die Fläche wird ganz Petrol
-      rad.style.setProperty("--versatz", ((1 - auf) * (m.hoehe - STREIFEN)) / 2 + "px");
+      if (clip !== L.versatz) { L.versatz = clip; radBuehne.style.transform = `translate3d(0, ${clip}px, 0)`; }
       // 2. Die aktive Station wandert dabei von oben in die Mitte des Listenbereichs, danach läuft die Liste nach oben durch
       const fokus = FOKUS_START + (m.listeH / 2 - FOKUS_START) * auf;
-      const y = fokus - m.abstand / 2 - mitte * m.abstand;
-      radLeiste.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
+      lage = `translate3d(0, ${(fokus - m.abstand / 2 - mitte * m.abstand).toFixed(1)}px, 0)`;
     } else {
-      const x = m.breite / 2 - m.abstand / 2 - mitte * m.abstand;
-      radLeiste.style.transform = `translate3d(${x.toFixed(1)}px, 0, 0)`;
+      lage = `translate3d(${(m.breite / 2 - m.abstand / 2 - mitte * m.abstand).toFixed(1)}px, 0, 0)`;
     }
+    if (lage !== L.lage) { L.lage = lage; radLeiste.style.transform = lage; }
     radPunkte.forEach((li, i) => {
       const d = Math.min(1.6, Math.abs(i - mitte));             // Abstand zur aktiven Station in Stationen
-      li.style.transform = `scale(${(1 - 0.14 * d).toFixed(3)})`;
-      li.style.opacity = (1 - 0.3 * Math.max(0, d - 0.5)).toFixed(3);
+      const st = `scale(${(1 - 0.14 * d).toFixed(3)})|${(1 - 0.3 * Math.max(0, d - 0.5)).toFixed(3)}`;
+      if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }
     });
   };
 

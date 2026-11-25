@@ -568,3 +568,19 @@ h1, h2 { letter-spacing: -0.01em !important; }
 h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .hero h1, .hero-simple h1, .hero-split .content h1, .z-hero .right h1, .tile h2, .event-tile h2,
 .z-termine h2, .about h2, .site-footer h3, .z-quote h2 { color: var(--white); }
+
+/* ---------- Zela-Termine mobil: senkrechtes Scrollytelling ----------
+   1. Der Petrol-Streifen zieht sich auf die volle Bildschirmhöhe auf, der Inhalt rückt dabei nach oben,
+   2. danach läuft die Liste der Stationen von unten nach oben durch,
+   3. oben und unten blenden die Stationen aus (Maske). Gesteuert von main.js (Klasse .vertikal). */
+.z-termine.rad.vertikal .z-termine-buehne { top: 0; height: var(--pin-h); transform: translateY(var(--versatz, 0px)); }
+.z-termine.rad.vertikal .z-rad { top: var(--liste-oben, 90px); bottom: 0; height: auto; overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%); }
+.z-termine.rad.vertikal .z-timeline { display: block; width: auto; left: 0; }
+.z-termine.rad.vertikal .z-timeline::before { left: 32px; right: auto; top: 70px; bottom: 70px; width: 4px; height: auto; }   /* senkrechte Linie durch die Punkte */
+.z-termine.rad.vertikal .z-timeline li { width: auto; height: var(--abstand, 140px); transform-origin: 34px 50%; }   /* Skalierung um die Linie, Punkte bleiben darauf */
+.z-termine.rad.vertikal .z-timeline .dot { left: 24px; top: calc(50% - 10px); }
+.z-termine.rad.vertikal .z-timeline img { left: 76px; top: calc(50% - 24px); }
+.z-termine.rad.vertikal .z-timeline p { left: 142px; right: 16px; width: auto; margin-left: 0; top: 50%; transform: translateY(-50%);
+  text-align: left; font-size: 19px; line-height: 26px; white-space: normal; }

@@ -130,25 +130,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const DREH_TEMPO = 1.4;    // Scroll-Pixel pro Pixel Drehung (größer = langsamer)
   let radMass = null;
 
+  const STREIFEN_V = 400;     // Höhe des Streifens mobil (vertikale Variante, passt zu --streifen im CSS)
+  const LI_H = 140;           // Höhe einer Station mobil
+  const FOKUS_START = 100;    // mobil: Lage der aktiven Station im Streifen (von oben im Listenbereich)
+
   const radMessen = () => {
     if (!rad || !radPin || !radLeiste) return;
     // läuft auch bei „Bewegung reduzieren“: die Bewegung folgt nur dem eigenen Scrollen
     rad.classList.add("rad");
     const breite = rad.clientWidth;
     const kopf = breite >= 1273 ? 100 : 72;                    // Höhe der Petrol-Kopfzeile beim Scrollen
-    STREIFEN = radPin.querySelector(".z-termine-buehne").offsetHeight;
+    const vertikal = breite <= 960;                            // mobil: Stationen wandern senkrecht, Desktop: seitlich
+    rad.classList.toggle("vertikal", vertikal);
+    STREIFEN = vertikal ? STREIFEN_V : radPin.querySelector(".z-termine-buehne").offsetHeight;
     const hoehe = Math.max(STREIFEN, window.innerHeight - kopf);
-    const desktop = breite > 960;
-    const abstand = desktop ? Math.min(480, Math.max(320, breite * 0.3)) : Math.max(190, breite * 0.55);
-    const [von, bis] = [0, radPunkte.length - 1];               // Station 1 steht anfangs in der Mitte, Station 5 am Ende
+    const abstand = vertikal ? LI_H : Math.min(480, Math.max(320, breite * 0.3));
+    const [von, bis] = [0, radPunkte.length - 1];               // Station 1 steht anfangs vorn, Station 5 am Ende
     const aufziehen = hoehe - STREIFEN;
     const drehen = (bis - von) * abstand * DREH_TEMPO;
+    let listeH = 0;
+    if (vertikal) {                                            // Überschrift oben, darunter der Listenbereich
+      const oben = radPin.querySelector(".inner").offsetHeight + 12;
+      listeH = hoehe - oben;
+      rad.style.setProperty("--liste-oben", oben + "px");
+    }
     rad.style.setProperty("--kopf", kopf + "px");
     rad.style.setProperty("--pin-h", hoehe + "px");
     rad.style.setProperty("--abstand", abstand + "px");
     rad.style.marginTop = (STREIFEN - hoehe) / 2 + "px";        // Streifen sitzt im Ablauf wie bisher
     rad.style.height = hoehe + aufziehen + drehen + "px";
-    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen };
+    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen, vertikal, listeH };
   };
 
   const radBewegen = () => {
@@ -158,11 +169,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const auf = m.aufziehen > 0 ? Math.min(1, Math.max(0, weg / m.aufziehen)) : 1;
     rad.style.setProperty("--clip", ((1 - auf) * (m.hoehe - STREIFEN)) / 2 + "px");
     const dreh = Math.min(1, Math.max(0, (weg - m.aufziehen) / m.drehen));
-    const mitte = m.von + dreh * (m.bis - m.von);               // Index der Station in der Mitte
-    const x = m.breite / 2 - m.abstand / 2 - mitte * m.abstand;
-    radLeiste.style.transform = `translate3d(${x.toFixed(1)}px, 0, 0)`;
+    const mitte = m.von + dreh * (m.bis - m.von);               // Index der aktiven Station
+    if (m.vertikal) {
+      // 1. Der Hintergrund füllt sich: der Inhalt rückt vom Streifen nach oben, die Fläche wird ganz Petrol
+      rad.style.setProperty("--versatz", ((1 - auf) * (m.hoehe - STREIFEN)) / 2 + "px");
+      // 2. Die aktive Station wandert dabei von oben in die Mitte des Listenbereichs, danach läuft die Liste nach oben durch
+      const fokus = FOKUS_START + (m.listeH / 2 - FOKUS_START) * auf;
+      const y = fokus - m.abstand / 2 - mitte * m.abstand;
+      radLeiste.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
+    } else {
+      const x = m.breite / 2 - m.abstand / 2 - mitte * m.abstand;
+      radLeiste.style.transform = `translate3d(${x.toFixed(1)}px, 0, 0)`;
+    }
     radPunkte.forEach((li, i) => {
-      const d = Math.min(1.6, Math.abs(i - mitte));             // Abstand zur Mitte in Stationen
+      const d = Math.min(1.6, Math.abs(i - mitte));             // Abstand zur aktiven Station in Stationen
       li.style.transform = `scale(${(1 - 0.14 * d).toFixed(3)})`;
       li.style.opacity = (1 - 0.3 * Math.max(0, d - 0.5)).toFixed(3);
     });

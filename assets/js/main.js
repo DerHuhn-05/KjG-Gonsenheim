@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
       karteSek.style.setProperty("--kopf", kopf + "px");
       const hoeheB = buehne.offsetHeight;
       // Scrollstrecke, während die Karte steht: Zoom, dann Linie ausfahren, dann Kasten ausfahren, kurzer Halt
-      const zoomL = Math.round(vh * 0.88), linieL = Math.round(vh * 0.28), kastenL = Math.round(vh * 0.28), halt = Math.round(vh * 0.1);
+      const zoomL = Math.round(vh * 0.88), linieL = Math.round(vh * 0.28), kastenL = Math.round(vh * 0.28), halt = Math.round(vh * 0.1) + 20;      // Endbild bleibt noch kurz stehen (+20 px)
       karteSek.style.height = hoeheB + zoomL + linieL + kastenL + halt + "px";
       const oben = karteSek.getBoundingClientRect().top + window.scrollY;
       mass = {
@@ -212,9 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
       letztes = schluessel;
       setzen(zwischen(ansicht(false), ansicht(true), p));
       karteSek.classList.toggle("zoom", p >= 1);                         // Pin „ploppt“ erst auf, wenn ganz herangezoomt ist
-      // Straßen: die groben sind immer da (die Form der Stadt bleibt erkennbar), nur die allerkleinsten werden ab der Hälfte
-      // des Zooms an festen Scrollpositionen ergänzt – nicht zeitgesteuert, daher auch bei schnellem Scrollen ohne Lücken
-      if (detail) detail.style.opacity = klemmen((p - 0.5) / 0.3).toFixed(3);
+      // Straßen: die groben sind immer da (die Form der Stadt bleibt erkennbar), nur die allerkleinsten werden ab 43 % des Zooms an festen Scrollpositionen ergänzt – nicht zeitgesteuert, daher auch bei schnellem Scrollen ohne Lücken
+      if (detail) detail.style.opacity = klemmen((p - 0.43) / 0.3).toFixed(3);   // beginnt bei 43 % (7 Prozentpunkte früher als zuvor), voll bei 73 %
       ausfahren(q, r);
     };
     if (ruhig || !("IntersectionObserver" in window)) {

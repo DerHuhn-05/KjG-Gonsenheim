@@ -117,12 +117,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ---------------------------------------------------------------
-  // Über uns: Karte – zoomt beim Erscheinen von Mainz nach Gonsenheim.
-  // Es wird der viewBox des SVG animiert (nicht per CSS skaliert), damit alles auf jeder Stufe gestochen scharf bleibt.
+  // Über uns: Karte als Scrollytelling.
+  //  - Ab 80 % Sichtbarkeit beginnt der Zoom von Mainz nach Gonsenheim, die Karte bleibt dabei stehen
+  //  - der Zoom folgt direkt dem Scrollen (vor und zurück)
+  //  - erst wenn ganz herangezoomt ist, „ploppt“ der Pin auf
+  // Gezoomt wird über den viewBox des SVG (nicht per CSS skaliert), damit alles scharf bleibt.
   // ---------------------------------------------------------------
   const karteSek = document.querySelector(".karte-sektion");
   if (karteSek) {
     const svg = karteSek.querySelector("svg.karte");
+    const buehne = karteSek.querySelector(".karte-buehne");
     const pin = svg.querySelector(".k-pin");
     const MZ_W = 2400, MZ_H = 2607, GX = 794, GY = 666, GH = 835;   // Gesamtkarte, Standort, sichtbare Höhe beim Zoom (Karteneinheiten)
     const ansicht = (zoom) => {
@@ -136,38 +140,57 @@ document.addEventListener("DOMContentLoaded", () => {
       svg.setAttribute("viewBox", `${(c.cx - W * c.s / 2).toFixed(2)} ${(c.cy - H * c.s / 2).toFixed(2)} ${(W * c.s).toFixed(2)} ${(H * c.s).toFixed(2)}`);
       pin.setAttribute("transform", `translate(${GX} ${GY}) scale(${c.s.toFixed(4)})`);   // Pin bleibt in Bildschirmgröße
     };
-    let zustand = "uebersicht", lauf = 0;
-    const zoomen = (nach) => {
-      const id = ++lauf;
-      karteSek.classList.remove("fein", "bewegt");
-      const von = zustand === "uebersicht" && nach === "zoom" ? ansicht(false) : ansicht(nach !== "zoom");
-      const ziel = ansicht(nach === "zoom");
-      zustand = nach;
-      if (nach === "zoom") karteSek.classList.add("zoom"); else karteSek.classList.remove("zoom");
-      if (ruhig || nach !== "zoom") { setzen(ziel); if (nach === "zoom") karteSek.classList.add("fein"); return; }
-      karteSek.classList.add("bewegt");
-      const t0 = performance.now(), DAUER = 2200;
-      const schritt = (jetzt) => {
-        if (id !== lauf) return;
-        const t = Math.min(1, (jetzt - t0) / DAUER);
-        const e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;            // sanft an- und auslaufend
-        const s = Math.exp(Math.log(von.s) + (Math.log(ziel.s) - Math.log(von.s)) * e);  // Zoom exponentiell (gleichmäßig wirkend)
-        const u = (1 / s - 1 / von.s) / (1 / ziel.s - 1 / von.s);                         // Mittelpunkt wandert passend zum Zoom
-        setzen({ cx: von.cx + (ziel.cx - von.cx) * u, cy: von.cy + (ziel.cy - von.cy) * u, s });
-        if (t < 1) requestAnimationFrame(schritt); else { karteSek.classList.remove("bewegt"); karteSek.classList.add("fein"); }
-      };
-      requestAnimationFrame(schritt);
+    const zwischen = (von, ziel, p) => {
+      const e = p * p * (3 - 2 * p);                                                    // weiche Kurve über den Scrollweg
+      const s = Math.exp(Math.log(von.s) + (Math.log(ziel.s) - Math.log(von.s)) * e);  // Zoom exponentiell (wirkt gleichmäßig)
+      const u = (1 / s - 1 / von.s) / (1 / ziel.s - 1 / von.s);                         // Mittelpunkt wandert passend zum Zoom
+      return { cx: von.cx + (ziel.cx - von.cx) * u, cy: von.cy + (ziel.cy - von.cy) * u, s };
     };
-    setzen(ansicht(false));
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver((e) => {
-        const r = e[0].intersectionRatio;
-        if (r >= 0.55 && zustand !== "zoom") zoomen("zoom");
-        else if (r < 0.05 && zustand === "zoom") zoomen("uebersicht");   // außer Sicht: zurück zur Übersicht, damit es beim nächsten Mal wieder zoomt
-      }, { threshold: [0, 0.05, 0.55] }).observe(karteSek);
-    } else { zustand = "zoom"; setzen(ansicht(true)); karteSek.classList.add("zoom", "fein"); }
-    let kb = window.innerWidth;
-    window.addEventListener("resize", () => { if (window.innerWidth !== kb) { kb = window.innerWidth; setzen(ansicht(zustand === "zoom")); } });
+
+    let mass = null, letztes = -1, ruheTimer = 0;
+    const karteMessen = () => {
+      const kopf = window.innerWidth >= 1273 ? 100 : 72;
+      karteSek.style.setProperty("--kopf", kopf + "px");
+      const hoeheB = buehne.offsetHeight;
+      const weg = Math.round(window.innerHeight * 1.1);                  // Scrollstrecke, während die Karte steht und zoomt
+      karteSek.style.height = hoeheB + weg + "px";
+      const oben = karteSek.getBoundingClientRect().top + window.scrollY;
+      mass = {
+        start: oben - (window.innerHeight - 0.8 * hoeheB),               // 80 % der Karte sind sichtbar → Zoom beginnt
+        ende: oben - kopf + weg * 0.8,                                   // ganz herangezoomt (danach steht die Karte noch kurz still)
+      };
+      letztes = -1;
+      karteBewegen();
+    };
+    const karteBewegen = () => {
+      if (!mass) return;
+      const p = Math.min(1, Math.max(0, (window.scrollY - mass.start) / (mass.ende - mass.start)));
+      if (p === letztes) return;
+      letztes = p;
+      setzen(zwischen(ansicht(false), ansicht(true), p));
+      // Pin „ploppt“ erst auf, wenn ganz herangezoomt ist
+      karteSek.classList.toggle("zoom", p >= 1);
+      // Während des Scrollens nur die groben Straßen zeichnen (flüssig), im Stillstand kommen die feinen dazu
+      if (p > 0 && p < 1) karteSek.classList.add("bewegt");
+      clearTimeout(ruheTimer);
+      ruheTimer = setTimeout(karteRuhe, 160);
+      karteSek.classList.toggle("fein", p >= 1);
+    };
+    const karteRuhe = () => {
+      karteSek.classList.remove("bewegt");
+      karteSek.classList.toggle("fein", letztes > 0.5);
+    };
+    if (ruhig || !("IntersectionObserver" in window)) {
+      setzen(ansicht(true)); karteSek.classList.add("zoom", "fein");     // „Bewegung reduzieren“: gleich die gezoomte Karte, ohne Scrollytelling
+    } else {
+      karteSek.classList.add("scrolly");
+      setzen(ansicht(false));
+      karteMessen();
+      window.addEventListener("scroll", () => requestAnimationFrame(karteBewegen), { passive: true });
+      window.addEventListener("load", karteMessen);
+      let kb = window.innerWidth;
+      window.addEventListener("resize", () => { if (window.innerWidth !== kb) { kb = window.innerWidth; karteMessen(); } });
+    }
   }
 
   // ---------------------------------------------------------------

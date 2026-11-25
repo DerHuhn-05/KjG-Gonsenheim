@@ -111,7 +111,7 @@ Hier alle Bilder und das Header-Video der Startseite ablegen. Jede Bildfläche l
 | Datei | Wo auf der Seite |
 |---|---|
 | `ueber-uns-1.jpg` | Header-Bild Über uns |
-| `ueber-uns-2.jpg` | Bild Wer wir sind |
+| `ueber-uns-2.jpg` | Bild Die KjG Gonsenheim |
 | `ueber-uns-3.jpg` | Bild Zeltlager 2027 |
 | `ueber-uns-4.jpg` | Bild KjG-Dachverband |
 | `ueber-uns-5.jpg` | Bild Unser Team |

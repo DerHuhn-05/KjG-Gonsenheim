@@ -161,7 +161,7 @@ page("soziale-aktionen.html", "Soziale Aktionen", "soziale-aktionen.html", f'''{
 
 # ===================== FAQ =====================
 qs = faq_html(9)
-page("faq.html", "FAQ", "faq.html", f'''{simple_hero("faq", "FAQ")}
+page("faq.html", "FAQ", "faq.html", f'''{tag_hero_split("<h1>FAQ</h1>", "hero-split reverse", bildname("faq", 1, "Header-Bild FAQ"), "Header-Bild FAQ")}
 
 <section class="faq">
   <div class="container">

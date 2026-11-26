@@ -338,40 +338,52 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .jump-section:has(+ .stats) { padding-bottom: 64px; }
 @media (max-width: 960px) { .sub .jump-section + .stats { margin-bottom: 56px; } }
 
-/* ---------- Kontaktband (kjg-kontakt) ---------- */
-.sub .kontakt-band { background: #e9f3f3; color: #000; padding: 72px 24px; margin-top: 100px; }
+/* ---------- Kontaktband (kjg-kontakt): Petrol, weiße Schrift ---------- */
+.sub .kontakt-band { background: var(--teal); color: var(--white); padding: 64px 24px; margin-top: 56px; box-shadow: inset 0 -1px 0 rgba(255,255,255,.35); }
 .sub .kontakt-inner { max-width: 760px; margin-inline: auto; }
-.sub .kontakt-band h2 { color: var(--teal); font: 800 40px/48px var(--i); letter-spacing: -.5px; }
+.sub .kontakt-band h2 { color: var(--white); font: 800 40px/48px var(--i); letter-spacing: -.5px; }
 .sub .kontakt-band p { margin-top: 16px; font: 400 21px/32px var(--o); }
 .sub .kontakt-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; }
-.sub .kontakt-band .btn { display: inline-flex; background: var(--teal); color: var(--white); margin-top: 0; width: auto; height: 64px; padding: 0 36px; font-size: 26px; line-height: 64px; }
+.sub .kontakt-band .btn { display: inline-flex; margin-top: 0; width: auto; height: 64px; padding: 0 36px; font-size: 26px; }
 @media (max-width: 960px) {
-  .sub .kontakt-band { padding: 48px 20px; margin-top: 56px; }
+  .sub .kontakt-band { padding: 44px 20px; margin-top: 40px; }
   .sub .kontakt-band h2 { font-size: 30px; line-height: 38px; }
   .sub .kontakt-band p { font-size: 18px; line-height: 28px; }
 }
-.sub .kontakt-band .btn:hover { background: #005f60; color: var(--white); }
 
 /* Tastaturfokus für alle Knöpfe sichtbar */
 .btn:focus-visible, .hero-btn:focus-visible, .karte-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
-/* ---------- Zitat ohne Bild (kjg-zitat ohne bild) ---------- */
-.sub .z-quote.ohne-bild { height: auto; background: transparent; color: #000; margin: 100px 0 0; padding: 0 24px; }
-.sub .z-quote.ohne-bild .z-quote-inner { width: 760px; max-width: 100%; display: block; padding: 0; text-align: center; }
-.sub .z-quote.ohne-bild .z-quote-inner::before { content: ""; display: block; width: 56px; height: 4px; margin: 0 auto 28px; background: var(--accent); }
-.sub .z-quote.ohne-bild blockquote { position: static; margin: 0; }
-.sub .z-quote.ohne-bild blockquote p { font: italic 700 29.5px/42px var(--f); letter-spacing: .6px; white-space: normal; }
+/* ---------- Zitat ohne Bild: gleiche Petrol-Fläche wie die Zitate mit Foto, Text zentriert ---------- */
+.sub .z-quote.ohne-bild { margin: 100px 0 0; padding: 0 16px; }
+.sub .z-quote.ohne-bild .z-quote-inner { display: flex; align-items: center; justify-content: center; text-align: center; width: 1030px; }
+.sub .z-quote.ohne-bild blockquote { position: static; margin: 0; padding: 0; }
+.sub .z-quote.ohne-bild blockquote p { white-space: normal; text-wrap: balance; }
 .sub .z-quote.ohne-bild blockquote br { display: none; }
-.sub .z-quote.ohne-bild blockquote footer { margin-top: 16px; }
-.sub .z-quote.ohne-bild blockquote strong, .sub .z-quote.ohne-bild blockquote span { display: inline; color: var(--teal); font: 700 17px/26px var(--f); letter-spacing: .4px; }
-.sub .z-quote.ohne-bild blockquote span { font-weight: 400; }
-.sub .z-quote.ohne-bild + .kontakt-band { margin-top: 100px; }
-.sub main > .z-quote.ohne-bild:last-child, .sub .events-list + .z-quote.ohne-bild { margin-bottom: 100px; }
+.sub .z-quote.ohne-bild blockquote strong, .sub .z-quote.ohne-bild blockquote span { display: inline; }
+.sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 100px; }
+.sub .events-list + .z-quote.ohne-bild { margin-bottom: 100px; }
+.sub .z-quote.ohne-bild + .kontakt-band { margin-top: 56px; }
 @media (max-width: 960px) {
   .sub .z-quote.ohne-bild { margin-top: 56px; }
+  .sub .z-quote.ohne-bild .z-quote-inner { padding: 36px 0; }
   .sub .z-quote.ohne-bild blockquote p { font-size: 22px; line-height: 32px; }
-  .sub .z-quote.ohne-bild + .kontakt-band { margin-top: 56px; }
-  .sub .events-list + .z-quote.ohne-bild { margin-bottom: 56px; }
+  .sub .z-quote.ohne-bild:has(+ .features), .sub .events-list + .z-quote.ohne-bild { margin-bottom: 56px; }
+  .sub .z-quote.ohne-bild + .kontakt-band { margin-top: 40px; }
 }
-.sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 100px; }
-@media (max-width: 960px) { .sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 56px; } }
+
+/* Seitenkopf geteilt, gespiegelt (FAQ): Überschrift links auf Petrol, Bild rechts */
+@media (min-width: 961px) {
+  .sub .hero-split.reverse { grid-template-columns: 735fr 705fr; }
+  .sub .hero-split.reverse .media { order: 2; }
+  .sub .hero-split.reverse .content { order: 1; display: flex; align-items: center; padding: 0 0 0 14.2vw; }
+}
+
+/* Abstände rund um Zitat und Kontaktband: kompakter */
+.sub .features:has(+ .z-quote.ohne-bild), .sub .features:has(+ .kontakt-band) { padding-bottom: 0; }
+.sub .features + .z-quote.ohne-bild, .sub .features + .kontakt-band { margin-top: 72px; }
+.sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 72px; }
+@media (max-width: 960px) {
+  .sub .features + .z-quote.ohne-bild, .sub .features + .kontakt-band { margin-top: 40px; }
+  .sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 40px; }
+}

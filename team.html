@@ -11,11 +11,11 @@
   <link rel="alternate" hreflang="en" href="en/team.html">
   <link rel="stylesheet" href="assets/css/style.css?v=12bce3b4">
   <link rel="stylesheet" href="assets/css/unterseiten.css?v=81645116">
-  <link rel="stylesheet" href="assets/css/lagerfeuer.css?v=fbc24b47">
+  <link rel="stylesheet" href="assets/css/lagerfeuer.css?v=5ab73183">
   <script src="assets/js/bilder.js?v=e1756519"></script>
   <script src="assets/js/module.js?v=e86d18af"></script>
   <script src="assets/js/main.js?v=2ceae6fe" defer></script>
-  <script src="assets/js/lagerfeuer.js?v=e87814ac" defer></script>
+  <script src="assets/js/lagerfeuer.js?v=6ed0aae5" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="team.html" aktiv="team.html"></kjg-header>
@@ -40,6 +40,11 @@
   <a href="#pfarrleitung">Pfarrleitung</a>
 </kjg-sprung>
 
+<kjg-zitat klasse="circle-left" bild="team-10" bild-alt="Foto Lena">
+<p>„Bei uns darf jedes Kind so sein, wie es<br> ist. Genau das macht unsere Gruppen so<br> besonders.”</p>
+<strong>Lena,</strong><span>Gruppenleiterin</span>
+</kjg-zitat>
+
 <section class="feuer-intro">
   <div class="container">
     <h2>Komm ans Feuer</h2>
@@ -47,38 +52,29 @@
   </div>
 </section>
 
-<kjg-zitat klasse="circle-left" bild="team-10" bild-alt="Foto Lena">
-<p>„Bei uns darf jedes Kind so sein, wie es<br> ist. Genau das macht unsere Gruppen so<br> besonders.”</p>
-<strong>Lena,</strong><span>Gruppenleiterin</span>
-</kjg-zitat>
-
 <section class="feuer" id="lagerfeuer" aria-label="Lagerfeuer">
   <span id="lagerleitung" class="feuer-anker"></span><span id="planungsleitung" class="feuer-anker"></span><span id="pfarrleitung" class="feuer-anker"></span>
   <div class="feuer-buehne">
-    <div class="feuer-himmel"><svg class="feuer-sterne" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg><div class="feuer-mond"></div><div class="feuer-schnuppe"></div></div>
-    <svg class="feuer-tannen" viewBox="0 0 1600 130" preserveAspectRatio="none" aria-hidden="true"></svg>
-    <div class="feuer-boden"></div>
-    <div class="feuer-glut"></div>
     <div class="feuer-ring">
+      <div class="feuer-bahn" aria-hidden="true"></div>
       <div class="feuer-stelle" aria-hidden="true">
         <svg viewBox="0 0 200 260">
-          <ellipse cx="100" cy="170" rx="130" ry="110" fill="rgba(240,91,131,.25)"/>
-          <path class="flamme f1" d="M100 18 C146 78 176 124 154 196 C142 232 58 232 46 196 C26 124 62 86 100 18Z" fill="#F05B83"/>
+                    <path class="flamme f1" d="M100 18 C146 78 176 124 154 196 C142 232 58 232 46 196 C26 124 62 86 100 18Z" fill="#F05B83"/>
           <path class="flamme f2" d="M100 64 C132 106 150 140 136 196 C128 222 72 222 64 196 C52 142 76 112 100 64Z" fill="#FF9C8F"/>
           <path class="flamme f3" d="M100 118 C118 140 126 164 118 196 C112 210 88 210 82 196 C74 164 86 140 100 118Z" fill="#FFE6E0"/>
-          <g transform="translate(0 6)"><rect x="34" y="214" width="132" height="22" rx="11" fill="#3a2420" transform="rotate(-8 100 225)"/><rect x="34" y="214" width="132" height="22" rx="11" fill="#5a3b34" transform="rotate(10 100 225)"/>
-          <circle cx="40" cy="244" r="12" fill="#3f6264"/><circle cx="66" cy="250" r="11" fill="#4c7274"/><circle cx="134" cy="250" r="11" fill="#3f6264"/><circle cx="160" cy="244" r="12" fill="#4c7274"/></g>
+          <g transform="translate(0 6)"><rect x="34" y="214" width="132" height="22" rx="11" fill="#fff" fill-opacity=".55" transform="rotate(-8 100 225)"/><rect x="34" y="214" width="132" height="22" rx="11" fill="#fff" fill-opacity=".85" transform="rotate(10 100 225)"/>
+          <circle cx="40" cy="244" r="12" fill="#fff" fill-opacity=".35"/><circle cx="66" cy="250" r="11" fill="#fff" fill-opacity=".5"/><circle cx="134" cy="250" r="11" fill="#fff" fill-opacity=".35"/><circle cx="160" cy="244" r="12" fill="#fff" fill-opacity=".5"/></g>
         </svg>
       </div>
       <ul class="feuer-leute">
-<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-2" alt="Foto Lena"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Lena</span></li>
-<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-3" alt="Foto Jonas"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Jonas</span></li>
-<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-4" alt="Foto Sophie"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Sophie</span></li>
-<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-5" alt="Foto Max"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Max</span></li>
-<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-6" alt="Foto Hanna"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Hanna</span></li>
-<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-7" alt="Foto Felix"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Felix</span></li>
-<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-8" alt="Foto Anna"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Anna</span></li>
-<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-9" alt="Foto Thomas"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Thomas</span></li>
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-2" alt="Foto Lena"></kjg-bild></div><span class="feuer-name">Lena</span></li>
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-3" alt="Foto Jonas"></kjg-bild></div><span class="feuer-name">Jonas</span></li>
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-4" alt="Foto Sophie"></kjg-bild></div><span class="feuer-name">Sophie</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-5" alt="Foto Max"></kjg-bild></div><span class="feuer-name">Max</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-6" alt="Foto Hanna"></kjg-bild></div><span class="feuer-name">Hanna</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-7" alt="Foto Felix"></kjg-bild></div><span class="feuer-name">Felix</span></li>
+<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-8" alt="Foto Anna"></kjg-bild></div><span class="feuer-name">Anna</span></li>
+<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-9" alt="Foto Thomas"></kjg-bild></div><span class="feuer-name">Thomas</span></li>
       </ul>
     </div>
     <div class="feuer-info">

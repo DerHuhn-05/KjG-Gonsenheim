@@ -249,7 +249,7 @@ def feuer_html():
             alt = "Foto " + name
             reg(alt, "Photo of " + name)
             bild = img("team", k + 2, alt, "media")
-            leute.append(f'<li class="feuer-p" data-gruppe="{gruppe}"><div class="feuer-foto">{bild}<span class="feuer-dunkel"></span></div><span class="feuer-name">{name}</span></li>')
+            leute.append(f'<li class="feuer-p" data-gruppe="{gruppe}"><div class="feuer-foto">{bild}</div><span class="feuer-name">{name}</span></li>')
             chips = "".join(f"<li>{c}</li>" for c in chips_de)
             infos.append(f'''<article class="feuer-it" data-gruppe="{gruppe}">
   <p class="feuer-lab">{GRUPPEN_NAME[gruppe]}</p>
@@ -265,19 +265,15 @@ def feuer_html():
     return f'''<section class="feuer" id="lagerfeuer" aria-label="{t("Lagerfeuer", "Campfire")}">
   <span id="lagerleitung" class="feuer-anker"></span><span id="planungsleitung" class="feuer-anker"></span><span id="pfarrleitung" class="feuer-anker"></span>
   <div class="feuer-buehne">
-    <div class="feuer-himmel"><svg class="feuer-sterne" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg><div class="feuer-mond"></div><div class="feuer-schnuppe"></div></div>
-    <svg class="feuer-tannen" viewBox="0 0 1600 130" preserveAspectRatio="none" aria-hidden="true"></svg>
-    <div class="feuer-boden"></div>
-    <div class="feuer-glut"></div>
     <div class="feuer-ring">
+      <div class="feuer-bahn" aria-hidden="true"></div>
       <div class="feuer-stelle" aria-hidden="true">
         <svg viewBox="0 0 200 260">
-          <ellipse cx="100" cy="170" rx="130" ry="110" fill="rgba(240,91,131,.25)"/>
-          <path class="flamme f1" d="M100 18 C146 78 176 124 154 196 C142 232 58 232 46 196 C26 124 62 86 100 18Z" fill="#F05B83"/>
+                    <path class="flamme f1" d="M100 18 C146 78 176 124 154 196 C142 232 58 232 46 196 C26 124 62 86 100 18Z" fill="#F05B83"/>
           <path class="flamme f2" d="M100 64 C132 106 150 140 136 196 C128 222 72 222 64 196 C52 142 76 112 100 64Z" fill="#FF9C8F"/>
           <path class="flamme f3" d="M100 118 C118 140 126 164 118 196 C112 210 88 210 82 196 C74 164 86 140 100 118Z" fill="#FFE6E0"/>
-          <g transform="translate(0 6)"><rect x="34" y="214" width="132" height="22" rx="11" fill="#3a2420" transform="rotate(-8 100 225)"/><rect x="34" y="214" width="132" height="22" rx="11" fill="#5a3b34" transform="rotate(10 100 225)"/>
-          <circle cx="40" cy="244" r="12" fill="#3f6264"/><circle cx="66" cy="250" r="11" fill="#4c7274"/><circle cx="134" cy="250" r="11" fill="#3f6264"/><circle cx="160" cy="244" r="12" fill="#4c7274"/></g>
+          <g transform="translate(0 6)"><rect x="34" y="214" width="132" height="22" rx="11" fill="#fff" fill-opacity=".55" transform="rotate(-8 100 225)"/><rect x="34" y="214" width="132" height="22" rx="11" fill="#fff" fill-opacity=".85" transform="rotate(10 100 225)"/>
+          <circle cx="40" cy="244" r="12" fill="#fff" fill-opacity=".35"/><circle cx="66" cy="250" r="11" fill="#fff" fill-opacity=".5"/><circle cx="134" cy="250" r="11" fill="#fff" fill-opacity=".35"/><circle cx="160" cy="244" r="12" fill="#fff" fill-opacity=".5"/></g>
         </svg>
       </div>
       <ul class="feuer-leute">
@@ -302,14 +298,14 @@ page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Tea
 
 {jump(JUMP_TEAM, "jump-team")}
 
+{QUOTE}
+
 <section class="feuer-intro">
   <div class="container">
     <h2>{FEUER_INTRO[0]}</h2>
     <p>{FEUER_INTRO[1]}</p>
   </div>
 </section>
-
-{QUOTE}
 
 {feuer_html()}
 

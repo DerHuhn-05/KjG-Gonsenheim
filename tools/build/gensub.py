@@ -261,14 +261,6 @@ def feuer_html():
   <p class="feuer-lied"><span>{FEUER_LIED}</span> {lied}</p>
 </article>''')
             k += 1
-    pn, pr, pt, pc = FEUER_PLATZ
-    leute.append(f'<li class="feuer-p feuer-platz-p"><div class="feuer-foto feuer-leer"><span aria-hidden="true">?</span><span class="feuer-dunkel"></span></div><span class="feuer-name">{pn}</span></li>')
-    infos.append(f'''<article class="feuer-it" data-gruppe="platz">
-  <p class="feuer-lab">{pr}</p>
-  <h3>{pn}</h3>
-  <p class="feuer-text">{pt}</p>
-  <ul class="feuer-chips">{"".join(f"<li>{c}</li>" for c in pc)}</ul>
-</article>''')
     nl = "\n"
     return f'''<section class="feuer" id="lagerfeuer" aria-label="{t("Lagerfeuer", "Campfire")}">
   <span id="lagerleitung" class="feuer-anker"></span><span id="planungsleitung" class="feuer-anker"></span><span id="pfarrleitung" class="feuer-anker"></span>
@@ -327,8 +319,7 @@ page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Tea
     <p>{FEUER_ENDE[1]}</p>
   </div>
 </section>
-
-<kjg-kontakt></kjg-kontakt>''', extra_css='  <link rel="stylesheet" href="assets/css/lagerfeuer.css">\n', extra_js='  <script src="assets/js/lagerfeuer.js" defer></script>\n')
+''', extra_css='  <link rel="stylesheet" href="assets/css/lagerfeuer.css">\n', extra_js='  <script src="assets/js/lagerfeuer.js" defer></script>\n')
 
 # ===================== Impressum & Datenschutz =====================
 for f, t in [("impressum.html", "Impressum"), ("datenschutz.html", "Datenschutz")]:

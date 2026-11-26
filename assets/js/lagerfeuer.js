@@ -7,7 +7,8 @@
   const himmel = fire.querySelector(".feuer-himmel"), sterne = fire.querySelector(".feuer-sterne"), mond = fire.querySelector(".feuer-mond"), schnuppe = fire.querySelector(".feuer-schnuppe");
   const glut = fire.querySelector(".feuer-glut"), stelle = fire.querySelector(".feuer-stelle"), tannen = fire.querySelector(".feuer-tannen");
   const pe = [...fire.querySelectorAll(".feuer-p")], its = [...fire.querySelectorAll(".feuer-it")];
-  const dots = fire.querySelector(".feuer-dots"), hinweis = fire.querySelector(".scroll-hinweis");
+  const dots = fire.querySelector(".feuer-dots");
+  let hinweis = null;   // „Weiter scrollen“ wird erst von module.js erzeugt (nach diesem Skript) – deshalb erst bei Bedarf suchen
   const nms = pe.map((e) => e.querySelector(".feuer-name")), dunkel = pe.map((e) => e.querySelector(".feuer-dunkel"));
   const N = pe.length;
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -95,7 +96,8 @@
     himmel.style.background = `linear-gradient(180deg, ${mix([0, 105, 106], [0, 22, 25], t)}, ${mix([226, 110, 140], [0, 58, 60], t)})`;
     sterne.style.opacity = clamp((p - 0.05) / 0.45).toFixed(2);
     mond.style.opacity = clamp((p - 0.2) / 0.5).toFixed(2);
-    if (hinweis) hinweis.style.opacity = p > 0.005 && p < 0.97 ? 1 : 0;
+    if (!hinweis) hinweis = fire.querySelector(".scroll-hinweis");
+    if (hinweis) hinweis.style.opacity = p < 0.97 ? 1 : 0;
     // gelegentlich eine Sternschnuppe
     if (!reduziert && p > 0.3 && scrollY - schnuppeZeit > 900) {
       schnuppeZeit = scrollY; schnuppe.classList.remove("los"); void schnuppe.offsetWidth;

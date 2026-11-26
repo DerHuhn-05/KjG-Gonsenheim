@@ -419,13 +419,8 @@ FEUER_INTRO = (t("Komm ans Feuer", "Come to the fire"),
                  "Sit down with us. Around the campfire everyone briefly tells what they do at the KjG and what they enjoy most about it. Just keep scrolling to get to know our team."))
 FEUER_ERZAEHLT = t("Erzählt am Feuer", "Told around the fire")
 FEUER_LIED = t("Lieblingslied am Feuer", "Favourite campfire song")
-FEUER_PLATZ = (t("Dein Platz?", "Your seat?"), t("Wir suchen Verstärkung", "We are looking for reinforcements"),
-               t("Du hast Lust, Zeit mit Kindern zu verbringen und mit anzupacken? Dann komm zu uns ins Team. Wir schulen dich, und du bist von Anfang an nicht allein.",
-                 "Do you enjoy spending time with children and lending a hand? Then join our team. We will train you, and you will not be on your own from the start."),
-               [t("Schulung", "Training"), t("Teamgeist", "Team spirit"), t("Zeltlager", "Summer camp")])
 reg("Weiter scrollen", "Keep scrolling")
 FEUER_ENDE = (t("Gute Nacht vom KjG-Team", "Good night from the KjG team"),
-              t("Das Feuer brennt weiter. Wenn du mitkommen möchtest, ist noch ein Platz auf dem Baumstamm frei.",
-                "The fire keeps burning. If you would like to join us, there is still a seat free on the log."))
-reg("Foto Dein Platz", "Photo of your seat")
+              t("Das Feuer brennt weiter, und wir freuen uns auf ein Wiedersehen im Zeltlager und in den Gruppenstunden.",
+                "The fire keeps burning, and we look forward to seeing you again at summer camp and at the group meetings."))
 reg("Lagerfeuer", "Campfire")

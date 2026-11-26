@@ -379,7 +379,7 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 @media (min-width: 961px) {
   .sub .hero-split.reverse { grid-template-columns: 735fr 705fr; }
   .sub .hero-split.reverse .media { order: 2; }
-  .sub .hero-split.reverse .content { order: 1; display: flex; align-items: center; padding: 0 0 0 14.2vw; }
+  .sub .hero-split.reverse .content { order: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 0 0 14.2vw; }
 }
 
 /* Abstände rund um Zitat und Kontaktband: kompakter */

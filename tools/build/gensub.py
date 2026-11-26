@@ -162,7 +162,7 @@ page("soziale-aktionen.html", "Soziale Aktionen", "soziale-aktionen.html", f'''{
 
 # ===================== FAQ =====================
 qs = faq_html(9)
-page("faq.html", "FAQ", "faq.html", f'''{tag_hero_split("<h1>FAQ</h1>", "hero-split reverse", bildname("faq", 1, "Header-Bild FAQ"), "Header-Bild FAQ")}
+page("faq.html", "FAQ", "faq.html", f'''{tag_hero_split("<h1>FAQ</h1>\n<p>" + w("Hier findet ihr Antworten auf die Fragen, die uns am häufigsten gestellt werden.", "Here you will find answers to the questions we are asked most often.", 34) + "</p>", "hero-split reverse", bildname("faq", 1, "Header-Bild FAQ"), "Header-Bild FAQ")}
 
 <section class="faq">
   <div class="container">

@@ -104,6 +104,7 @@ EN_INHALT = {
 "Hejo, spann den Wagen an": "Hejo, spann den Wagen an",
 "Helferinnen und Helfer": "Volunteers",
 "Hey Jude": "Hey Jude",
+"Hier findet ihr Antworten auf die Fragen, die uns am häufigsten gestellt werden.": "Here you will find answers to the questions we are asked most often.",
 "Hilfe im Stadtteil": "Help in the Neighbourhood",
 "Hilfe im Stadtteil – KjG Mainz-Gonsenheim": "Help in the Neighbourhood – KjG Mainz-Gonsenheim",
 "Ihr ist wichtig, dass jedes Kind sicher und gut aufgehoben ist und dass sich auch die Eltern gut informiert fühlen. Sie freut sich über jede Rückmeldung.": "It matters to her that every child is safe and well looked after and that parents feel well informed too. She is glad of any feedback.",

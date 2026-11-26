@@ -636,3 +636,6 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .faq-item summary:hover > span {
   text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .faq-item summary:hover { cursor: pointer; }
+
+/* Unterstreichungen laufen durch Unterlängen (g, j, p, y) hindurch, statt sie auszusparen */
+html, a, summary, .btn, .hero-btn, .karte-btn { text-decoration-skip-ink: none; }

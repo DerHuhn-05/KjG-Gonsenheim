@@ -420,7 +420,4 @@ FEUER_INTRO = (t("Komm ans Feuer", "Come to the fire"),
 FEUER_ERZAEHLT = t("Erzählt am Feuer", "Told around the fire")
 FEUER_LIED = t("Lieblingslied am Feuer", "Favourite campfire song")
 reg("Weiter scrollen", "Keep scrolling")
-FEUER_ENDE = (t("Gute Nacht vom KjG-Team", "Good night from the KjG team"),
-              t("Das Feuer brennt weiter, und wir freuen uns auf ein Wiedersehen im Zeltlager und in den Gruppenstunden.",
-                "The fire keeps burning, and we look forward to seeing you again at summer camp and at the group meetings."))
 reg("Lagerfeuer", "Campfire")

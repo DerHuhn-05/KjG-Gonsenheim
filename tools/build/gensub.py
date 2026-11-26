@@ -308,13 +308,6 @@ page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Tea
 </section>
 
 {feuer_html()}
-
-<section class="feuer-ende">
-  <div class="container">
-    <h2>{FEUER_ENDE[0]}</h2>
-    <p>{FEUER_ENDE[1]}</p>
-  </div>
-</section>
 ''', extra_css='  <link rel="stylesheet" href="assets/css/lagerfeuer.css">\n', extra_js='  <script src="assets/js/lagerfeuer.js" defer></script>\n')
 
 # ===================== Impressum & Datenschutz =====================

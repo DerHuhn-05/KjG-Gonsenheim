@@ -48,10 +48,13 @@
 .sub .feuer-lied span::after { content: ":"; }
 
 .sub .feuer-dots { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; gap: 8px; z-index: 90; }
-.sub .feuer-dots button { width: 36px; height: 36px; border: 2px solid rgba(255,255,255,.55); background: transparent; color: #fff; font: 700 15px/1 var(--i); cursor: pointer; transition: background .2s, border-color .2s; }
-.sub .feuer-dots .feuer-pfeil { display: grid; place-content: center; padding: 0; }
+.sub .feuer-dots button { width: 36px; height: 36px; border: 2px solid rgba(255,255,255,.7); border-radius: 50%; background: transparent; color: #fff; font: 700 15px/1 var(--i); cursor: pointer; transition: background .2s, border-color .2s; }
+.sub .feuer-dots .feuer-pfeil { display: grid; place-content: center; padding: 0; width: 44px; height: 44px; background: var(--white); border-color: var(--accent); }   /* runde Pfeile wie bei den Slidern der Startseite */
+.sub .feuer-dots .feuer-pfeil img { display: block; width: 10px; height: 16px; }
+.sub .feuer-dots { align-items: center; }
 .sub .feuer-dots button:disabled { opacity: .35; cursor: default; }
 .sub .feuer-dots button:not(:disabled):hover { background: rgba(255,255,255,.2); }
+.sub .feuer-dots .feuer-pfeil:not(:disabled):hover { background: #e9f3f3; }
 .sub .feuer-dots button.an { background: var(--accent); border-color: var(--accent); }
 .sub .feuer-dots button:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
 .sub .feuer .scroll-hinweis { top: 20px; right: 24px; background: transparent; }
@@ -69,6 +72,7 @@
   .sub .feuer-name { font-size: 12px; }
   .sub .feuer-dots { gap: 4px; bottom: 60px; }
   .sub .feuer-dots button { width: 30px; height: 30px; font-size: 13px; }
+  .sub .feuer-dots .feuer-pfeil { width: 38px; height: 38px; }
   .sub .feuer-intro h2, .sub .feuer-ende h2 { font-size: 36px; line-height: 42px; }
   .sub .feuer-intro p, .sub .feuer-ende p { font-size: 18px; line-height: 28px; }
   .sub .feuer-intro, .sub .z-quote + .feuer-intro { padding-top: 48px; padding-bottom: 48px; }
@@ -77,4 +81,4 @@
 @media (prefers-reduced-motion: reduce) { .sub .flamme { animation: none; } .sub .feuer-it { transition: none; } }
 /* Handy mit wenig Platz: Zitat der Person entfällt (Klasse setzt lagerfeuer.js) */
 .sub .feuer.kompakt .feuer-it blockquote { display: none; }
-@media (max-width: 360px) { .sub .feuer-dots button { width: 26px; height: 26px; } .sub .feuer-dots { gap: 3px; } }
+@media (max-width: 360px) { .sub .feuer-dots button { width: 26px; height: 26px; } .sub .feuer-dots .feuer-pfeil { width: 32px; height: 32px; } .sub .feuer-dots { gap: 3px; } }

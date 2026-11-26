@@ -19,7 +19,7 @@
     const b = document.createElement("button");
     b.type = "button"; b.className = "feuer-pfeil";
     b.setAttribute("aria-label", richtung < 0 ? (document.documentElement.lang === "en" ? "Previous person" : "Vorherige Person") : (document.documentElement.lang === "en" ? "Next person" : "Nächste Person"));
-    b.innerHTML = `<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="${richtung < 0 ? "M10 2 L4 7 L10 12" : "M4 2 L10 7 L4 12"}" fill="none" stroke="#fff" stroke-width="2"/></svg>`;
+    b.innerHTML = `<img src="${document.documentElement.lang === "en" ? "../" : ""}icons/slider-${richtung < 0 ? "links" : "rechts"}.svg" width="10" height="16" alt="">`;
     b.addEventListener("click", () => nach(clamp(aktiv + richtung, 0, N - 1)));
     return b;
   };

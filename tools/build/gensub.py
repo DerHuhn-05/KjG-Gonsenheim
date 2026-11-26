@@ -103,12 +103,12 @@ def detail(fname, h1, plain, wide=False, small=False, anmeldung=True):
 </div>'''
     page(fname, plain, "", main)   # nur Seiten, die selbst im Header stehen, werden fett
 
-detail("mowo.html", "MoWo", "MoWo – Monsterwochenende", wide=True)
+detail("mowo.html", "MoWo", "MoWo – Monsterwochenende", wide=True, anmeldung=False)   # Anmeldung: derzeit keine – Knopf ausgeblendet
 detail("72h-aktion.html", "72h<br>Aktion", "72h-Aktion")
 detail("aktion.html", "Hilfe im<br> Stadtteil", "Hilfe im Stadtteil", small=True)
 detail("klamottenspende.html", "Klamotten-<br>spende", "Klamottenspende", small=True)
 detail("gruppenstunde.html", "Gruppen-<br>stunde", "Gruppenstunde", anmeldung=False)
-detail("trainee-wochenende.html", "Trainee-<br>Wochenende", "Trainee-Wochenende", small=True)
+detail("trainee-wochenende.html", "Trainee-<br>Wochenende", "Trainee-Wochenende", small=True, anmeldung=False)   # Anmeldung: derzeit keine – Knopf ausgeblendet
 
 # ===================== Kachel-Übersichten =====================
 def tiles(pg, items, ids, start=0):   # start=1, wenn davor schon eine Kachel mit Bild rechts steht

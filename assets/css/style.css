@@ -540,9 +540,10 @@ html[lang="en"] .z-quote.circle-right blockquote p { max-width: 700px; }
 body * { letter-spacing: normal !important; }
 h1, h2 { letter-spacing: -0.01em !important; }
 
-/* ---------- Mobil: in jedem Modul erst die Überschrift, dann das Bild, dann der Text ----------
+/* ---------- Mobil: Reihenfolge in den Modulen ----------
+   Karten (Slider): Überschrift, Bild, Text. Bild-Text-Abschnitte und Personen: Bild, Überschrift, Text.
    Die Text-Box wird aufgelöst (display: contents), damit Überschrift und Text getrennt um das Bild stehen.
-   Ausnahme: Petrol-Kacheln – dort stehen Bild zuerst, darunter Überschrift und Text gemeinsam in der Petrol-Box. */
+   Petrol-Kacheln: Bild zuerst, darunter Überschrift und Text gemeinsam in der Petrol-Box. */
 @media (max-width: 960px) {
   .card { display: flex; flex-direction: column; }
   .card h3 { order: 1; margin: 0 0 16px; }
@@ -551,8 +552,8 @@ h1, h2 { letter-spacing: -0.01em !important; }
   .card .more-link { order: 4; align-self: flex-start; }
 
   .z-feature .text, .z-feature.reverse .text { display: contents; }
-  .z-feature h2 { order: 1; }
-  .z-feature .media, .z-feature.reverse .media { order: 2; }
+  .z-feature .media, .z-feature.reverse .media { order: 1; }   /* Bild, darunter Überschrift, dann Text */
+  .z-feature h2 { order: 2; }
   .z-feature .body { order: 3; margin-top: 0; }
 }
 

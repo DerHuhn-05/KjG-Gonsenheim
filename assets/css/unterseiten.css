@@ -183,8 +183,10 @@
   .sub .hero-simple { height: 480px; }
   .sub .hero-simple h1 { top: auto; bottom: 0; position: relative; padding: 210px 16px 0; margin: 0; font-size: 52px; line-height: 1.1; letter-spacing: 3px; }
   .sub .hero-split { grid-template-columns: 1fr; height: auto; }
-  .sub .hero-split .media { order: 2; height: 300px; }
-  .sub .hero-split .content { padding: 140px 16px 56px; }
+  .sub .hero-split .media { order: -1; height: 320px; }   /* mobil: erst das Bild (unter der transparenten Kopfzeile), dann der Petrol-Container mit der Überschrift */
+  .sub .hero-split .content { padding: 44px 16px 56px; }
+  .sub .hero-split.small .content { padding-top: 44px; }
+  .sub .hero-split p br { display: none; }   /* Zeilenumbrüche des Desktop-Entwurfs entfallen mobil */
   .sub .event-tile, .sub .event-tile.reverse { grid-template-columns: 1fr; height: auto; }
   .sub .event-tile .media, .sub .event-tile.reverse .media { order: -1; }   /* mobil: erst das Bild, dann die Petrol-Box */
   .sub .event-tile .text, .sub .event-tile.reverse .text { padding: 56px 16px; }
@@ -252,17 +254,17 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .hero-simple.short h1 { position: absolute; left: 0; right: 0; top: calc(50% + 14px); bottom: auto; padding: 0 16px; }   /* mittig im sichtbaren Teil unter der Kopfzeile */
 }
 
-/* ---------- Mobil: in jedem Modul erst die Überschrift, dann das Bild, dann der Text ---------- */
+/* ---------- Mobil: bei Bild-Text-Modulen erst das Bild, darunter die Überschrift, dann der Text ---------- */
 @media (max-width: 960px) {
   .sub .feature .text, .sub .feature.reverse .text { display: contents; }
-  .sub .feature h2 { order: 1; }
-  .sub .feature .media, .sub .feature.reverse .media { order: 2; }
+  .sub .feature .media, .sub .feature.reverse .media { order: 1; }
+  .sub .feature h2 { order: 2; }
   .sub .feature .body { order: 3; margin-top: 0; }
 
   .sub .person.left, .sub .person.right { display: flex; flex-direction: column; gap: 20px; }
   .sub .person .text { display: contents; }
-  .sub .person h3 { order: 1; }
-  .sub .person .circle { order: 2; align-self: center; }
+  .sub .person .circle { order: 1; align-self: center; }
+  .sub .person h3 { order: 2; }
   .sub .person p { order: 3; margin-top: 0; }
 }
 
@@ -270,7 +272,7 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .person .rolle { margin-top: 6px; color: var(--teal); font: 600 20px/26px var(--i); }
 .sub .person .rolle + p { margin-top: 18px; }
 .sub .person p + p { margin-top: 14px; }
-@media (max-width: 960px) { .sub .person .rolle { order: 1; font-size: 18px; margin-top: -8px; } .sub .person p + p { margin-top: 12px; } }
+@media (max-width: 960px) { .sub .person .rolle { order: 2; font-size: 18px; margin-top: -8px; } .sub .person p + p { margin-top: 12px; } }
 
 /* ---------- Über uns: Standort-Karte (SVG, Zoom von Mainz nach Gonsenheim, Steuerung in main.js) ---------- */
 .sub .karte-sektion { background: var(--teal); color: var(--white); }

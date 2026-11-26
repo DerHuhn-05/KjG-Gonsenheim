@@ -38,7 +38,7 @@ Framework preset: **None** · Build command: **leer** · Build output directory:
 
 ## Anmelde-Links
 Zela 2027 (Startseite und `zela-2027.html`) führt auf das Google-Formular und öffnet es in einem neuen Tab.
-In `mowo.html`, `trainee-wochenende.html`, `72h-aktion.html`, `aktion.html` und `klamottenspende.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.
+In `72h-aktion.html`, `aktion.html` und `klamottenspende.html` nach `ANMELDE-LINK` suchen und `#ANMELDE-LINK-HIER-EINTRAGEN` durch die Adresse der Anmeldung ersetzen.
 
 
 ## Standort-Karte (Über uns)

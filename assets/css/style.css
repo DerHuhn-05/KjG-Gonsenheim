@@ -613,16 +613,16 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 /* Zela-Zeitleiste: eckiges Foto je Station (wandert mit der Station, wird in der Mitte größer). Nur mit JavaScript-Zeitleiste sichtbar.
    Computer: unterhalb der Linie · Handy: rechts neben dem Text */
 .z-timeline .zeit-bild { display: none; }
-.z-termine.rad .z-timeline .zeit-bild { display: block; position: absolute; left: calc(50% - 72px); top: 178px; width: 144px; height: 108px;
+.z-termine.rad .z-timeline .zeit-bild { display: block; position: absolute; left: 50%; transform: translateX(-50%); top: 176px; width: clamp(190px, 27vh, 300px); height: auto; aspect-ratio: 4 / 3;
   border-radius: 0; background: var(--grey-tile); box-shadow: 0 0 0 3px rgba(255,255,255,.9); }
 .z-timeline .zeit-bild .ph-label { padding: 12px; font-size: 9px; line-height: 1.2; word-break: break-all; color: rgba(255,255,255,.55); }
 /* Handy: Punkt | Icon + Text | Foto – rechts bleibt Platz für die 125 %-Vergrößerung der aktiven Station */
-.z-termine.rad.vertikal .z-timeline .zeit-bild { left: auto; right: calc(20% + 3px); top: 50%; transform: translateY(-50%); width: min(32%, 190px); height: auto; aspect-ratio: 4 / 3; box-shadow: 0 0 0 2px rgba(255,255,255,.9); }
+.z-termine.rad.vertikal .z-timeline .zeit-bild { left: auto; right: calc(20% + 3px); top: 50%; transform: translateY(-50%); width: min(36%, 200px); height: auto; aspect-ratio: 4 / 3; box-shadow: 0 0 0 2px rgba(255,255,255,.9); }
 .z-termine.rad.vertikal .z-timeline > li > img { left: 56px; }
-.z-termine.rad.vertikal .z-timeline p { left: 56px; right: calc(20% + 3px + min(32%, 190px) + 12px); }
+.z-termine.rad.vertikal .z-timeline p { left: 56px; right: calc(20% + 3px + min(36%, 200px) + 10px); }
 
 /* ---------- Hinweis „Weiter scrollen“ in den Scrollytellings (Zela-Zeitleiste, Karte); Sichtbarkeit und Lage setzt main.js ---------- */
-.scroll-hinweis { position: absolute; left: 50%; transform: translateX(-50%); padding: 8px 16px 10px; background: var(--teal); bottom: 20px; z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 6px;
+.scroll-hinweis { position: absolute; right: 24px; padding: 8px 16px 10px; background: var(--teal); bottom: 20px; z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 6px;
   color: var(--white); font: 600 15px/1 var(--i); letter-spacing: .02em; pointer-events: none; opacity: 0; transition: opacity .25s ease; }
 .scroll-hinweis img { animation: hinweis-hoch-runter 1.4s ease-in-out infinite; }
 @keyframes hinweis-hoch-runter { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }

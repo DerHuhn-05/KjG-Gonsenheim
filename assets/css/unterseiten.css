@@ -325,10 +325,13 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 
 /* ---------- Zahlenband mit drei Kennzahlen (kjg-zahlen) ---------- */
 @media (max-width: 960px) {
-  .sub .stats.stats-3 ul { grid-template-columns: repeat(3, 1fr); column-gap: 8px; row-gap: 0; padding: 28px 12px; }
+  .sub .stats.stats-3 ul { grid-template-columns: repeat(3, 1fr); column-gap: 8px; row-gap: 0; padding: 28px 12px; align-items: start; }
+  .sub .stats.stats-3 li { justify-content: flex-start; gap: 10px; }
+  .sub .stats.stats-3 .icon { width: 44px; height: 44px; object-fit: contain; }   /* gleich hohe Icon-Zeile, damit Zahlen und Beschriftungen auf einer Linie stehen */
   .sub .stats.stats-3 .num { font-size: 34px; line-height: 38px; }
-  .sub .stats.stats-3 .label { font-size: 14px; line-height: 18px; text-align: center; overflow-wrap: break-word; hyphens: auto; }
+  .sub .stats.stats-3 .label { font-size: 14px; line-height: 18px; text-align: center; min-height: 36px; overflow-wrap: normal; word-break: normal; hyphens: manual; -webkit-hyphens: manual; }   /* Umbruch nur zwischen ganzen Wörtern, ohne Trennstrich */
 }
+
 
 /* Hinweis „Weiter scrollen“ auf der Karte */
 .karte-buehne .scroll-hinweis { right: auto; left: 16px; top: 20px; }

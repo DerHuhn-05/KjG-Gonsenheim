@@ -627,3 +627,12 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .scroll-hinweis img { animation: hinweis-hoch-runter 1.4s ease-in-out infinite; }
 @keyframes hinweis-hoch-runter { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 @media (prefers-reduced-motion: reduce) { .scroll-hinweis img { animation: none; } }
+
+/* ---------- Klickbares erkennbar machen: beim Hover (und Tastatur-Fokus) wird der Text hinter dem Pfeil unterstrichen ----------
+   Bei ganzen Kacheln und Karten (komplett anklickbar) reicht der Hover auf der Fläche. Im Ruhezustand ist nichts unterstrichen. */
+.jump a:hover span, .z-jump a:hover span, .sub .jumplinks a:hover span, .jump a:focus-visible span, .z-jump a:focus-visible span, .sub .jumplinks a:focus-visible span,
+.faq-more:hover span, .more-link:hover span, .tile:hover .tile-link span, .event-tile:hover .more span, .card:hover .more-link span, .about:hover .more-link span,
+.tile-link:focus-visible span, .more:focus-visible span, .more-link:focus-visible span, .faq-more:focus-visible span,
+.faq-item summary:hover > span {
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.faq-item summary:hover { cursor: pointer; }

@@ -331,3 +331,8 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 
 /* Hinweis „Weiter scrollen“ auf der Karte */
 .karte-buehne .scroll-hinweis { bottom: 40px; }
+
+/* Zahlenband unter den Sprungmarken: weniger Leerraum davor, Abstand zum folgenden Abschnitt danach */
+.sub .jump-section + .stats { margin-bottom: 100px; }
+.sub .jump-section:has(+ .stats) { padding-bottom: 64px; }
+@media (max-width: 960px) { .sub .jump-section + .stats { margin-bottom: 56px; } }

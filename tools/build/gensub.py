@@ -96,9 +96,9 @@ def detail(fname, h1, plain, wide=False, small=False, anmeldung=True):
     hero_inhalt = f"<h1{cls}>{h1}</h1>\n<p>{sub}</p>" + ("\n" + kommentar if kommentar else "")
     main = f'''{tag_hero_split(hero_inhalt, "hero-split" + (" small" if small else ""), bildname(pg, 1, alt), alt)}
 
-{zahlen_tag(pg)}
-
 {jump([("teaser", ta), ("vorbereitungen", tb)], "jump-detail")}
+
+{zahlen_tag(pg)}
 
 <div class="container features">
 {blocks}
@@ -126,9 +126,9 @@ EV = [("gruppenstunde.html", "Gruppenstunde", "Gruppen-<br>stunde", "t1", ev("gr
       ("trainee-wochenende.html", "Trainee-Wochenende", "Trainee-<br>Wochenende", "t3", ev("trainee"), "")]
 page("events.html", "Unsere Angebote", "events.html", f'''{simple_hero("events", "Unsere Angebote")}
 
-{zahlen_tag("events")}
-
 {jump(JUMP_EVENTS, "jump-events")}
+
+{zahlen_tag("events")}
 
 <div class="events-list">
 {tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Kachel-Bild Zela 2027", id="zela")}
@@ -140,9 +140,9 @@ SA = [("72h-aktion.html", "72h Aktion", "72h Aktion", "t2", ev("72h"), ' class="
       ("klamottenspende.html", T_KLAMOTTEN, "Klamotten-<br>spende", "t3", ev("klamotten"), "")]
 page("soziale-aktionen.html", "Soziale Aktionen", "soziale-aktionen.html", f'''{simple_hero("soziale-aktionen", "Soziale Aktionen", tight=True)}
 
-{zahlen_tag("soziale-aktionen")}
-
 {jump(JUMP_SOZ, "jump-events")}
+
+{zahlen_tag("soziale-aktionen")}
 
 <div class="events-list">
 {tiles("soziale-aktionen", SA, ["aktion-72h", "aktion-2", "aktion-3"])}
@@ -181,9 +181,9 @@ KARTE = f'''<section class="karte-sektion" id="karte" aria-labelledby="karte-h">
 
 page("ueber-uns.html", "Über uns", "", f'''{simple_hero("ueber-uns", "Über uns", inter=True)}
 
-{zahlen_tag("ueber-uns")}
-
 {jump(JUMP_WER, "jump-detail")}
+
+{zahlen_tag("ueber-uns")}
 
 <div class="wer-flow">
 <div class="container">

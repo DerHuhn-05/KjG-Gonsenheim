@@ -12,7 +12,7 @@
 
 .sub .feuer { position: relative; background: var(--teal); color: var(--white); }
 .sub .feuer-anker { position: absolute; left: 0; top: 0; width: 1px; height: 1px; }
-.sub .feuer-buehne { position: sticky; top: var(--kopf, 100px); height: calc(100vh - var(--kopf, 100px)); overflow: hidden; background: var(--teal); }
+.sub .feuer-buehne { position: sticky; top: var(--kopf, 100px); height: calc(100vh - var(--kopf, 100px)); height: calc(100svh - var(--kopf, 100px)); overflow: hidden; background: var(--teal); }
 
 .sub .feuer-ring { position: absolute; left: 64%; top: 56%; width: 0; height: 0; z-index: 1; }
 .sub .feuer-bahn { position: absolute; left: 0; top: 0; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; transform: translate(-50%, -50%); }   /* dünner Kreis, auf dem die Personen sitzen */
@@ -49,15 +49,17 @@
 
 .sub .feuer-dots { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; gap: 8px; z-index: 90; }
 .sub .feuer-dots button { width: 36px; height: 36px; border: 2px solid rgba(255,255,255,.55); background: transparent; color: #fff; font: 700 15px/1 var(--i); cursor: pointer; transition: background .2s, border-color .2s; }
-.sub .feuer-dots button:hover { background: rgba(255,255,255,.2); }
+.sub .feuer-dots .feuer-pfeil { display: grid; place-content: center; padding: 0; }
+.sub .feuer-dots button:disabled { opacity: .35; cursor: default; }
+.sub .feuer-dots button:not(:disabled):hover { background: rgba(255,255,255,.2); }
 .sub .feuer-dots button.an { background: var(--accent); border-color: var(--accent); }
 .sub .feuer-dots button:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
 .sub .feuer .scroll-hinweis { top: 20px; right: 24px; background: transparent; }
 
 @media (max-width: 860px) {
-  .sub .feuer-ring { left: 50%; top: 32%; }
-  .sub .feuer-p { width: 74px; }
-  .sub .feuer-info { left: 16px; right: 16px; width: auto; top: auto; bottom: 62px; transform: none; }
+  .sub .feuer-ring { left: 50%; top: 40%; }
+  .sub .feuer-p { width: 96px; }
+  .sub .feuer-info { left: 16px; right: 16px; width: auto; top: auto; bottom: 108px; transform: none; }
   .sub .feuer-it { padding: 18px 18px; justify-content: flex-start; }
   .sub .feuer-it h3 { font-size: 28px; line-height: 30px; margin: 6px 0 2px; }
   .sub .feuer-rolle { font-size: 15px; line-height: 20px; margin-bottom: 8px; }
@@ -65,7 +67,7 @@
   .sub .feuer-it blockquote { margin: 10px 0 0; }
   .sub .feuer-vor, .sub .feuer-chips, .sub .feuer-lied { display: none; }
   .sub .feuer-name { font-size: 12px; }
-  .sub .feuer-dots { gap: 5px; bottom: 12px; }
+  .sub .feuer-dots { gap: 4px; bottom: 60px; }
   .sub .feuer-dots button { width: 30px; height: 30px; font-size: 13px; }
   .sub .feuer-intro h2, .sub .feuer-ende h2 { font-size: 36px; line-height: 42px; }
   .sub .feuer-intro p, .sub .feuer-ende p { font-size: 18px; line-height: 28px; }
@@ -73,5 +75,6 @@
   .sub .feuer-ende { padding-top: 48px; }
 }
 @media (prefers-reduced-motion: reduce) { .sub .flamme { animation: none; } .sub .feuer-it { transition: none; } }
-/* niedrige Handy-Bildschirme: Zitat der Person entfällt, damit Kachel und Feuer sich nicht überlappen */
-@media (max-width: 860px) and (max-height: 720px) { .sub .feuer-ring { top: 27%; } .sub .feuer-it blockquote { display: none; } }
+/* Handy mit wenig Platz: Zitat der Person entfällt (Klasse setzt lagerfeuer.js) */
+.sub .feuer.kompakt .feuer-it blockquote { display: none; }
+@media (max-width: 360px) { .sub .feuer-dots button { width: 26px; height: 26px; } .sub .feuer-dots { gap: 3px; } }

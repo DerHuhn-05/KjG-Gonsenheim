@@ -336,3 +336,17 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .jump-section + .stats { margin-bottom: 100px; }
 .sub .jump-section:has(+ .stats) { padding-bottom: 64px; }
 @media (max-width: 960px) { .sub .jump-section + .stats { margin-bottom: 56px; } }
+
+/* ---------- Kontaktband (kjg-kontakt) ---------- */
+.sub .kontakt-band { background: #e9f3f3; color: #000; padding: 72px 24px; margin-top: 100px; }
+.sub .kontakt-inner { max-width: 760px; margin-inline: auto; }
+.sub .kontakt-band h2 { color: var(--teal); font: 800 40px/48px var(--i); letter-spacing: -.5px; }
+.sub .kontakt-band p { margin-top: 16px; font: 400 21px/32px var(--o); }
+.sub .kontakt-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; }
+.sub .kontakt-band .btn { background: var(--teal); color: var(--white); margin-top: 0; width: auto; height: 64px; padding: 0 36px; font-size: 26px; line-height: 64px; }
+@media (max-width: 960px) {
+  .sub .kontakt-band { padding: 48px 20px; margin-top: 56px; }
+  .sub .kontakt-band h2 { font-size: 30px; line-height: 38px; }
+  .sub .kontakt-band p { font-size: 18px; line-height: 28px; }
+}
+.sub .kontakt-band .btn:hover { background: #005f60; text-decoration: underline; }

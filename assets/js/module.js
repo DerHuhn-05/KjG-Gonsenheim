@@ -23,6 +23,7 @@
      kjg-frage                          FAQ-Eintrag; Kinder: span (Frage), p (Antwort)
      kjg-hero (klasse, bild, bild-alt)  Seitenkopf mit Bild; Kind: h1
      kjg-zahlen                         Zahlenband mit drei Kennzahlen; Kinder: <span icon="uhr" zahl="72">Beschriftung</span>
+     kjg-kontakt                        Kontaktband am Seitenende (Mail + Instagram), vor dem Footer
      kjg-scrollhinweis                  „Weiter scrollen“ mit Pfeil (in Scrollytellings; Sichtbarkeit steuert main.js)
      kjg-hero-split (klasse, bild, bild-alt)   Seitenkopf geteilt (Bild | Petrol); Kinder: h1, p, a.btn
    ===================================================================== */
@@ -276,6 +277,20 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
 </section>`);
   }
 
+  // ---- Kontaktband ---------------------------------------------------------------------------------------
+  function kontakt() {
+    return vorlage(`<section class="kontakt-band" aria-labelledby="kontakt-titel">
+  <div class="kontakt-inner">
+    <h2 id="kontakt-titel">${T("Habt ihr Fragen oder wollt mitmachen?", "Questions, or want to join in?")}</h2>
+    <p>${T("Schreibt uns eine Mail oder meldet euch über Instagram – wir antworten gern und helfen euch weiter.", "Send us an email or get in touch on Instagram – we are happy to answer and help.")}</p>
+    <div class="kontakt-btns">
+      <a class="btn" href="mailto:${MAIL}">${T("E-Mail", "Email")}</a>
+      <a class="btn" href="${INSTAGRAM}" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</section>`);
+  }
+
   // ---- Scroll-Hinweis --------------------------------------------------------------------------------------
   function scrollhinweis() {
     return vorlage(`<div class="scroll-hinweis" aria-hidden="true"><span>${T("Weiter scrollen", "Keep scrolling")}</span><img src="${BASIS}icons/pfeil-unten-weiss.svg" width="14" height="16" alt=""></div>`);
@@ -285,7 +300,7 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
   const MODULE = {
     "kjg-header": header, "kjg-footer": footer, "kjg-bild": bild, "kjg-sprung": sprung, "kjg-kachel": kachel,
     "kjg-eventkachel": eventkachel, "kjg-karte": karte, "kjg-abschnitt": abschnitt, "kjg-person": person,
-    "kjg-zitat": zitat, "kjg-zahlen": zahlen, "kjg-scrollhinweis": scrollhinweis, "kjg-frage": frage, "kjg-hero": hero, "kjg-hero-split": heroSplit,
+    "kjg-zitat": zitat, "kjg-zahlen": zahlen, "kjg-kontakt": kontakt, "kjg-scrollhinweis": scrollhinweis, "kjg-frage": frage, "kjg-hero": hero, "kjg-hero-split": heroSplit,
   };
   const SELEKTOR = Object.keys(MODULE).join(",");
 

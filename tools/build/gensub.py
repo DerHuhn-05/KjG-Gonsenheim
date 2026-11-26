@@ -83,7 +83,8 @@ def feature(pg, n, title, paras, reverse=False, id_=None, cls="", anchors=()):
     return tag_abschnitt(inhalt, klasse, bildname(pg, n, alt), alt, id=id_)
 
 # ===================== Detailseiten (MoWo, 72h, Aktion, Gruppenstunde, Trainee) =====================
-def detail(fname, h1, plain, wide=False, small=False, anmeldung=True):
+KONTAKT = "<kjg-kontakt></kjg-kontakt>"
+def detail(fname, h1, plain, wide=False, small=False, anmeldung=False, kontakt=False):
     pg = fname[:-5]
     D = DETAIL[pg]
     cls = ' class="wide"' if wide else ""
@@ -102,13 +103,15 @@ def detail(fname, h1, plain, wide=False, small=False, anmeldung=True):
 
 <div class="container features">
 {blocks}
-</div>'''
+</div>
+
+{KONTAKT if kontakt else ""}'''
     page(fname, plain, "", main)   # nur Seiten, die selbst im Header stehen, werden fett
 
 detail("mowo.html", "MoWo", "MoWo – Monsterwochenende", wide=True, anmeldung=False)   # Anmeldung: derzeit keine – Knopf ausgeblendet
-detail("72h-aktion.html", "72h<br>Aktion", "72h-Aktion")
-detail("aktion.html", "Hilfe im<br> Stadtteil", "Hilfe im Stadtteil", small=True)
-detail("klamottenspende.html", "Klamotten-<br>spende", "Klamottenspende", small=True)
+detail("72h-aktion.html", "72h<br>Aktion", "72h-Aktion", kontakt=True)
+detail("aktion.html", "Hilfe im<br> Stadtteil", "Hilfe im Stadtteil", small=True, kontakt=True)
+detail("klamottenspende.html", "Klamotten-<br>spende", "Klamottenspende", small=True, kontakt=True)
 detail("gruppenstunde.html", "Gruppen-<br>stunde", "Gruppenstunde", anmeldung=False)
 detail("trainee-wochenende.html", "Trainee-<br>Wochenende", "Trainee-Wochenende", small=True, anmeldung=False)   # Anmeldung: derzeit keine – Knopf ausgeblendet
 

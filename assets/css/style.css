@@ -622,7 +622,7 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .z-termine.rad.vertikal .z-timeline p { left: 56px; right: calc(20% + 3px + min(36%, 200px) + 10px); }
 
 /* ---------- Hinweis „Weiter scrollen“ in den Scrollytellings (Zela-Zeitleiste, Karte); Sichtbarkeit und Lage setzt main.js ---------- */
-.scroll-hinweis { position: absolute; right: 24px; padding: 8px 16px 10px; background: var(--teal); bottom: 20px; z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 6px;
+.scroll-hinweis { position: absolute; right: 24px; padding: 8px 16px 10px; background: var(--teal); top: 20px; z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 6px;
   color: var(--white); font: 600 15px/1 var(--i); letter-spacing: .02em; pointer-events: none; opacity: 0; transition: opacity .25s ease; }
 .scroll-hinweis img { animation: hinweis-hoch-runter 1.4s ease-in-out infinite; }
 @keyframes hinweis-hoch-runter { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }

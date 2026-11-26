@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (radHinweis) {                                           // Hinweis „Weiter scrollen“: sichtbar, solange die Zeitleiste steht und noch nicht fast am Ende ist
       const an = weg > 0 && weg < m.aufziehen + 0.85 * m.drehen;
       const hinweis = `${an ? 1 : 0}|${(clip + 18).toFixed(0)}`;
-      if (hinweis !== L.hinweis) { L.hinweis = hinweis; radHinweis.style.opacity = an ? 1 : 0; radHinweis.style.bottom = (clip + 18) + "px"; }
+      if (hinweis !== L.hinweis) { L.hinweis = hinweis; radHinweis.style.opacity = an ? 1 : 0; radHinweis.style.top = (clip + 18) + "px"; }
     }
     let lage;
     if (m.vertikal) {

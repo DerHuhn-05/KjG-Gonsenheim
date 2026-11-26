@@ -22,6 +22,7 @@
      kjg-zitat (klasse, bild, bild-alt)                         Zitat; Kinder: p, strong, span
      kjg-frage                          FAQ-Eintrag; Kinder: span (Frage), p (Antwort)
      kjg-hero (klasse, bild, bild-alt)  Seitenkopf mit Bild; Kind: h1
+     kjg-zahlen                         Zahlenband mit drei Kennzahlen; Kinder: <span icon="uhr" zahl="72">Beschriftung</span>
      kjg-hero-split (klasse, bild, bild-alt)   Seitenkopf geteilt (Bild | Petrol); Kinder: h1, p, a.btn
    ===================================================================== */
 (function () {
@@ -253,11 +254,32 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
     return f;
   }
 
+  // ---- Zahlenband ----------------------------------------------------------------------------------------
+  // Drei Kennzahlen wie auf der Team-Seite; die Zahl zählt beim Erscheinen hoch (main.js). icon = Datei in icons/
+  const ZAHLEN_ICON = {   // Name → [Datei, Breite, Höhe]
+    uhr: ["stat-uhr", 44, 44], haus: ["stat-haus", 44, 44], herz: ["stat-herz", 44, 44], shirt: ["stat-shirt", 44, 44],
+    stern: ["stat-stern", 44, 44], kalender: ["stat-kalender", 44, 44], gruppenleiter: ["team-gruppenleiter", 48, 36],
+    zelt: ["team-zelte", 42, 33], gruppe: ["team-dioezesanverbaende", 44, 44], kjg: ["team-kjg-seit", 45, 44],
+  };
+  function zahlen(el) {
+    const punkte = [...el.querySelectorAll(":scope > span")];
+    const spalte = 1240 / punkte.length;                     // Raster: 1240 px breit, Spalten gleich breit, Inhalt je 300 px breit mittig
+    const li = punkte.map((sp, i) => {
+      const [datei, w, h] = ZAHLEN_ICON[sp.getAttribute("icon")] || ZAHLEN_ICON.stern;
+      return `<li style="left:${(spalte * (i + 0.5) - 150).toFixed(1)}px"><img class="icon" src="${BASIS}icons/${datei}.svg" width="${w}" height="${h}" alt="" style="left:${((300 - w) / 2).toFixed(1)}px;top:${(32 + (44 - h) / 2).toFixed(1)}px"><span class="num">${esc(sp.getAttribute("zahl"))}</span><span class="label">${sp.innerHTML}</span></li>`;
+    });
+    return vorlage(`<section class="stats stats-${punkte.length}" aria-label="${T("Zahlen", "Figures")}">
+  <ul>
+    ${li.join("\n    ")}
+  </ul>
+</section>`);
+  }
+
   // ---- Ausführen -----------------------------------------------------------------------------------------
   const MODULE = {
     "kjg-header": header, "kjg-footer": footer, "kjg-bild": bild, "kjg-sprung": sprung, "kjg-kachel": kachel,
     "kjg-eventkachel": eventkachel, "kjg-karte": karte, "kjg-abschnitt": abschnitt, "kjg-person": person,
-    "kjg-zitat": zitat, "kjg-frage": frage, "kjg-hero": hero, "kjg-hero-split": heroSplit,
+    "kjg-zitat": zitat, "kjg-zahlen": zahlen, "kjg-frage": frage, "kjg-hero": hero, "kjg-hero-split": heroSplit,
   };
   const SELEKTOR = Object.keys(MODULE).join(",");
 

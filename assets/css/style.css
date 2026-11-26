@@ -44,7 +44,7 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 
 /* Module (assets/js/module.js): die Tags sind bis zum Ersetzen durch das fertige Markup unsichtbar (nur mit JavaScript) */
 .js kjg-header, .js kjg-footer, .js kjg-bild, .js kjg-sprung, .js kjg-kachel, .js kjg-eventkachel, .js kjg-karte, .js kjg-abschnitt,
-.js kjg-person, .js kjg-zitat, .js kjg-frage, .js kjg-hero, .js kjg-hero-split { display: none; }
+.js kjg-person, .js kjg-zitat, .js kjg-zahlen, .js kjg-frage, .js kjg-hero, .js kjg-hero-split { display: none; }
 kjg-bild { display: block; }
 
 /* ---------- Kopfzeile ---------- */

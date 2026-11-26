@@ -321,3 +321,10 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .karte-label p { font-size: 16px; line-height: 23px; }
   .karte-btn { height: 40px; margin-top: 12px; padding: 0 14px; font-size: 15px; }
 }
+
+/* ---------- Zahlenband mit drei Kennzahlen (kjg-zahlen) ---------- */
+@media (max-width: 960px) {
+  .sub .stats.stats-3 ul { grid-template-columns: repeat(3, 1fr); column-gap: 8px; row-gap: 0; padding: 28px 12px; }
+  .sub .stats.stats-3 .num { font-size: 34px; line-height: 38px; }
+  .sub .stats.stats-3 .label { font-size: 14px; line-height: 18px; text-align: center; overflow-wrap: break-word; hyphens: auto; }
+}

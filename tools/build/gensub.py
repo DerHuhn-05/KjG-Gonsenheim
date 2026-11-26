@@ -96,6 +96,8 @@ def detail(fname, h1, plain, wide=False, small=False, anmeldung=True):
     hero_inhalt = f"<h1{cls}>{h1}</h1>\n<p>{sub}</p>" + ("\n" + kommentar if kommentar else "")
     main = f'''{tag_hero_split(hero_inhalt, "hero-split" + (" small" if small else ""), bildname(pg, 1, alt), alt)}
 
+{zahlen_tag(pg)}
+
 {jump([("teaser", ta), ("vorbereitungen", tb)], "jump-detail")}
 
 <div class="container features">
@@ -124,6 +126,8 @@ EV = [("gruppenstunde.html", "Gruppenstunde", "Gruppen-<br>stunde", "t1", ev("gr
       ("trainee-wochenende.html", "Trainee-Wochenende", "Trainee-<br>Wochenende", "t3", ev("trainee"), "")]
 page("events.html", "Unsere Angebote", "events.html", f'''{simple_hero("events", "Unsere Angebote")}
 
+{zahlen_tag("events")}
+
 {jump(JUMP_EVENTS, "jump-events")}
 
 <div class="events-list">
@@ -135,6 +139,8 @@ SA = [("72h-aktion.html", "72h Aktion", "72h Aktion", "t2", ev("72h"), ' class="
       ("aktion.html", T_HILFE, "Hilfe im<br> Stadtteil", "t3", ev("hilfe"), ""),
       ("klamottenspende.html", T_KLAMOTTEN, "Klamotten-<br>spende", "t3", ev("klamotten"), "")]
 page("soziale-aktionen.html", "Soziale Aktionen", "soziale-aktionen.html", f'''{simple_hero("soziale-aktionen", "Soziale Aktionen", tight=True)}
+
+{zahlen_tag("soziale-aktionen")}
 
 {jump(JUMP_SOZ, "jump-events")}
 
@@ -173,6 +179,8 @@ KARTE = f'''<section class="karte-sektion" id="karte" aria-labelledby="karte-h">
 </section>'''
 
 page("ueber-uns.html", "Über uns", "", f'''{simple_hero("ueber-uns", "Über uns", inter=True)}
+
+{zahlen_tag("ueber-uns")}
 
 {jump(JUMP_WER, "jump-detail")}
 

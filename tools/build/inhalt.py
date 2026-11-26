@@ -347,3 +347,26 @@ MAPS_BTN = t("In Google Maps öffnen", "Open in Google Maps")
 MAPS_NEU = t("(öffnet in neuem Tab)", "(opens in a new tab)")
 
 reg(KARTE_ADRESSE[0], KARTE_ADRESSE[0]); reg(KARTE_ADRESSE[1], KARTE_ADRESSE[1])   # Adresse bricht in beiden Sprachen nach der Straße um
+
+
+# ============================ Kennzahlen je Unterseite (ausgedachte Entwurfswerte – bitte prüfen!) ============================
+# (Icon, Zahl, deutsche Beschriftung, englische Beschriftung); je Seite drei Stück. Icons: siehe ZAHLEN_ICON in assets/js/module.js
+ZAHLEN = {
+    "gruppenstunde": [("gruppenleiter", 12, "Gruppenleiter", "Group leaders"), ("gruppe", 6, "Altersgruppen", "Age groups"), ("uhr", 90, "Minuten pro Treffen", "Minutes per meeting")],
+    "mowo": [("haus", 2, "Tage im Jugendhaus", "Days at the youth hostel"), ("gruppe", 40, "Kinder", "Children"), ("gruppenleiter", 12, "Gruppenleiter", "Group leaders")],
+    "trainee-wochenende": [("uhr", 8, "Stunden Training", "Hours of training"), ("stern", 12, "Trainees", "Trainees"), ("gruppenleiter", 4, "erfahrene Begleiter", "Experienced mentors")],
+    "72h-aktion": [("uhr", 72, "Stunden", "Hours"), ("gruppe", 25, "Helferinnen und Helfer", "Volunteers"), ("herz", 1, "Projekt für den Stadtteil", "Project for the neighbourhood")],
+    "aktion": [("herz", 6, "Einsätze im Jahr", "Activities per year"), ("gruppe", 30, "Kinder im Einsatz", "Children helping"), ("uhr", 100, "Stunden Hilfe", "Hours of help")],
+    "klamottenspende": [("shirt", 500, "Kleidungsstücke", "Items of clothing"), ("kalender", 4, "Sammelaktionen", "Collections"), ("herz", 3, "Einrichtungen", "Organisations")],
+    "events": [("kalender", 4, "Angebote", "Activities"), ("zelt", 1, "Zeltlager im Sommer", "Summer camp"), ("uhr", 40, "Wochen Gruppenstunde", "Weeks of group meetings")],
+    "soziale-aktionen": [("herz", 3, "Aktionen", "Projects"), ("uhr", 72, "Stunden am Stück", "Hours non-stop"), ("shirt", 500, "gespendete Kleidungsstücke", "Donated clothes")],
+    "ueber-uns": [("gruppenleiter", 35, "Gruppenleiter", "Group leaders"), ("zelt", 21, "Zelte", "Tents"), ("kjg", 1977, "KjG seit", "KjG since")],
+}
+for _seite in ZAHLEN.values():
+    for _icon, _zahl, _de, _en in _seite:
+        reg(_de, _en)
+reg("Zahlen", "Figures")
+
+def zahlen_tag(seite):
+    inner = "\n".join(f'  <span icon="{i}" zahl="{z}">{d}</span>' for i, z, d, e in ZAHLEN[seite])
+    return f"<kjg-zahlen>\n{inner}\n</kjg-zahlen>"

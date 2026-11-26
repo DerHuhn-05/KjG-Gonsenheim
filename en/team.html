@@ -11,9 +11,11 @@
   <link rel="alternate" hreflang="en" href="team.html">
   <link rel="stylesheet" href="../assets/css/style.css?v=12bce3b4">
   <link rel="stylesheet" href="../assets/css/unterseiten.css?v=81645116">
+  <link rel="stylesheet" href="../assets/css/lagerfeuer.css?v=6c006bc8">
   <script src="../assets/js/bilder.js?v=e1756519"></script>
   <script src="../assets/js/module.js?v=e86d18af"></script>
   <script src="../assets/js/main.js?v=2ceae6fe" defer></script>
+  <script src="../assets/js/lagerfeuer.js?v=8c240c73" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="team.html" aktiv="team.html"></kjg-header>
@@ -38,71 +40,141 @@
   <a href="#pfarrleitung">Parish liaison</a>
 </kjg-sprung>
 
-<div class="team">
-  <section class="section" id="lagerleitung">
-    <div class="team-in"><h2>Our camp management</h2></div>
+<section class="feuer-intro">
+  <div class="container">
+    <h2>Come to the fire</h2>
+    <p>Sit down with us. Around the campfire everyone briefly tells what they do at the KjG and what they enjoy most about it. Just keep scrolling to get to know our team.</p>
+  </div>
+</section>
+
 <kjg-zitat klasse="circle-left" bild="team-10" bild-alt="Photo of Lena">
 <p>“Every child can be just who they are with us. That is exactly what makes our groups so special.”</p>
 <strong>Lena,</strong><span>Group leader</span>
 </kjg-zitat>
-    <div class="team-in after-quote">
-<kjg-person klasse="person right">
-<h3>Lena</h3>
-<div class="rolle">Camp director</div>
-<p>Lena has overall responsibility for the summer camp. She plans the schedule together with the team, leads the camp meetings and is the first contact for all questions about the camp, before, during and after the trip.</p>
-<p>Lena has been with the KjG since childhood and knows every corner of the campsite. Her favourite moment: the evening around the campfire when everyone sings together and even the youngest proudly tell the story of their day.</p>
-</kjg-person>
-<kjg-person klasse="person left" bild="team-3" bild-alt="Photo of Jonas">
-<h3>Jonas</h3>
-<div class="rolle">On-site organisation</div>
-<p>Jonas takes care of everything that has to work on site: pitching tents, shopping, the kitchen and the schedule. He coordinates the helpers and makes sure everything runs smoothly.</p>
-<p>Parents can reach him with questions about arrival, luggage and pick-up. His speciality: pasta for 60 people in under an hour, always with a smile.</p>
-</kjg-person>
-<kjg-person klasse="person right" bild="team-4" bild-alt="Photo of Sophie">
-<h3>Sophie</h3>
-<div class="rolle">Programme and activities</div>
-<p>Sophie thinks up games, competitions, workshops and evening activities and makes sure there is something for every age. She coordinates the programme with the group leaders.</p>
-<p>If you would like to know what a typical day at camp looks like, Sophie is the right person. She loves inventing outdoor games where in the end everybody has won.</p>
-</kjg-person>
+
+<section class="feuer" id="lagerfeuer" aria-label="Campfire">
+  <span id="lagerleitung" class="feuer-anker"></span><span id="planungsleitung" class="feuer-anker"></span><span id="pfarrleitung" class="feuer-anker"></span>
+  <div class="feuer-buehne">
+    <div class="feuer-himmel"><svg class="feuer-sterne" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg><div class="feuer-mond"></div><div class="feuer-schnuppe"></div></div>
+    <svg class="feuer-tannen" viewBox="0 0 1600 130" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="feuer-boden"></div>
+    <div class="feuer-glut"></div>
+    <div class="feuer-ring">
+      <div class="feuer-stelle" aria-hidden="true">
+        <svg viewBox="0 0 200 260">
+          <ellipse cx="100" cy="170" rx="130" ry="110" fill="rgba(240,91,131,.25)"/>
+          <path class="flamme f1" d="M100 18 C146 78 176 124 154 196 C142 232 58 232 46 196 C26 124 62 86 100 18Z" fill="#F05B83"/>
+          <path class="flamme f2" d="M100 64 C132 106 150 140 136 196 C128 222 72 222 64 196 C52 142 76 112 100 64Z" fill="#FF9C8F"/>
+          <path class="flamme f3" d="M100 118 C118 140 126 164 118 196 C112 210 88 210 82 196 C74 164 86 140 100 118Z" fill="#FFE6E0"/>
+          <g transform="translate(0 6)"><rect x="34" y="214" width="132" height="22" rx="11" fill="#3a2420" transform="rotate(-8 100 225)"/><rect x="34" y="214" width="132" height="22" rx="11" fill="#5a3b34" transform="rotate(10 100 225)"/>
+          <circle cx="40" cy="244" r="12" fill="#3f6264"/><circle cx="66" cy="250" r="11" fill="#4c7274"/><circle cx="134" cy="250" r="11" fill="#3f6264"/><circle cx="160" cy="244" r="12" fill="#4c7274"/></g>
+        </svg>
+      </div>
+      <ul class="feuer-leute">
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-2" alt="Photo of Lena"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Lena</span></li>
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-3" alt="Photo of Jonas"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Jonas</span></li>
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-4" alt="Photo of Sophie"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Sophie</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-5" alt="Photo of Max"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Max</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-6" alt="Photo of Hanna"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Hanna</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-7" alt="Photo of Felix"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Felix</span></li>
+<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-8" alt="Photo of Anna"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Anna</span></li>
+<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-9" alt="Photo of Thomas"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Thomas</span></li>
+<li class="feuer-p feuer-platz-p"><div class="feuer-foto feuer-leer"><span aria-hidden="true">?</span><span class="feuer-dunkel"></span></div><span class="feuer-name">Your seat?</span></li>
+      </ul>
     </div>
-  </section>
-  <section class="section team-in" id="planungsleitung">
-    <h2>Our planning team</h2>
-<kjg-person klasse="person left" bild="team-5" bild-alt="Photo of Max">
-<h3>Max</h3>
-<div class="rolle">Planning and dates</div>
-<p>Max plans the KjG year: dates, rooms and arrangements with the parish and the city. He sends out the invitations and keeps communication with the parents going.</p>
-<p>He is the person to ask when you want to know when an activity takes place. In the team he is the one with the calendar, and with a soft spot for to-do lists.</p>
-</kjg-person>
-<kjg-person klasse="person right" bild="team-6" bild-alt="Photo of Hanna">
-<h3>Hanna</h3>
-<div class="rolle">Support for group leaders and child protection</div>
-<p>Hanna supports the group leaders and organises training, for example in first aid, duty of care and child protection. She is the contact person if anyone has an uneasy feeling.</p>
-<p>It matters to her that every child is safe and well looked after and that parents feel well informed too. She is glad of any feedback.</p>
-</kjg-person>
-<kjg-person klasse="person left" bild="team-7" bild-alt="Photo of Felix">
-<h3>Felix</h3>
-<div class="rolle">Equipment, technology and photos</div>
-<p>Felix looks after our equipment: tents, games, projector and sound system. He repairs, packs and drives the trailer, and photographs camp life for our memories.</p>
-<p>We only publish photos if the parents have agreed. Anyone who would like to see or remove pictures of their child can contact Felix.</p>
-</kjg-person>
-  </section>
-  <section class="section team-in" id="pfarrleitung">
-    <h2>Our parish liaison</h2>
-<kjg-person klasse="person right" bild="team-8" bild-alt="Photo of Anna">
-<h3>Anna</h3>
-<div class="rolle">Link to the parish</div>
-<p>Anna supports the KjG on behalf of the parish. She helps us with rooms, permits and financial questions and makes sure our activities are visible in parish life.</p>
-<p>That way we can concentrate fully on the children. If you have questions about how the KjG and the parish work together, feel free to contact her.</p>
-</kjg-person>
-<kjg-person klasse="person left" bild="team-9" bild-alt="Photo of Thomas">
-<h3>Thomas</h3>
-<div class="rolle">Pastoral care and contact person</div>
-<p>As a pastor, Thomas is the contact person for all concerns beyond organisation. He helps shape reflections and services at camp, child-friendly and without pressure.</p>
-<p>He listens when there are worries and supports parents and children with personal questions. Nobody has to be religious to be part of what we do.</p>
-</kjg-person>
-  </section>
-</div>
+    <div class="feuer-info">
+<article class="feuer-it" data-gruppe="lagerleitung">
+  <p class="feuer-lab">Camp management</p>
+  <h3>Lena</h3>
+  <p class="feuer-rolle">Camp director</p>
+  <p class="feuer-text">Lena has overall responsibility for the summer camp. She plans the schedule together with the team, leads the camp meetings and is the first contact for all questions about the camp, before, during and after the trip.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>Lena has been with the KjG since childhood and knows every corner of the campsite. Her favourite moment: the evening around the campfire when everyone sings together and even the youngest proudly tell the story of their day.</blockquote>
+  <ul class="feuer-chips"><li>Overall lead</li><li>Camp meetings</li><li>Contact person</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Hejo, spann den Wagen an</p>
+</article>
+<article class="feuer-it" data-gruppe="lagerleitung">
+  <p class="feuer-lab">Camp management</p>
+  <h3>Jonas</h3>
+  <p class="feuer-rolle">On-site organisation</p>
+  <p class="feuer-text">Jonas takes care of everything that has to work on site: pitching tents, shopping, the kitchen and the schedule. He coordinates the helpers and makes sure everything runs smoothly.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>Parents can reach him with questions about arrival, luggage and pick-up. His speciality: pasta for 60 people in under an hour, always with a smile.</blockquote>
+  <ul class="feuer-chips"><li>Pitching tents</li><li>Kitchen</li><li>Shopping</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Country Roads</p>
+</article>
+<article class="feuer-it" data-gruppe="lagerleitung">
+  <p class="feuer-lab">Camp management</p>
+  <h3>Sophie</h3>
+  <p class="feuer-rolle">Programme and activities</p>
+  <p class="feuer-text">Sophie thinks up games, competitions, workshops and evening activities and makes sure there is something for every age. She coordinates the programme with the group leaders.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>If you would like to know what a typical day at camp looks like, Sophie is the right person. She loves inventing outdoor games where in the end everybody has won.</blockquote>
+  <ul class="feuer-chips"><li>Outdoor games</li><li>Workshops</li><li>Evening programme</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Wonderwall</p>
+</article>
+<article class="feuer-it" data-gruppe="planungsleitung">
+  <p class="feuer-lab">Planning team</p>
+  <h3>Max</h3>
+  <p class="feuer-rolle">Planning and dates</p>
+  <p class="feuer-text">Max plans the KjG year: dates, rooms and arrangements with the parish and the city. He sends out the invitations and keeps communication with the parents going.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>He is the person to ask when you want to know when an activity takes place. In the team he is the one with the calendar, and with a soft spot for to-do lists.</blockquote>
+  <ul class="feuer-chips"><li>Dates</li><li>Invitations</li><li>Calendar</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Hey Jude</p>
+</article>
+<article class="feuer-it" data-gruppe="planungsleitung">
+  <p class="feuer-lab">Planning team</p>
+  <h3>Hanna</h3>
+  <p class="feuer-rolle">Support for group leaders and child protection</p>
+  <p class="feuer-text">Hanna supports the group leaders and organises training, for example in first aid, duty of care and child protection. She is the contact person if anyone has an uneasy feeling.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>It matters to her that every child is safe and well looked after and that parents feel well informed too. She is glad of any feedback.</blockquote>
+  <ul class="feuer-chips"><li>Training</li><li>Child protection</li><li>First aid</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Hallelujah</p>
+</article>
+<article class="feuer-it" data-gruppe="planungsleitung">
+  <p class="feuer-lab">Planning team</p>
+  <h3>Felix</h3>
+  <p class="feuer-rolle">Equipment, technology and photos</p>
+  <p class="feuer-text">Felix looks after our equipment: tents, games, projector and sound system. He repairs, packs and drives the trailer, and photographs camp life for our memories.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>We only publish photos if the parents have agreed. Anyone who would like to see or remove pictures of their child can contact Felix.</blockquote>
+  <ul class="feuer-chips"><li>Equipment</li><li>Technology</li><li>Photos</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Über den Wolken</p>
+</article>
+<article class="feuer-it" data-gruppe="pfarrleitung">
+  <p class="feuer-lab">Parish liaison</p>
+  <h3>Anna</h3>
+  <p class="feuer-rolle">Link to the parish</p>
+  <p class="feuer-text">Anna supports the KjG on behalf of the parish. She helps us with rooms, permits and financial questions and makes sure our activities are visible in parish life.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>That way we can concentrate fully on the children. If you have questions about how the KjG and the parish work together, feel free to contact her.</blockquote>
+  <ul class="feuer-chips"><li>Rooms</li><li>Permits</li><li>Finances</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Kumbaya</p>
+</article>
+<article class="feuer-it" data-gruppe="pfarrleitung">
+  <p class="feuer-lab">Parish liaison</p>
+  <h3>Thomas</h3>
+  <p class="feuer-rolle">Pastoral care and contact person</p>
+  <p class="feuer-text">As a pastor, Thomas is the contact person for all concerns beyond organisation. He helps shape reflections and services at camp, child-friendly and without pressure.</p>
+  <blockquote><span class="feuer-vor">Told around the fire</span>He listens when there are worries and supports parents and children with personal questions. Nobody has to be religious to be part of what we do.</blockquote>
+  <ul class="feuer-chips"><li>Reflections</li><li>Services</li><li>Listening</li></ul>
+  <p class="feuer-lied"><span>Favourite campfire song</span> Die Gedanken sind frei</p>
+</article>
+<article class="feuer-it" data-gruppe="platz">
+  <p class="feuer-lab">We are looking for reinforcements</p>
+  <h3>Your seat?</h3>
+  <p class="feuer-text">Do you enjoy spending time with children and lending a hand? Then join our team. We will train you, and you will not be on your own from the start.</p>
+  <ul class="feuer-chips"><li>Training</li><li>Team spirit</li><li>Summer camp</li></ul>
+</article>
+    </div>
+    <div class="feuer-dots" role="group" aria-label="Choose a person"></div>
+    <kjg-scrollhinweis></kjg-scrollhinweis>
+  </div>
+</section>
+
+<section class="feuer-ende">
+  <div class="container">
+    <h2>Good night from the KjG team</h2>
+    <p>The fire keeps burning. If you would like to join us, there is still a seat free on the log.</p>
+  </div>
+</section>
+
+<kjg-kontakt></kjg-kontakt>
 </main>
 
 <kjg-footer></kjg-footer>

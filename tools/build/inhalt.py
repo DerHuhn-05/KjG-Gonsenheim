@@ -398,3 +398,34 @@ def zahlen_tag(seite):
     return f"<kjg-zahlen>\n{inner}\n</kjg-zahlen>"
 
 reg("Weiter scrollen", "Keep scrolling")
+
+# ============================ Team: Lagerfeuer-Scrollytelling ============================
+# je Person in TEAM-Reihenfolge: (Stichworte DE, Stichworte EN, Lieblingslied)
+FEUER_PERSON = [
+ (["Gesamtleitung", "Lagerbesprechung", "Ansprechpartnerin"], ["Overall lead", "Camp meetings", "Contact person"], "Hejo, spann den Wagen an"),
+ (["Zeltaufbau", "Küche", "Einkauf"], ["Pitching tents", "Kitchen", "Shopping"], "Country Roads"),
+ (["Geländespiele", "Workshops", "Abendprogramm"], ["Outdoor games", "Workshops", "Evening programme"], "Wonderwall"),
+ (["Termine", "Einladungen", "Kalender"], ["Dates", "Invitations", "Calendar"], "Hey Jude"),
+ (["Schulungen", "Kinderschutz", "Erste Hilfe"], ["Training", "Child protection", "First aid"], "Hallelujah"),
+ (["Material", "Technik", "Fotos"], ["Equipment", "Technology", "Photos"], "Über den Wolken"),
+ (["Räume", "Genehmigungen", "Finanzen"], ["Rooms", "Permits", "Finances"], "Kumbaya"),
+ (["Impulse", "Gottesdienste", "Zuhören"], ["Reflections", "Services", "Listening"], "Die Gedanken sind frei"),
+]
+for _de, _en, _lied in FEUER_PERSON:
+    for a, b in zip(_de, _en): reg(a, b)
+    reg(_lied, _lied)
+FEUER_INTRO = (t("Komm ans Feuer", "Come to the fire"),
+               t("Setzt euch zu uns. Am Lagerfeuer erzählt jede und jeder kurz, was sie oder er bei der KjG macht und was dabei am meisten Freude macht. Scrollt einfach weiter und lernt unser Team kennen.",
+                 "Sit down with us. Around the campfire everyone briefly tells what they do at the KjG and what they enjoy most about it. Just keep scrolling to get to know our team."))
+FEUER_ERZAEHLT = t("Erzählt am Feuer", "Told around the fire")
+FEUER_LIED = t("Lieblingslied am Feuer", "Favourite campfire song")
+FEUER_PLATZ = (t("Dein Platz?", "Your seat?"), t("Wir suchen Verstärkung", "We are looking for reinforcements"),
+               t("Du hast Lust, Zeit mit Kindern zu verbringen und mit anzupacken? Dann komm zu uns ins Team. Wir schulen dich, und du bist von Anfang an nicht allein.",
+                 "Do you enjoy spending time with children and lending a hand? Then join our team. We will train you, and you will not be on your own from the start."),
+               [t("Schulung", "Training"), t("Teamgeist", "Team spirit"), t("Zeltlager", "Summer camp")])
+reg("Weiter scrollen", "Keep scrolling")
+FEUER_ENDE = (t("Gute Nacht vom KjG-Team", "Good night from the KjG team"),
+              t("Das Feuer brennt weiter. Wenn du mitkommen möchtest, ist noch ein Platz auf dem Baumstamm frei.",
+                "The fire keeps burning. If you would like to join us, there is still a seat free on the log."))
+reg("Foto Dein Platz", "Photo of your seat")
+reg("Lagerfeuer", "Campfire")

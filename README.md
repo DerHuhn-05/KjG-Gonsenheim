@@ -79,3 +79,10 @@ sh tools/build/bauen.sh
 
 Neue deutsche Texte brauchen eine englische Übersetzung (`inhalt.py` bzw. `tools/i18n/i18n_en.py`), sonst bricht der Bau mit einer Liste der fehlenden Texte ab.
 Die Kartenquelle für `tools/build/karte/karte.py` (OpenStreetMap-Auszug) liegt nicht im Repository; fertig aufbereitet ist die Karte in `tools/build/karte/karte_body.svgpart`.
+
+## Team-Seite: Lagerfeuer-Scrollytelling
+
+Die Team-Seite zeigt die Personen im Kreis um ein Lagerfeuer (Idee aus dem Artefakt „Das Lagerfeuer“, im Stil der Website).
+- Markup: `feuer_html()` in `tools/build/gensub.py`; Texte, Stichworte und Lieblingslieder je Person: `TEAM`, `FEUER_PERSON` in `tools/build/inhalt.py` (neue Person = neuer Eintrag in beiden Listen und in `GRUPPEN`/`GRUPPE` in `lagerfeuer.js`).
+- Darstellung: `assets/css/lagerfeuer.css`, Steuerung: `assets/js/lagerfeuer.js` (nur auf der Team-Seite geladen).
+- Fotos: `team-2.jpg` … `team-9.jpg` (Reihenfolge: Lena, Jonas, Sophie, Max, Hanna, Felix, Anna, Thomas). Der leere Platz „Dein Platz?“ am Ende lädt zum Mitmachen ein.

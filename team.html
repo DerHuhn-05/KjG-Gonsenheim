@@ -11,9 +11,11 @@
   <link rel="alternate" hreflang="en" href="en/team.html">
   <link rel="stylesheet" href="assets/css/style.css?v=12bce3b4">
   <link rel="stylesheet" href="assets/css/unterseiten.css?v=81645116">
+  <link rel="stylesheet" href="assets/css/lagerfeuer.css?v=6c006bc8">
   <script src="assets/js/bilder.js?v=e1756519"></script>
   <script src="assets/js/module.js?v=e86d18af"></script>
   <script src="assets/js/main.js?v=2ceae6fe" defer></script>
+  <script src="assets/js/lagerfeuer.js?v=8c240c73" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="team.html" aktiv="team.html"></kjg-header>
@@ -38,71 +40,141 @@
   <a href="#pfarrleitung">Pfarrleitung</a>
 </kjg-sprung>
 
-<div class="team">
-  <section class="section" id="lagerleitung">
-    <div class="team-in"><h2>Unsere Lagerleitung</h2></div>
+<section class="feuer-intro">
+  <div class="container">
+    <h2>Komm ans Feuer</h2>
+    <p>Setzt euch zu uns. Am Lagerfeuer erzählt jede und jeder kurz, was sie oder er bei der KjG macht und was dabei am meisten Freude macht. Scrollt einfach weiter und lernt unser Team kennen.</p>
+  </div>
+</section>
+
 <kjg-zitat klasse="circle-left" bild="team-10" bild-alt="Foto Lena">
 <p>„Bei uns darf jedes Kind so sein, wie es<br> ist. Genau das macht unsere Gruppen so<br> besonders.”</p>
 <strong>Lena,</strong><span>Gruppenleiterin</span>
 </kjg-zitat>
-    <div class="team-in after-quote">
-<kjg-person klasse="person right">
-<h3>Lena</h3>
-<div class="rolle">Leitung Zeltlager</div>
-<p>Lena trägt die Gesamtverantwortung für das<br> Zeltlager. Sie plant den Ablauf gemeinsam<br> mit dem Team, leitet die Lagerbesprechungen<br> und ist die erste Ansprechpartnerin für alle<br> Fragen rund ums Lager – vor, während und<br> nach der Fahrt.</p>
-<p>Seit ihrer Kindheit ist Lena bei der KjG<br> dabei und kennt jeden Winkel des<br> Zeltplatzes. Ihr Lieblingsmoment: der Abend<br> am Lagerfeuer, wenn alle gemeinsam singen<br> und auch die Jüngsten stolz von ihrem Tag<br> erzählen.</p>
-</kjg-person>
-<kjg-person klasse="person left" bild="team-3" bild-alt="Foto Jonas">
-<h3>Jonas</h3>
-<div class="rolle">Organisation vor Ort</div>
-<p>Jonas kümmert sich um alles, was vor Ort<br> funktionieren muss: Zeltaufbau, Einkauf,<br> Küche und Zeitplan. Er koordiniert die<br> Helferinnen und Helfer und sorgt dafür, dass<br> alles reibungslos läuft.</p>
-<p>Eltern erreichen ihn bei Fragen zu Anreise,<br> Gepäck und Abholung. Seine Spezialität:<br> Nudeln für 60 Personen in unter einer Stunde<br> – und das immer mit einem Lächeln.</p>
-</kjg-person>
-<kjg-person klasse="person right" bild="team-4" bild-alt="Foto Sophie">
-<h3>Sophie</h3>
-<div class="rolle">Programm und Aktionen</div>
-<p>Sophie denkt sich Spiele, Wettbewerbe,<br> Workshops und Abendaktionen aus und achtet<br> darauf, dass für jedes Alter etwas dabei<br> ist. Sie stimmt das Programm mit den<br> Gruppenleiterinnen und Gruppenleitern ab.</p>
-<p>Wenn ihr wissen möchtet, wie ein typischer<br> Tag im Lager aussieht, ist Sophie die<br> Richtige. Am liebsten erfindet sie<br> Geländespiele, bei denen am Ende alle<br> gewonnen haben.</p>
-</kjg-person>
+
+<section class="feuer" id="lagerfeuer" aria-label="Lagerfeuer">
+  <span id="lagerleitung" class="feuer-anker"></span><span id="planungsleitung" class="feuer-anker"></span><span id="pfarrleitung" class="feuer-anker"></span>
+  <div class="feuer-buehne">
+    <div class="feuer-himmel"><svg class="feuer-sterne" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg><div class="feuer-mond"></div><div class="feuer-schnuppe"></div></div>
+    <svg class="feuer-tannen" viewBox="0 0 1600 130" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="feuer-boden"></div>
+    <div class="feuer-glut"></div>
+    <div class="feuer-ring">
+      <div class="feuer-stelle" aria-hidden="true">
+        <svg viewBox="0 0 200 260">
+          <ellipse cx="100" cy="170" rx="130" ry="110" fill="rgba(240,91,131,.25)"/>
+          <path class="flamme f1" d="M100 18 C146 78 176 124 154 196 C142 232 58 232 46 196 C26 124 62 86 100 18Z" fill="#F05B83"/>
+          <path class="flamme f2" d="M100 64 C132 106 150 140 136 196 C128 222 72 222 64 196 C52 142 76 112 100 64Z" fill="#FF9C8F"/>
+          <path class="flamme f3" d="M100 118 C118 140 126 164 118 196 C112 210 88 210 82 196 C74 164 86 140 100 118Z" fill="#FFE6E0"/>
+          <g transform="translate(0 6)"><rect x="34" y="214" width="132" height="22" rx="11" fill="#3a2420" transform="rotate(-8 100 225)"/><rect x="34" y="214" width="132" height="22" rx="11" fill="#5a3b34" transform="rotate(10 100 225)"/>
+          <circle cx="40" cy="244" r="12" fill="#3f6264"/><circle cx="66" cy="250" r="11" fill="#4c7274"/><circle cx="134" cy="250" r="11" fill="#3f6264"/><circle cx="160" cy="244" r="12" fill="#4c7274"/></g>
+        </svg>
+      </div>
+      <ul class="feuer-leute">
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-2" alt="Foto Lena"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Lena</span></li>
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-3" alt="Foto Jonas"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Jonas</span></li>
+<li class="feuer-p" data-gruppe="lagerleitung"><div class="feuer-foto"><kjg-bild name="team-4" alt="Foto Sophie"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Sophie</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-5" alt="Foto Max"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Max</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-6" alt="Foto Hanna"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Hanna</span></li>
+<li class="feuer-p" data-gruppe="planungsleitung"><div class="feuer-foto"><kjg-bild name="team-7" alt="Foto Felix"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Felix</span></li>
+<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-8" alt="Foto Anna"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Anna</span></li>
+<li class="feuer-p" data-gruppe="pfarrleitung"><div class="feuer-foto"><kjg-bild name="team-9" alt="Foto Thomas"></kjg-bild><span class="feuer-dunkel"></span></div><span class="feuer-name">Thomas</span></li>
+<li class="feuer-p feuer-platz-p"><div class="feuer-foto feuer-leer"><span aria-hidden="true">?</span><span class="feuer-dunkel"></span></div><span class="feuer-name">Dein Platz?</span></li>
+      </ul>
     </div>
-  </section>
-  <section class="section team-in" id="planungsleitung">
-    <h2>Unsere Planungsleitung</h2>
-<kjg-person klasse="person left" bild="team-5" bild-alt="Foto Max">
-<h3>Max</h3>
-<div class="rolle">Planung und Termine</div>
-<p>Max plant das KjG-Jahr: Termine, Räume und<br> Absprachen mit der Gemeinde und der Stadt.<br> Er verschickt die Einladungen und hält die<br> Kommunikation mit den Eltern in Gang.</p>
-<p>Er ist die Anlaufstelle, wenn ihr wissen<br> möchtet, wann welches Angebot stattfindet.<br> Im Team ist er der Mann mit dem Kalender –<br> und mit einer Vorliebe für To-do-Listen.</p>
-</kjg-person>
-<kjg-person klasse="person right" bild="team-6" bild-alt="Foto Hanna">
-<h3>Hanna</h3>
-<div class="rolle">Betreuung der Gruppenleiter und Kinderschutz</div>
-<p>Hanna begleitet die Gruppenleiterinnen und<br> Gruppenleiter und organisiert Schulungen,<br> zum Beispiel zu Erster Hilfe,<br> Aufsichtspflicht und Kinderschutz. Sie ist<br> Ansprechperson, wenn jemand ein ungutes<br> Gefühl hat.</p>
-<p>Ihr ist wichtig, dass jedes Kind sicher und<br> gut aufgehoben ist und dass sich auch die<br> Eltern gut informiert fühlen. Sie freut sich<br> über jede Rückmeldung.</p>
-</kjg-person>
-<kjg-person klasse="person left" bild="team-7" bild-alt="Foto Felix">
-<h3>Felix</h3>
-<div class="rolle">Material, Technik und Fotos</div>
-<p>Felix verwaltet unser Material: Zelte,<br> Spiele, Beamer und Musikanlage. Er<br> repariert, packt und fährt den Anhänger –<br> und fotografiert das Lagerleben für unsere<br> Erinnerungen.</p>
-<p>Fotos veröffentlichen wir nur, wenn die<br> Eltern zugestimmt haben. Wer Bilder seines<br> Kindes sehen oder entfernen lassen möchte,<br> wendet sich an Felix.</p>
-</kjg-person>
-  </section>
-  <section class="section team-in" id="pfarrleitung">
-    <h2>Unsere Pfarrleitung</h2>
-<kjg-person klasse="person right" bild="team-8" bild-alt="Foto Anna">
-<h3>Anna</h3>
-<div class="rolle">Verbindung zur Pfarrei</div>
-<p>Anna begleitet die KjG von Seiten der<br> Pfarrei. Sie unterstützt uns bei Räumen,<br> Genehmigungen und Finanzfragen und sorgt<br> dafür, dass unsere Angebote im Gemeindeleben<br> sichtbar sind.</p>
-<p>So können wir uns ganz auf die Kinder<br> konzentrieren. Wenn ihr Fragen zur<br> Zusammenarbeit von KjG und Pfarrei habt,<br> wendet euch gern an sie.</p>
-</kjg-person>
-<kjg-person klasse="person left" bild="team-9" bild-alt="Foto Thomas">
-<h3>Thomas</h3>
-<div class="rolle">Seelsorge und Ansprechperson</div>
-<p>Thomas ist als Seelsorger Ansprechperson für<br> alle Anliegen, die über das Organisatorische<br> hinausgehen. Er gestaltet Impulse und<br> Gottesdienste im Lager mit – kindgerecht und<br> ohne Zwang.</p>
-<p>Er hört zu, wenn es Sorgen gibt, und steht<br> Eltern und Kindern bei persönlichen Fragen<br> zur Seite. Niemand muss religiös sein, um<br> bei uns dabei zu sein.</p>
-</kjg-person>
-  </section>
-</div>
+    <div class="feuer-info">
+<article class="feuer-it" data-gruppe="lagerleitung">
+  <p class="feuer-lab">Lagerleitung</p>
+  <h3>Lena</h3>
+  <p class="feuer-rolle">Leitung Zeltlager</p>
+  <p class="feuer-text">Lena trägt die Gesamtverantwortung für das Zeltlager. Sie plant den Ablauf gemeinsam mit dem Team, leitet die Lagerbesprechungen und ist die erste Ansprechpartnerin für alle Fragen rund ums Lager – vor, während und nach der Fahrt.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>Seit ihrer Kindheit ist Lena bei der KjG dabei und kennt jeden Winkel des Zeltplatzes. Ihr Lieblingsmoment: der Abend am Lagerfeuer, wenn alle gemeinsam singen und auch die Jüngsten stolz von ihrem Tag erzählen.</blockquote>
+  <ul class="feuer-chips"><li>Gesamtleitung</li><li>Lagerbesprechung</li><li>Ansprechpartnerin</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Hejo, spann den Wagen an</p>
+</article>
+<article class="feuer-it" data-gruppe="lagerleitung">
+  <p class="feuer-lab">Lagerleitung</p>
+  <h3>Jonas</h3>
+  <p class="feuer-rolle">Organisation vor Ort</p>
+  <p class="feuer-text">Jonas kümmert sich um alles, was vor Ort funktionieren muss: Zeltaufbau, Einkauf, Küche und Zeitplan. Er koordiniert die Helferinnen und Helfer und sorgt dafür, dass alles reibungslos läuft.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>Eltern erreichen ihn bei Fragen zu Anreise, Gepäck und Abholung. Seine Spezialität: Nudeln für 60 Personen in unter einer Stunde – und das immer mit einem Lächeln.</blockquote>
+  <ul class="feuer-chips"><li>Zeltaufbau</li><li>Küche</li><li>Einkauf</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Country Roads</p>
+</article>
+<article class="feuer-it" data-gruppe="lagerleitung">
+  <p class="feuer-lab">Lagerleitung</p>
+  <h3>Sophie</h3>
+  <p class="feuer-rolle">Programm und Aktionen</p>
+  <p class="feuer-text">Sophie denkt sich Spiele, Wettbewerbe, Workshops und Abendaktionen aus und achtet darauf, dass für jedes Alter etwas dabei ist. Sie stimmt das Programm mit den Gruppenleiterinnen und Gruppenleitern ab.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>Wenn ihr wissen möchtet, wie ein typischer Tag im Lager aussieht, ist Sophie die Richtige. Am liebsten erfindet sie Geländespiele, bei denen am Ende alle gewonnen haben.</blockquote>
+  <ul class="feuer-chips"><li>Geländespiele</li><li>Workshops</li><li>Abendprogramm</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Wonderwall</p>
+</article>
+<article class="feuer-it" data-gruppe="planungsleitung">
+  <p class="feuer-lab">Planungsleitung</p>
+  <h3>Max</h3>
+  <p class="feuer-rolle">Planung und Termine</p>
+  <p class="feuer-text">Max plant das KjG-Jahr: Termine, Räume und Absprachen mit der Gemeinde und der Stadt. Er verschickt die Einladungen und hält die Kommunikation mit den Eltern in Gang.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>Er ist die Anlaufstelle, wenn ihr wissen möchtet, wann welches Angebot stattfindet. Im Team ist er der Mann mit dem Kalender – und mit einer Vorliebe für To-do-Listen.</blockquote>
+  <ul class="feuer-chips"><li>Termine</li><li>Einladungen</li><li>Kalender</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Hey Jude</p>
+</article>
+<article class="feuer-it" data-gruppe="planungsleitung">
+  <p class="feuer-lab">Planungsleitung</p>
+  <h3>Hanna</h3>
+  <p class="feuer-rolle">Betreuung der Gruppenleiter und Kinderschutz</p>
+  <p class="feuer-text">Hanna begleitet die Gruppenleiterinnen und Gruppenleiter und organisiert Schulungen, zum Beispiel zu Erster Hilfe, Aufsichtspflicht und Kinderschutz. Sie ist Ansprechperson, wenn jemand ein ungutes Gefühl hat.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>Ihr ist wichtig, dass jedes Kind sicher und gut aufgehoben ist und dass sich auch die Eltern gut informiert fühlen. Sie freut sich über jede Rückmeldung.</blockquote>
+  <ul class="feuer-chips"><li>Schulungen</li><li>Kinderschutz</li><li>Erste Hilfe</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Hallelujah</p>
+</article>
+<article class="feuer-it" data-gruppe="planungsleitung">
+  <p class="feuer-lab">Planungsleitung</p>
+  <h3>Felix</h3>
+  <p class="feuer-rolle">Material, Technik und Fotos</p>
+  <p class="feuer-text">Felix verwaltet unser Material: Zelte, Spiele, Beamer und Musikanlage. Er repariert, packt und fährt den Anhänger – und fotografiert das Lagerleben für unsere Erinnerungen.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>Fotos veröffentlichen wir nur, wenn die Eltern zugestimmt haben. Wer Bilder seines Kindes sehen oder entfernen lassen möchte, wendet sich an Felix.</blockquote>
+  <ul class="feuer-chips"><li>Material</li><li>Technik</li><li>Fotos</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Über den Wolken</p>
+</article>
+<article class="feuer-it" data-gruppe="pfarrleitung">
+  <p class="feuer-lab">Pfarrleitung</p>
+  <h3>Anna</h3>
+  <p class="feuer-rolle">Verbindung zur Pfarrei</p>
+  <p class="feuer-text">Anna begleitet die KjG von Seiten der Pfarrei. Sie unterstützt uns bei Räumen, Genehmigungen und Finanzfragen und sorgt dafür, dass unsere Angebote im Gemeindeleben sichtbar sind.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>So können wir uns ganz auf die Kinder konzentrieren. Wenn ihr Fragen zur Zusammenarbeit von KjG und Pfarrei habt, wendet euch gern an sie.</blockquote>
+  <ul class="feuer-chips"><li>Räume</li><li>Genehmigungen</li><li>Finanzen</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Kumbaya</p>
+</article>
+<article class="feuer-it" data-gruppe="pfarrleitung">
+  <p class="feuer-lab">Pfarrleitung</p>
+  <h3>Thomas</h3>
+  <p class="feuer-rolle">Seelsorge und Ansprechperson</p>
+  <p class="feuer-text">Thomas ist als Seelsorger Ansprechperson für alle Anliegen, die über das Organisatorische hinausgehen. Er gestaltet Impulse und Gottesdienste im Lager mit – kindgerecht und ohne Zwang.</p>
+  <blockquote><span class="feuer-vor">Erzählt am Feuer</span>Er hört zu, wenn es Sorgen gibt, und steht Eltern und Kindern bei persönlichen Fragen zur Seite. Niemand muss religiös sein, um bei uns dabei zu sein.</blockquote>
+  <ul class="feuer-chips"><li>Impulse</li><li>Gottesdienste</li><li>Zuhören</li></ul>
+  <p class="feuer-lied"><span>Lieblingslied am Feuer</span> Die Gedanken sind frei</p>
+</article>
+<article class="feuer-it" data-gruppe="platz">
+  <p class="feuer-lab">Wir suchen Verstärkung</p>
+  <h3>Dein Platz?</h3>
+  <p class="feuer-text">Du hast Lust, Zeit mit Kindern zu verbringen und mit anzupacken? Dann komm zu uns ins Team. Wir schulen dich, und du bist von Anfang an nicht allein.</p>
+  <ul class="feuer-chips"><li>Schulung</li><li>Teamgeist</li><li>Zeltlager</li></ul>
+</article>
+    </div>
+    <div class="feuer-dots" role="group" aria-label="Person wählen"></div>
+    <kjg-scrollhinweis></kjg-scrollhinweis>
+  </div>
+</section>
+
+<section class="feuer-ende">
+  <div class="container">
+    <h2>Gute Nacht vom KjG-Team</h2>
+    <p>Das Feuer brennt weiter. Wenn du mitkommen möchtest, ist noch ein Platz auf dem Baumstamm frei.</p>
+  </div>
+</section>
+
+<kjg-kontakt></kjg-kontakt>
 </main>
 
 <kjg-footer></kjg-footer>

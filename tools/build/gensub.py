@@ -25,7 +25,7 @@ def br(*lines):
 
 FOOTER = TAG_FOOTER
 
-def page(fname, title, active, main, desc="KjG Mainz-Gonsenheim – Katholische junge Gemeinde"):
+def page(fname, title, active, main, desc="KjG Mainz-Gonsenheim – Katholische junge Gemeinde", extra_css="", extra_js=""):
     html = f'''<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -37,10 +37,10 @@ def page(fname, title, active, main, desc="KjG Mainz-Gonsenheim – Katholische 
   <link rel="preload" href="assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/unterseiten.css">
-  <script src="assets/js/bilder.js"></script>
+{extra_css}  <script src="assets/js/bilder.js"></script>
   <script src="assets/js/module.js"></script>
   <script src="assets/js/main.js" defer></script>
-</head>
+{extra_js}</head>
 <body class="sub nav-alt">
 {tag_header(fname, active)}
 
@@ -237,6 +237,69 @@ def person(side, abschnitt, i, circle=True):
 _qd, _qn, _qr = QUOTE_TEAM[0], QUOTE_TEAM[1], QUOTE_TEAM[2]
 QUOTE = tag_zitat(f"<p>{quote_p(_qd)}</p>\n<strong>{_qn}</strong><span>{_qr}</span>", "circle-left", bildname("team", 10, "Foto Lena"), "Foto Lena")
 
+GRUPPEN = ["lagerleitung"] * 3 + ["planungsleitung"] * 3 + ["pfarrleitung"] * 2
+GRUPPEN_NAME = dict(JUMP_TEAM)
+
+def feuer_html():
+    leute, infos = [], []
+    k = 0
+    for gruppe in ("lagerleitung", "planungsleitung", "pfarrleitung"):
+        for (name, rolle, _re, d1, _e1, d2, _e2) in TEAM[gruppe]:
+            chips_de, _chips_en, lied = FEUER_PERSON[k]
+            alt = "Foto " + name
+            reg(alt, "Photo of " + name)
+            bild = img("team", k + 2, alt, "media")
+            leute.append(f'<li class="feuer-p" data-gruppe="{gruppe}"><div class="feuer-foto">{bild}<span class="feuer-dunkel"></span></div><span class="feuer-name">{name}</span></li>')
+            chips = "".join(f"<li>{c}</li>" for c in chips_de)
+            infos.append(f'''<article class="feuer-it" data-gruppe="{gruppe}">
+  <p class="feuer-lab">{GRUPPEN_NAME[gruppe]}</p>
+  <h3>{name}</h3>
+  <p class="feuer-rolle">{rolle}</p>
+  <p class="feuer-text">{d1}</p>
+  <blockquote><span class="feuer-vor">{FEUER_ERZAEHLT}</span>{d2}</blockquote>
+  <ul class="feuer-chips">{chips}</ul>
+  <p class="feuer-lied"><span>{FEUER_LIED}</span> {lied}</p>
+</article>''')
+            k += 1
+    pn, pr, pt, pc = FEUER_PLATZ
+    leute.append(f'<li class="feuer-p feuer-platz-p"><div class="feuer-foto feuer-leer"><span aria-hidden="true">?</span><span class="feuer-dunkel"></span></div><span class="feuer-name">{pn}</span></li>')
+    infos.append(f'''<article class="feuer-it" data-gruppe="platz">
+  <p class="feuer-lab">{pr}</p>
+  <h3>{pn}</h3>
+  <p class="feuer-text">{pt}</p>
+  <ul class="feuer-chips">{"".join(f"<li>{c}</li>" for c in pc)}</ul>
+</article>''')
+    nl = "\n"
+    return f'''<section class="feuer" id="lagerfeuer" aria-label="{t("Lagerfeuer", "Campfire")}">
+  <span id="lagerleitung" class="feuer-anker"></span><span id="planungsleitung" class="feuer-anker"></span><span id="pfarrleitung" class="feuer-anker"></span>
+  <div class="feuer-buehne">
+    <div class="feuer-himmel"><svg class="feuer-sterne" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg><div class="feuer-mond"></div><div class="feuer-schnuppe"></div></div>
+    <svg class="feuer-tannen" viewBox="0 0 1600 130" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="feuer-boden"></div>
+    <div class="feuer-glut"></div>
+    <div class="feuer-ring">
+      <div class="feuer-stelle" aria-hidden="true">
+        <svg viewBox="0 0 200 260">
+          <ellipse cx="100" cy="170" rx="130" ry="110" fill="rgba(240,91,131,.25)"/>
+          <path class="flamme f1" d="M100 18 C146 78 176 124 154 196 C142 232 58 232 46 196 C26 124 62 86 100 18Z" fill="#F05B83"/>
+          <path class="flamme f2" d="M100 64 C132 106 150 140 136 196 C128 222 72 222 64 196 C52 142 76 112 100 64Z" fill="#FF9C8F"/>
+          <path class="flamme f3" d="M100 118 C118 140 126 164 118 196 C112 210 88 210 82 196 C74 164 86 140 100 118Z" fill="#FFE6E0"/>
+          <g transform="translate(0 6)"><rect x="34" y="214" width="132" height="22" rx="11" fill="#3a2420" transform="rotate(-8 100 225)"/><rect x="34" y="214" width="132" height="22" rx="11" fill="#5a3b34" transform="rotate(10 100 225)"/>
+          <circle cx="40" cy="244" r="12" fill="#3f6264"/><circle cx="66" cy="250" r="11" fill="#4c7274"/><circle cx="134" cy="250" r="11" fill="#3f6264"/><circle cx="160" cy="244" r="12" fill="#4c7274"/></g>
+        </svg>
+      </div>
+      <ul class="feuer-leute">
+{nl.join(leute)}
+      </ul>
+    </div>
+    <div class="feuer-info">
+{nl.join(infos)}
+    </div>
+    <div class="feuer-dots" role="group" aria-label="{t("Person wählen", "Choose a person")}"></div>
+    <kjg-scrollhinweis></kjg-scrollhinweis>
+  </div>
+</section>'''
+
 page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Team", short=True)}
 
 <section class="stats" aria-label="Zahlen">
@@ -247,28 +310,25 @@ page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Tea
 
 {jump(JUMP_TEAM, "jump-team")}
 
-<div class="team">
-  <section class="section" id="lagerleitung">
-    <div class="team-in"><h2>Unsere Lagerleitung</h2></div>
+<section class="feuer-intro">
+  <div class="container">
+    <h2>{FEUER_INTRO[0]}</h2>
+    <p>{FEUER_INTRO[1]}</p>
+  </div>
+</section>
+
 {QUOTE}
-    <div class="team-in after-quote">
-{person("right", "lagerleitung", 0, circle=False)}
-{person("left", "lagerleitung", 1)}
-{person("right", "lagerleitung", 2)}
-    </div>
-  </section>
-  <section class="section team-in" id="planungsleitung">
-    <h2>Unsere Planungsleitung</h2>
-{person("left", "planungsleitung", 0)}
-{person("right", "planungsleitung", 1)}
-{person("left", "planungsleitung", 2)}
-  </section>
-  <section class="section team-in" id="pfarrleitung">
-    <h2>Unsere Pfarrleitung</h2>
-{person("right", "pfarrleitung", 0)}
-{person("left", "pfarrleitung", 1)}
-  </section>
-</div>''')
+
+{feuer_html()}
+
+<section class="feuer-ende">
+  <div class="container">
+    <h2>{FEUER_ENDE[0]}</h2>
+    <p>{FEUER_ENDE[1]}</p>
+  </div>
+</section>
+
+<kjg-kontakt></kjg-kontakt>''', extra_css='  <link rel="stylesheet" href="assets/css/lagerfeuer.css">\n', extra_js='  <script src="assets/js/lagerfeuer.js" defer></script>\n')
 
 # ===================== Impressum & Datenschutz =====================
 for f, t in [("impressum.html", "Impressum"), ("datenschutz.html", "Datenschutz")]:

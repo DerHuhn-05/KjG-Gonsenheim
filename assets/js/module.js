@@ -23,6 +23,7 @@
      kjg-frage                          FAQ-Eintrag; Kinder: span (Frage), p (Antwort)
      kjg-hero (klasse, bild, bild-alt)  Seitenkopf mit Bild; Kind: h1
      kjg-zahlen                         Zahlenband mit drei Kennzahlen; Kinder: <span icon="uhr" zahl="72">Beschriftung</span>
+     kjg-scrollhinweis                  „Weiter scrollen“ mit Pfeil (in Scrollytellings; Sichtbarkeit steuert main.js)
      kjg-hero-split (klasse, bild, bild-alt)   Seitenkopf geteilt (Bild | Petrol); Kinder: h1, p, a.btn
    ===================================================================== */
 (function () {
@@ -275,11 +276,16 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
 </section>`);
   }
 
+  // ---- Scroll-Hinweis --------------------------------------------------------------------------------------
+  function scrollhinweis() {
+    return vorlage(`<div class="scroll-hinweis" aria-hidden="true"><span>${T("Weiter scrollen", "Keep scrolling")}</span><img src="${BASIS}icons/pfeil-unten-weiss.svg" width="14" height="16" alt=""></div>`);
+  }
+
   // ---- Ausführen -----------------------------------------------------------------------------------------
   const MODULE = {
     "kjg-header": header, "kjg-footer": footer, "kjg-bild": bild, "kjg-sprung": sprung, "kjg-kachel": kachel,
     "kjg-eventkachel": eventkachel, "kjg-karte": karte, "kjg-abschnitt": abschnitt, "kjg-person": person,
-    "kjg-zitat": zitat, "kjg-zahlen": zahlen, "kjg-frage": frage, "kjg-hero": hero, "kjg-hero-split": heroSplit,
+    "kjg-zitat": zitat, "kjg-zahlen": zahlen, "kjg-scrollhinweis": scrollhinweis, "kjg-frage": frage, "kjg-hero": hero, "kjg-hero-split": heroSplit,
   };
   const SELEKTOR = Object.keys(MODULE).join(",");
 

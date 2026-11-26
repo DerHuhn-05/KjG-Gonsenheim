@@ -175,6 +175,7 @@ KARTE = f'''<section class="karte-sektion" id="karte" aria-labelledby="karte-h">
       <a class="karte-btn" href="{MAPS_URL}" target="_blank" rel="noopener">{MAPS_BTN}<span class="sr-only"> {MAPS_NEU}</span></a>
     </div>
     <p class="karte-quelle">{KARTE_QUELLE}</p>
+    <kjg-scrollhinweis></kjg-scrollhinweis>
   </div>
 </section>'''
 

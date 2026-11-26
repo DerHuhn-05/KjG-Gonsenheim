@@ -131,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const linie = karteSek.querySelector(".karte-linie");
     const kLabel = karteSek.querySelector(".karte-label");
     const detail = svg.querySelector(".k-detail");
+    const kHinweis = karteSek.querySelector(".scroll-hinweis");
     const MZ_W = 2400, MZ_H = 2607, GX = 794, GY = 666, GH = 835;   // Gesamtkarte, Standort, sichtbare Höhe beim Zoom (Karteneinheiten)
     const ansicht = (zoom) => {
       const W = svg.clientWidth || 1, H = svg.clientHeight || 1;
@@ -208,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const p = klemmen((y - mass.start) / (mass.zoomEnde - mass.start));
       const q = klemmen((y - mass.zoomEnde) / mass.linieL);
       const r = klemmen((y - mass.zoomEnde - mass.linieL) / mass.kastenL);
+      if (kHinweis) kHinweis.style.opacity = (1 - klemmen((r - 0.2) / 0.4)).toFixed(2);   // „Weiter scrollen“ verschwindet, sobald die Kachel ausfährt
       const schluessel = p.toFixed(4) + q.toFixed(4) + r.toFixed(4);
       if (schluessel === letztes) return;
       letztes = schluessel;
@@ -248,6 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let STREIFEN = 361;        // Höhe des Petrol-Streifens im Ausgangszustand (mobil etwas höher)
   const DREH_TEMPO = 1.4;    // Scroll-Pixel pro Pixel Drehung (größer = langsamer)
   const radBuehne = radPin && radPin.querySelector(".z-termine-buehne");
+  const radHinweis = radPin && radPin.querySelector(".scroll-hinweis");   // „Weiter scrollen“ mit Pfeil
   let radMass = null;
   let radLetzte = { weg: null, clip: null, versatz: null, lage: null, st: [] };   // zuletzt gesetzte Werte – unveränderte werden nicht neu geschrieben
 
@@ -310,6 +313,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (clip !== L.clip) { L.clip = clip; radPin.style.clipPath = `inset(${clip}px 0)`; }   // direkt am Element, keine Variable im ganzen Baum
     const dreh = Math.min(1, Math.max(0, (weg - m.aufziehen) / m.drehen));
     const mitte = m.von + dreh * (m.bis - m.von);               // Index der aktiven Station
+    if (radHinweis) {                                           // Hinweis „Weiter scrollen“: sichtbar, solange die Zeitleiste steht und noch nicht fast am Ende ist
+      const an = weg > 0 && weg < m.aufziehen + 0.85 * m.drehen;
+      const hinweis = `${an ? 1 : 0}|${(clip + 18).toFixed(0)}`;
+      if (hinweis !== L.hinweis) { L.hinweis = hinweis; radHinweis.style.opacity = an ? 1 : 0; radHinweis.style.bottom = (clip + 18) + "px"; }
+    }
     let lage;
     if (m.vertikal) {
       // 1. Der Hintergrund füllt sich: der Inhalt rückt vom Streifen nach oben, die Fläche wird ganz Petrol

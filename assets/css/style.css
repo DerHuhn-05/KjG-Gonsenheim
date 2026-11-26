@@ -44,7 +44,7 @@ main, .site-footer { overflow-x: clip; }   /* Einflug-Animationen erzeugen kein 
 
 /* Module (assets/js/module.js): die Tags sind bis zum Ersetzen durch das fertige Markup unsichtbar (nur mit JavaScript) */
 .js kjg-header, .js kjg-footer, .js kjg-bild, .js kjg-sprung, .js kjg-kachel, .js kjg-eventkachel, .js kjg-karte, .js kjg-abschnitt,
-.js kjg-person, .js kjg-zitat, .js kjg-zahlen, .js kjg-frage, .js kjg-hero, .js kjg-hero-split { display: none; }
+.js kjg-person, .js kjg-zitat, .js kjg-zahlen, .js kjg-scrollhinweis, .js kjg-frage, .js kjg-hero, .js kjg-hero-split { display: none; }
 kjg-bild { display: block; }
 
 /* ---------- Kopfzeile ---------- */
@@ -620,3 +620,10 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .z-termine.rad.vertikal .z-timeline .zeit-bild { left: auto; right: calc(20% + 3px); top: 50%; transform: translateY(-50%); width: min(32%, 190px); height: auto; aspect-ratio: 4 / 3; box-shadow: 0 0 0 2px rgba(255,255,255,.9); }
 .z-termine.rad.vertikal .z-timeline > li > img { left: 56px; }
 .z-termine.rad.vertikal .z-timeline p { left: 56px; right: calc(20% + 3px + min(32%, 190px) + 12px); }
+
+/* ---------- Hinweis „Weiter scrollen“ in den Scrollytellings (Zela-Zeitleiste, Karte); Sichtbarkeit und Lage setzt main.js ---------- */
+.scroll-hinweis { position: absolute; left: 50%; transform: translateX(-50%); padding: 8px 16px 10px; background: var(--teal); bottom: 20px; z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--white); font: 600 15px/1 var(--i); letter-spacing: .02em; pointer-events: none; opacity: 0; transition: opacity .25s ease; }
+.scroll-hinweis img { animation: hinweis-hoch-runter 1.4s ease-in-out infinite; }
+@keyframes hinweis-hoch-runter { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .scroll-hinweis img { animation: none; } }

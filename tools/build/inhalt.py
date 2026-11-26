@@ -370,3 +370,5 @@ reg("Zahlen", "Figures")
 def zahlen_tag(seite):
     inner = "\n".join(f'  <span icon="{i}" zahl="{z}">{d}</span>' for i, z, d, e in ZAHLEN[seite])
     return f"<kjg-zahlen>\n{inner}\n</kjg-zahlen>"
+
+reg("Weiter scrollen", "Keep scrolling")

@@ -328,3 +328,6 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .stats.stats-3 .num { font-size: 34px; line-height: 38px; }
   .sub .stats.stats-3 .label { font-size: 14px; line-height: 18px; text-align: center; overflow-wrap: break-word; hyphens: auto; }
 }
+
+/* Hinweis „Weiter scrollen“ auf der Karte */
+.karte-buehne .scroll-hinweis { bottom: 40px; }

@@ -174,6 +174,7 @@ EN_INHALT = {
 "Was ist, wenn mein Kind Allergien hat oder Medikamente braucht?": "What if my child has allergies or needs medication?",
 "Was kostet die Teilnahme?": "How much does it cost to take part?",
 "Was wird gemacht": "What happens",
+"Weiter scrollen": "Keep scrolling",
 "Weitere Informationen": "More information",
 "Wenn euer Kind mitmachen möchte, meldet es einfach an. Vorab informieren wir euch über Ablauf, Treffpunkt und Abholzeiten.": "If your child would like to join in, simply register them. Beforehand we will tell you about the schedule, meeting point and pick-up times.",
 "Wenn ihr wissen möchtet, wie ein typischer Tag im Lager aussieht, ist Sophie die Richtige. Am liebsten erfindet sie Geländespiele, bei denen am Ende alle gewonnen haben.": "If you would like to know what a typical day at camp looks like, Sophie is the right person. She loves inventing outdoor games where in the end everybody has won.",

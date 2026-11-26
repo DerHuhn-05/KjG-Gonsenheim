@@ -335,6 +335,7 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 
 /* Hinweis „Weiter scrollen“ auf der Karte */
 .karte-buehne .scroll-hinweis { right: auto; left: 16px; top: 20px; }
+@media (min-width: 961px) { .karte-buehne .scroll-hinweis { top: 40px; } }   /* Desktop: 20 px tiefer */
 
 /* Zahlenband unter den Sprungmarken: weniger Leerraum davor, Abstand zum folgenden Abschnitt danach */
 .sub .jump-section + .stats { margin-bottom: 100px; }

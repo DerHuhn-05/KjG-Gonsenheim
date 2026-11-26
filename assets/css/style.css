@@ -283,7 +283,7 @@ html.menu-offen { overflow: hidden; }
 .z-termine.rad:not(.vertikal) .z-timeline::before { left: 0; right: auto; width: var(--rad-breite, 100vw); }   /* Linie über die ganze Breite (die Stationen wandern einzeln) */
 @media (min-width: 961px) {   /* Desktop: deutlich mehr Luft zwischen Überschrift und Drehrad */
   .z-termine.rad .z-termine-buehne { height: 560px; }
-  .z-termine.rad .z-rad { top: 296px; }
+  .z-termine.rad .z-rad { top: 226px; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
@@ -610,9 +610,13 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .z-feature.solo .text, .z-feature.solo.reverse .text { width: max-content; max-width: 100%; padding-left: 0; }
 @media (max-width: 960px) { .z-feature.solo, .z-feature.solo.reverse { justify-items: start; } .z-feature.solo .text { width: auto; } }
 
-/* Zela-Zeitleiste: rundes Foto je Station (wandert mit der Station, wird in der Mitte größer). Nur mit JavaScript-Zeitleiste sichtbar. */
+/* Zela-Zeitleiste: eckiges Foto je Station (wandert mit der Station, wird in der Mitte größer). Nur mit JavaScript-Zeitleiste sichtbar.
+   Computer: unterhalb der Linie · Handy: rechts neben dem Text */
 .z-timeline .zeit-bild { display: none; }
-.z-termine.rad .z-timeline .zeit-bild { display: block; position: absolute; left: calc(50% - 52px); top: -118px; width: 104px; height: 104px;
-  border-radius: 50%; background: var(--grey-tile); box-shadow: 0 0 0 3px rgba(255,255,255,.9); }
+.z-termine.rad .z-timeline .zeit-bild { display: block; position: absolute; left: calc(50% - 72px); top: 178px; width: 144px; height: 108px;
+  border-radius: 0; background: var(--grey-tile); box-shadow: 0 0 0 3px rgba(255,255,255,.9); }
 .z-timeline .zeit-bild .ph-label { padding: 12px; font-size: 9px; line-height: 1.2; word-break: break-all; color: rgba(255,255,255,.55); }
-.z-termine.rad.vertikal .z-timeline .zeit-bild { left: 58px; top: calc(50% - 36px); width: 72px; height: 72px; box-shadow: 0 0 0 2px rgba(255,255,255,.9); }
+/* Handy: Punkt | Icon + Text | Foto – rechts bleibt Platz für die 125 %-Vergrößerung der aktiven Station */
+.z-termine.rad.vertikal .z-timeline .zeit-bild { left: auto; right: calc(20% + 3px); top: 50%; transform: translateY(-50%); width: min(32%, 190px); height: auto; aspect-ratio: 4 / 3; box-shadow: 0 0 0 2px rgba(255,255,255,.9); }
+.z-termine.rad.vertikal .z-timeline > li > img { left: 56px; }
+.z-termine.rad.vertikal .z-timeline p { left: 56px; right: calc(20% + 3px + min(32%, 190px) + 12px); }

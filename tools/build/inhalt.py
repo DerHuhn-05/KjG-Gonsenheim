@@ -130,7 +130,7 @@ def ev(k):
 
 # Sprungmarken
 JUMP_EVENTS = [("teaser", t("Gruppenstunde", "Group Meetings")), ("vorbereitungen", t("MoWo", "MoWo")), ("finanzen", t("Trainee-Wochenende", "Trainee Weekend"))]
-JUMP_WER = [("teaser", t("Die KjG Gonsenheim", "The KjG Gonsenheim")), ("karte", t("Wo Sie uns finden", "Where to find us")), ("vorbereitungen", t("Zela 2027", "Zela 2027")), ("finanzen", t("KjG-Dachverband", "KjG Federation"))]
+JUMP_WER = [("teaser", t("Die KjG Gonsenheim", "The KjG Gonsenheim")), ("karte", t("Wo Sie uns finden", "Where to find us")), ("finanzen", t("KjG-Dachverband", "KjG Federation")), ("vorbereitungen", t("Zela 2027", "Zela 2027"))]
 JUMP_SOZ = [("aktion-72h", T_72), ("aktion-2", T_HILFE), ("aktion-3", T_KLAMOTTEN)]
 JUMP_TEAM = [("lagerleitung", t("Lagerleitung", "Camp management")), ("planungsleitung", t("Planungsleitung", "Planning team")), ("pfarrleitung", t("Pfarrleitung", "Parish liaison"))]
 
@@ -230,6 +230,11 @@ WER_B = ("KjG-Dachverband", [
   "We are part of KjG Germany, one of the large Catholic children’s and youth associations with groups across the country. Shared values are participation, solidarity and responsibility."),
  ("Als Teil des Verbands profitieren unsere Gruppenleiterinnen und Gruppenleiter von Schulungen, Materialien und einem Netzwerk, das bei Fragen unterstützt.",
   "As part of the association our group leaders benefit from training, materials and a network that helps with questions.")])
+WER_C = (t("Was uns wichtig ist", "What matters to us"), [
+ ("Bei uns zählt das Miteinander. Kinder und Jugendliche gestalten ihre Gruppenstunden und Aktionen mit, bringen eigene Ideen ein und übernehmen Schritt für Schritt Verantwortung.",
+  "Togetherness is what counts with us. Children and young people help shape their group meetings and activities, bring in their own ideas and take on responsibility step by step."),
+ ("Unsere Gruppenleiterinnen und Gruppenleiter sind geschult, ehrenamtlich aktiv und immer ansprechbar – für die Kinder genauso wie für euch Eltern.",
+  "Our group leaders are trained, volunteer their time and are always available, for the children as well as for you parents.")])
 reg("Die KjG Gonsenheim", "The KjG Gonsenheim")
 reg("KjG-Dachverband", "KjG Federation")
 

@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
       karteSek.style.setProperty("--kopf", kopf + "px");
       const hoeheB = buehne.offsetHeight;
       // Scrollstrecke, während die Karte steht: Zoom, dann Linie ausfahren, dann Kasten ausfahren, kurzer Halt
-      const zoomL = Math.round(vh * 0.88), linieL = Math.round(vh * 0.28), kastenL = Math.round(vh * 0.28), halt = Math.round(vh * 0.1) + 20;      // Endbild bleibt noch kurz stehen (+20 px)
+      const zoomL = Math.round(vh * 0.88), linieL = Math.round(vh * 0.28), kastenL = Math.round(vh * 0.28), halt = Math.round(vh * 0.4) + 20;      // Endbild bleibt noch eine Weile stehen
       karteSek.style.height = hoeheB + zoomL + linieL + kastenL + halt + "px";
       const oben = karteSek.getBoundingClientRect().top + window.scrollY;
       mass = {

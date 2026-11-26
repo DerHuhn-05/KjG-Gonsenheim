@@ -75,6 +75,11 @@ PROGRAMM = [["Außerdem wird es im Vorfeld des Zeltlagers ein", "Vortreffen gebe
             ["Wir freuen uns auf viele bekannte und neue Gesichter", "und auf ein unvergessliches Zeltlager 2027 mit jeder",
              "Menge guter Laune, tollen Aktionen und schönen", "gemeinsamen Erinnerungen!"]]
 
+def text_abschnitt(title, paras, id_=None):
+    """reiner Textabschnitt ohne Bild"""
+    inhalt = f"<h2>{title}</h2>\n" + "\n".join(f"<p>{br(*p)}</p>" for p in paras)
+    return tag_abschnitt(inhalt, "feature text-only", id=id_)
+
 def feature(pg, n, title, paras, reverse=False, id_=None, cls="", anchors=()):
     assert not anchors
     alt = f"Bild {re.sub('<[^>]+>', '', title)}"
@@ -201,13 +206,17 @@ page("ueber-uns.html", "Über uns", "", f'''{simple_hero("ueber-uns", "Über uns
 {feature("ueber-uns", 2, WER_A[0], absaetze(WER_A[1]), reverse=True, id_="teaser")}
 </div>
 
-{KARTE}
+<div class="container">
+{text_abschnitt(WER_C[0], absaetze(WER_C[1]), id_="werte")}
+</div>
 
-{tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Bild Zeltlager 2027", id="vorbereitungen")}
+{KARTE}
 
 <div class="container">
 {feature("ueber-uns", 4, WER_B[0], absaetze(WER_B[1]), reverse=True, id_="finanzen", cls="h143 tight")}
 </div>
+
+{tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Bild Zeltlager 2027", id="vorbereitungen")}
 
 {tag_kachel("<h2>Unser Team</h2>\n<p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>", "tile reverse", "team.html", HERO_BILD["team.html"], "Bild Unser Team")}
 </div>''')

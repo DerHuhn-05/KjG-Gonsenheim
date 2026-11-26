@@ -116,11 +116,11 @@ html = f'''<!DOCTYPE html>
 </section>
 
 <div class="z-content">
-{feature("programm", "Programm", PROGRAMM, 2, cls="tight h143")}
+{feature("programm", "Programm", PROGRAMM, 2, reverse=True, cls="tight h143")}
 
-{quote("circle-left", 3, QUOTE_ZELA[0])}
+{quote("circle-right", 3, QUOTE_ZELA[0])}
 
-{feature("zusammen", "Zusammen lohnt’s sich!", ZUSAMMEN, 4, cls="h128")}
+{feature("zusammen", "Zusammen lohnt’s sich!", ZUSAMMEN, 4, reverse=True, cls="h128")}
 
 {feature("vortreffen", "Vortreffen", PROGRAMM, None, reverse=True, cls="tight h143")}
 

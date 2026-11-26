@@ -145,9 +145,7 @@ page("events.html", "Unsere Angebote", "events.html", f'''{simple_hero("events",
 <div class="events-list">
 {tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Kachel-Bild Zela 2027", id="zela")}
 {tiles("events", EV, ["teaser", "vorbereitungen", "finanzen"], start=1)}
-</div>
-
-{zitat_tag("events")}''')
+</div>''')
 
 SA = [("72h-aktion.html", "72h Aktion", "72h Aktion", "t2", ev("72h"), ' class="narrow h72"'),
       ("aktion.html", T_HILFE, "Hilfe im<br> Stadtteil", "t3", ev("hilfe"), ""),
@@ -160,9 +158,7 @@ page("soziale-aktionen.html", "Soziale Aktionen", "soziale-aktionen.html", f'''{
 
 <div class="events-list">
 {tiles("soziale-aktionen", SA, ["aktion-72h", "aktion-2", "aktion-3"])}
-</div>
-
-{zitat_tag("soziale-aktionen")}''')
+</div>''')
 
 # ===================== FAQ =====================
 qs = faq_html(9)

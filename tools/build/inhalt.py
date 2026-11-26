@@ -358,7 +358,7 @@ ZAHLEN = {
     "72h-aktion": [("uhr", 72, "Stunden", "Hours"), ("gruppe", 25, "Helferinnen und Helfer", "Volunteers"), ("herz", 1, "Projekt für den Stadtteil", "Project for the neighbourhood")],
     "aktion": [("herz", 6, "Einsätze im Jahr", "Activities per year"), ("gruppe", 30, "Kinder im Einsatz", "Children helping"), ("uhr", 100, "Stunden Hilfe", "Hours of help")],
     "klamottenspende": [("shirt", 500, "Kleidungsstücke", "Items of clothing"), ("kalender", 4, "Sammelaktionen", "Collections"), ("herz", 3, "Einrichtungen", "Organisations")],
-    "events": [("kalender", 4, "Angebote", "Activities"), ("zelt", 1, "Zeltlager im Sommer", "Summer camp"), ("uhr", 40, "Wochen Gruppenstunde", "Weeks of group meetings")],
+    "events": [("kalender", 4, "Angebote", "Activities"), ("zelt", 10, "Tage Zeltlager", "Days of summer camp"), ("uhr", 40, "Wochen Gruppenstunde", "Weeks of group meetings")],
     "soziale-aktionen": [("herz", 3, "Aktionen", "Projects"), ("uhr", 72, "Stunden am Stück", "Hours non-stop"), ("shirt", 500, "gespendete Kleidungsstücke", "Donated clothes")],
     "ueber-uns": [("gruppenleiter", 35, "Gruppenleiter", "Group leaders"), ("zelt", 21, "Zelte", "Tents"), ("kjg", 1977, "KjG seit", "KjG since")],
 }

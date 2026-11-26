@@ -373,3 +373,5 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .z-quote.ohne-bild + .kontakt-band { margin-top: 56px; }
   .sub .events-list + .z-quote.ohne-bild { margin-bottom: 56px; }
 }
+.sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 100px; }
+@media (max-width: 960px) { .sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 56px; } }

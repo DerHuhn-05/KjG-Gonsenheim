@@ -89,8 +89,8 @@ def detail(fname, h1, plain, wide=False, small=False, anmeldung=False, kontakt=F
     D = DETAIL[pg]
     cls = ' class="wide"' if wide else ""
     ta, pa = D["a"]; tb, pb = D["b"]
-    blocks = "\n".join([feature(pg, 2, ta, absaetze(pa), id_="teaser"),
-                        feature(pg, 3, tb, absaetze(pb), reverse=True, id_="vorbereitungen")])
+    block1 = feature(pg, 2, ta, absaetze(pa), id_="teaser")
+    block2 = feature(pg, 3, tb, absaetze(pb), reverse=True, id_="vorbereitungen")
     sub = w(D["hero"][0], D["hero"][1], 40)
     alt = f"Header-Bild {plain}"
     kommentar = f'<!-- ANMELDE-LINK {plain}: #ANMELDE-LINK-HIER-EINTRAGEN durch die Adresse der Anmeldung ersetzen -->\n<a class="btn" href="#ANMELDE-LINK-HIER-EINTRAGEN">Anmeldung</a>' if anmeldung else ""
@@ -102,10 +102,14 @@ def detail(fname, h1, plain, wide=False, small=False, anmeldung=False, kontakt=F
 {zahlen_tag(pg)}
 
 <div class="container features">
-{blocks}
+{block1}
 </div>
 
-{zitat_tag(pg)}{chr(10) + chr(10) + KONTAKT if kontakt else ""}'''
+{zitat_tag(pg)}
+
+<div class="container features">
+{block2}
+</div>{chr(10) + chr(10) + KONTAKT if kontakt else ""}'''
     page(fname, plain, "", main)   # nur Seiten, die selbst im Header stehen, werden fett
 
 detail("mowo.html", "MoWo", "MoWo – Monsterwochenende", wide=True, anmeldung=False)   # Anmeldung: derzeit keine – Knopf ausgeblendet

@@ -228,10 +228,12 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
     return mitInhalt(`<article class="${esc(attr(el, "klasse", "person"))}">${bildHtml}<div class="text"></div></article>`, el, ".text");
   }
 
-  function zitat(el) {       // Zitat mit rundem Foto
+  function zitat(el) {       // Zitat mit rundem Foto (ohne Attribut bild: nur Text, zentriert)
     const p = el.querySelector(":scope > p"), name = el.querySelector(":scope > strong"), rolle = el.querySelector(":scope > span");
-    const f = vorlage(`<section class="z-quote ${esc(attr(el, "klasse", "circle-left"))}"><div class="z-quote-inner"><div class="circle"><kjg-bild name="${esc(el.getAttribute("bild"))}" alt="${esc(el.getAttribute("bild-alt"))}" klasse="media round"></kjg-bild></div><blockquote><footer></footer></blockquote></div></section>`);
-    f.querySelector("footer").append(name, rolle);
+    const foto = el.hasAttribute("bild")
+      ? `<div class="circle"><kjg-bild name="${esc(el.getAttribute("bild"))}" alt="${esc(el.getAttribute("bild-alt"))}" klasse="media round"></kjg-bild></div>` : "";
+    const f = vorlage(`<section class="z-quote ${esc(attr(el, "klasse", el.hasAttribute("bild") ? "circle-left" : "ohne-bild"))}"><div class="z-quote-inner">${foto}<blockquote><footer></footer></blockquote></div></section>`);
+    f.querySelector("footer").append(name, " ", rolle);
     f.querySelector("blockquote").prepend(p);
     return f;
   }

@@ -310,6 +310,32 @@ for d, n, r, e, re_ in [QUOTE_TEAM] + QUOTE_ZELA:
     reg(n, n); reg(r, re_)
 reg("Gruppenleiterin", "Group leader"); reg("Gruppenleiter", "Group leader")
 
+# Zitate ohne Bild auf den Angebots- und Soziale-Aktionen-Seiten: Seite → (Text, Name, Rolle, Text EN, Rolle EN)
+QUOTE_SEITE = {
+ "events": ("Egal ob Gruppenstunde, Wochenende oder Zeltlager: Bei uns findet jedes Kind seinen Platz.", "Mia,", "Gruppenleiterin",
+            "Whether group meeting, weekend or summer camp: every child finds their place with us.", "Group leader"),
+ "gruppenstunde": ("Das Beste an der Gruppenstunde ist, dass die Kinder sich jede Woche darauf freuen.", "Tom,", "Gruppenleiter",
+                   "The best thing about our group meetings is that the children look forward to them every week.", "Group leader"),
+ "mowo": ("Am Monsterwochenende wird gebastelt, gespielt und gelacht – und am Sonntag wollen alle noch bleiben.", "Anna,", "Gruppenleiterin",
+          "At the monster weekend we craft, play and laugh – and on Sunday everyone wants to stay longer.", "Group leader"),
+ "trainee-wochenende": ("Auf dem Trainee-Wochenende habe ich gelernt, Verantwortung zu übernehmen – und dabei viele Freunde gefunden.", "Felix,", "Gruppenleiter",
+                        "At the trainee weekend I learned to take responsibility – and made many friends along the way.", "Group leader"),
+ "soziale-aktionen": ("Gemeinsam können wir im Kleinen viel bewegen. Das fängt bei uns im Stadtteil an.", "Laura,", "Gruppenleiterin",
+                      "Together we can achieve a lot, even on a small scale. It starts right here in our neighbourhood.", "Group leader"),
+ "72h-aktion": ("In 72 Stunden haben wir gemeinsam etwas geschafft, wofür sonst Wochen nötig wären. Darauf sind wir stolz.", "Jan,", "Gruppenleiter",
+                "In 72 hours we achieved together what would normally take weeks. We are proud of that.", "Group leader"),
+ "aktion": ("Manchmal reicht eine helfende Hand, damit sich im Stadtteil etwas zum Guten ändert.", "Nina,", "Gruppenleiterin",
+            "Sometimes one helping hand is enough to change something for the better in the neighbourhood.", "Group leader"),
+ "klamottenspende": ("Was bei euch zu klein geworden ist, kann bei anderen noch lange Freude machen.", "Paul,", "Gruppenleiter",
+                     "What your children have outgrown can bring joy to others for a long time.", "Group leader"),
+}
+for _d, _n, _r, _e, _re in QUOTE_SEITE.values():
+    reg("„" + _d + "”", "“" + _e + "”"); reg(_n, _n)
+
+def zitat_tag(seite):
+    d, n, r = QUOTE_SEITE[seite][:3]
+    return f"<kjg-zitat>\n<p>{quote_p(d)}</p>\n<strong>{n}</strong><span>{r}</span>\n</kjg-zitat>"
+
 # Alt-Texte, Titel, Fragmente
 reg("Klamotten-", "Clothing"); reg("spende", "Donation")
 for de, en in [("Das Wochenende", "The weekend"), ("Gut zu wissen", "Good to know"), ("Die KjG Gonsenheim", "The KjG Gonsenheim"), ("Worum geht’s?", "What is it about?")]:

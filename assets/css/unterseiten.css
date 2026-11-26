@@ -31,10 +31,11 @@
 .sub .hero-split p { margin-top: 20.75px; font: 400 23px/32px var(--o); letter-spacing: .37px; white-space: nowrap; }
 .sub .hero-split.small p { margin-top: 23px; }
 .sub .btn {
-  display: block; width: 289px; height: 88px; margin-top: 23.25px; padding: 9px 0 0 38px;
-  background: var(--white); color: var(--teal); font: 400 38px/79px var(--o); letter-spacing: 1.6px; white-space: nowrap;
+  display: flex; align-items: center; justify-content: center; width: 289px; height: 88px; margin-top: 23.25px; padding: 0 24px;
+  background: var(--white); color: var(--teal); font: 400 38px/1 var(--o); letter-spacing: 1.6px; white-space: nowrap; text-align: center;
+  transition: background .15s, color .15s;
 }
-.sub .btn:hover { background: #e9f3f3; }
+.sub .btn:hover { background: #e9f3f3; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
 
 /* ---------- Sprungmarken ---------- */
 .sub .jump-section { padding-top: 92.875px; }
@@ -220,7 +221,7 @@
 @media (max-width: 480px) {
   .sub .hero-simple h1 { font-size: 40px; letter-spacing: 2px; }
   .sub .hero-split h1 { font-size: 42px !important; line-height: 50px !important; }
-  .sub .btn { width: auto; display: inline-block; padding-right: 32px; font-size: 30px; }
+  .sub .btn { width: auto; display: inline-flex; padding: 0 32px; font-size: 30px; }
   .sub .event-tile h2 { font-size: 36px !important; line-height: 44px !important; }
 }
 
@@ -312,8 +313,8 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .karte-linie-punkt { fill: var(--accent); }
 .karte-linie circle { opacity: 0; }
 .karte-sektion.scrolly .karte-label { visibility: hidden; clip-path: inset(0 0 100% 0); }   /* fährt beim Scrollen aus (main.js) */
-.karte-btn { display: inline-flex; align-items: center; justify-content: center; height: 44px; margin-top: 16px; padding: 0 22px; background: var(--white); color: var(--teal); font: 600 17px/1 var(--i); }
-.karte-btn:hover { background: #e9f3f3; }
+.karte-btn { display: inline-flex; align-items: center; justify-content: center; text-align: center; height: 44px; margin-top: 16px; padding: 0 22px; background: var(--white); color: var(--teal); font: 600 17px/1 var(--i); transition: background .15s; }
+.karte-btn:hover { background: #e9f3f3; text-decoration: underline; text-underline-offset: 4px; }
 
 @media (max-width: 560px) {
   .karte-label { padding: 14px 16px 18px; }
@@ -343,10 +344,32 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .kontakt-band h2 { color: var(--teal); font: 800 40px/48px var(--i); letter-spacing: -.5px; }
 .sub .kontakt-band p { margin-top: 16px; font: 400 21px/32px var(--o); }
 .sub .kontakt-btns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; }
-.sub .kontakt-band .btn { background: var(--teal); color: var(--white); margin-top: 0; width: auto; height: 64px; padding: 0 36px; font-size: 26px; line-height: 64px; }
+.sub .kontakt-band .btn { display: inline-flex; background: var(--teal); color: var(--white); margin-top: 0; width: auto; height: 64px; padding: 0 36px; font-size: 26px; line-height: 64px; }
 @media (max-width: 960px) {
   .sub .kontakt-band { padding: 48px 20px; margin-top: 56px; }
   .sub .kontakt-band h2 { font-size: 30px; line-height: 38px; }
   .sub .kontakt-band p { font-size: 18px; line-height: 28px; }
 }
-.sub .kontakt-band .btn:hover { background: #005f60; text-decoration: underline; }
+.sub .kontakt-band .btn:hover { background: #005f60; color: var(--white); }
+
+/* Tastaturfokus für alle Knöpfe sichtbar */
+.btn:focus-visible, .hero-btn:focus-visible, .karte-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Zitat ohne Bild (kjg-zitat ohne bild) ---------- */
+.sub .z-quote.ohne-bild { height: auto; background: transparent; color: #000; margin: 100px 0 0; padding: 0 24px; }
+.sub .z-quote.ohne-bild .z-quote-inner { width: 760px; max-width: 100%; display: block; padding: 0; text-align: center; }
+.sub .z-quote.ohne-bild .z-quote-inner::before { content: ""; display: block; width: 56px; height: 4px; margin: 0 auto 28px; background: var(--accent); }
+.sub .z-quote.ohne-bild blockquote { position: static; margin: 0; }
+.sub .z-quote.ohne-bild blockquote p { font: italic 700 29.5px/42px var(--f); letter-spacing: .6px; white-space: normal; }
+.sub .z-quote.ohne-bild blockquote br { display: none; }
+.sub .z-quote.ohne-bild blockquote footer { margin-top: 16px; }
+.sub .z-quote.ohne-bild blockquote strong, .sub .z-quote.ohne-bild blockquote span { display: inline; color: var(--teal); font: 700 17px/26px var(--f); letter-spacing: .4px; }
+.sub .z-quote.ohne-bild blockquote span { font-weight: 400; }
+.sub .z-quote.ohne-bild + .kontakt-band { margin-top: 100px; }
+.sub main > .z-quote.ohne-bild:last-child, .sub .events-list + .z-quote.ohne-bild { margin-bottom: 100px; }
+@media (max-width: 960px) {
+  .sub .z-quote.ohne-bild { margin-top: 56px; }
+  .sub .z-quote.ohne-bild blockquote p { font-size: 22px; line-height: 32px; }
+  .sub .z-quote.ohne-bild + .kontakt-band { margin-top: 56px; }
+  .sub .events-list + .z-quote.ohne-bild { margin-bottom: 56px; }
+}

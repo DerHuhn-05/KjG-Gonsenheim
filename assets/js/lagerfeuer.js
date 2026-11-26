@@ -24,7 +24,7 @@
     return b;
   });
 
-  let rx = 380, ry = 100, TA = Math.PI / 2 - 0.75, klein = false, kopf = 100, hoeheB = 600, SCHRITT = 600;
+  let rx = 380, ry = 100, TA = Math.PI / 2, klein = false, kopf = 100, hoeheB = 600, SCHRITT = 600;
   function layout() {
     klein = innerWidth < 860;
     kopf = innerWidth >= 1273 ? 100 : 72;
@@ -35,7 +35,7 @@
     rx = clamp(innerWidth * (klein ? 0.36 : 0.22), 120, 400);
     ry = clamp(hoeheB * (klein ? 0.07 : 0.13), 40, 130);
     bahn.style.width = 2 * rx + "px"; bahn.style.height = 2 * ry + "px";
-    TA = Math.PI / 2 - (klein ? 0.5 : 0.75);
+    TA = Math.PI / 2;   // die aktive Person sitzt immer ganz vorn in der Mitte des Kreises
   }
   function nach(i) {   // zur i-ten Person scrollen
     const oben = fire.getBoundingClientRect().top + scrollY;
@@ -72,7 +72,7 @@
       its.forEach((el, j) => el.classList.toggle("an", j === a));
       btns.forEach((b, j) => { b.classList.toggle("an", j === a); if (j === a) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
     }
-    stelle.style.transform = `translate(-50%,-100%) scale(${(lerp(0.8, 1, ease(clamp(p * 3))) * (klein ? 0.5 : 0.9)).toFixed(3)})`;
+    stelle.style.transform = `translate(-50%,${(-0.75 * ry).toFixed(0)}px) translate(0,-100%) scale(${(lerp(0.8, 1, ease(clamp(p * 3))) * (klein ? 0.5 : 0.9)).toFixed(3)})`;
     if (!hinweis) hinweis = fire.querySelector(".scroll-hinweis");
     if (hinweis) hinweis.style.opacity = p < 0.97 ? 1 : 0;
   }

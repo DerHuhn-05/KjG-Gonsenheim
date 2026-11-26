@@ -298,8 +298,6 @@ page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Tea
 
 {jump(JUMP_TEAM, "jump-team")}
 
-{QUOTE}
-
 <section class="feuer-intro">
   <div class="container">
     <h2>{FEUER_INTRO[0]}</h2>

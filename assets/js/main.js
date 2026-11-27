@@ -250,9 +250,24 @@ document.addEventListener("DOMContentLoaded", () => {
   let STREIFEN = 361;        // Höhe des Petrol-Streifens im Ausgangszustand (mobil etwas höher)
   const DREH_TEMPO = 1.4;    // Scroll-Pixel pro Pixel Drehung (größer = langsamer)
   const radBuehne = radPin && radPin.querySelector(".z-termine-buehne");
-  const radHinweis = radPin && radPin.querySelector(".scroll-hinweis");   // „Weiter scrollen“ mit Pfeil
+  const radHinweis = radPin && radPin.querySelector(".scroll-hinweis");   // „Weiter scrollen“ mit Pfeil (Handy: im Petrol-Feld)
+  const radInner = radPin && radPin.querySelector(".inner");              // Überschrift „Alle Infos auf einen Blick“
+  const radEl = radPin && radPin.querySelector(".z-rad");
+  // Desktop: „Weiter scrollen“ hängt am unteren Rand der Petrol-Fläche. Zwei Lagen (Petrol auf Weiß / Weiß auf Petrol), die an der Kante
+  // der Fläche abgeschnitten werden – so färbt sich der Hinweis um, sobald sich die Fläche darüber ausbreitet.
+  let hinweisDual = null;
+  if (radHinweis) {
+    const text = radHinweis.querySelector("span") ? radHinweis.querySelector("span").textContent : "Weiter scrollen";
+    const pfeilWeiss = radHinweis.querySelector("img") ? radHinweis.querySelector("img").getAttribute("src") : "icons/pfeil-unten-weiss.svg";
+    const pfeilPetrol = pfeilWeiss.replace("-weiss", "-petrol");
+    const wrap = document.createElement("div");
+    wrap.className = "zeit-hinweis"; wrap.setAttribute("aria-hidden", "true");
+    wrap.innerHTML = `<div class="zh zh-aussen"><span>${text}</span><img src="${pfeilPetrol}" width="14" height="16" alt=""></div><div class="zh zh-innen"><span>${text}</span><img src="${pfeilWeiss}" width="14" height="16" alt=""></div>`;
+    document.body.appendChild(wrap);
+    hinweisDual = { wrap, aussen: wrap.querySelector(".zh-aussen"), innen: wrap.querySelector(".zh-innen"), h: 55, letzte: "" };
+  }
   let radMass = null;
-  let radLetzte = { weg: null, clip: null, versatz: null, lage: null, st: [] };   // zuletzt gesetzte Werte – unveränderte werden nicht neu geschrieben
+  let radLetzte = { weg: null, clip: null, versatz: null, lage: null, auf: null, st: [] };   // zuletzt gesetzte Werte – unveränderte werden nicht neu geschrieben
 
   const STREIFEN_V = 400;     // Höhe des Streifens mobil (vertikale Variante, passt zu --streifen im CSS)
   const LI_H = 190;           // Höhe (= Abstand) einer Station mobil
@@ -280,6 +295,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const lvh = sonde.offsetHeight; sonde.remove();
     const hoehe = Math.max(STREIFEN, Math.max(window.innerHeight, lvh) - kopf);
     const abstand = vertikal ? LI_H : Math.min(480, Math.max(320, breite * 0.3));
+    // Desktop: Überschrift wandert beim Aufziehen nach oben und bleibt dort haften; das Drehrad rückt nach und wird größer (Faktor k)
+    let k = 1, dyKopf = 0, dyRad = 0;
+    if (!vertikal) {
+      const foto0 = Math.min(300, Math.max(190, window.innerHeight * 0.27));
+      const frei = hoehe - 190 - 70;                                       // Platz unter der Überschrift (unten bleibt Luft für den Hinweis)
+      k = Math.max(0.95, Math.min(1.45, frei / 400, (0.72 * abstand) / foto0));
+      dyKopf = Math.min(0, 28 - ((hoehe - STREIFEN) / 2 + 44.48));
+      dyRad = Math.min(0, 28 + 48 + 36 + 0.25 * 148 * k - ((hoehe - STREIFEN) / 2 + 226));   // Oberkante der Icons (inkl. 125-%-Vergrößerung der Mitte) 36 px unter der Überschrift
+    }
+    rad.style.setProperty("--k", k.toFixed(3));
     const [von, bis] = [0, radPunkte.length - 1];               // Station 1 steht anfangs vorn, Station 5 am Ende
     const aufziehen = hoehe - STREIFEN;
     const drehen = (bis - von) * abstand * DREH_TEMPO;
@@ -298,10 +323,12 @@ document.addEventListener("DOMContentLoaded", () => {
     rad.style.marginBottom = (STREIFEN - hoehe) / 2 + "px";     // … und endet auch wieder dort (Streifen schließt am Ende)
     rad.style.height = hoehe + 2 * aufziehen + drehen + "px";   // öffnen + durchdrehen + schließen
     if (radBuehne) radBuehne.style.transform = "";             // beim Wechsel Desktop ↔ mobil Inline-Stil zurücksetzen
-    radLetzte = { weg: null, clip: null, versatz: null, lage: null, st: [] };
+    if (radInner) radInner.style.transform = ""; if (radEl) radEl.style.transform = "";
+    radLetzte = { weg: null, clip: null, versatz: null, lage: null, auf: null, st: [] };
     // Dokumentposition einmal merken – so braucht jedes Frame keine Layout-Abfrage mehr
     const rect = rad.getBoundingClientRect();
-    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen, vertikal, listeH, anfang: rect.top + window.scrollY };
+    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen, vertikal, listeH, dyKopf, dyRad, gesamtH: hoehe + 2 * aufziehen + drehen, anfang: rect.top + window.scrollY };
+    if (hinweisDual) { hinweisDual.wrap.hidden = vertikal; hinweisDual.letzte = ""; if (!vertikal) hinweisDual.h = hinweisDual.aussen.offsetHeight || 55; }
   };
 
   const radBewegen = () => {
@@ -310,16 +337,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const L = radLetzte;
     const gesamt = 2 * m.aufziehen + m.drehen;
     const weg = Math.min(gesamt + 1, Math.max(-1, window.scrollY - (m.anfang - m.kopf)));   // Strecke seit dem Andocken, vor/nach der Sektion festgehalten
-    if (weg === L.weg) return;                                  // nichts zu tun, solange man weit weg ist
-    L.weg = weg;
     const oeffnen = m.aufziehen > 0 ? Math.min(1, Math.max(0, weg / m.aufziehen)) : 1;
     const schliessen = m.aufziehen > 0 ? Math.min(1, Math.max(0, (weg - m.aufziehen - m.drehen) / m.aufziehen)) : 0;
     const auf = oeffnen * (1 - schliessen);                     // 0 = Streifen, 1 = volle Höhe (Hin- und Rückweg)
     const clip = Math.round(((1 - auf) * (m.hoehe - STREIFEN)) / 2 * 2) / 2;
+    if (hinweisDual && !m.vertikal) {                           // Desktop: Hinweis hängt unten an der Petrol-Fläche, auch schon vor dem Andocken
+      const D = hinweisDual, vh = window.innerHeight;
+      const pinOben = Math.min(Math.max(m.anfang - window.scrollY, m.kopf), m.anfang + m.gesamtH - m.hoehe - window.scrollY);
+      const kanteOben = pinOben + clip, kanteUnten = pinOben + m.hoehe - clip;
+      const sichtbar = (weg > 0 || kanteUnten < vh - 10) && kanteOben < vh - 80 && kanteUnten > m.kopf + 40 && weg < m.aufziehen + 0.85 * m.drehen;
+      const y = Math.min(kanteUnten + 18, vh - D.h - 28);
+      const teil = Math.max(0, Math.min(D.h, kanteUnten - y));       // so viel vom Hinweis liegt oberhalb der Kante (auf Petrol)
+      const key = `${sichtbar ? 1 : 0}|${y.toFixed(0)}|${teil.toFixed(0)}`;
+      if (key !== D.letzte) {
+        D.letzte = key;
+        D.wrap.style.opacity = sichtbar ? 1 : 0;
+        D.aussen.style.transform = D.innen.style.transform = `translate3d(-50%, ${y.toFixed(1)}px, 0)`;
+        D.innen.style.clipPath = `inset(0 0 ${(D.h - teil).toFixed(1)}px 0)`;     // Weiß: nur der Teil auf der Petrol-Fläche
+        D.aussen.style.clipPath = `inset(${teil.toFixed(1)}px 0 0 0)`;            // Petrol: nur der Teil auf Weiß
+      }
+    }
+    if (weg === L.weg) return;                                  // nichts zu tun, solange man weit weg ist
+    L.weg = weg;
     if (clip !== L.clip) { L.clip = clip; radPin.style.clipPath = `inset(${clip}px 0)`; }   // direkt am Element, keine Variable im ganzen Baum
+    if (!m.vertikal && auf !== L.auf) {                         // Desktop: Überschrift und Drehrad rücken beim Aufziehen nach oben
+      L.auf = auf;
+      if (radInner) radInner.style.transform = `translate3d(0, ${(m.dyKopf * auf).toFixed(1)}px, 0)`;
+      if (radEl) radEl.style.transform = `translate3d(0, ${(m.dyRad * auf).toFixed(1)}px, 0)`;
+    }
     const dreh = Math.min(1, Math.max(0, (weg - m.aufziehen) / m.drehen));
     const mitte = m.von + dreh * (m.bis - m.von);               // Index der aktiven Station
-    if (radHinweis) {                                           // Hinweis „Weiter scrollen“: sichtbar, solange die Zeitleiste steht und noch nicht fast am Ende ist
+    if (radHinweis && m.vertikal) {                             // Hinweis „Weiter scrollen“ (Handy): sichtbar, solange die Zeitleiste steht und noch nicht fast am Ende ist
       const an = weg > 0 && weg < m.aufziehen + 0.85 * m.drehen;
       // Handy: unten mittig (über der schwebenden Safari-Leiste); Desktop: oben rechts
       const extra = Math.max(0, m.hoehe - (window.innerHeight - m.kopf));   // Teil der Fläche, der unter der Adressleiste liegt

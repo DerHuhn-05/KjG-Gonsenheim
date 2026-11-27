@@ -641,3 +641,22 @@ html, a, summary, .btn, .hero-btn, .karte-btn { text-decoration-skip-ink: none; 
 
 /* Zela-Zeitleiste mobil: „Weiter scrollen“ unten mittig (Position setzt main.js) */
 .z-termine.rad.vertikal .scroll-hinweis { right: auto; left: 50%; transform: translateX(-50%); background: transparent; }
+
+/* ---------- Zela-Zeitleiste Desktop: größer (Faktor --k aus main.js), Hinweis „Weiter scrollen“ hängt unten an der Petrol-Fläche ---------- */
+@media (min-width: 961px) {
+  .z-termine.rad:not(.vertikal) .z-rad { height: calc(158px * var(--k, 1)); }
+  .z-termine.rad:not(.vertikal) .z-timeline::before { top: calc(145px * var(--k, 1)); height: calc(6px * var(--k, 1)); }
+  .z-termine.rad:not(.vertikal) .z-timeline li { height: calc(158px * var(--k, 1)); transform-origin: 50% calc(148px * var(--k, 1)); }
+  .z-termine.rad:not(.vertikal) .z-timeline > li > img { width: calc(48px * var(--k, 1)); height: calc(48px * var(--k, 1)); left: calc(50% - 24px * var(--k, 1)); }
+  .z-termine.rad:not(.vertikal) .z-timeline p { width: calc(340px * var(--k, 1)); margin-left: calc(-170px * var(--k, 1)); top: calc(66.2px * var(--k, 1)); font-size: calc(22.5px * var(--k, 1)); line-height: calc(29px * var(--k, 1)); }
+  .z-termine.rad:not(.vertikal) .z-timeline .dot { width: calc(20px * var(--k, 1)); height: calc(20px * var(--k, 1)); left: calc(50% - 10px * var(--k, 1)); top: calc(138px * var(--k, 1)); }
+  .z-termine.rad:not(.vertikal) .z-timeline .zeit-bild { top: calc(176px * var(--k, 1)); width: calc(clamp(190px, 27vh, 300px) * var(--k, 1)); }
+  .z-termine.rad:not(.vertikal) .z-termine-pin .scroll-hinweis { display: none; }
+}
+.zeit-hinweis { position: fixed; left: 0; top: 0; width: 100%; height: 0; z-index: 40; pointer-events: none; transition: opacity .25s ease; }
+.zeit-hinweis[hidden] { display: none; }
+.zeit-hinweis .zh { position: absolute; left: 50%; top: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 16px 10px; font: 600 15px/1 var(--i); letter-spacing: .02em; will-change: transform; }
+.zeit-hinweis .zh-aussen { color: var(--teal); }
+.zeit-hinweis .zh-innen { color: var(--white); }
+.zeit-hinweis img { animation: hinweis-hoch-runter 1.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .zeit-hinweis img { animation: none; } }

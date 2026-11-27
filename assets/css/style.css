@@ -251,7 +251,7 @@ html.menu-offen { overflow: hidden; }
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-.z-content { padding-bottom: 140px; }
+.z-content { padding-bottom: 140px; overflow-x: clip; }   /* seitlich hereingleitende Inhalte (seitlich.js) erzeugen keinen Überstand */
 .z-feature { display: grid; grid-template-columns: 630px 400px; width: 1030px; max-width: calc(100% - 32px); height: 533px; margin: 140px auto 0; }
 .z-feature.reverse { grid-template-columns: 400px 630px; }
 .z-feature.reverse .media { order: -1; }
@@ -604,3 +604,7 @@ html, a, summary, .btn, .hero-btn, .karte-btn { text-decoration-skip-ink: none; 
   .zl-gross { font-size: 64px; }
 }
 @media (prefers-reduced-motion: reduce) { .zl-text, .zl-bild { opacity: 1; transform: none; transition: none; } .zl-gross { transition: none; } }
+
+/* Zela ab „Programm“: Wörter der Zitate füllen sich beim Scrollen (seitlich.js) */
+.seitlich .z-quote blockquote p .wort { display: inline; margin: 0; font: inherit; transition: opacity .12s linear; }   /* nicht wie die Rollen-Zeile (span) im Zitat */
+@media (prefers-reduced-motion: reduce) { .seitlich .z-quote blockquote p .wort { transition: none; } }

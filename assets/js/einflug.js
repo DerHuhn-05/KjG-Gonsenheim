@@ -22,7 +22,8 @@ KJG.beiBereit(() => {
   const SICHTBAR_RAND = "0px 0px -40px 0px";  // erscheint, sobald 40 px im Bild sind
   const SPRUNG_START_MS = 150, SPRUNG_VERSATZ_MS = 80;
 
-  const elemente = [...new Set(document.querySelectorAll(EINFLIEGEN.join(",")))];
+  // ausgenommen: Bereiche mit eigenem Scrollytelling (Zela ab „Programm“, siehe seitlich.js)
+  const elemente = [...new Set(document.querySelectorAll(EINFLIEGEN.join(",")))].filter((el) => !el.closest(".z-content"));
   const vw = window.innerWidth;
   const richtung = (rahmen) => {
     const mitte = rahmen.left + rahmen.width / 2;

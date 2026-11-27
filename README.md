@@ -107,6 +107,7 @@ Jede Funktion liegt in einer eigenen kleinen Datei. Welche eine Seite lädt, ste
 | `kennzahlen.js` | Zahlen zählen hoch | alle |
 | `video.js`, `slider.js` | Video im Hero, Slider (mobil) | Startseite |
 | `zeitleiste.js` | Zeitleiste „Alle Infos auf einen Blick“ | Zela 2027 |
+| `seitlich.js` | ab „Programm“: Text und Bild gleiten seitlich herein, Wörter der Zitate füllen sich beim Scrollen | Zela 2027 |
 | `karte.js` | Karten-Scrollytelling | Über uns |
 | `lagerfeuer.js` | Lagerfeuer-Scrollytelling | Team |
 

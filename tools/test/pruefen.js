@@ -4,7 +4,7 @@
      1. keine JavaScript-Fehler
      2. nichts ragt seitlich über den Bildschirm hinaus
      3. alle Sprungmarken (#…) und internen Links zeigen auf etwas, das es gibt
-     4. die interaktiven Teile funktionieren (Kopfzeile, Menü, Slider, Karte, Zeitleiste, Lagerfeuer)
+     4. die interaktiven Teile funktionieren (Kopfzeile, Menü, Slider, Karte, Zeitleiste, Zitate, Lagerfeuer)
    Beendet sich mit Fehlercode 1, sobald etwas nicht stimmt. */
 const { chromium } = require("playwright");
 const fs = require("fs");
@@ -56,6 +56,7 @@ const FUNKTIONEN = {
     await scrolleZu(seite, ".zeitleiste", 0.5);
     if (!(await seite.$(".zl-eintrag.an"))) melden(ort, "Zeitleiste: keine Station aktiv");
     if (!(await seite.$(".zl-gross.zeigen"))) melden(ort, "Zeitleiste: Stichwort erscheint nicht");
+    if (!(await seite.$(".z-quote .wort"))) melden(ort, "Zitate: Wörter werden nicht einzeln gefüllt");
   },
   "team.html": async (seite, ort) => {
     const knoepfe = await seite.$$eval(".feuer-dots button", (b) => b.length);

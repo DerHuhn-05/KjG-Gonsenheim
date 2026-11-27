@@ -62,7 +62,7 @@
 @media (max-width: 860px) {
   .sub .feuer-ring { left: 50%; top: 40%; }
   .sub .feuer-p { width: 96px; }
-  .sub .feuer-info { left: 16px; right: 16px; width: auto; top: auto; bottom: 108px; transform: none; }
+  .sub .feuer-info { left: 16px; right: 16px; width: auto; top: auto; bottom: 181px; transform: none; }
   .sub .feuer-it { padding: 18px 18px; justify-content: flex-start; }
   .sub .feuer-it h3 { font-size: 28px; line-height: 30px; margin: 6px 0 2px; }
   .sub .feuer-rolle { font-size: 15px; line-height: 20px; margin-bottom: 8px; }
@@ -70,7 +70,8 @@
   .sub .feuer-it blockquote { margin: 10px 0 0; }
   .sub .feuer-vor, .sub .feuer-chips, .sub .feuer-lied { display: none; }
   .sub .feuer-name { font-size: 12px; }
-  .sub .feuer-dots { gap: 4px; bottom: 60px; }
+  .sub .feuer-dots { gap: 4px; bottom: 135px; }
+  .sub .feuer .scroll-hinweis { top: auto; right: auto; left: 50%; bottom: 76px; transform: translateX(-50%); }   /* Handy: „Weiter scrollen“ mittig unter den Nummern */
   .sub .feuer-dots button { width: 30px; height: 30px; font-size: 13px; }
   .sub .feuer-dots .feuer-pfeil { width: 38px; height: 38px; }
   .sub .feuer-intro h2, .sub .feuer-ende h2 { font-size: 36px; line-height: 42px; }

@@ -53,12 +53,12 @@
       let oben = hoeheB - unten - info.offsetHeight;
       if (oben < hoeheB * 0.48) { fire.classList.add("kompakt"); oben = hoeheB - unten - info.offsetHeight; }   // zu wenig Platz: Zitat der Person entfällt
       const platz = oben - 20;                                   // Name endet hier
-      const W = clamp(platz * 0.27, 60, 100);
+      const W = clamp(platz * 0.32, 60, 120);
       pe.forEach((e) => (e.style.width = W + "px"));
       ry = clamp(platz * 0.1, 26, 56);
       bahn.style.width = 2 * rx + "px"; bahn.style.height = 2 * ry + "px";
       ring.style.top = platz - 24 - ry + "px";
-      feuerSkala = clamp((platz - 24 - ry - 0.75 * ry - 64) / 260, 0.35, 0.8);
+      feuerSkala = clamp((platz - 24 - ry - 0.75 * ry - 16) / 260, 0.35, 0.85);
     } else { ring.style.top = ""; pe.forEach((e) => (e.style.width = "")); feuerSkala = 0.9; }
     TA = Math.PI / 2;   // die aktive Person sitzt immer ganz vorn in der Mitte des Kreises
   }

@@ -109,7 +109,6 @@ Die Kacheln und Karten (Zela, Team, Angebote, Soziale Aktionen) zeigen automatis
 
 | Datei | Wo auf der Seite |
 |---|---|
-| `team-10.jpg` | Foto Lena |
 | `team-1.jpg` | Header-Bild Unser Team |
 | `team-2.jpg` | Foto Lena |
 | `team-3.jpg` | Foto Jonas |

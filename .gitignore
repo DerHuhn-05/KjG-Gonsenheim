@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 undefined/
 pairs.json
+node_modules/

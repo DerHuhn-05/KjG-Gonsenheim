@@ -37,9 +37,6 @@ def tag_karte(inhalt, href, bild, bild_alt, link="Weitere Informationen"):
 def tag_abschnitt(inhalt, klasse, bild=None, bild_alt=None, id=None):
     return f'<kjg-abschnitt{_opt(klasse=klasse, id=id, bild=bild, bild_alt=bild_alt)}>\n{inhalt}\n</kjg-abschnitt>'
 
-def tag_person(inhalt, klasse, bild=None, bild_alt=None):
-    return f'<kjg-person{_opt(klasse=klasse, bild=bild, bild_alt=bild_alt)}>\n{inhalt}\n</kjg-person>'
-
 def tag_zitat(inhalt, klasse, bild, bild_alt):
     return f'<kjg-zitat{_opt(klasse=klasse, bild=bild, bild_alt=bild_alt)}>\n{inhalt}\n</kjg-zitat>'
 
@@ -59,3 +56,8 @@ HERO_BILD = {
     "trainee-wochenende.html": "trainee-wochenende-1", "72h-aktion.html": "72h-aktion-1", "aktion.html": "aktion-1",
     "klamottenspende.html": "klamottenspende-1",
 }
+
+# Skripte im <head>: gemeinsame Helfer zuerst, dann die Teile, die jede Seite braucht, dann seitenspezifische
+SKRIPTE_IMMER = ["gemeinsam", "kopfzeile", "einflug", "kennzahlen"]
+def skripte(*extra):
+    return "\n".join(f'  <script src="assets/js/{n}.js" defer></script>' for n in SKRIPTE_IMMER + list(extra))

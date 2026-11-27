@@ -52,7 +52,7 @@ html = f'''<!DOCTYPE html>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/bilder.js"></script>
   <script src="assets/js/module.js"></script>
-  <script src="assets/js/main.js" defer></script>
+{skripte("video", "slider")}
 </head>
 <body>
 {HEADER}

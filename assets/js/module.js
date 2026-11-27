@@ -18,7 +18,6 @@
      kjg-eventkachel (klasse, id, href, link, bild, bild-alt)   Angebots-Kachel; Kinder: h2, p
      kjg-karte (href, link, bild, bild-alt)                      Karte (Startseite); Kinder: h3, p …
      kjg-abschnitt (klasse, id, bild, bild-alt)                 Text + Bild (ohne bild: nur Text); Kinder: h2, p …
-     kjg-person (klasse, bild, bild-alt)                        Team-Person; Kinder: h3, .rolle, p …
      kjg-zitat (klasse, bild, bild-alt)                         Zitat; Kinder: p, strong, span
      kjg-frage                          FAQ-Eintrag; Kinder: span (Frage), p (Antwort)
      kjg-hero (klasse, bild, bild-alt)  Seitenkopf mit Bild; Kind: h1
@@ -223,11 +222,6 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
     return f;
   }
 
-  function person(el) {      // Person im Team
-    const bildHtml = el.hasAttribute("bild") ? `<div class="circle">${bildTag(el)}</div>` : "";
-    return mitInhalt(`<article class="${esc(attr(el, "klasse", "person"))}">${bildHtml}<div class="text"></div></article>`, el, ".text");
-  }
-
   function zitat(el) {       // Zitat mit rundem Foto (ohne Attribut bild: nur Text, zentriert)
     const p = el.querySelector(":scope > p"), name = el.querySelector(":scope > strong"), rolle = el.querySelector(":scope > span");
     const foto = el.hasAttribute("bild")
@@ -301,7 +295,7 @@ ${punkte.map((a) => `      <li>${eintrag(a)}</li>`).join("\n")}
   // ---- Ausführen -----------------------------------------------------------------------------------------
   const MODULE = {
     "kjg-header": header, "kjg-footer": footer, "kjg-bild": bild, "kjg-sprung": sprung, "kjg-kachel": kachel,
-    "kjg-eventkachel": eventkachel, "kjg-karte": karte, "kjg-abschnitt": abschnitt, "kjg-person": person,
+    "kjg-eventkachel": eventkachel, "kjg-karte": karte, "kjg-abschnitt": abschnitt,
     "kjg-zitat": zitat, "kjg-zahlen": zahlen, "kjg-kontakt": kontakt, "kjg-scrollhinweis": scrollhinweis, "kjg-frage": frage, "kjg-hero": hero, "kjg-hero-split": heroSplit,
   };
   const SELEKTOR = Object.keys(MODULE).join(",");

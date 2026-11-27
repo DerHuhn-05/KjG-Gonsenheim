@@ -291,17 +291,9 @@ TEAM = {
 for k, lst in TEAM.items():
     for n, r, re_, d1, e1, d2, e2 in lst:
         reg(r, re_); reg(d1, e1); reg(d2, e2)
-def person_text(d):
-    return "<br> ".join(textwrap.wrap(d, 44, break_on_hyphens=False))
-
-reg("Unsere Lagerleitung", "Our camp management")
-reg("Unsere Planungsleitung", "Our planning team")
-reg("Unsere Pfarrleitung", "Our parish liaison")
 reg("Lena", "Lena"); reg("Jonas", "Jonas"); reg("Sophie", "Sophie"); reg("Max", "Max"); reg("Hanna", "Hanna"); reg("Felix", "Felix"); reg("Anna", "Anna"); reg("Thomas", "Thomas")
 
 # ============================ Zitate ============================
-QUOTE_TEAM = ("Bei uns darf jedes Kind so sein, wie es ist. Genau das macht unsere Gruppen so besonders.", "Lena,", "Gruppenleiterin",
-              "Every child can be just who they are with us. That is exactly what makes our groups so special.", "Group leader")
 QUOTE_ZELA = [
  ("Wenn abends das Lagerfeuer brennt und alle gemeinsam singen, weiß ich, warum ich jedes Jahr wieder dabei bin.", "Jonas,", "Gruppenleiter",
   "When the campfire is burning in the evening and everyone sings together, I know why I come back every year.", "Group leader"),
@@ -310,7 +302,7 @@ QUOTE_ZELA = [
 ]
 def quote_p(d):
     return "<br> ".join(textwrap.wrap("„" + d + "”", 40, break_on_hyphens=False))
-for d, n, r, e, re_ in [QUOTE_TEAM] + QUOTE_ZELA:
+for d, n, r, e, re_ in QUOTE_ZELA:
     reg("„" + d + "”", "“" + e + "”")
     reg(n, n); reg(r, re_)
 reg("Gruppenleiterin", "Group leader"); reg("Gruppenleiter", "Group leader")

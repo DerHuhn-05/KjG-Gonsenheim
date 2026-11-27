@@ -1,5 +1,5 @@
 /* =====================================================================
-   Unterseiten (FAQ, Events, Soziale Aktionen, Detailseiten, Team, Wer sind wir)
+   Unterseiten (FAQ, Angebote, Soziale Aktionen, Detailseiten, Team, Über uns)
    Wird nach style.css geladen. Alle Regeln gelten nur innerhalb von <body class="sub">.
    Raster: 1440 px · 12 Spalten à 85 px · 20 px Abstand · 100 px Rand
    ===================================================================== */
@@ -108,31 +108,6 @@
 .sub .stats .num { position: absolute; left: 0; right: 0; top: 98.74px; color: var(--accent); font: 800 42.5px/42.5px var(--i); letter-spacing: -.85px; }
 .sub .stats .label { position: absolute; left: 0; right: 0; top: 159.31px; font: 400 19.3px/19.3px var(--i); letter-spacing: -.2px; }
 
-/* ---------- Unser Team: Abschnitte und Personen ---------- */
-.sub .team { padding-bottom: 100.08px; }
-.sub .team-in { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; }
-.sub .team .after-quote { padding-top: 44.4px; }
-.sub .team h2 { font: 800 49px/49px var(--i); letter-spacing: -.5px; white-space: nowrap; }
-.sub .team .section + .section { margin-top: 103.69px; }
-.sub .team .section > h2 + .person { margin-top: 49.79px; }
-.sub .team .z-quote { margin-top: 45.39px; }
-/* Personen: Text und rundes Foto nebeneinander. Das Foto bleibt beim Scrollen stehen
-   (position: sticky) und läuft mit, bis der Text des Blocks endet. */
-.sub .person { position: relative; display: grid; align-items: start; }
-.sub .person + .person { margin-top: 44.48px; }
-.sub .person.left { grid-template-columns: 735px 295px; }
-.sub .person.right { grid-template-columns: 420px 610px; }
-.sub .person .text { width: 581px; }
-.sub .person.left .text { grid-column: 1; grid-row: 1; }
-.sub .person.right .text { grid-column: 2; grid-row: 1; }
-.sub .person .circle { position: sticky; top: 140px; margin-top: -4.4px; width: 295px; height: 295px; border-radius: 50%; overflow: hidden; }
-.sub .person.left .circle { grid-column: 2; grid-row: 1; }
-.sub .person.right .circle { grid-column: 1; grid-row: 1; }
-.sub .person .circle .media { width: 100%; height: 100%; background: var(--placeholder); }
-.sub .person .circle .ph-label { color: rgba(0,0,0,.3); }
-.sub .person h3 { font: 800 40px/40px var(--i); letter-spacing: -.3px; }
-.sub .person p { margin-top: 23.52px; font: 400 23.5px/29px var(--i); letter-spacing: .2px; white-space: nowrap; }
-
 /* ---------- Impressum, Datenschutz ---------- */
 .sub .prose { padding: 100px 0 120px; max-width: 800px; font: 400 19px/1.6 var(--o); letter-spacing: .3px; overflow-wrap: break-word; hyphens: auto; }
 .sub .prose h2 { font: 800 30px/1.25 var(--i); color: var(--teal); margin: 2em 0 .6em; }
@@ -161,7 +136,7 @@
   .sub .event-tile { height: auto; min-height: 504px; }
   .sub .event-tile .text { padding-right: 32px; padding-bottom: 56px; }
   .sub .event-tile p { white-space: normal; max-width: 432px; }
-  .sub .event-tile p br, .sub .feature .body br, .sub .person p br { display: none; }
+  .sub .event-tile p br, .sub .feature .body br { display: none; }
   .sub .hero-split .content { padding-right: 24px; }
   .sub .hero-split h1 { font-size: 52px !important; line-height: 66px !important; }
   .sub .event-tile h2 { font-size: 50px !important; line-height: 60px !important; letter-spacing: 3px !important; white-space: normal; }
@@ -170,12 +145,6 @@
   .sub .stats { height: auto; }
   .sub .stats li { position: static; width: auto; height: auto; display: flex; flex-direction: column; align-items: center; gap: 12px; }
   .sub .stats .icon, .sub .stats .num, .sub .stats .label { position: static; }
-  .sub .team h2 { white-space: normal; }
-  .sub .person.left { grid-template-columns: 1fr 220px; gap: 40px; }
-  .sub .person.right { grid-template-columns: 220px 1fr; gap: 40px; }
-  .sub .person .text { width: auto; }
-  .sub .person .circle { width: 220px; height: 220px; margin-top: 0; }
-  .sub .person p { white-space: normal; }
 }
 
 @media (max-width: 960px) {
@@ -208,14 +177,6 @@
   .sub .faq-item summary { height: auto; padding: 22px 50px 22px 0; font-size: 20px; line-height: 29px; }
   .sub .faq-item .chev { top: calc(50% - 5px); right: 8px; }
   .sub .stats ul { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
-  .sub .team h2 { font-size: 36px; line-height: 42px; }
-  .sub .person.left, .sub .person.right { grid-template-columns: 1fr; gap: 20px; }
-  /* Fotos mittig, kleiner als die volle Breite */
-  .sub .person .circle { position: static; grid-column: 1 !important; grid-row: 1 !important; justify-self: center; width: min(62%, 240px); height: auto; aspect-ratio: 1 / 1; }   /* kleiner, mittig im Raster */
-  .sub .person .text { grid-column: 1 !important; grid-row: 2 !important; }
-  .sub .person h3 { font-size: 30px; line-height: 36px; }
-  .sub .person p { font-size: 18px; line-height: 26px; }
-  .sub .team .section + .section { margin-top: 72px; }
 }
 
 @media (max-width: 480px) {
@@ -231,7 +192,7 @@
 }
 
 /* ---------- Englische Version ---------- */
-html[lang="en"] .sub .event-tile p, html[lang="en"] .sub .feature .body, html[lang="en"] .sub .person p,
+html[lang="en"] .sub .event-tile p, html[lang="en"] .sub .feature .body,
 html[lang="en"] .sub .hero-split p, html[lang="en"] .sub .event-tile h2 { white-space: normal; }
 html[lang="en"] .sub .event-tile p { max-width: 432px; }
 html[lang="en"] .sub .event-tile .text { padding-right: 40px; }
@@ -247,8 +208,6 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 @media (min-width: 961px) {
   .sub .events-list .event-tile, .sub .events-list > .tile { margin-bottom: 60px; }
   .sub .events-list { padding-bottom: 40px; }     /* Abstand zum Footer bleibt 100 px */
-  .sub .person + .person { margin-top: 64.48px; }
-  .sub .team .section + .section { margin-top: 123.69px; }
 }
 @media (max-width: 960px) {
   .sub .hero-simple.short { height: max(240px, calc(100vh - var(--stats-h, 336px))); height: max(240px, calc(100svh - var(--stats-h, 336px))); }
@@ -261,19 +220,7 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .feature .media, .sub .feature.reverse .media { order: 1; }
   .sub .feature h2 { order: 2; }
   .sub .feature .body { order: 3; margin-top: 0; }
-
-  .sub .person.left, .sub .person.right { display: flex; flex-direction: column; gap: 20px; }
-  .sub .person .text { display: contents; }
-  .sub .person .circle { order: 1; align-self: center; }
-  .sub .person h3 { order: 2; }
-  .sub .person p { order: 3; margin-top: 0; }
 }
-
-/* ---------- Team: Rollenzeile unter dem Namen ---------- */
-.sub .person .rolle { margin-top: 6px; color: var(--teal); font: 600 20px/26px var(--i); }
-.sub .person .rolle + p { margin-top: 18px; }
-.sub .person p + p { margin-top: 14px; }
-@media (max-width: 960px) { .sub .person .rolle { order: 2; font-size: 18px; margin-top: -8px; } .sub .person p + p { margin-top: 12px; } }
 
 /* ---------- Über uns: Standort-Karte (SVG, Zoom von Mainz nach Gonsenheim, Steuerung in main.js) ---------- */
 .sub .karte-sektion { background: var(--teal); color: var(--white); }

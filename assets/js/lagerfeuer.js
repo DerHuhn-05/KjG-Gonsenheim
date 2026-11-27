@@ -1,111 +1,133 @@
-/* Team-Seite: Lagerfeuer-Scrollytelling (Personen im Kreis ums Feuer, je Scroll-Schritt rückt die nächste nach vorn) */
-(function () {
+/* Team-Seite: Lagerfeuer-Scrollytelling
+   Die Personen sitzen im Kreis ums Feuer. Die Szene bleibt beim Scrollen stehen (sticky); mit jedem Scroll-Schritt
+   dreht sich der Kreis, bis die nächste Person vorn in der Mitte sitzt. Ihre Infos stehen in der Kachel daneben. */
+KJG.beiBereit(() => {
   "use strict";
-  const fire = document.querySelector(".feuer");
-  if (!fire) return;
-  const ring = fire.querySelector(".feuer-ring"), stelle = fire.querySelector(".feuer-stelle"), bahn = fire.querySelector(".feuer-bahn");
-  const pe = [...fire.querySelectorAll(".feuer-p")], its = [...fire.querySelectorAll(".feuer-it")];
-  const dots = fire.querySelector(".feuer-dots");
-  let hinweis = null;   // „Weiter scrollen“ wird erst von module.js erzeugt (nach diesem Skript) – deshalb erst bei Bedarf suchen
-  const nms = pe.map((e) => e.querySelector(".feuer-name"));
-  const N = pe.length;
-  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-  const lerp = (a, b, t) => a + (b - a) * t;
-  const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
-  const reduziert = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const feuer = document.querySelector(".feuer");
+  if (!feuer) return;
 
-  // Punkte zum Anspringen
-  const pfeil = (richtung) => {   // Pfeil-Knopf links/rechts neben den Nummern
-    const b = document.createElement("button");
-    b.type = "button"; b.className = "feuer-pfeil";
-    b.setAttribute("aria-label", richtung < 0 ? (document.documentElement.lang === "en" ? "Previous person" : "Vorherige Person") : (document.documentElement.lang === "en" ? "Next person" : "Nächste Person"));
-    b.innerHTML = `<img src="${document.documentElement.lang === "en" ? "../" : ""}icons/slider-${richtung < 0 ? "links" : "rechts"}.svg" width="10" height="16" alt="">`;
-    b.addEventListener("click", () => nach(clamp(aktiv + richtung, 0, N - 1)));
-    return b;
+  const HANDY_BIS = 860;                       // px Fensterbreite – darunter: Kachel unten, Szene darüber
+  const SCHRITT_ANTEIL = 0.7, SCHRITT_MIN = 360;   // Scrollweg pro Person (Anteil der Fensterhöhe, mindestens px)
+  const AKTIV_GROESSE = { handy: 1.5, desktop: 1.3 };   // so stark wächst die Person vorn in der Mitte
+  const HINTEN_GROESSE = 0.5, HINTEN_DAZU = 0.32;     // Größe hinten im Kreis bzw. Zuwachs nach vorn
+  const HINTEN_DECKKRAFT = 0.35, VORNE_DECKKRAFT_DAZU = 0.3;
+  const FEUER_SKALA_DESKTOP = 0.9, FLAMMEN_HOEHE = 242;   // SVG-Einheiten von der Flammenspitze bis zum Boden
+  const NAME_ABSTAND = 24;                     // px vom Namen der aktiven Person bis zur Kachel (Handy)
+  const KOMPAKT_UNTER = 0.48;                  // Handy: bleibt weniger als 48 % der Höhe für die Szene, entfällt das Zitat
+  const HINWEIS_BIS = 0.97;                    // „Weiter scrollen“ blendet am Ende aus
+  const GRUPPE_START = { lagerleitung: 0, planungsleitung: 3, pfarrleitung: 6 };   // Sprungmarken → erste Person der Gruppe
+
+  const ring = feuer.querySelector(".feuer-ring");
+  const stelle = feuer.querySelector(".feuer-stelle");
+  const bahn = feuer.querySelector(".feuer-bahn");
+  const info = feuer.querySelector(".feuer-info");
+  const leiste = feuer.querySelector(".feuer-dots");
+  const personen = [...feuer.querySelectorAll(".feuer-p")];
+  const kacheln = [...feuer.querySelectorAll(".feuer-it")];
+  const namen = personen.map((p) => p.querySelector(".feuer-name"));
+  const N = personen.length;
+  const winkelSchritt = (2 * Math.PI) / N;
+  const VORN = Math.PI / 2;                    // Winkel der Person vorn in der Mitte
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const weich = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+
+  let aktiv = -1, handy = false, kopf = 100, hoehe = 600, schritt = 600, rx = 380, ry = 100, feuerSkala = FEUER_SKALA_DESKTOP;
+
+  const zuPerson = (i) => {
+    const oben = feuer.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: oben - kopf + i * schritt, behavior: KJG.ruhig ? "auto" : "smooth" });
+  };
+
+  // Bedienleiste: Pfeil · Nummern · Pfeil
+  const pfeil = (richtung) => {
+    const knopf = document.createElement("button");
+    knopf.type = "button";
+    knopf.className = "feuer-pfeil";
+    knopf.setAttribute("aria-label", richtung < 0 ? KJG.T("Vorherige Person", "Previous person") : KJG.T("Nächste Person", "Next person"));
+    knopf.innerHTML = `<img src="${KJG.basis}icons/slider-${richtung < 0 ? "links" : "rechts"}.svg" width="10" height="16" alt="">`;
+    knopf.addEventListener("click", () => zuPerson(KJG.klemmen(aktiv + richtung, 0, N - 1)));
+    return knopf;
   };
   const zurueck = pfeil(-1), weiter = pfeil(1);
-  dots.appendChild(zurueck);
-  const btns = pe.map((e, i) => {
-    const b = document.createElement("button");
-    b.type = "button"; b.textContent = i + 1;
-    b.setAttribute("aria-label", nms[i].textContent);
-    b.addEventListener("click", () => nach(i));
-    dots.appendChild(b);
-    return b;
+  const nummern = personen.map((p, i) => {
+    const knopf = document.createElement("button");
+    knopf.type = "button";
+    knopf.textContent = i + 1;
+    knopf.setAttribute("aria-label", namen[i].textContent);
+    knopf.addEventListener("click", () => zuPerson(i));
+    return knopf;
   });
-  dots.appendChild(weiter);
+  leiste.append(zurueck, ...nummern, weiter);
 
-  let feuerSkala = 0.9, rx = 380, ry = 100, TA = Math.PI / 2, klein = false, kopf = 100, hoeheB = 600, SCHRITT = 600;
-  function layout() {
-    klein = innerWidth < 860;
-    kopf = innerWidth >= 1273 ? 100 : 72;
-    fire.style.setProperty("--kopf", kopf + "px");
-    hoeheB = innerHeight - kopf;
-    SCHRITT = Math.max(360, innerHeight * 0.7);
-    fire.style.height = hoeheB + (N - 1) * SCHRITT + "px";
-    rx = clamp(innerWidth * (klein ? 0.37 : 0.22), 120, 400);
-    ry = clamp(hoeheB * (klein ? 0.065 : 0.13), 40, 130);
-    bahn.style.width = 2 * rx + "px"; bahn.style.height = 2 * ry + "px";
-    if (klein) {   // Handy: Szene füllt den Platz über der Kachel; der Name der aktiven Person endet 20 px über der Infokachel
-      const info = fire.querySelector(".feuer-info");
-      const unten = parseFloat(getComputedStyle(info).bottom) || 0;
-      fire.classList.remove("kompakt");
-      let oben = hoeheB - unten - info.offsetHeight;
-      if (oben < hoeheB * 0.48) { fire.classList.add("kompakt"); oben = hoeheB - unten - info.offsetHeight; }   // zu wenig Platz: Zitat der Person entfällt
-      const platz = oben - 24;                                   // Name endet hier (24 px über der Kachel)
-      const W = clamp(platz * 0.3, 60, 112);
-      pe.forEach((e) => (e.style.width = W + "px"));
-      ry = clamp(platz * 0.1, 26, 56);
-      bahn.style.width = 2 * rx + "px"; bahn.style.height = 2 * ry + "px";
-      ring.style.top = platz - 26 - ry + "px";
-      feuerSkala = clamp((platz - 26 - ry - 0.75 * ry - 10) / 242, 0.35, 1);   // Flammenspitze ca. 10 px unter dem Oberrand
-    } else { ring.style.top = ""; pe.forEach((e) => (e.style.width = "")); feuerSkala = 0.9; }
-    TA = Math.PI / 2;   // die aktive Person sitzt immer ganz vorn in der Mitte des Kreises
-  }
-  function nach(i) {   // zur i-ten Person scrollen
-    const oben = fire.getBoundingClientRect().top + scrollY;
-    scrollTo({ top: oben - kopf + i * SCHRITT, behavior: reduziert ? "auto" : "smooth" });
-  }
-  // Sprungmarken der Seite (Lagerleitung / Planungsleitung / Pfarrleitung) → erste Person der Gruppe
-  const GRUPPE = { lagerleitung: 0, planungsleitung: 3, pfarrleitung: 6 };
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
-    const id = a.getAttribute("href").slice(1);
-    if (id in GRUPPE) a.addEventListener("click", (ev) => { ev.preventDefault(); nach(GRUPPE[id]); });
+    const ziel = a.getAttribute("href").slice(1);
+    if (ziel in GRUPPE_START) a.addEventListener("click", (e) => { e.preventDefault(); zuPerson(GRUPPE_START[ziel]); });
   });
 
-  const step = (2 * Math.PI) / N;
-  let aktiv = -1;
-  function update() {
-    const rc = fire.getBoundingClientRect();
-    const p = clamp((kopf - rc.top) / Math.max(1, rc.height - hoeheB));
-    const f = p * (N - 1);
-    pe.forEach((e, i) => {
-      const d = ((((i - f + N / 2) % N) + N) % N) - N / 2;
-      const th = TA + d * step;
-      const x = rx * Math.cos(th), y = ry * Math.sin(th), z = (1 + Math.sin(th)) / 2;
-      const c = ease(clamp(1 - Math.abs(d)));
-      const sc = lerp(0.5 + 0.32 * z, klein ? 1.5 : 1.3, c);
-      e.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(-50%,-100%) scale(${sc.toFixed(3)})`;
-      e.style.zIndex = Math.round(z * 100) + (c > 0.5 ? 1 : 0);
-      e.style.opacity = lerp(0.35 + 0.3 * z, 1, c).toFixed(2);
-      nms[i].style.opacity = c.toFixed(2);
-      e.classList.toggle("aktiv", c > 0.6);
+  // Handy: die Szene füllt den Platz über der Kachel; der Name der aktiven Person endet NAME_ABSTAND über der Kachel
+  const handyLayout = () => {
+    const unten = parseFloat(getComputedStyle(info).bottom) || 0;
+    feuer.classList.remove("kompakt");
+    let kachelOben = hoehe - unten - info.offsetHeight;
+    if (kachelOben < hoehe * KOMPAKT_UNTER) { feuer.classList.add("kompakt"); kachelOben = hoehe - unten - info.offsetHeight; }
+    const platz = kachelOben - NAME_ABSTAND;
+    const fotoBreite = KJG.klemmen(platz * 0.3, 60, 112);
+    personen.forEach((p) => { p.style.width = fotoBreite + "px"; });
+    ry = KJG.klemmen(platz * 0.1, 26, 56);
+    ring.style.top = platz - 26 - ry + "px";
+    feuerSkala = KJG.klemmen((platz - 26 - ry - 0.75 * ry - 10) / FLAMMEN_HOEHE, 0.35, 1);   // Flammenspitze ca. 10 px unter dem Oberrand
+  };
+  const layout = () => {
+    handy = window.innerWidth < HANDY_BIS;
+    kopf = KJG.kopfHoehe();
+    feuer.style.setProperty("--kopf", kopf + "px");
+    hoehe = window.innerHeight - kopf;
+    schritt = Math.max(SCHRITT_MIN, window.innerHeight * SCHRITT_ANTEIL);
+    feuer.style.height = hoehe + (N - 1) * schritt + "px";
+    rx = KJG.klemmen(window.innerWidth * (handy ? 0.37 : 0.22), 120, 400);
+    ry = KJG.klemmen(hoehe * (handy ? 0.065 : 0.13), 40, 130);
+    if (handy) handyLayout();
+    else { ring.style.top = ""; personen.forEach((p) => { p.style.width = ""; }); feuerSkala = FEUER_SKALA_DESKTOP; }
+    bahn.style.width = 2 * rx + "px";
+    bahn.style.height = 2 * ry + "px";
+  };
+
+  let hinweis = null;   // „Weiter scrollen“ erzeugt module.js – erst bei Bedarf suchen
+  const bewegen = () => {
+    const rahmen = feuer.getBoundingClientRect();
+    const p = KJG.klemmen((kopf - rahmen.top) / Math.max(1, rahmen.height - hoehe));
+    const f = p * (N - 1);   // „Index“ der Person vorn, mit Nachkommastellen
+    personen.forEach((person, i) => {
+      const d = ((((i - f + N / 2) % N) + N) % N) - N / 2;   // Abstand zur vorderen Position (−N/2 … N/2)
+      const winkel = VORN + d * winkelSchritt;
+      const tiefe = (1 + Math.sin(winkel)) / 2;               // 0 = hinten, 1 = vorn
+      const nah = weich(KJG.klemmen(1 - Math.abs(d)));       // 1 = genau vorn in der Mitte
+      const groesse = lerp(HINTEN_GROESSE + HINTEN_DAZU * tiefe, handy ? AKTIV_GROESSE.handy : AKTIV_GROESSE.desktop, nah);
+      person.style.transform = `translate(${(rx * Math.cos(winkel)).toFixed(1)}px,${(ry * Math.sin(winkel)).toFixed(1)}px) translate(-50%,-100%) scale(${groesse.toFixed(3)})`;
+      person.style.zIndex = Math.round(tiefe * 100) + (nah > 0.5 ? 1 : 0);
+      person.style.opacity = lerp(HINTEN_DECKKRAFT + VORNE_DECKKRAFT_DAZU * tiefe, 1, nah).toFixed(2);
+      namen[i].style.opacity = nah.toFixed(2);
+      person.classList.toggle("aktiv", nah > 0.6);
     });
-    const a = Math.round(f);
-    if (a !== aktiv) {
-      aktiv = a;
-      its.forEach((el, j) => el.classList.toggle("an", j === a));
-      zurueck.disabled = a === 0; weiter.disabled = a === N - 1;
-      btns.forEach((b, j) => { b.classList.toggle("an", j === a); if (j === a) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+    const vorn = Math.round(f);
+    if (vorn !== aktiv) {
+      aktiv = vorn;
+      kacheln.forEach((k, j) => k.classList.toggle("an", j === vorn));
+      zurueck.disabled = vorn === 0;
+      weiter.disabled = vorn === N - 1;
+      nummern.forEach((knopf, j) => {
+        knopf.classList.toggle("an", j === vorn);
+        if (j === vorn) knopf.setAttribute("aria-current", "true"); else knopf.removeAttribute("aria-current");
+      });
     }
-    stelle.style.transform = `translate(-50%,${(-0.75 * ry).toFixed(0)}px) translate(0,-100%) scale(${(lerp(0.85, 1, ease(clamp(p * 3))) * feuerSkala).toFixed(3)})`;
-    if (!hinweis) hinweis = fire.querySelector(".scroll-hinweis");
-    if (hinweis) hinweis.style.opacity = p < 0.97 ? 1 : 0;
-  }
-  let tick = false;
-  addEventListener("scroll", () => { if (tick) return; tick = true; requestAnimationFrame(() => { update(); tick = false; }); }, { passive: true });
-  let letzteBreite = innerWidth;
-  addEventListener("resize", () => { if (innerWidth === letzteBreite && Math.abs(innerHeight - hoeheB - kopf) < 120) return; letzteBreite = innerWidth; layout(); update(); });
-  layout(); update();
-  addEventListener("load", () => { layout(); update(); });   // nach dem Laden der Schrift stimmt die Höhe der Infokachel
-})();
+    const flamme = lerp(0.85, 1, weich(KJG.klemmen(p * 3))) * feuerSkala;   // das Feuer wächst am Anfang noch ein wenig
+    stelle.style.transform = `translate(-50%,${(-0.75 * ry).toFixed(0)}px) translate(0,-100%) scale(${flamme.toFixed(3)})`;
+    if (!hinweis) hinweis = feuer.querySelector(".scroll-hinweis");
+    if (hinweis) hinweis.style.opacity = p < HINWEIS_BIS ? 1 : 0;
+  };
+
+  layout();
+  KJG.beimScrollen(bewegen);
+  KJG.beiBreitenAenderung(() => { layout(); bewegen(); });
+  window.addEventListener("load", () => { layout(); bewegen(); });   // nach dem Laden der Schrift stimmt die Höhe der Infokachel
+});

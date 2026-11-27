@@ -25,7 +25,7 @@ def br(*lines):
 
 FOOTER = TAG_FOOTER
 
-def page(fname, title, active, main, desc="KjG Mainz-Gonsenheim – Katholische junge Gemeinde", extra_css="", extra_js=""):
+def page(fname, title, active, main, desc="KjG Mainz-Gonsenheim – Katholische junge Gemeinde", extra_css="", extra_js=()):
     html = f'''<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -39,8 +39,8 @@ def page(fname, title, active, main, desc="KjG Mainz-Gonsenheim – Katholische 
   <link rel="stylesheet" href="assets/css/unterseiten.css">
 {extra_css}  <script src="assets/js/bilder.js"></script>
   <script src="assets/js/module.js"></script>
-  <script src="assets/js/main.js" defer></script>
-{extra_js}</head>
+{skripte(*extra_js)}
+</head>
 <body class="sub nav-alt">
 {tag_header(fname, active)}
 
@@ -217,7 +217,7 @@ page("ueber-uns.html", "Über uns", "", f'''{simple_hero("ueber-uns", "Über uns
 {tag_kachel("<h2>Zela 2027</h2>\n<p>Auch in diesem Jahr veranstalten wir ein Zeltlager<br> bei dem jeder mitfahren kann!</p>", "tile", "zela-2027.html", HERO_BILD["zela-2027.html"], "Bild Zeltlager 2027", id="vorbereitungen")}
 
 {tag_kachel("<h2>Unser Team</h2>\n<p>Wer genau wir sind und welche Aufgaben jeder hat<br> kannst du hier erfahren</p>", "tile reverse", "team.html", HERO_BILD["team.html"], "Bild Unser Team")}
-</div>''')
+</div>''', extra_js=("karte",))
 
 # ===================== Unser Team =====================
 # Zahlenband nach Entwurf „Frame 463“: (Icon, x, y des Icons, Zahl, Beschriftung, Spaltenmitte) – x/Mitte relativ zum Rasterrand (100 px)
@@ -229,20 +229,6 @@ ICON_W = {"gruppenleiter": (48, 36), "zelte": (42, 33), "dioezesanverbaende": (4
 stats = "\n".join(
     f'''    <li style="left:{c - 150:.1f}px"><img class="icon" src="icons/team-{k}.svg" width="{ICON_W[k][0]}" height="{ICON_W[k][1]}" alt="" style="left:{x - (c - 150):.2f}px;top:{y:.2f}px"><span class="num">{n}</span><span class="label">{l}</span></li>'''
     for k, x, y, n, l, c in STATS)
-
-pcount = [0]
-def person(side, abschnitt, i, circle=True):
-    pcount[0] += 1
-    name, rolle, _re, d1, _e1, d2, _e2 = TEAM[abschnitt][i]
-    alt = "Foto " + name
-    reg(alt, "Photo of " + name)
-    inhalt = f'<h3>{name}</h3>\n<div class="rolle">{rolle}</div>\n<p>{person_text(d1)}</p>\n<p>{person_text(d2)}</p>'
-    if circle:
-        return tag_person(inhalt, f"person {side}", bildname("team", pcount[0] + 1, alt), alt)
-    return tag_person(inhalt, f"person {side}")
-
-_qd, _qn, _qr = QUOTE_TEAM[0], QUOTE_TEAM[1], QUOTE_TEAM[2]
-QUOTE = tag_zitat(f"<p>{quote_p(_qd)}</p>\n<strong>{_qn}</strong><span>{_qr}</span>", "circle-left", bildname("team", 10, "Foto Lena"), "Foto Lena")
 
 GRUPPEN = ["lagerleitung"] * 3 + ["planungsleitung"] * 3 + ["pfarrleitung"] * 2
 GRUPPEN_NAME = dict(JUMP_TEAM)
@@ -313,7 +299,7 @@ page("team.html", "Unser Team", "team.html", f'''{simple_hero("team", "Unser Tea
 </section>
 
 {feuer_html()}
-''', extra_css='  <link rel="stylesheet" href="assets/css/lagerfeuer.css">\n', extra_js='  <script src="assets/js/lagerfeuer.js" defer></script>\n')
+''', extra_css='  <link rel="stylesheet" href="assets/css/lagerfeuer.css">\n', extra_js=("lagerfeuer",))
 
 # ===================== Impressum & Datenschutz =====================
 for f, t in [("impressum.html", "Impressum"), ("datenschutz.html", "Datenschutz")]:

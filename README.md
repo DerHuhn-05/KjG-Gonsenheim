@@ -44,8 +44,8 @@ In `72h-aktion.html`, `aktion.html` und `klamottenspende.html` nach `ANMELDE-LIN
 ## Standort-Karte (Über uns)
 
 Die Karte auf `ueber-uns.html` ist ein reines SVG (bleibt auf jeder Zoomstufe scharf): Hintergrund Petrol, Straßen Weiß, Gewässer in der Akzentfarbe (Koralle `#F05B83`), dazu ein Pin mit dem KjG-Logo in Petrol.
-Sie funktioniert als Scrollytelling: Sobald 80 % der Karte sichtbar sind, beginnt der Zoom von Mainz nach Gonsenheim und folgt dem Scrollen (vor und zurück); die Karte bleibt dabei stehen. Erst wenn ganz herangezoomt ist, „ploppt“ der Pin auf; beim Weiterscrollen fährt die waagrechte Linie vom Pin aus und danach der Kasten „Wo Sie uns finden“ (Oberkante auf Höhe der Linie) nach unten aus. Die groben und mittleren Straßen sind immer sichtbar, nur die allerkleinsten werden scrollgesteuert ergänzt (Steuerung in `assets/js/main.js`, Abschnitt „Über uns: Karte“).
-Die eigenständige Datei liegt unter `assets/img/karte-mainz.svg`. Position des Pins (Karteneinheiten): `794, 666` – steht in `main.js` (`GX`, `GY`) und im Pin-Element der Seite.
+Sie funktioniert als Scrollytelling: Sobald 80 % der Karte sichtbar sind, beginnt der Zoom von Mainz nach Gonsenheim und folgt dem Scrollen (vor und zurück); die Karte bleibt dabei stehen. Erst wenn ganz herangezoomt ist, „ploppt“ der Pin auf; beim Weiterscrollen fährt die waagrechte Linie vom Pin aus und danach der Kasten „Wo Sie uns finden“ (Oberkante auf Höhe der Linie) nach unten aus. Die groben und mittleren Straßen sind immer sichtbar, nur die allerkleinsten werden scrollgesteuert ergänzt (Steuerung in `assets/js/karte.js`).
+Die eigenständige Datei liegt unter `assets/img/karte-mainz.svg`. Position des Pins (Karteneinheiten): `794, 666` – steht in `karte.js` (`PIN_X`, `PIN_Y`) und im Pin-Element der Seite.
 Kartendaten: © OpenStreetMap-Mitwirkende, ODbL (steht auf der Karte).
 
 
@@ -63,7 +63,7 @@ stehen **einmal** in `assets/js/module.js`. In den Seiten genügt ein kurzer Tag
 <kjg-footer></kjg-footer>
 ```
 
-Beim Laden ersetzt `module.js` jeden Tag durch das fertige Markup (identisch zu handgeschriebenem HTML, CSS und `main.js` bleiben unverändert).
+Beim Laden ersetzt `module.js` jeden Tag durch das fertige Markup (identisch zu handgeschriebenem HTML, CSS und die übrigen Skripte bleiben unverändert).
 Texte einer Seite bleiben als Kinder der Tags im HTML, Texte, die in jedem Modul gleich sind (Menü, Footer, „genauere infos“ …), stehen
 in `module.js` in Deutsch und Englisch. Alle Attribute sind im Kopf von `module.js` dokumentiert.
 Menüpunkte, Footer-Links, Instagram-/Facebook-/Google-Maps-Adresse ändert man dort an **einer** Stelle für alle Seiten.
@@ -90,5 +90,32 @@ Die Team-Seite zeigt die Personen im Kreis um ein Lagerfeuer (Idee aus dem Artef
 ## Zela-Seite: Zeitleiste „Alle Infos auf einen Blick“
 
 Senkrechte Zeitleiste (Scrollytelling) nach dem Vorbild des Artefakts „Team – Zeitleiste“, im Stil der Website: Petrol-Fläche, weiße Linie in der Mitte (mobil links), die sich beim Scrollen füllt; die Stationen wechseln links/rechts (Text mit rosa Icon | Foto), unten rechts steht das Stichwort der aktuellen Station groß und blass.
-- Markup: `genzela.py` (Klasse `zeitleiste`, je Station `data-stichwort`), Stil: Ende von `style.css`, Steuerung: Block „Zela 2027: Termine als senkrechte Zeitleiste“ in `main.js`.
+- Markup: `genzela.py` (Klasse `zeitleiste`, je Station `data-stichwort`), Stil: Ende von `style.css`, Steuerung: `assets/js/zeitleiste.js`.
 - Fotos: `zela-zeit-1.jpg` … `zela-zeit-5.jpg`.
+
+## Skripte (assets/js)
+
+Jede Funktion liegt in einer eigenen kleinen Datei. Welche eine Seite lädt, steht in `skripte()` (`tools/build/bausteine.py`).
+
+| Datei | Aufgabe | Seiten |
+|---|---|---|
+| `bilder.js` | Platzhalter, solange ein Bild fehlt | alle |
+| `module.js` | ersetzt die Modul-Tags (`kjg-header`, `kjg-kachel` …) durch fertiges Markup | alle |
+| `gemeinsam.js` | gemeinsame Helfer (`KJG.klemmen`, `KJG.kopfHoehe`, eine gemeinsame Scroll-Schleife …) – immer zuerst | alle |
+| `kopfzeile.js` | Kopfzeile wird beim Scrollen Petrol, Hamburger-Menü | alle |
+| `einflug.js` | Einflug-Animationen beim Scrollen | alle |
+| `kennzahlen.js` | Zahlen zählen hoch | alle |
+| `video.js`, `slider.js` | Video im Hero, Slider (mobil) | Startseite |
+| `zeitleiste.js` | Zeitleiste „Alle Infos auf einen Blick“ | Zela 2027 |
+| `karte.js` | Karten-Scrollytelling | Über uns |
+| `lagerfeuer.js` | Lagerfeuer-Scrollytelling | Team |
+
+Einstellbare Werte (Abstände, Dauern, Anteile) stehen jeweils als benannte Konstanten oben in der Datei.
+
+## Automatische Prüfung
+
+`npm run pruefen` (bzw. `node tools/test/pruefen.js`) öffnet alle Seiten (deutsch und englisch) bei Desktop- und Handy-Breite im Browser und prüft: keine JavaScript-Fehler, kein seitlicher Überstand, alle Sprungmarken und internen Links haben ein Ziel, Kopfzeile, Menü, Slider, Karte, Zeitleiste und Lagerfeuer funktionieren.
+
+Auf GitHub läuft das bei jedem Push automatisch (`.github/workflows/pruefen.yml`). Vorher wird die Seite neu gebaut: Ändert das Bauen etwas, wurde eine HTML-Datei von Hand bearbeitet oder das Neubauen vergessen – dann schlägt die Prüfung fehl. Ergebnis: auf GitHub unter „Actions“ (grüner Haken bzw. rotes Kreuz am Commit).
+
+Einmalig lokal einrichten (nur für die Prüfung nötig): `npm ci` und `npx playwright install chromium`.

@@ -52,13 +52,13 @@
       fire.classList.remove("kompakt");
       let oben = hoeheB - unten - info.offsetHeight;
       if (oben < hoeheB * 0.48) { fire.classList.add("kompakt"); oben = hoeheB - unten - info.offsetHeight; }   // zu wenig Platz: Zitat der Person entfällt
-      const platz = oben - 20;                                   // Name endet hier
-      const W = clamp(platz * 0.32, 60, 120);
+      const platz = oben - 24;                                   // Name endet hier (24 px über der Kachel)
+      const W = clamp(platz * 0.3, 60, 112);
       pe.forEach((e) => (e.style.width = W + "px"));
       ry = clamp(platz * 0.1, 26, 56);
       bahn.style.width = 2 * rx + "px"; bahn.style.height = 2 * ry + "px";
-      ring.style.top = platz - 24 - ry + "px";
-      feuerSkala = clamp((platz - 24 - ry - 0.75 * ry - 16) / 260, 0.35, 0.85);
+      ring.style.top = platz - 26 - ry + "px";
+      feuerSkala = clamp((platz - 26 - ry - 0.75 * ry - 10) / 242, 0.35, 1);   // Flammenspitze ca. 10 px unter dem Oberrand
     } else { ring.style.top = ""; pe.forEach((e) => (e.style.width = "")); feuerSkala = 0.9; }
     TA = Math.PI / 2;   // die aktive Person sitzt immer ganz vorn in der Mitte des Kreises
   }
@@ -84,7 +84,7 @@
       const th = TA + d * step;
       const x = rx * Math.cos(th), y = ry * Math.sin(th), z = (1 + Math.sin(th)) / 2;
       const c = ease(clamp(1 - Math.abs(d)));
-      const sc = lerp(0.5 + 0.32 * z, klein ? 1.3 : 1.3, c);
+      const sc = lerp(0.5 + 0.32 * z, klein ? 1.5 : 1.3, c);
       e.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px) translate(-50%,-100%) scale(${sc.toFixed(3)})`;
       e.style.zIndex = Math.round(z * 100) + (c > 0.5 ? 1 : 0);
       e.style.opacity = lerp(0.35 + 0.3 * z, 1, c).toFixed(2);

@@ -581,7 +581,7 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
    2. danach läuft die Liste der Stationen von unten nach oben durch,
    3. oben und unten blenden die Stationen aus (Maske). Gesteuert von main.js (Klasse .vertikal). */
 .z-termine.rad.vertikal .z-termine-buehne { top: 0; height: var(--pin-h); transform: translateY(var(--versatz, 0px)); }
-.z-termine.rad.vertikal .z-rad { top: var(--liste-oben, 90px); bottom: 0; height: auto; overflow: hidden;
+.z-termine.rad.vertikal .z-rad { top: var(--liste-oben, 90px); bottom: 130px; height: auto; overflow: hidden;
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%);
           mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%); }
 .z-termine.rad.vertikal .z-timeline { display: block; width: auto; left: 0; }
@@ -638,3 +638,6 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 
 /* Unterstreichungen laufen durch Unterlängen (g, j, p, y) hindurch, statt sie auszusparen */
 html, a, summary, .btn, .hero-btn, .karte-btn { text-decoration-skip-ink: none; }
+
+/* Zela-Zeitleiste mobil: „Weiter scrollen“ unten mittig (Position setzt main.js) */
+.z-termine.rad.vertikal .scroll-hinweis { right: auto; left: 50%; transform: translateX(-50%); background: transparent; }

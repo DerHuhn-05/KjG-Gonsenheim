@@ -272,7 +272,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const vertikal = breite <= 960;                            // mobil: Stationen wandern senkrecht, Desktop: seitlich
     rad.classList.toggle("vertikal", vertikal);
     STREIFEN = vertikal ? STREIFEN_V : radPin.querySelector(".z-termine-buehne").offsetHeight;
-    const hoehe = Math.max(STREIFEN, window.innerHeight - kopf);
+    // Höhe der Fläche: die größtmögliche Bildschirmhöhe (100lvh, Adressleiste eingefahren). Mit innerHeight allein bliebe unten
+    // ein weißer Streifen, sobald Safari beim Scrollen die Leiste einfährt (die Höhe wird absichtlich nicht bei jedem Resize neu gemessen).
+    const sonde = document.createElement("div");
+    sonde.style.cssText = "position:fixed;left:0;top:0;width:0;height:100lvh;visibility:hidden;pointer-events:none";
+    document.body.appendChild(sonde);
+    const lvh = sonde.offsetHeight; sonde.remove();
+    const hoehe = Math.max(STREIFEN, Math.max(window.innerHeight, lvh) - kopf);
     const abstand = vertikal ? LI_H : Math.min(480, Math.max(320, breite * 0.3));
     const [von, bis] = [0, radPunkte.length - 1];               // Station 1 steht anfangs vorn, Station 5 am Ende
     const aufziehen = hoehe - STREIFEN;
@@ -280,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let listeH = 0;
     if (vertikal) {                                            // Überschrift oben, darunter der Listenbereich
       const oben = radPin.querySelector(".inner").offsetHeight + 12;
-      listeH = hoehe - oben;
+      listeH = hoehe - oben - 130;                             // unten bleiben 130 px frei für „Weiter scrollen“
       rad.style.setProperty("--liste-oben", oben + "px");
       rad.style.setProperty("--liste-h", listeH + "px");
     }
@@ -315,8 +321,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const mitte = m.von + dreh * (m.bis - m.von);               // Index der aktiven Station
     if (radHinweis) {                                           // Hinweis „Weiter scrollen“: sichtbar, solange die Zeitleiste steht und noch nicht fast am Ende ist
       const an = weg > 0 && weg < m.aufziehen + 0.85 * m.drehen;
-      const hinweis = `${an ? 1 : 0}|${(clip + 18).toFixed(0)}`;
-      if (hinweis !== L.hinweis) { L.hinweis = hinweis; radHinweis.style.opacity = an ? 1 : 0; radHinweis.style.top = (clip + 18) + "px"; }
+      // Handy: unten mittig (über der schwebenden Safari-Leiste); Desktop: oben rechts
+      const extra = Math.max(0, m.hoehe - (window.innerHeight - m.kopf));   // Teil der Fläche, der unter der Adressleiste liegt
+      const wert = m.vertikal ? Math.max(clip, extra) + 84 : clip + 18;
+      const hinweis = `${an ? 1 : 0}|${m.vertikal ? 1 : 0}|${wert.toFixed(0)}`;
+      if (hinweis !== L.hinweis) {
+        L.hinweis = hinweis; radHinweis.style.opacity = an ? 1 : 0;
+        if (m.vertikal) { radHinweis.style.bottom = wert + "px"; radHinweis.style.top = "auto"; }
+        else { radHinweis.style.top = wert + "px"; radHinweis.style.bottom = ""; }
+      }
     }
     let lage;
     if (m.vertikal) {
@@ -435,7 +448,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // darf die Seite nicht neu aufbauen, sonst springt sie beim Scrollen. Neu gemessen wird nur bei geänderter Breite.
   let letzteBreite = window.innerWidth;
   window.addEventListener("resize", () => {
-    if (window.innerWidth === letzteBreite) return;
+    const zuNiedrig = radMass && window.innerHeight - radMass.kopf > radMass.hoehe + 2;   // Fläche kürzer als der sichtbare Bereich (Browser ohne 100lvh)
+    if (window.innerWidth === letzteBreite && !zuNiedrig) return;
     letzteBreite = window.innerWidth;
     radMessen(); anstossen();
   });

@@ -86,3 +86,9 @@ Die Team-Seite zeigt die Personen im Kreis um ein Lagerfeuer (Idee aus dem Artef
 - Markup: `feuer_html()` in `tools/build/gensub.py`; Texte, Stichworte und Lieblingslieder je Person: `TEAM`, `FEUER_PERSON` in `tools/build/inhalt.py` (neue Person = neuer Eintrag in beiden Listen und in `GRUPPEN`/`GRUPPE` in `lagerfeuer.js`).
 - Darstellung: `assets/css/lagerfeuer.css`, Steuerung: `assets/js/lagerfeuer.js` (nur auf der Team-Seite geladen).
 - Fotos: `team-2.jpg` … `team-9.jpg` (Reihenfolge: Lena, Jonas, Sophie, Max, Hanna, Felix, Anna, Thomas).
+
+## Zela-Seite: Zeitleiste „Alle Infos auf einen Blick“
+
+Senkrechte Zeitleiste (Scrollytelling) nach dem Vorbild des Artefakts „Team – Zeitleiste“, im Stil der Website: Petrol-Fläche, weiße Linie in der Mitte (mobil links), die sich beim Scrollen füllt; die Stationen wechseln links/rechts (Text mit rosa Icon | Foto), unten rechts steht das Stichwort der aktuellen Station groß und blass.
+- Markup: `genzela.py` (Klasse `zeitleiste`, je Station `data-stichwort`), Stil: Ende von `style.css`, Steuerung: Block „Zela 2027: Termine als senkrechte Zeitleiste“ in `main.js`.
+- Fotos: `zela-zeit-1.jpg` … `zela-zeit-5.jpg`.

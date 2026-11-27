@@ -238,174 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ---------------------------------------------------------------
-  // Zela 2027: Termine als Drehrad
-  //  1. Petrol-Streifen bleibt in der Mitte stehen und zieht sich auf volle Höhe auf
-  //  2. dann drehen die Stationen seitlich durch (Desktop: immer drei sichtbar)
-  //  3. zu den Rändern werden sie blasser und kleiner (Karussell)
-  // ---------------------------------------------------------------
-  const rad = document.querySelector(".z-termine");
-  const radPin = rad && rad.querySelector(".z-termine-pin");
-  const radLeiste = rad && rad.querySelector(".z-timeline");
-  const radPunkte = radLeiste ? [...radLeiste.children] : [];
-  let STREIFEN = 361;        // Höhe des Petrol-Streifens im Ausgangszustand (mobil etwas höher)
-  const DREH_TEMPO = 1.4;    // Scroll-Pixel pro Pixel Drehung (größer = langsamer)
-  const radBuehne = radPin && radPin.querySelector(".z-termine-buehne");
-  const radHinweis = radPin && radPin.querySelector(".scroll-hinweis");   // „Weiter scrollen“ mit Pfeil (Handy: im Petrol-Feld)
-  const radInner = radPin && radPin.querySelector(".inner");              // Überschrift „Alle Infos auf einen Blick“
-  const radEl = radPin && radPin.querySelector(".z-rad");
-  // Desktop: „Weiter scrollen“ hängt am unteren Rand der Petrol-Fläche. Zwei Lagen (Petrol auf Weiß / Weiß auf Petrol), die an der Kante
-  // der Fläche abgeschnitten werden – so färbt sich der Hinweis um, sobald sich die Fläche darüber ausbreitet.
-  let hinweisDual = null;
-  if (radHinweis) {
-    const text = radHinweis.querySelector("span") ? radHinweis.querySelector("span").textContent : "Weiter scrollen";
-    const pfeilWeiss = radHinweis.querySelector("img") ? radHinweis.querySelector("img").getAttribute("src") : "icons/pfeil-unten-weiss.svg";
-    const pfeilPetrol = pfeilWeiss.replace("-weiss", "-petrol");
-    const wrap = document.createElement("div");
-    wrap.className = "zeit-hinweis"; wrap.setAttribute("aria-hidden", "true");
-    wrap.innerHTML = `<div class="zh zh-aussen"><span>${text}</span><img src="${pfeilPetrol}" width="14" height="16" alt=""></div><div class="zh zh-innen"><span>${text}</span><img src="${pfeilWeiss}" width="14" height="16" alt=""></div>`;
-    document.body.appendChild(wrap);
-    hinweisDual = { wrap, aussen: wrap.querySelector(".zh-aussen"), innen: wrap.querySelector(".zh-innen"), h: 55, letzte: "" };
-  }
-  let radMass = null;
-  let radLetzte = { weg: null, clip: null, versatz: null, lage: null, auf: null, st: [] };   // zuletzt gesetzte Werte – unveränderte werden nicht neu geschrieben
-
-  const STREIFEN_V = 400;     // Höhe des Streifens mobil (vertikale Variante, passt zu --streifen im CSS)
-  const LI_H = 190;           // Höhe (= Abstand) einer Station mobil
-  const FOKUS_START = 78;     // mobil: Lage der aktiven Station im Streifen (von oben im Listenbereich)
-  // mobil: „Fischaugen“-Effekt – je näher eine Station der Mitte kommt, desto größer wird sie und desto mehr Abstand hat sie zu den Nachbarn
-  const G_MIN = 118, G_MAX = 290, SIGMA = 0.85;                // Abstand zwischen zwei Stationen: außen G_MIN px, in der Mitte G_MAX px
-  const fischPos = (d, gmin, gmax) => Math.sign(d) * (gmin * Math.abs(d) + (gmax - gmin) * SIGMA * Math.atan(Math.abs(d) / SIGMA));   // Lage relativ zur Mitte (Integral des Abstands)
-  const fischSkala = (d) => 0.72 + 0.53 / (1 + (d / 0.8) * (d / 0.8));                // Mitte 1,25 → außen 0,72
-  const fischAlpha = (d) => 1 / (1 + 0.45 * d * d);
-
-  const radMessen = () => {
-    if (!rad || !radPin || !radLeiste) return;
-    // läuft auch bei „Bewegung reduzieren“: die Bewegung folgt nur dem eigenen Scrollen
-    rad.classList.add("rad");
-    const breite = rad.clientWidth;
-    const kopf = breite >= 1273 ? 100 : 72;                    // Höhe der Petrol-Kopfzeile beim Scrollen
-    const vertikal = breite <= 960;                            // mobil: Stationen wandern senkrecht, Desktop: seitlich
-    rad.classList.toggle("vertikal", vertikal);
-    STREIFEN = vertikal ? STREIFEN_V : radPin.querySelector(".z-termine-buehne").offsetHeight;
-    // Höhe der Fläche: die größtmögliche Bildschirmhöhe (100lvh, Adressleiste eingefahren). Mit innerHeight allein bliebe unten
-    // ein weißer Streifen, sobald Safari beim Scrollen die Leiste einfährt (die Höhe wird absichtlich nicht bei jedem Resize neu gemessen).
-    const sonde = document.createElement("div");
-    sonde.style.cssText = "position:fixed;left:0;top:0;width:0;height:100lvh;visibility:hidden;pointer-events:none";
-    document.body.appendChild(sonde);
-    const lvh = sonde.offsetHeight; sonde.remove();
-    const hoehe = Math.max(STREIFEN, Math.max(window.innerHeight, lvh) - kopf);
-    const abstand = vertikal ? LI_H : Math.min(480, Math.max(320, breite * 0.3));
-    // Desktop: Überschrift wandert beim Aufziehen nach oben und bleibt dort haften; das Drehrad rückt nach und wird größer (Faktor k)
-    let k = 1, dyKopf = 0, dyRad = 0;
-    if (!vertikal) {
-      const foto0 = Math.min(300, Math.max(190, window.innerHeight * 0.27));
-      const frei = hoehe - 190 - 70;                                       // Platz unter der Überschrift (unten bleibt Luft für den Hinweis)
-      k = Math.max(0.95, Math.min(1.45, frei / 400, (0.72 * abstand) / foto0));
-      dyKopf = Math.min(0, 28 - ((hoehe - STREIFEN) / 2 + 44.48));
-      dyRad = Math.min(0, 28 + 48 + 36 + 0.25 * 148 * k - ((hoehe - STREIFEN) / 2 + 226));   // Oberkante der Icons (inkl. 125-%-Vergrößerung der Mitte) 36 px unter der Überschrift
-    }
-    rad.style.setProperty("--k", k.toFixed(3));
-    const [von, bis] = [0, radPunkte.length - 1];               // Station 1 steht anfangs vorn, Station 5 am Ende
-    const aufziehen = hoehe - STREIFEN;
-    const drehen = (bis - von) * abstand * DREH_TEMPO;
-    let listeH = 0;
-    if (vertikal) {                                            // Überschrift oben, darunter der Listenbereich
-      const oben = radPin.querySelector(".inner").offsetHeight + 12;
-      listeH = hoehe - oben - 130;                             // unten bleiben 130 px frei für „Weiter scrollen“
-      rad.style.setProperty("--liste-oben", oben + "px");
-      rad.style.setProperty("--liste-h", listeH + "px");
-    }
-    rad.style.setProperty("--rad-breite", breite + "px");
-    rad.style.setProperty("--kopf", kopf + "px");
-    rad.style.setProperty("--pin-h", hoehe + "px");
-    rad.style.setProperty("--abstand", abstand + "px");
-    rad.style.marginTop = (STREIFEN - hoehe) / 2 + "px";        // Streifen sitzt im Ablauf wie bisher
-    rad.style.marginBottom = (STREIFEN - hoehe) / 2 + "px";     // … und endet auch wieder dort (Streifen schließt am Ende)
-    rad.style.height = hoehe + 2 * aufziehen + drehen + "px";   // öffnen + durchdrehen + schließen
-    if (radBuehne) radBuehne.style.transform = "";             // beim Wechsel Desktop ↔ mobil Inline-Stil zurücksetzen
-    if (radInner) radInner.style.transform = ""; if (radEl) radEl.style.transform = "";
-    radLetzte = { weg: null, clip: null, versatz: null, lage: null, auf: null, st: [] };
-    // Dokumentposition einmal merken – so braucht jedes Frame keine Layout-Abfrage mehr
-    const rect = rad.getBoundingClientRect();
-    radMass = { breite, kopf, hoehe, abstand, von, bis, aufziehen, drehen, vertikal, listeH, dyKopf, dyRad, gesamtH: hoehe + 2 * aufziehen + drehen, anfang: rect.top + window.scrollY };
-    if (hinweisDual) { hinweisDual.wrap.hidden = vertikal; hinweisDual.letzte = ""; if (!vertikal) hinweisDual.h = hinweisDual.aussen.offsetHeight || 55; }
-  };
-
-  const radBewegen = () => {
-    if (!radMass) return;
-    const m = radMass;
-    const L = radLetzte;
-    const gesamt = 2 * m.aufziehen + m.drehen;
-    const weg = Math.min(gesamt + 1, Math.max(-1, window.scrollY - (m.anfang - m.kopf)));   // Strecke seit dem Andocken, vor/nach der Sektion festgehalten
-    const oeffnen = m.aufziehen > 0 ? Math.min(1, Math.max(0, weg / m.aufziehen)) : 1;
-    const schliessen = m.aufziehen > 0 ? Math.min(1, Math.max(0, (weg - m.aufziehen - m.drehen) / m.aufziehen)) : 0;
-    const auf = oeffnen * (1 - schliessen);                     // 0 = Streifen, 1 = volle Höhe (Hin- und Rückweg)
-    const clip = Math.round(((1 - auf) * (m.hoehe - STREIFEN)) / 2 * 2) / 2;
-    if (hinweisDual && !m.vertikal) {                           // Desktop: Hinweis hängt unten an der Petrol-Fläche, auch schon vor dem Andocken
-      const D = hinweisDual, vh = window.innerHeight;
-      const pinOben = Math.min(Math.max(m.anfang - window.scrollY, m.kopf), m.anfang + m.gesamtH - m.hoehe - window.scrollY);
-      const kanteOben = pinOben + clip, kanteUnten = pinOben + m.hoehe - clip;
-      const sichtbar = (weg > 0 || kanteUnten < vh - 10) && kanteOben < vh - 80 && kanteUnten > m.kopf + 40 && weg < m.aufziehen + 0.85 * m.drehen;
-      const y = Math.min(kanteUnten + 18, vh - D.h - 28);
-      const teil = Math.max(0, Math.min(D.h, kanteUnten - y));       // so viel vom Hinweis liegt oberhalb der Kante (auf Petrol)
-      const key = `${sichtbar ? 1 : 0}|${y.toFixed(0)}|${teil.toFixed(0)}`;
-      if (key !== D.letzte) {
-        D.letzte = key;
-        D.wrap.style.opacity = sichtbar ? 1 : 0;
-        D.aussen.style.transform = D.innen.style.transform = `translate3d(-50%, ${y.toFixed(1)}px, 0)`;
-        D.innen.style.clipPath = `inset(0 0 ${(D.h - teil).toFixed(1)}px 0)`;     // Weiß: nur der Teil auf der Petrol-Fläche
-        D.aussen.style.clipPath = `inset(${teil.toFixed(1)}px 0 0 0)`;            // Petrol: nur der Teil auf Weiß
-      }
-    }
-    if (weg === L.weg) return;                                  // nichts zu tun, solange man weit weg ist
-    L.weg = weg;
-    if (clip !== L.clip) { L.clip = clip; radPin.style.clipPath = `inset(${clip}px 0)`; }   // direkt am Element, keine Variable im ganzen Baum
-    if (!m.vertikal && auf !== L.auf) {                         // Desktop: Überschrift und Drehrad rücken beim Aufziehen nach oben
-      L.auf = auf;
-      if (radInner) radInner.style.transform = `translate3d(0, ${(m.dyKopf * auf).toFixed(1)}px, 0)`;
-      if (radEl) radEl.style.transform = `translate3d(0, ${(m.dyRad * auf).toFixed(1)}px, 0)`;
-    }
-    const dreh = Math.min(1, Math.max(0, (weg - m.aufziehen) / m.drehen));
-    const mitte = m.von + dreh * (m.bis - m.von);               // Index der aktiven Station
-    if (radHinweis && m.vertikal) {                             // Hinweis „Weiter scrollen“ (Handy): sichtbar, solange die Zeitleiste steht und noch nicht fast am Ende ist
-      const an = weg > 0 && weg < m.aufziehen + 0.85 * m.drehen;
-      // Handy: unten mittig (über der schwebenden Safari-Leiste); Desktop: oben rechts
-      const extra = Math.max(0, m.hoehe - (window.innerHeight - m.kopf));   // Teil der Fläche, der unter der Adressleiste liegt
-      const wert = m.vertikal ? Math.max(clip, extra) + 84 : clip + 18;
-      const hinweis = `${an ? 1 : 0}|${m.vertikal ? 1 : 0}|${wert.toFixed(0)}`;
-      if (hinweis !== L.hinweis) {
-        L.hinweis = hinweis; radHinweis.style.opacity = an ? 1 : 0;
-        if (m.vertikal) { radHinweis.style.bottom = wert + "px"; radHinweis.style.top = "auto"; }
-        else { radHinweis.style.top = wert + "px"; radHinweis.style.bottom = ""; }
-      }
-    }
-    let lage;
-    if (m.vertikal) {
-      // 1. Der Hintergrund füllt sich: der Inhalt rückt vom Streifen nach oben, die Fläche wird ganz Petrol
-      if (clip !== L.versatz) { L.versatz = clip; radBuehne.style.transform = `translate3d(0, ${clip}px, 0)`; }
-      // 2. Die aktive Station wandert dabei von oben in die Mitte des Listenbereichs, danach läuft die Liste nach oben durch
-      const fokus = FOKUS_START + (m.listeH / 2 - FOKUS_START) * auf;
-      lage = "none";                                              // die Liste selbst bleibt stehen, jede Station wandert einzeln (Fischauge, siehe unten)
-      radPunkte.forEach((li, i) => {
-        const d = i - mitte;
-        const dy = fokus + fischPos(d, G_MIN, G_MAX) - (i + 0.5) * m.abstand;     // Zielposition minus natürliche Lage in der Liste
-        const st = `translate3d(0, ${dy.toFixed(1)}px, 0) scale(${fischSkala(d).toFixed(3)})|${fischAlpha(d).toFixed(3)}`;
-        if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }
-      });
-    } else {
-      // Desktop: dasselbe Fischauge waagrecht – die mittlere Station ist am größten und hat den größten Abstand zu den Nachbarn
-      lage = "none";
-      radPunkte.forEach((li, i) => {
-        const d = i - mitte;
-        const dx = m.breite / 2 + fischPos(d, 0.6 * m.abstand, 1.2 * m.abstand) - (i + 0.5) * m.abstand;
-        const st = `translate3d(${dx.toFixed(1)}px, 0, 0) scale(${fischSkala(d).toFixed(3)})|${fischAlpha(d).toFixed(3)}`;
-        if (st !== L.st[i]) { L.st[i] = st; const [t, o] = st.split("|"); li.style.transform = t; li.style.opacity = o; }
-      });
-    }
-    if (lage !== L.lage) { L.lage = lage; radLeiste.style.transform = lage; }
-  };
-
-  // ---------------------------------------------------------------
   // Einflug-Animationen: Inhalte schieben sich beim Scrollen herein (nicht im Hero)
   // ---------------------------------------------------------------
   const EINFLIEGEN = [
@@ -413,7 +245,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ".cards-section h2", ".card",
     ".about h2", ".about p", ".about .more-link",
     ".faq h2", ".faq-item", ".faq-more",
-    ".z-termine-pin .inner h2",
     ".z-feature > .text", ".z-feature > .media",
     ".z-quote blockquote", ".z-quote .circle",
     ".event-tile > .text", ".event-tile > .media",
@@ -485,23 +316,46 @@ document.addEventListener("DOMContentLoaded", () => {
   // Gemeinsame Scroll-Schleife
   // ---------------------------------------------------------------
   let geplant = false;
+  // ---------------------------------------------------------------
+  // Zela 2027: Termine als senkrechte Zeitleiste (Scrollytelling)
+  //  - eine Linie in der Mitte (mobil links) füllt sich beim Scrollen
+  //  - jede Station erscheint (Text + Foto), sobald sie die Bildschirmmitte erreicht; ihr Punkt füllt sich
+  //  - ein großes, blasses Stichwort unten rechts zeigt immer die aktuelle Station
+  // ---------------------------------------------------------------
+  const zl = document.querySelector(".zeitleiste");
+  const zlAchse = zl && zl.querySelector(".zl-achse i");
+  const zlEintraege = zl ? [...zl.querySelectorAll(".zl-eintrag")] : [];
+  const zlGross = zl && zl.querySelector(".zl-gross");
+  const zlListe = zl && zl.querySelector(".zl-liste");
+  let zlLetzte = "";
+  const zeitleisteAktualisieren = () => {
+    if (!zl) return;
+    const vh = window.innerHeight, r = zlListe.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (vh * 0.6 - r.top) / r.height));
+    let aktuell = -1;
+    zlEintraege.forEach((e, i) => {
+      const rr = e.getBoundingClientRect();
+      const an = rr.top + rr.height / 2 < vh * 0.65;
+      if (an !== e.classList.contains("an")) e.classList.toggle("an", an);
+      if (an) aktuell = i;
+    });
+    const zeigen = aktuell >= 0 && r.bottom > vh * 0.6;
+    const key = p.toFixed(3) + "|" + aktuell + "|" + zeigen;
+    if (key === zlLetzte) return;
+    zlLetzte = key;
+    zlAchse.style.transform = `scaleY(${p.toFixed(4)})`;
+    zlGross.classList.toggle("zeigen", zeigen);
+    if (aktuell >= 0) zlGross.textContent = zlEintraege[aktuell].dataset.stichwort;
+  };
+
   const aktualisieren = () => {
     headerPruefen();
-    radBewegen();
+    zeitleisteAktualisieren();
     geplant = false;
   };
   const anstossen = () => { if (!geplant) { geplant = true; requestAnimationFrame(aktualisieren); } };
   window.addEventListener("scroll", anstossen, { passive: true });
-  // Safari löst beim Ein-/Ausfahren der Adressleiste „resize“ aus (nur die Höhe ändert sich) – das
-  // darf die Seite nicht neu aufbauen, sonst springt sie beim Scrollen. Neu gemessen wird nur bei geänderter Breite.
-  let letzteBreite = window.innerWidth;
-  window.addEventListener("resize", () => {
-    const zuNiedrig = radMass && window.innerHeight - radMass.kopf > radMass.hoehe + 2;   // Fläche kürzer als der sichtbare Bereich (Browser ohne 100lvh)
-    if (window.innerWidth === letzteBreite && !zuNiedrig) return;
-    letzteBreite = window.innerWidth;
-    radMessen(); anstossen();
-  });
-  window.addEventListener("load", () => { radMessen(); anstossen(); });
-  radMessen();
+  window.addEventListener("resize", anstossen);
+  window.addEventListener("load", anstossen);
   aktualisieren();
 });

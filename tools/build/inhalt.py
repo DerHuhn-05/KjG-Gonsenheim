@@ -130,7 +130,7 @@ def ev(k):
 
 # Sprungmarken
 JUMP_EVENTS = [("teaser", t("Gruppenstunde", "Group Meetings")), ("vorbereitungen", t("MoWo", "MoWo")), ("finanzen", t("Trainee-Wochenende", "Trainee Weekend"))]
-JUMP_WER = [("teaser", t("Die KjG Gonsenheim", "The KjG Gonsenheim")), ("karte", t("Wo Sie uns finden", "Where to find us")), ("finanzen", t("KjG-Dachverband", "KjG Federation")), ("vorbereitungen", t("Zela 2027", "Zela 2027"))]
+JUMP_WER = [("teaser", t("Die KjG Gonsenheim", "The KjG Gonsenheim")), ("karte", t("Wo Sie uns finden können", "Where you can find us")), ("finanzen", t("KjG-Dachverband", "KjG Federation")), ("vorbereitungen", t("Zela 2027", "Zela 2027"))]
 JUMP_SOZ = [("aktion-72h", T_72), ("aktion-2", T_HILFE), ("aktion-3", T_KLAMOTTEN)]
 JUMP_TEAM = [("lagerleitung", t("Lagerleitung", "Camp management")), ("planungsleitung", t("Planungsleitung", "Planning team")), ("pfarrleitung", t("Pfarrleitung", "Parish liaison"))]
 
@@ -366,7 +366,7 @@ reg("Alle Infos", "All the info"); reg("Unser Angebot für euch", "What we offer
 reg("Über uns", "About us")
 reg("Über uns – KjG Mainz-Gonsenheim", "About us – KjG Mainz-Gonsenheim")
 reg("Header-Bild Über uns", "Header image: About us")
-KARTE_TITEL = t("Wo Sie uns finden", "Where to find us")
+KARTE_TITEL = t("Wo Sie uns finden können", "Where you can find us")
 KARTE_LABEL = t("KjG Gonsenheim:", "KjG Gonsenheim:")
 KARTE_ADRESSE = ("Pfarrer-Grimm-Strasse 1", "55124 Mainz-Gonsenheim")
 reg(" ".join(KARTE_ADRESSE), "Pfarrer-Grimm-Strasse 1, 55124 Mainz-Gonsenheim")

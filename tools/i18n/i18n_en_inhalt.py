@@ -234,7 +234,7 @@ EN_INHALT = {
 "Wir sammeln gut erhaltene Kleidung und geben sie an Menschen weiter, die sie dringend brauchen.": "We collect clothes in good condition and pass them on to people who urgently need them.",
 "Wir sammeln saubere, gut erhaltene Kleidung und geben sie an soziale Einrichtungen weiter. Die Kinder sortieren die Spenden mit, packen sie ein und erfahren, wo sie am Ende ankommen.": "We collect clean clothes in good condition and pass them on to social organisations. The children help sort the donations, pack them and find out where they end up.",
 "Wir sind Teil der KjG Deutschland, einem der großen katholischen Kinder- und Jugendverbände mit Gruppen in ganz Deutschland. Gemeinsame Werte sind Mitbestimmung, Solidarität und Verantwortung.": "We are part of KjG Germany, one of the large Catholic children’s and youth associations with groups across the country. Shared values are participation, solidarity and responsibility.",
-"Wo Sie uns finden": "Where to find us",
+"Wo Sie uns finden können": "Where you can find us",
 "Wochen Gruppenstunde": "Weeks of group meetings",
 "Wonderwall": "Wonderwall",
 "Workshops": "Workshops",

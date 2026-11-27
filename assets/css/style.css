@@ -249,42 +249,6 @@ html.menu-offen { overflow: hidden; }
 .z-jump .down { flex: none; margin-top: 16.5px; color: var(--teal); }
 .z-jump span { margin-left: 9px; }
 
-/* Termine als Zeitleiste mit Scrollytelling (Entwurf „Group 8“):
-   Die Petrol-Fläche bleibt beim Scrollen stehen, die Zeitleiste schiebt sich nach links;
-   erst danach scrollt die Seite weiter. Höhe der Sektion und Verschiebung setzt main.js. */
-/* Termine als Drehrad (Scrollytelling, gesteuert von main.js, Klasse .rad):
-   1. Der Petrol-Streifen bleibt in der Bildschirmmitte stehen und zieht sich auf die volle Höhe auf,
-   2. danach drehen die Stationen seitlich durch (am Desktop sind immer drei zu sehen),
-   3. zu den Rändern werden sie blasser und kleiner wie bei einem Karussell.
-   Ohne JavaScript bzw. bei „Bewegung reduzieren“: Streifen mit seitlich scrollbarer Zeitleiste. */
-.z-termine { position: relative; }
-.z-termine-pin { position: relative; height: 361px; overflow: hidden; background: var(--teal); color: var(--white); }
-.z-termine-buehne { position: relative; height: 361px; }
-.z-termine .inner { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; padding-top: 44.48px; }
-.z-termine h2 { font: 800 48px/48px var(--i); }
-.z-rad { position: absolute; left: 0; right: 0; top: 112.5px; height: 158px; overflow-x: auto; }
-.z-timeline { position: relative; left: calc(50% - var(--abstand, 300px) / 2); display: flex;   /* erste Station startet mittig */ width: calc(5 * var(--abstand, 300px));
-  margin: 0; padding: 0; list-style: none; will-change: transform; }
-.z-timeline::before { content: ""; position: absolute; left: calc(var(--abstand, 300px) / 2); right: calc(var(--abstand, 300px) / 2);
-  top: 145px; height: 6px; background: var(--white); }
-.z-timeline li { position: relative; flex: none; width: var(--abstand, 300px); height: 158px; }
-.z-timeline > li > img { position: absolute; left: calc(50% - 24px); top: 0; width: 48px; height: 48px; }   /* Icon der Station */
-.z-timeline p { position: absolute; left: 50%; width: 340px; margin-left: -170px; top: 66.2px; text-align: center; font: 400 22.5px/29px var(--i); white-space: nowrap; }
-.z-timeline .dot { position: absolute; left: calc(50% - 10px); top: 138px; width: 20px; height: 20px; border-radius: 50%; background: var(--white); }
-
-.z-termine.rad, .z-termine.rad * { pointer-events: none; }   /* unsichtbarer Teil darf die Kapitel-Links darüber nicht verdecken */
-.z-termine.rad .z-termine-pin { position: sticky; top: var(--kopf); height: var(--pin-h); clip-path: inset(var(--clip) 0); }
-.z-termine.rad .z-termine-buehne { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); }
-.z-termine.rad .z-rad { overflow: visible;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 78%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0, #000 22%, #000 78%, transparent 100%); }
-.z-termine.rad .z-timeline { left: 0; }
-.z-termine.rad .z-timeline li { transform-origin: 50% 148px; }   /* Skalierung um die Linie, damit die Punkte darauf bleiben */
-.z-termine.rad:not(.vertikal) .z-timeline::before { left: 0; right: auto; width: var(--rad-breite, 100vw); }   /* Linie über die ganze Breite (die Stationen wandern einzeln) */
-@media (min-width: 961px) {   /* Desktop: deutlich mehr Luft zwischen Überschrift und Drehrad */
-  .z-termine.rad .z-termine-buehne { height: 560px; }
-  .z-termine.rad .z-rad { top: 226px; }
-}
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 .z-content { padding-bottom: 140px; }
@@ -385,14 +349,7 @@ html.menu-offen { overflow: hidden; }
   .z-hero h1 { font-size: 52px; line-height: 60px; }
   .z-hero .right p { font-size: 20px; line-height: 30px; }
   .z-jump { padding: 32px 0 40px; }
-  .z-termine .inner { padding-top: 40px; }
-  .z-termine h2, .z-feature h2 { font-size: 34px; line-height: 40px; }
-  .z-timeline p { width: 220px; margin-left: -110px; font-size: 15px; line-height: 21px; top: 66px; }
-  .z-termine h2 { font-size: 28px; line-height: 34px; }
-  .z-termine-buehne { height: 400px; }
-  .z-rad { top: 140px; }
-  .z-termine.rad .z-rad { -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 25%, #000 75%, transparent 100%);
-                                  mask-image: linear-gradient(90deg, transparent 0, #000 25%, #000 75%, transparent 100%); }
+  .z-feature h2 { font-size: 34px; line-height: 40px; }
   .z-feature, .z-feature.reverse { grid-template-columns: 1fr; gap: 24px; min-height: 0; margin-top: 64px !important; }
   .z-feature.reverse .media { order: 2; }
   .z-feature.reverse .text { padding-left: 0; }
@@ -576,50 +533,10 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 .hero h1, .hero-simple h1, .hero-split .content h1, .z-hero .right h1, .tile h2, .event-tile h2,
 .z-termine h2, .about h2, .site-footer h3, .z-quote h2 { color: var(--white); }
 
-/* ---------- Zela-Termine mobil: senkrechtes Scrollytelling ----------
-   1. Der Petrol-Streifen zieht sich auf die volle Bildschirmhöhe auf, der Inhalt rückt dabei nach oben,
-   2. danach läuft die Liste der Stationen von unten nach oben durch,
-   3. oben und unten blenden die Stationen aus (Maske). Gesteuert von main.js (Klasse .vertikal). */
-.z-termine.rad.vertikal .z-termine-buehne { top: 0; height: var(--pin-h); transform: translateY(var(--versatz, 0px)); }
-.z-termine.rad.vertikal .z-rad { top: var(--liste-oben, 90px); bottom: 130px; height: auto; overflow: hidden;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%);
-          mask-image: linear-gradient(180deg, transparent 0, #000 36px, #000 calc(100% - 90px), transparent 100%); }
-.z-termine.rad.vertikal .z-timeline { display: block; width: auto; left: 0; }
-.z-termine.rad.vertikal .z-timeline::before { left: 32px; right: auto; top: 0; bottom: auto; width: 4px; height: var(--liste-h, 600px); }   /* senkrechte Linie durch die Punkte (Länge = Listenbereich) */
-.z-termine.rad.vertikal .z-timeline li { width: auto; height: var(--abstand, 190px); transform-origin: 34px 50%; }   /* Skalierung um die Linie, Punkte bleiben darauf */
-.z-termine.rad.vertikal .z-timeline .dot { left: 24px; top: calc(50% - 10px); }
-.z-termine.rad.vertikal .z-timeline > li > img { left: 138px; top: calc(50% - 44px); width: 36px; height: 36px; }   /* Icon sitzt über dem Text */
-.z-termine.rad.vertikal .z-timeline p { left: 138px; right: calc((100% - 34px) * .2 + 12px); width: auto; margin-left: 0; top: 50%; transform: none;
-  text-align: left; font-size: 16px; line-height: 22px; white-space: normal; }   /* in der Mitte wird die Station auf 125 % vergrößert, rechts bleibt dafür Platz */
-
-/* Scrollytelling flüssig halten: eigene Ebenen für die bewegten Teile, Rest der Sektion bleibt unberührt */
-.z-termine.rad .z-termine-pin { contain: layout paint; }
-.z-termine.rad .z-termine-buehne, .z-termine.rad .z-timeline, .z-termine.rad .z-timeline li { will-change: transform; }
-.z-termine.rad .z-timeline li { backface-visibility: hidden; }
-
-/* Ränder blenden über feste Petrol-Verläufe aus statt über eine Maske (Masken müssen bei jeder Bewegung neu gezeichnet werden) */
-.z-termine.rad .z-rad, .z-termine.rad.vertikal .z-rad { -webkit-mask-image: none; mask-image: none; }
-.z-termine.rad .z-rad::before, .z-termine.rad .z-rad::after { content: ""; position: absolute; z-index: 2; pointer-events: none; }
-.z-termine.rad:not(.vertikal) .z-rad::before { left: 0; top: -40px; bottom: -40px; width: 22%; background: linear-gradient(90deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
-.z-termine.rad:not(.vertikal) .z-rad::after { right: 0; top: -40px; bottom: -40px; width: 22%; background: linear-gradient(270deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
-.z-termine.rad.vertikal .z-rad::before { left: 0; right: 0; top: 0; height: 60px; background: linear-gradient(180deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
-.z-termine.rad.vertikal .z-rad::after { left: 0; right: 0; bottom: 0; height: 110px; background: linear-gradient(0deg, var(--teal) 0, rgba(0,117,118,0) 100%); }
-
 /* Zela: Abschnitt ohne Bild („Vortreffen“) – Überschrift und Text bilden eine Gruppe, die mittig steht; die Überschrift ist in der Gruppe linksbündig */
 .z-feature.solo, .z-feature.solo.reverse { grid-template-columns: 1fr; justify-items: center; }
 .z-feature.solo .text, .z-feature.solo.reverse .text { width: max-content; max-width: 100%; padding-left: 0; }
 @media (max-width: 960px) { .z-feature.solo, .z-feature.solo.reverse { justify-items: start; } .z-feature.solo .text { width: auto; } }
-
-/* Zela-Zeitleiste: eckiges Foto je Station (wandert mit der Station, wird in der Mitte größer). Nur mit JavaScript-Zeitleiste sichtbar.
-   Computer: unterhalb der Linie · Handy: rechts neben dem Text */
-.z-timeline .zeit-bild { display: none; }
-.z-termine.rad .z-timeline .zeit-bild { display: block; position: absolute; left: 50%; transform: translateX(-50%); top: 176px; width: clamp(190px, 27vh, 300px); height: auto; aspect-ratio: 4 / 3;
-  border-radius: 0; background: var(--grey-tile); box-shadow: 0 0 0 3px rgba(255,255,255,.9); }
-.z-timeline .zeit-bild .ph-label { padding: 12px; font-size: 9px; line-height: 1.2; word-break: break-all; color: rgba(255,255,255,.55); }
-/* Handy: Punkt | Icon + Text | Foto – rechts bleibt Platz für die 125 %-Vergrößerung der aktiven Station */
-.z-termine.rad.vertikal .z-timeline .zeit-bild { left: auto; right: calc(20% + 3px); top: 50%; transform: translateY(-50%); width: min(36%, 200px); height: auto; aspect-ratio: 4 / 3; box-shadow: 0 0 0 2px rgba(255,255,255,.9); }
-.z-termine.rad.vertikal .z-timeline > li > img { left: 56px; }
-.z-termine.rad.vertikal .z-timeline p { left: 56px; right: calc(20% + 3px + min(36%, 200px) + 10px); }
 
 /* ---------- Hinweis „Weiter scrollen“ in den Scrollytellings (Zela-Zeitleiste, Karte); Sichtbarkeit und Lage setzt main.js ---------- */
 .scroll-hinweis { position: absolute; right: 24px; padding: 8px 16px 10px; background: var(--teal); top: 20px; z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -639,24 +556,51 @@ h1, h2, h3, h4, h5, h6, .faq-item summary { color: var(--teal); }
 /* Unterstreichungen laufen durch Unterlängen (g, j, p, y) hindurch, statt sie auszusparen */
 html, a, summary, .btn, .hero-btn, .karte-btn { text-decoration-skip-ink: none; }
 
-/* Zela-Zeitleiste mobil: „Weiter scrollen“ unten mittig (Position setzt main.js) */
-.z-termine.rad.vertikal .scroll-hinweis { right: auto; left: 50%; transform: translateX(-50%); background: transparent; }
 
-/* ---------- Zela-Zeitleiste Desktop: größer (Faktor --k aus main.js), Hinweis „Weiter scrollen“ hängt unten an der Petrol-Fläche ---------- */
-@media (min-width: 961px) {
-  .z-termine.rad:not(.vertikal) .z-rad { height: calc(158px * var(--k, 1)); }
-  .z-termine.rad:not(.vertikal) .z-timeline::before { top: calc(145px * var(--k, 1)); height: calc(6px * var(--k, 1)); }
-  .z-termine.rad:not(.vertikal) .z-timeline li { height: calc(158px * var(--k, 1)); transform-origin: 50% calc(148px * var(--k, 1)); }
-  .z-termine.rad:not(.vertikal) .z-timeline > li > img { width: calc(48px * var(--k, 1)); height: calc(48px * var(--k, 1)); left: calc(50% - 24px * var(--k, 1)); }
-  .z-termine.rad:not(.vertikal) .z-timeline p { width: calc(340px * var(--k, 1)); margin-left: calc(-170px * var(--k, 1)); top: calc(66.2px * var(--k, 1)); font-size: calc(22.5px * var(--k, 1)); line-height: calc(29px * var(--k, 1)); }
-  .z-termine.rad:not(.vertikal) .z-timeline .dot { width: calc(20px * var(--k, 1)); height: calc(20px * var(--k, 1)); left: calc(50% - 10px * var(--k, 1)); top: calc(138px * var(--k, 1)); }
-  .z-termine.rad:not(.vertikal) .z-timeline .zeit-bild { top: calc(176px * var(--k, 1)); width: calc(clamp(190px, 27vh, 300px) * var(--k, 1)); }
-  .z-termine.rad:not(.vertikal) .z-termine-pin .scroll-hinweis { display: none; }
+/* =====================================================================
+   Zela: Termine als senkrechte Zeitleiste (Scrollytelling, main.js)
+   Petrol-Fläche, weiße Linie in der Mitte (mobil links), die sich beim Scrollen füllt. Die Stationen wechseln links/rechts:
+   Text mit rosa Icon auf der einen, Foto (eckig, weißer Rahmen) auf der anderen Seite. Unten rechts steht groß und blass
+   das Stichwort der aktuellen Station.
+   ===================================================================== */
+.z-termine.zeitleiste { position: relative; background: var(--teal); color: var(--white); padding: 56px 0 120px; }
+.z-termine .inner { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; }
+.z-termine h2 { font: 800 48px/48px var(--i); }
+.zl { position: relative; max-width: 1100px; margin: 24px auto 0; padding: 0 24px; }
+.zl-achse { position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; margin-left: -1.5px; background: rgba(255,255,255,.28); }
+.zl-achse i { position: absolute; inset: 0; background: var(--white); transform-origin: top; transform: scaleY(0); }
+.zl-liste { list-style: none; margin: 0; padding: 0; }
+.zl-eintrag { position: relative; display: grid; grid-template-columns: 1fr 90px 1fr; align-items: center; min-height: 62vh; }
+.zl-punkt { grid-column: 2; grid-row: 1; justify-self: center; width: 20px; height: 20px; border-radius: 50%; border: 3px solid var(--white); background: var(--teal); position: relative; z-index: 2; transition: background .4s, border-color .4s, transform .4s; }
+.zl-eintrag.an .zl-punkt { background: var(--white); border-color: var(--accent); transform: scale(1.35); }
+.zl-text, .zl-bild { grid-row: 1; opacity: 0; transform: translateY(32px); transition: opacity .8s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.zl-eintrag.an .zl-text, .zl-eintrag.an .zl-bild { opacity: 1; transform: none; }
+.zl-eintrag.an .zl-bild { transition-delay: .15s; }
+.zl-text img { display: block; width: 56px; height: 56px; margin-bottom: 18px; }   /* rosa Icon */
+.zl-text p { font: 400 34px/42px var(--i); }
+.zl-eintrag:nth-child(odd) .zl-text { grid-column: 1; text-align: right; justify-self: end; padding-right: 8px; }
+.zl-eintrag:nth-child(odd) .zl-text img { margin-left: auto; }
+.zl-eintrag:nth-child(odd) .zl-bild { grid-column: 3; justify-self: start; }
+.zl-eintrag:nth-child(even) .zl-text { grid-column: 3; justify-self: start; padding-left: 8px; }
+.zl-eintrag:nth-child(even) .zl-bild { grid-column: 1; justify-self: end; }
+.zl-bild { width: min(100%, 400px); }
+.zl-bild .media { aspect-ratio: 4 / 3; height: auto; background: var(--grey-tile); box-shadow: 0 0 0 3px rgba(255,255,255,.9); }
+.zl-bild .ph-label { font-size: 11px; color: rgba(255,255,255,.55); }
+.zl-gross { position: fixed; right: clamp(20px, 5vw, 72px); bottom: clamp(16px, 4vh, 40px); z-index: 0; font: 800 clamp(64px, 10vw, 150px)/.85 var(--i); letter-spacing: -.03em !important; color: rgba(255,255,255,.14); pointer-events: none; opacity: 0; transition: opacity .5s; white-space: nowrap; }
+.zl-gross.zeigen { opacity: 1; }
+.z-termine.zeitleiste > * { position: relative; z-index: 1; }
+.z-termine.zeitleiste > .zl-gross { position: fixed; z-index: 0; }
+@media (max-width: 760px) {
+  .z-termine.zeitleiste { padding: 40px 0 72px; }
+  .z-termine h2 { font-size: 30px; line-height: 36px; }
+  .zl { padding: 0 16px; }
+  .zl-achse { left: 31px; margin-left: -1.5px; }
+  .zl-eintrag { grid-template-columns: 30px 1fr; column-gap: 20px; min-height: 0; padding: 36px 0; align-items: start; }
+  .zl-punkt { grid-column: 1; grid-row: 1 / span 2; margin-top: 8px; justify-self: center; }
+  .zl-eintrag .zl-text, .zl-eintrag:nth-child(odd) .zl-text, .zl-eintrag:nth-child(even) .zl-text { grid-column: 2; grid-row: 1; text-align: left; justify-self: start; padding: 0; }
+  .zl-eintrag .zl-text img { margin-left: 0 !important; width: 44px; height: 44px; margin-bottom: 12px; }
+  .zl-text p { font-size: 24px; line-height: 31px; }
+  .zl-eintrag .zl-bild, .zl-eintrag:nth-child(odd) .zl-bild, .zl-eintrag:nth-child(even) .zl-bild { grid-column: 2; grid-row: 2; justify-self: start; margin-top: 20px; width: min(100%, 360px); }
+  .zl-gross { font-size: 64px; }
 }
-.zeit-hinweis { position: fixed; left: 0; top: 0; width: 100%; height: 0; z-index: 40; pointer-events: none; transition: opacity .25s ease; }
-.zeit-hinweis[hidden] { display: none; }
-.zeit-hinweis .zh { position: absolute; left: 50%; top: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 16px 10px; font: 600 15px/1 var(--i); letter-spacing: .02em; will-change: transform; }
-.zeit-hinweis .zh-aussen { color: var(--teal); }
-.zeit-hinweis .zh-innen { color: var(--white); }
-.zeit-hinweis img { animation: hinweis-hoch-runter 1.4s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { .zeit-hinweis img { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .zl-text, .zl-bild { opacity: 1; transform: none; transition: none; } .zl-gross { transition: none; } }

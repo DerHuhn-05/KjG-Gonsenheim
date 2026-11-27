@@ -61,7 +61,7 @@ ZEIT_ALT = ["Foto Zeitraum", "Foto Zeltplatz", "Foto Alter", "Foto Geschwister",
 ZEIT_EN = ["Photo: dates", "Photo: campsite", "Photo: age", "Photo: siblings", "Photo: registration"]
 for _a, _e in zip(ZEIT_ALT, ZEIT_EN):
     reg(_a, _e)
-ZB = [tag_bild(bildname(f"zeit-{k + 1}", alt), alt, "media zeit-bild") for k, alt in enumerate(ZEIT_ALT)]
+ZB = [tag_bild(bildname(f"zeit-{k + 1}", alt), alt, "media") for k, alt in enumerate(ZEIT_ALT)]
 
 hero_img = img(1, "Header-Bild Zeltlager", eager=True)
 
@@ -97,22 +97,19 @@ html = f'''<!DOCTYPE html>
 
 {jump}
 
-<section class="z-termine" id="termine">
-  <div class="z-termine-pin">
-   <div class="z-termine-buehne">
-    <div class="inner"><h2>Alle Infos auf einen Blick</h2></div>
-    <div class="z-rad">
-    <ol class="z-timeline">
-      <li>{ZB[0]}<img src="icons/zela-zeitraum.svg" width="48" height="48" alt=""><p><span class="sr-only">Zeitraum: </span>24. Juni bis<br>04. August 2027</p><span class="dot"></span></li>
-      <li>{ZB[1]}<img src="icons/zela-zeltplatz.svg" width="48" height="48" alt=""><p><span class="sr-only">Zeltplatz: </span>Faulbach-<br>Breitenbrunn</p><span class="dot"></span></li>
-      <li>{ZB[2]}<img src="icons/zela-alter.svg" width="48" height="48" alt=""><p><span class="sr-only">Alter: </span>Kinder<br>von 9 bis 14 Jahre</p><span class="dot"></span></li>
-      <li>{ZB[3]}<img src="icons/zela-geschwister.svg" width="48" height="48" alt=""><p><span class="sr-only">Besonderheit: </span>ab 8 Jahren<br>mit älteren Geschwistern</p><span class="dot"></span></li>
-      <li>{ZB[4]}<img src="icons/zela-anmeldeschluss.svg" width="48" height="48" alt=""><p>Anmeldeschluss<br>01.05.2027</p><span class="dot"></span></li>
+<section class="z-termine zeitleiste" id="termine">
+  <div class="zl-kopf"><div class="inner"><h2>Alle Infos auf einen Blick</h2></div></div>
+  <div class="zl">
+    <div class="zl-achse" aria-hidden="true"><i></i></div>
+    <ol class="zl-liste">
+      <li class="zl-eintrag" data-stichwort="2027"><span class="zl-punkt"></span><div class="zl-text"><img src="icons/zela-zeitraum.svg" width="56" height="56" alt=""><p><span class="sr-only">Zeitraum: </span>24. Juni bis<br>04. August 2027</p></div><div class="zl-bild">{ZB[0]}</div></li>
+      <li class="zl-eintrag" data-stichwort="Faulbach"><span class="zl-punkt"></span><div class="zl-text"><img src="icons/zela-zeltplatz.svg" width="56" height="56" alt=""><p><span class="sr-only">Zeltplatz: </span>Faulbach-<br>Breitenbrunn</p></div><div class="zl-bild">{ZB[1]}</div></li>
+      <li class="zl-eintrag" data-stichwort="9–14"><span class="zl-punkt"></span><div class="zl-text"><img src="icons/zela-alter.svg" width="56" height="56" alt=""><p><span class="sr-only">Alter: </span>Kinder<br>von 9 bis 14 Jahre</p></div><div class="zl-bild">{ZB[2]}</div></li>
+      <li class="zl-eintrag" data-stichwort="ab 8"><span class="zl-punkt"></span><div class="zl-text"><img src="icons/zela-geschwister.svg" width="56" height="56" alt=""><p><span class="sr-only">Besonderheit: </span>ab 8 Jahren<br>mit älteren Geschwistern</p></div><div class="zl-bild">{ZB[3]}</div></li>
+      <li class="zl-eintrag" data-stichwort="01.05."><span class="zl-punkt"></span><div class="zl-text"><img src="icons/zela-anmeldeschluss.svg" width="56" height="56" alt=""><p>Anmeldeschluss<br>01.05.2027</p></div><div class="zl-bild">{ZB[4]}</div></li>
     </ol>
-    </div>
-   </div>
-   <kjg-scrollhinweis></kjg-scrollhinweis>
   </div>
+  <div class="zl-gross" aria-hidden="true"></div>
 </section>
 
 <div class="z-content">

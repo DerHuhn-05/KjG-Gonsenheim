@@ -1,0 +1,45 @@
+# Prüft bei jedem Push und Pull Request automatisch:
+#  1. ob die gebauten Seiten zum Quelltext passen (sh tools/build/bauen.sh darf nichts ändern –
+#     sonst wurde eine HTML-Datei von Hand bearbeitet oder das Neubauen vergessen;
+#     der Build bricht außerdem ab, wenn eine englische Übersetzung fehlt)
+#  2. alle Seiten im Browser: JavaScript-Fehler, seitlicher Überstand, Sprungmarken/Links, Scrollytellings
+name: Prüfen
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Seiten neu bauen (bricht bei fehlender Übersetzung ab)
+        run: sh tools/build/bauen.sh
+
+      - name: Gebaute Seiten sind aktuell
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::Die gebauten Seiten passen nicht zum Quelltext. Bitte 'sh tools/build/bauen.sh' ausführen und das Ergebnis committen."
+            git status --short
+            exit 1
+          fi
+
+      - name: Playwright installieren
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Alle Seiten im Browser prüfen
+        run: npm run pruefen

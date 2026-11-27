@@ -1,0 +1,12 @@
+{
+  "name": "kjg-gonsenheim",
+  "private": true,
+  "description": "Website der KjG Mainz-Gonsenheim – nur für die automatische Prüfung (Playwright), die Seite selbst braucht kein npm",
+  "scripts": {
+    "bauen": "sh tools/build/bauen.sh",
+    "pruefen": "node tools/test/pruefen.js"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}

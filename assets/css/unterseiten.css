@@ -198,7 +198,7 @@
   .sub .feature, .sub .feature.reverse { grid-template-columns: 1fr; gap: 24px; min-height: 0; }
   .sub .feature.reverse .media { order: 2; }
   .sub .feature.reverse .text { padding-left: 0; }
-  .sub .feature .media { height: 420px; max-width: 400px; }
+  .sub .feature .media { height: 420px; width: 100%; max-width: 400px; justify-self: center; }   /* Bilder immer mittig */
   .sub .feature h2 { margin-top: 0 !important; font-size: 36px; line-height: 42px; }
   .sub .feature .body { font-size: 19px; line-height: 27px; letter-spacing: .6px; }
   .sub .feature + .feature, .sub .wer-flow > * + * { margin-top: 72px; }

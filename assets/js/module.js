@@ -50,7 +50,7 @@
   // ---- Icons ---------------------------------------------------------------------------------------------
   const ICON = {
     runter: `<img class="down" src="${BASIS}icons/pfeil-unten.svg" width="14" height="16" alt="">`,
-    klein: `<img class="pfeil" src="${BASIS}icons/pfeil-rechts-klein-weiss.svg" width="14" height="10" alt="">`,
+    klein: `<img class="pfeil" src="${BASIS}icons/pfeil-rechts-klein.svg" width="14" height="10" alt="">`,
     rechts: `<img class="right" src="${BASIS}icons/pfeil-rechts.svg" width="22" height="12" alt="">`,
     chevron: `<img class="chev" src="${BASIS}icons/chevron-unten.svg" width="22" height="13" alt="">`,
     menuChevron: `<img class="mn-chev" src="${BASIS}icons/chevron-unten-weiss.svg" width="22" height="13" alt="">`,

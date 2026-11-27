@@ -14,7 +14,7 @@ def img(page, n, where, cls="media", eager=False):
     return tag_bild(bildname(page, n, where), where, cls, eager)
 
 DOWN = '<img class="down" src="icons/pfeil-unten.svg" width="14" height="16" alt="">'
-SMALL_W = '<img class="pfeil" src="icons/pfeil-rechts-klein-weiss.svg" width="14" height="10" alt="">'
+SMALL_W = '<img class="pfeil" src="icons/pfeil-rechts-klein.svg" width="14" height="10" alt="">'
 CHEV = '<img class="chev" src="icons/chevron-unten.svg" width="22" height="13" alt="">'
 MENU = '<span class="bar1"></span><span class="bar2"></span>'   # wird per CSS zum X animiert
 

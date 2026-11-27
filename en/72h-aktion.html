@@ -10,56 +10,79 @@
   <link rel="alternate" hreflang="de" href="../72h-aktion.html">
   <link rel="alternate" hreflang="en" href="72h-aktion.html">
   <link rel="stylesheet" href="../assets/css/style.css?v=c92624d5">
-  <link rel="stylesheet" href="../assets/css/unterseiten.css?v=f52eb260">
+  <link rel="stylesheet" href="../assets/css/unterseiten.css?v=03787aab">
   <script src="../assets/js/bilder.js?v=e1756519"></script>
   <script src="../assets/js/module.js?v=0e3a81d9"></script>
   <script src="../assets/js/gemeinsam.js?v=aabc6c06" defer></script>
   <script src="../assets/js/kopfzeile.js?v=64840ee2" defer></script>
   <script src="../assets/js/einflug.js?v=8745cd83" defer></script>
   <script src="../assets/js/kennzahlen.js?v=f38e1d03" defer></script>
+  <script src="../assets/js/ablauf.js?v=d9b22e6c" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="72h-aktion.html"></kjg-header>
 
 <main>
+<div id="start" data-kapitel>
 <kjg-hero-split klasse="hero-split" bild="72h-aktion-1" bild-alt="Header image: 72-Hour Project">
 <h1>72-Hour<br>Project</h1>
 <p>Three days, one goal: together with many youth groups we take on a social project in our neighbourhood.</p>
 </kjg-hero-split>
+</div>
 
-<kjg-sprung variante="unter" klasse="jump-detail">
-  <a href="#teaser">What is it about?</a>
-  <a href="#vorbereitungen">Good to know</a>
-</kjg-sprung>
+<nav class="kapitel" aria-label="Chapters">
+ <div class="kapitel-in"><a href="#start">Start</a><a href="#teaser">What is it about?</a><a href="#vorbereitungen">Good to know</a><a href="#zahlen">In numbers</a><a href="#stimmen">Voices</a><a href="#kontakt">Contact</a></div>
+ <div class="kapitel-balken"><i></i></div>
+</nav>
 
+<section class="story">
+ <div class="story-in">
+  <div class="story-bild"><div class="story-rahmen">
+<kjg-bild name="72h-aktion-2" alt="Image: What is it about?" klasse="media story-b"></kjg-bild>
+<kjg-bild name="72h-aktion-3" alt="Image: Good to know" klasse="media story-b"></kjg-bild>
+   <span class="story-zahl" aria-hidden="true"></span>
+  </div></div>
+  <div class="story-schritte">
+<div class="story-schritt" id="teaser" data-kapitel data-bild="0">
+  <span class="story-nr">01</span>
+  <h2>What is it about?</h2>
+  <p>The 72-Hour Project is a nationwide social action run by Catholic youth associations. Within 72 hours children and young people carry out a project that benefits their neighbourhood.</p>
+</div>
+<div class="story-schritt" data-bild="0">
+  <span class="story-nr">02</span>
+  <p>Your children experience how much can be achieved together, and that helping is great fun.</p>
+</div>
+<div class="story-schritt" id="vorbereitungen" data-kapitel data-bild="1">
+  <span class="story-nr">03</span>
+  <h2>Good to know</h2>
+  <p>The children work in their familiar group with their group leaders and are provided with meals. Working hours depend on age.</p>
+</div>
+<div class="story-schritt" data-bild="1">
+  <span class="story-nr">04</span>
+  <p>If your child would like to join in, simply register them. Beforehand we will tell you about the schedule, meeting point and pick-up times.</p>
+</div>
+  </div>
+ </div>
+</section>
+
+<div id="zahlen" class="ablauf-zahlen" data-kapitel>
 <kjg-zahlen>
   <span icon="uhr" zahl="72">Hours</span>
   <span icon="gruppe" zahl="25">Volunteers</span>
   <span icon="herz" zahl="1">Project for the neighbourhood</span>
 </kjg-zahlen>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature" id="teaser" bild="72h-aktion-2" bild-alt="Image: What is it about?">
-<h2>What is it about?</h2>
-<p>The 72-Hour Project is a nationwide social action run by Catholic youth associations. Within 72 hours children and young people carry out a project that benefits their neighbourhood.</p>
-<p>Your children experience how much can be achieved together, and that helping is great fun.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="stimmen" class="ablauf-zitat" data-kapitel>
 <kjg-zitat>
 <p>“In 72 hours we achieved together what would normally take weeks. We are proud of that.”</p>
 <strong>Jan,</strong><span>Group leaders</span>
 </kjg-zitat>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature reverse" id="vorbereitungen" bild="72h-aktion-3" bild-alt="Image: Good to know">
-<h2>Good to know</h2>
-<p>The children work in their familiar group with their group leaders and are provided with meals. Working hours depend on age.</p>
-<p>If your child would like to join in, simply register them. Beforehand we will tell you about the schedule, meeting point and pick-up times.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="kontakt" class="ablauf-kontakt" data-kapitel>
 <kjg-kontakt></kjg-kontakt>
+</div>
 </main>
 
 <kjg-footer></kjg-footer>

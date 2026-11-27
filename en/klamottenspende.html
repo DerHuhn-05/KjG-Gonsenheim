@@ -10,56 +10,79 @@
   <link rel="alternate" hreflang="de" href="../klamottenspende.html">
   <link rel="alternate" hreflang="en" href="klamottenspende.html">
   <link rel="stylesheet" href="../assets/css/style.css?v=c92624d5">
-  <link rel="stylesheet" href="../assets/css/unterseiten.css?v=f52eb260">
+  <link rel="stylesheet" href="../assets/css/unterseiten.css?v=03787aab">
   <script src="../assets/js/bilder.js?v=e1756519"></script>
   <script src="../assets/js/module.js?v=0e3a81d9"></script>
   <script src="../assets/js/gemeinsam.js?v=aabc6c06" defer></script>
   <script src="../assets/js/kopfzeile.js?v=64840ee2" defer></script>
   <script src="../assets/js/einflug.js?v=8745cd83" defer></script>
   <script src="../assets/js/kennzahlen.js?v=f38e1d03" defer></script>
+  <script src="../assets/js/ablauf.js?v=d9b22e6c" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="klamottenspende.html"></kjg-header>
 
 <main>
+<div id="start" data-kapitel>
 <kjg-hero-split klasse="hero-split small" bild="klamottenspende-1" bild-alt="Header image: Clothing Donation">
 <h1>Clothing<br>Donation</h1>
 <p>Clothes that are too small for your children become help for people who need them.</p>
 </kjg-hero-split>
+</div>
 
-<kjg-sprung variante="unter" klasse="jump-detail">
-  <a href="#teaser">What is it about?</a>
-  <a href="#vorbereitungen">Good to know</a>
-</kjg-sprung>
+<nav class="kapitel" aria-label="Chapters">
+ <div class="kapitel-in"><a href="#start">Start</a><a href="#teaser">What is it about?</a><a href="#vorbereitungen">Good to know</a><a href="#zahlen">In numbers</a><a href="#stimmen">Voices</a><a href="#kontakt">Contact</a></div>
+ <div class="kapitel-balken"><i></i></div>
+</nav>
 
+<section class="story">
+ <div class="story-in">
+  <div class="story-bild"><div class="story-rahmen">
+<kjg-bild name="klamottenspende-2" alt="Image: What is it about?" klasse="media story-b"></kjg-bild>
+<kjg-bild name="klamottenspende-3" alt="Image: Good to know" klasse="media story-b"></kjg-bild>
+   <span class="story-zahl" aria-hidden="true"></span>
+  </div></div>
+  <div class="story-schritte">
+<div class="story-schritt" id="teaser" data-kapitel data-bild="0">
+  <span class="story-nr">01</span>
+  <h2>What is it about?</h2>
+  <p>We collect clean clothes in good condition and pass them on to social organisations. The children help sort the donations, pack them and find out where they end up.</p>
+</div>
+<div class="story-schritt" data-bild="0">
+  <span class="story-nr">02</span>
+  <p>Along the way they learn what sharing means and how much a community can achieve.</p>
+</div>
+<div class="story-schritt" id="vorbereitungen" data-kapitel data-bild="1">
+  <span class="story-nr">03</span>
+  <h2>Good to know</h2>
+  <p>We collect clean clothing for children and adults; please no damaged items or shoes with holes. We will announce in good time when and where you can drop off your donations.</p>
+</div>
+<div class="story-schritt" data-bild="1">
+  <span class="story-nr">04</span>
+  <p>Children who would like to help with sorting simply register with us. Of course they are always accompanied.</p>
+</div>
+  </div>
+ </div>
+</section>
+
+<div id="zahlen" class="ablauf-zahlen" data-kapitel>
 <kjg-zahlen>
   <span icon="shirt" zahl="500">Items of clothing</span>
   <span icon="kalender" zahl="4">Collections</span>
   <span icon="herz" zahl="3">Organisations</span>
 </kjg-zahlen>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature" id="teaser" bild="klamottenspende-2" bild-alt="Image: What is it about?">
-<h2>What is it about?</h2>
-<p>We collect clean clothes in good condition and pass them on to social organisations. The children help sort the donations, pack them and find out where they end up.</p>
-<p>Along the way they learn what sharing means and how much a community can achieve.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="stimmen" class="ablauf-zitat" data-kapitel>
 <kjg-zitat>
 <p>“What your children have outgrown can bring joy to others for a long time.”</p>
 <strong>Paul,</strong><span>Group leaders</span>
 </kjg-zitat>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature reverse" id="vorbereitungen" bild="klamottenspende-3" bild-alt="Image: Good to know">
-<h2>Good to know</h2>
-<p>We collect clean clothing for children and adults; please no damaged items or shoes with holes. We will announce in good time when and where you can drop off your donations.</p>
-<p>Children who would like to help with sorting simply register with us. Of course they are always accompanied.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="kontakt" class="ablauf-kontakt" data-kapitel>
 <kjg-kontakt></kjg-kontakt>
+</div>
 </main>
 
 <kjg-footer></kjg-footer>

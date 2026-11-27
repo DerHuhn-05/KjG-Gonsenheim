@@ -10,56 +10,79 @@
   <link rel="alternate" hreflang="de" href="72h-aktion.html">
   <link rel="alternate" hreflang="en" href="en/72h-aktion.html">
   <link rel="stylesheet" href="assets/css/style.css?v=c92624d5">
-  <link rel="stylesheet" href="assets/css/unterseiten.css?v=f52eb260">
+  <link rel="stylesheet" href="assets/css/unterseiten.css?v=03787aab">
   <script src="assets/js/bilder.js?v=e1756519"></script>
   <script src="assets/js/module.js?v=0e3a81d9"></script>
   <script src="assets/js/gemeinsam.js?v=aabc6c06" defer></script>
   <script src="assets/js/kopfzeile.js?v=64840ee2" defer></script>
   <script src="assets/js/einflug.js?v=8745cd83" defer></script>
   <script src="assets/js/kennzahlen.js?v=f38e1d03" defer></script>
+  <script src="assets/js/ablauf.js?v=d9b22e6c" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="72h-aktion.html"></kjg-header>
 
 <main>
+<div id="start" data-kapitel>
 <kjg-hero-split klasse="hero-split" bild="72h-aktion-1" bild-alt="Header-Bild 72h-Aktion">
 <h1>72h<br>Aktion</h1>
 <p>Drei Tage, ein Ziel: Gemeinsam mit<br> vielen Jugendgruppen packen wir ein<br> soziales Projekt in unserem Stadtteil<br> an.</p>
 </kjg-hero-split>
+</div>
 
-<kjg-sprung variante="unter" klasse="jump-detail">
-  <a href="#teaser">Worum geht’s?</a>
-  <a href="#vorbereitungen">Gut zu wissen</a>
-</kjg-sprung>
+<nav class="kapitel" aria-label="Kapitel">
+ <div class="kapitel-in"><a href="#start">Start</a><a href="#teaser">Worum geht’s?</a><a href="#vorbereitungen">Gut zu wissen</a><a href="#zahlen">In Zahlen</a><a href="#stimmen">Stimmen</a><a href="#kontakt">Kontakt</a></div>
+ <div class="kapitel-balken"><i></i></div>
+</nav>
 
+<section class="story">
+ <div class="story-in">
+  <div class="story-bild"><div class="story-rahmen">
+<kjg-bild name="72h-aktion-2" alt="Bild Worum geht’s?" klasse="media story-b"></kjg-bild>
+<kjg-bild name="72h-aktion-3" alt="Bild Gut zu wissen" klasse="media story-b"></kjg-bild>
+   <span class="story-zahl" aria-hidden="true"></span>
+  </div></div>
+  <div class="story-schritte">
+<div class="story-schritt" id="teaser" data-kapitel data-bild="0">
+  <span class="story-nr">01</span>
+  <h2>Worum geht’s?</h2>
+  <p>Die 72-Stunden-Aktion ist eine bundesweite Sozialaktion katholischer Jugendverbände. Innerhalb von 72 Stunden setzen Kinder und Jugendliche ein Projekt um, das ihrem Stadtteil guttut.</p>
+</div>
+<div class="story-schritt" data-bild="0">
+  <span class="story-nr">02</span>
+  <p>Eure Kinder erleben dabei, wie viel man gemeinsam erreichen kann – und dass Helfen richtig Spaß macht.</p>
+</div>
+<div class="story-schritt" id="vorbereitungen" data-kapitel data-bild="1">
+  <span class="story-nr">03</span>
+  <h2>Gut zu wissen</h2>
+  <p>Die Kinder arbeiten in ihrer vertrauten Gruppe, mit ihren Gruppenleiterinnen und Gruppenleitern, und werden verpflegt. Die Einsatzzeiten richten sich nach dem Alter.</p>
+</div>
+<div class="story-schritt" data-bild="1">
+  <span class="story-nr">04</span>
+  <p>Wenn euer Kind mitmachen möchte, meldet es einfach an. Vorab informieren wir euch über Ablauf, Treffpunkt und Abholzeiten.</p>
+</div>
+  </div>
+ </div>
+</section>
+
+<div id="zahlen" class="ablauf-zahlen" data-kapitel>
 <kjg-zahlen>
   <span icon="uhr" zahl="72">Stunden</span>
   <span icon="gruppe" zahl="25">Helferinnen und Helfer</span>
   <span icon="herz" zahl="1">Projekt für den Stadtteil</span>
 </kjg-zahlen>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature" id="teaser" bild="72h-aktion-2" bild-alt="Bild Worum geht’s?">
-<h2>Worum geht’s?</h2>
-<p>Die 72-Stunden-Aktion ist eine bundesweite<br> Sozialaktion katholischer Jugendverbände.<br> Innerhalb von 72 Stunden setzen Kinder und<br> Jugendliche ein Projekt um, das ihrem Stadtteil<br> guttut.</p>
-<p>Eure Kinder erleben dabei, wie viel man<br> gemeinsam erreichen kann – und dass Helfen<br> richtig Spaß macht.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="stimmen" class="ablauf-zitat" data-kapitel>
 <kjg-zitat>
 <p>„In 72 Stunden haben wir gemeinsam etwas<br> geschafft, wofür sonst Wochen nötig<br> wären. Darauf sind wir stolz.”</p>
 <strong>Jan,</strong><span>Gruppenleiter</span>
 </kjg-zitat>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature reverse" id="vorbereitungen" bild="72h-aktion-3" bild-alt="Bild Gut zu wissen">
-<h2>Gut zu wissen</h2>
-<p>Die Kinder arbeiten in ihrer vertrauten Gruppe,<br> mit ihren Gruppenleiterinnen und Gruppenleitern,<br> und werden verpflegt. Die Einsatzzeiten richten<br> sich nach dem Alter.</p>
-<p>Wenn euer Kind mitmachen möchte, meldet es<br> einfach an. Vorab informieren wir euch über<br> Ablauf, Treffpunkt und Abholzeiten.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="kontakt" class="ablauf-kontakt" data-kapitel>
 <kjg-kontakt></kjg-kontakt>
+</div>
 </main>
 
 <kjg-footer></kjg-footer>

@@ -110,6 +110,7 @@ Jede Funktion liegt in einer eigenen kleinen Datei. Welche eine Seite lädt, ste
 | `seitlich.js` | ab „Programm“: Text und Bild gleiten seitlich herein, Wörter der Zitate füllen sich beim Scrollen | Zela 2027 |
 | `karte.js` | Karten-Scrollytelling | Über uns |
 | `lagerfeuer.js` | Lagerfeuer-Scrollytelling | Team |
+| `ablauf.js` | Kapitel-Leiste mit Fortschritt, Geschichte mit stehendem Bild, Zitat füllt sich Buchstabe für Buchstabe | Detailseiten (Gruppenstunde, MoWo, Trainee, 72h, Hilfe im Stadtteil, Klamottenspende) |
 
 Einstellbare Werte (Abstände, Dauern, Anteile) stehen jeweils als benannte Konstanten oben in der Datei.
 

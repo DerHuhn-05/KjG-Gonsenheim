@@ -10,53 +10,74 @@
   <link rel="alternate" hreflang="de" href="trainee-wochenende.html">
   <link rel="alternate" hreflang="en" href="en/trainee-wochenende.html">
   <link rel="stylesheet" href="assets/css/style.css?v=c92624d5">
-  <link rel="stylesheet" href="assets/css/unterseiten.css?v=f52eb260">
+  <link rel="stylesheet" href="assets/css/unterseiten.css?v=03787aab">
   <script src="assets/js/bilder.js?v=e1756519"></script>
   <script src="assets/js/module.js?v=0e3a81d9"></script>
   <script src="assets/js/gemeinsam.js?v=aabc6c06" defer></script>
   <script src="assets/js/kopfzeile.js?v=64840ee2" defer></script>
   <script src="assets/js/einflug.js?v=8745cd83" defer></script>
   <script src="assets/js/kennzahlen.js?v=f38e1d03" defer></script>
+  <script src="assets/js/ablauf.js?v=d9b22e6c" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="trainee-wochenende.html"></kjg-header>
 
 <main>
+<div id="start" data-kapitel>
 <kjg-hero-split klasse="hero-split small" bild="trainee-wochenende-1" bild-alt="Header-Bild Trainee-Wochenende">
 <h1>Trainee-<br>Wochenende</h1>
 <p>Vom Gruppenkind zur Gruppenleiterin:<br> Beim Trainee-Wochenende wachsen<br> Jugendliche in ihre Verantwortung<br> hinein.</p>
 </kjg-hero-split>
+</div>
 
-<kjg-sprung variante="unter" klasse="jump-detail">
-  <a href="#teaser">Das Wochenende</a>
-  <a href="#vorbereitungen">Gut zu wissen</a>
-</kjg-sprung>
+<nav class="kapitel" aria-label="Kapitel">
+ <div class="kapitel-in"><a href="#start">Start</a><a href="#teaser">Das Wochenende</a><a href="#vorbereitungen">Gut zu wissen</a><a href="#zahlen">In Zahlen</a><a href="#stimmen">Stimmen</a></div>
+ <div class="kapitel-balken"><i></i></div>
+</nav>
 
+<section class="story">
+ <div class="story-in">
+  <div class="story-bild"><div class="story-rahmen">
+<kjg-bild name="trainee-wochenende-2" alt="Bild Das Wochenende" klasse="media story-b"></kjg-bild>
+<kjg-bild name="trainee-wochenende-3" alt="Bild Gut zu wissen" klasse="media story-b"></kjg-bild>
+   <span class="story-zahl" aria-hidden="true"></span>
+  </div></div>
+  <div class="story-schritte">
+<div class="story-schritt" id="teaser" data-kapitel data-bild="0">
+  <span class="story-nr">01</span>
+  <h2>Das Wochenende</h2>
+  <p>Das Trainee-Wochenende richtet sich an unsere ältesten Kinder und Jugendlichen. Sie lernen, wie man eine Gruppenstunde plant, Spiele anleitet und in schwierigen Situationen ruhig bleibt.</p>
+</div>
+<div class="story-schritt" data-bild="0">
+  <span class="story-nr">02</span>
+  <p>Erfahrene Gruppenleiterinnen und Gruppenleiter begleiten sie dabei und geben Tipps aus der Praxis.</p>
+</div>
+<div class="story-schritt" id="vorbereitungen" data-kapitel data-bild="1">
+  <span class="story-nr">03</span>
+  <h2>Gut zu wissen</h2>
+  <p>Wer das Wochenende besucht hat, kann danach als Gruppenleiterin oder Gruppenleiter in der KjG mitwirken – muss es aber nicht. Niemand wird zu etwas gedrängt.</p>
+</div>
+<div class="story-schritt" data-bild="1">
+  <span class="story-nr">04</span>
+  <p>Ein Gewinn für alle Jugendlichen: Selbstvertrauen, Teamfähigkeit und Verantwortungsgefühl helfen auch in Schule und Alltag.</p>
+</div>
+  </div>
+ </div>
+</section>
+
+<div id="zahlen" class="ablauf-zahlen" data-kapitel>
 <kjg-zahlen>
   <span icon="uhr" zahl="8">Stunden Training</span>
   <span icon="stern" zahl="12">Trainees</span>
   <span icon="gruppenleiter" zahl="4">erfahrene Begleiter</span>
 </kjg-zahlen>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature" id="teaser" bild="trainee-wochenende-2" bild-alt="Bild Das Wochenende">
-<h2>Das Wochenende</h2>
-<p>Das Trainee-Wochenende richtet sich an unsere<br> ältesten Kinder und Jugendlichen. Sie lernen,<br> wie man eine Gruppenstunde plant, Spiele<br> anleitet und in schwierigen Situationen ruhig<br> bleibt.</p>
-<p>Erfahrene Gruppenleiterinnen und Gruppenleiter<br> begleiten sie dabei und geben Tipps aus der<br> Praxis.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="stimmen" class="ablauf-zitat" data-kapitel>
 <kjg-zitat>
 <p>„Auf dem Trainee-Wochenende habe ich<br> gelernt, Verantwortung zu übernehmen –<br> und dabei viele Freunde gefunden.”</p>
 <strong>Felix,</strong><span>Gruppenleiter</span>
 </kjg-zitat>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature reverse" id="vorbereitungen" bild="trainee-wochenende-3" bild-alt="Bild Gut zu wissen">
-<h2>Gut zu wissen</h2>
-<p>Wer das Wochenende besucht hat, kann danach als<br> Gruppenleiterin oder Gruppenleiter in der KjG<br> mitwirken – muss es aber nicht. Niemand wird zu<br> etwas gedrängt.</p>
-<p>Ein Gewinn für alle Jugendlichen:<br> Selbstvertrauen, Teamfähigkeit und<br> Verantwortungsgefühl helfen auch in Schule und<br> Alltag.</p>
-</kjg-abschnitt>
 </div>
 </main>
 

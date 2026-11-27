@@ -10,56 +10,79 @@
   <link rel="alternate" hreflang="de" href="aktion.html">
   <link rel="alternate" hreflang="en" href="en/aktion.html">
   <link rel="stylesheet" href="assets/css/style.css?v=c92624d5">
-  <link rel="stylesheet" href="assets/css/unterseiten.css?v=f52eb260">
+  <link rel="stylesheet" href="assets/css/unterseiten.css?v=03787aab">
   <script src="assets/js/bilder.js?v=e1756519"></script>
   <script src="assets/js/module.js?v=0e3a81d9"></script>
   <script src="assets/js/gemeinsam.js?v=aabc6c06" defer></script>
   <script src="assets/js/kopfzeile.js?v=64840ee2" defer></script>
   <script src="assets/js/einflug.js?v=8745cd83" defer></script>
   <script src="assets/js/kennzahlen.js?v=f38e1d03" defer></script>
+  <script src="assets/js/ablauf.js?v=d9b22e6c" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="aktion.html"></kjg-header>
 
 <main>
+<div id="start" data-kapitel>
 <kjg-hero-split klasse="hero-split small" bild="aktion-1" bild-alt="Header-Bild Hilfe im Stadtteil">
 <h1>Hilfe im<br> Stadtteil</h1>
 <p>Kleine Taten, große Wirkung: Wir helfen<br> dort, wo es im Stadtteil gebraucht wird.</p>
 </kjg-hero-split>
+</div>
 
-<kjg-sprung variante="unter" klasse="jump-detail">
-  <a href="#teaser">Worum geht’s?</a>
-  <a href="#vorbereitungen">Gut zu wissen</a>
-</kjg-sprung>
+<nav class="kapitel" aria-label="Kapitel">
+ <div class="kapitel-in"><a href="#start">Start</a><a href="#teaser">Worum geht’s?</a><a href="#vorbereitungen">Gut zu wissen</a><a href="#zahlen">In Zahlen</a><a href="#stimmen">Stimmen</a><a href="#kontakt">Kontakt</a></div>
+ <div class="kapitel-balken"><i></i></div>
+</nav>
 
+<section class="story">
+ <div class="story-in">
+  <div class="story-bild"><div class="story-rahmen">
+<kjg-bild name="aktion-2" alt="Bild Worum geht’s?" klasse="media story-b"></kjg-bild>
+<kjg-bild name="aktion-3" alt="Bild Gut zu wissen" klasse="media story-b"></kjg-bild>
+   <span class="story-zahl" aria-hidden="true"></span>
+  </div></div>
+  <div class="story-schritte">
+<div class="story-schritt" id="teaser" data-kapitel data-bild="0">
+  <span class="story-nr">01</span>
+  <h2>Worum geht’s?</h2>
+  <p>Ob Nachbarschaftshilfe, eine Aufräumaktion im Park oder Unterstützung bei Gemeindefesten: Wir suchen uns gemeinsam mit den Kindern Aufgaben, bei denen Hilfe gebraucht wird.</p>
+</div>
+<div class="story-schritt" data-bild="0">
+  <span class="story-nr">02</span>
+  <p>So erleben die Kinder, dass sie selbst etwas bewirken können – und dass Zusammenhalt im Viertel etwas Schönes ist.</p>
+</div>
+<div class="story-schritt" id="vorbereitungen" data-kapitel data-bild="1">
+  <span class="story-nr">03</span>
+  <h2>Gut zu wissen</h2>
+  <p>Die Einsätze finden in der Gruppe statt und sind altersgerecht. Gruppenleiterinnen und Gruppenleiter begleiten die Kinder von Anfang bis Ende.</p>
+</div>
+<div class="story-schritt" data-bild="1">
+  <span class="story-nr">04</span>
+  <p>Termine und Treffpunkte teilen wir euch rechtzeitig mit. Bei Fragen schreibt uns einfach eine E-Mail.</p>
+</div>
+  </div>
+ </div>
+</section>
+
+<div id="zahlen" class="ablauf-zahlen" data-kapitel>
 <kjg-zahlen>
   <span icon="herz" zahl="6">Einsätze im Jahr</span>
   <span icon="gruppe" zahl="30">Kinder im Einsatz</span>
   <span icon="uhr" zahl="100">Stunden Hilfe</span>
 </kjg-zahlen>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature" id="teaser" bild="aktion-2" bild-alt="Bild Worum geht’s?">
-<h2>Worum geht’s?</h2>
-<p>Ob Nachbarschaftshilfe, eine Aufräumaktion im<br> Park oder Unterstützung bei Gemeindefesten: Wir<br> suchen uns gemeinsam mit den Kindern Aufgaben,<br> bei denen Hilfe gebraucht wird.</p>
-<p>So erleben die Kinder, dass sie selbst etwas<br> bewirken können – und dass Zusammenhalt im<br> Viertel etwas Schönes ist.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="stimmen" class="ablauf-zitat" data-kapitel>
 <kjg-zitat>
 <p>„Manchmal reicht eine helfende Hand,<br> damit sich im Stadtteil etwas zum Guten<br> ändert.”</p>
 <strong>Nina,</strong><span>Gruppenleiterin</span>
 </kjg-zitat>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature reverse" id="vorbereitungen" bild="aktion-3" bild-alt="Bild Gut zu wissen">
-<h2>Gut zu wissen</h2>
-<p>Die Einsätze finden in der Gruppe statt und sind<br> altersgerecht. Gruppenleiterinnen und<br> Gruppenleiter begleiten die Kinder von Anfang<br> bis Ende.</p>
-<p>Termine und Treffpunkte teilen wir euch<br> rechtzeitig mit. Bei Fragen schreibt uns einfach<br> eine E-Mail.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="kontakt" class="ablauf-kontakt" data-kapitel>
 <kjg-kontakt></kjg-kontakt>
+</div>
 </main>
 
 <kjg-footer></kjg-footer>

@@ -72,7 +72,6 @@
 .sub .events-list > .tile { margin-bottom: 40px; }   /* Zela-Kachel auf „Angebote“ */   /* + 40 px Kachelabstand = 100 px bis Footer */
 
 /* ---------- Inhaltsblöcke (Bild + Text) ---------- */
-.sub .features { padding-bottom: 140px; }
 .sub .feature { position: relative; display: grid; grid-template-columns: 630px 400px; height: 533px; }
 .sub .feature + .feature { margin-top: 180px; }
 .sub .feature.reverse { grid-template-columns: 400px 630px; }
@@ -171,7 +170,6 @@
   .sub .feature h2 { margin-top: 0 !important; font-size: 36px; line-height: 42px; }
   .sub .feature .body { font-size: 19px; line-height: 27px; letter-spacing: .6px; }
   .sub .feature + .feature, .sub .wer-flow > * + * { margin-top: 72px; }
-  .sub .features { padding-bottom: 80px; }
   .sub .faq { padding: 64px 0 72px; }
   .sub .faq h2 { font-size: 30px; line-height: 36px; margin-bottom: 28px; }
   .sub .faq-item summary { height: auto; padding: 22px 50px 22px 0; font-size: 20px; line-height: 29px; }
@@ -312,15 +310,10 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .z-quote.ohne-bild blockquote p { white-space: normal; text-wrap: balance; text-align: left; }
 .sub .z-quote.ohne-bild blockquote br { display: none; }
 .sub .z-quote.ohne-bild blockquote strong, .sub .z-quote.ohne-bild blockquote span { display: inline; }
-.sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 100px; }
-.sub .events-list + .z-quote.ohne-bild { margin-bottom: 100px; }
-.sub .z-quote.ohne-bild + .kontakt-band { margin-top: 56px; }
 @media (max-width: 960px) {
   .sub .z-quote.ohne-bild { margin-top: 56px; }
   .sub .z-quote.ohne-bild .z-quote-inner { padding: 36px 0; }
   .sub .z-quote.ohne-bild blockquote p { font-size: 22px; line-height: 32px; }
-  .sub .z-quote.ohne-bild:has(+ .features), .sub .events-list + .z-quote.ohne-bild { margin-bottom: 56px; }
-  .sub .z-quote.ohne-bild + .kontakt-band { margin-top: 40px; }
 }
 
 /* Seitenkopf geteilt, gespiegelt (FAQ): Überschrift links auf Petrol, Bild rechts */
@@ -330,14 +323,6 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
   .sub .hero-split.reverse .content { order: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 0 0 14.2vw; }
 }
 
-/* Abstände rund um Zitat und Kontaktband: kompakter */
-.sub .features:has(+ .z-quote.ohne-bild), .sub .features:has(+ .kontakt-band) { padding-bottom: 0; }
-.sub .features + .z-quote.ohne-bild, .sub .features + .kontakt-band { margin-top: 72px; }
-.sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 72px; }
-@media (max-width: 960px) {
-  .sub .features + .z-quote.ohne-bild, .sub .features + .kontakt-band { margin-top: 40px; }
-  .sub .z-quote.ohne-bild:has(+ .features) { margin-bottom: 40px; }
-}
 
 /* Reiner Textabschnitt (kjg-abschnitt ohne Bild): z. B. auf „Über uns“ ergänzbar */
 .sub .feature.text-only { display: block; height: auto; }
@@ -351,3 +336,61 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .karte-titel h2 { font: 800 49px/49px var(--i); letter-spacing: -.5px; }
 .sub .wer-flow .karte-titel + .karte-sektion { margin-top: 40px; }
 @media (max-width: 960px) { .sub .karte-titel h2 { font-size: 36px; line-height: 42px; } .sub .wer-flow .karte-titel + .karte-sektion { margin-top: 28px; } }
+
+/* =====================================================================
+   Detailseiten (Angebote, soziale Aktionen): Scrollytelling – Steuerung assets/js/ablauf.js
+   Kapitel-Leiste unter der Kopfzeile · Geschichte mit stehendem Bild · Zahlen · Zitat (füllt sich Buchstabe für Buchstabe) · Kontakt
+   ===================================================================== */
+html:has(.kapitel) { scroll-padding-top: 168px; }
+.sub .kapitel { position: sticky; top: 100px; z-index: 30; background: rgba(255,255,255,.94); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border-bottom: 1px solid #d9d9d9; }
+.sub .kapitel-in { width: 1240px; max-width: 100%; margin-inline: auto; padding: 8px 24px; box-sizing: border-box; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.sub .kapitel-in::-webkit-scrollbar { display: none; }
+.sub .kapitel a { flex: none; display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 999px; color: #000; font: 400 15px/1 var(--i); white-space: nowrap; transition: background .25s, color .25s; }
+.sub .kapitel a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sub .kapitel a[aria-current] { background: var(--teal); color: var(--white); font-weight: 700; }
+.sub .kapitel-balken { height: 3px; background: #e6f0f0; }
+.sub .kapitel-balken i { display: block; width: 0; height: 100%; background: var(--accent); }
+
+.sub .story { padding: 96px 0; }
+.sub .story-in { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 64px; }
+.sub .story-bild { flex: 1 1 0; min-width: 0; position: sticky; top: 196px; }
+.sub .story-rahmen { position: relative; aspect-ratio: 4 / 5; max-height: calc(100vh - 240px); overflow: hidden; background: var(--placeholder); }
+.sub .story-rahmen .story-b { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .6s ease; }
+.sub .story-rahmen .story-b:first-child, .sub .story.aktiv .story-rahmen .story-b.an { opacity: 1; }
+.sub .story.aktiv .story-rahmen .story-b:first-child:not(.an) { opacity: 0; }
+.sub .story-zahl { position: absolute; left: 16px; bottom: 16px; z-index: 2; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.9); color: var(--teal); font: 700 14px/1 var(--i); }
+.sub .story-zahl:empty { display: none; }
+.sub .story-schritte { flex: 1 1 0; min-width: 0; }
+.sub .story-schritt { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; gap: 14px; transition: opacity .45s ease; }
+.sub .story.aktiv .story-schritt:not(.an) { opacity: .28; }
+.sub .story-nr { color: var(--teal); font: 700 14px/1 var(--i); letter-spacing: .08em; }
+.sub .story-schritt h2 { font: 800 44px/1.1 var(--i); }
+.sub .story-schritt p { max-width: 34em; color: #000; font: 400 21px/32px var(--i); }
+
+.sub .ablauf-zitat .z-quote.ohne-bild { margin: 80px 0 0; }
+.sub .ablauf-zitat .z-quote.ohne-bild .z-quote-inner { padding: 110px 0; }
+.sub .ablauf-zitat .z-quote.ohne-bild blockquote p { font: italic 800 clamp(26px, 3.4vw, 44px)/1.22 var(--f); max-width: 920px; }
+.sub .ablauf-zitat blockquote p span { display: inline; margin: 0; font: inherit; }   /* nicht wie die Rollen-Zeile (span) im Zitat */
+.sub .ablauf-zitat blockquote p .zitat-wort { white-space: nowrap; }
+.sub .zitat-b { transition: opacity .12s linear; }
+.sub main > .ablauf-zitat:last-child { margin-bottom: 100px; }
+.sub .ablauf-kontakt .kontakt-band { margin-top: 80px; }
+
+@media (max-width: 1272px) { .sub .kapitel { top: 72px; } html:has(.kapitel) { scroll-padding-top: 136px; } .sub .story-bild { top: 160px; } }
+@media (max-width: 960px) {
+  .sub .kapitel-in { padding: 6px 12px; }
+  .sub .kapitel a { min-height: 38px; padding: 0 14px; font-size: 14px; }
+  .sub .story { padding: 40px 0 56px; }
+  .sub .story-in { flex-direction: column; gap: 0; }
+  .sub .story-bild { position: sticky; top: 125px; z-index: 2; width: 100%; flex: none; background: var(--white); padding-bottom: 12px; }
+  .sub .story-rahmen { aspect-ratio: 16 / 10; max-height: 34vh; width: 100%; }
+  .sub .story-schritt { min-height: 46vh; gap: 10px; }
+  .sub .story-schritt h2 { font-size: 30px; line-height: 36px; }
+  .sub .story-schritt p { font-size: 18px; line-height: 28px; }
+  .sub .ablauf-zitat .z-quote.ohne-bild { margin-top: 48px; }
+  .sub .ablauf-zitat .z-quote.ohne-bild .z-quote-inner { padding: 64px 0; }
+  .sub .ablauf-zitat .z-quote.ohne-bild blockquote p { font-size: 24px; line-height: 32px; }
+  .sub main > .ablauf-zitat:last-child { margin-bottom: 56px; }
+  .sub .ablauf-kontakt .kontakt-band { margin-top: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { .sub .story-schritt, .sub .story-rahmen .story-b, .sub .kapitel a, .sub .zitat-b { transition: none; } }

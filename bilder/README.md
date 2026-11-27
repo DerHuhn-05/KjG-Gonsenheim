@@ -53,49 +53,49 @@ Die Kacheln und Karten (Zela, Team, Angebote, Soziale Aktionen) zeigen automatis
 
 | Datei | Wo auf der Seite |
 |---|---|
+| `mowo-1.jpg` | Header-Bild MoWo – Monsterwochenende |
 | `mowo-2.jpg` | Bild Worum geht’s? |
 | `mowo-3.jpg` | Bild Gut zu wissen |
-| `mowo-1.jpg` | Header-Bild MoWo – Monsterwochenende |
 
 ### 72h-Aktion (72h-aktion.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
+| `72h-aktion-1.jpg` | Header-Bild 72h-Aktion |
 | `72h-aktion-2.jpg` | Bild Worum geht’s? |
 | `72h-aktion-3.jpg` | Bild Gut zu wissen |
-| `72h-aktion-1.jpg` | Header-Bild 72h-Aktion |
 
 ### Hilfe im Stadtteil (aktion.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
+| `aktion-1.jpg` | Header-Bild Hilfe im Stadtteil |
 | `aktion-2.jpg` | Bild Worum geht’s? |
 | `aktion-3.jpg` | Bild Gut zu wissen |
-| `aktion-1.jpg` | Header-Bild Hilfe im Stadtteil |
 
 ### Klamottenspende (klamottenspende.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
+| `klamottenspende-1.jpg` | Header-Bild Klamottenspende |
 | `klamottenspende-2.jpg` | Bild Worum geht’s? |
 | `klamottenspende-3.jpg` | Bild Gut zu wissen |
-| `klamottenspende-1.jpg` | Header-Bild Klamottenspende |
 
 ### Gruppenstunde (gruppenstunde.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
+| `gruppenstunde-1.jpg` | Header-Bild Gruppenstunde |
 | `gruppenstunde-2.jpg` | Bild Was wird gemacht |
 | `gruppenstunde-3.jpg` | Bild Gut zu wissen |
-| `gruppenstunde-1.jpg` | Header-Bild Gruppenstunde |
 
 ### Trainee-Wochenende (trainee-wochenende.html)
 
 | Datei | Wo auf der Seite |
 |---|---|
+| `trainee-wochenende-1.jpg` | Header-Bild Trainee-Wochenende |
 | `trainee-wochenende-2.jpg` | Bild Das Wochenende |
 | `trainee-wochenende-3.jpg` | Bild Gut zu wissen |
-| `trainee-wochenende-1.jpg` | Header-Bild Trainee-Wochenende |
 
 ### Über uns (ueber-uns.html)
 

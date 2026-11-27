@@ -10,56 +10,79 @@
   <link rel="alternate" hreflang="de" href="klamottenspende.html">
   <link rel="alternate" hreflang="en" href="en/klamottenspende.html">
   <link rel="stylesheet" href="assets/css/style.css?v=c92624d5">
-  <link rel="stylesheet" href="assets/css/unterseiten.css?v=f52eb260">
+  <link rel="stylesheet" href="assets/css/unterseiten.css?v=03787aab">
   <script src="assets/js/bilder.js?v=e1756519"></script>
   <script src="assets/js/module.js?v=0e3a81d9"></script>
   <script src="assets/js/gemeinsam.js?v=aabc6c06" defer></script>
   <script src="assets/js/kopfzeile.js?v=64840ee2" defer></script>
   <script src="assets/js/einflug.js?v=8745cd83" defer></script>
   <script src="assets/js/kennzahlen.js?v=f38e1d03" defer></script>
+  <script src="assets/js/ablauf.js?v=d9b22e6c" defer></script>
 </head>
 <body class="sub nav-alt">
 <kjg-header seite="klamottenspende.html"></kjg-header>
 
 <main>
+<div id="start" data-kapitel>
 <kjg-hero-split klasse="hero-split small" bild="klamottenspende-1" bild-alt="Header-Bild Klamottenspende">
 <h1>Klamotten-<br>spende</h1>
 <p>Aus Kleidung, die bei euch zu klein<br> geworden ist, wird Hilfe für Menschen,<br> die sie brauchen.</p>
 </kjg-hero-split>
+</div>
 
-<kjg-sprung variante="unter" klasse="jump-detail">
-  <a href="#teaser">Worum geht’s?</a>
-  <a href="#vorbereitungen">Gut zu wissen</a>
-</kjg-sprung>
+<nav class="kapitel" aria-label="Kapitel">
+ <div class="kapitel-in"><a href="#start">Start</a><a href="#teaser">Worum geht’s?</a><a href="#vorbereitungen">Gut zu wissen</a><a href="#zahlen">In Zahlen</a><a href="#stimmen">Stimmen</a><a href="#kontakt">Kontakt</a></div>
+ <div class="kapitel-balken"><i></i></div>
+</nav>
 
+<section class="story">
+ <div class="story-in">
+  <div class="story-bild"><div class="story-rahmen">
+<kjg-bild name="klamottenspende-2" alt="Bild Worum geht’s?" klasse="media story-b"></kjg-bild>
+<kjg-bild name="klamottenspende-3" alt="Bild Gut zu wissen" klasse="media story-b"></kjg-bild>
+   <span class="story-zahl" aria-hidden="true"></span>
+  </div></div>
+  <div class="story-schritte">
+<div class="story-schritt" id="teaser" data-kapitel data-bild="0">
+  <span class="story-nr">01</span>
+  <h2>Worum geht’s?</h2>
+  <p>Wir sammeln saubere, gut erhaltene Kleidung und geben sie an soziale Einrichtungen weiter. Die Kinder sortieren die Spenden mit, packen sie ein und erfahren, wo sie am Ende ankommen.</p>
+</div>
+<div class="story-schritt" data-bild="0">
+  <span class="story-nr">02</span>
+  <p>Ganz nebenbei lernen sie, was Teilen bedeutet und wie viel eine Gemeinschaft bewegen kann.</p>
+</div>
+<div class="story-schritt" id="vorbereitungen" data-kapitel data-bild="1">
+  <span class="story-nr">03</span>
+  <h2>Gut zu wissen</h2>
+  <p>Gesammelt wird saubere Kleidung für Kinder und Erwachsene, bitte keine beschädigten Stücke und keine Schuhe mit Löchern. Wann und wo ihr die Spenden abgeben könnt, geben wir rechtzeitig bekannt.</p>
+</div>
+<div class="story-schritt" data-bild="1">
+  <span class="story-nr">04</span>
+  <p>Kinder, die beim Sortieren helfen möchten, melden sich einfach bei uns an. Natürlich sind sie dabei immer in Begleitung.</p>
+</div>
+  </div>
+ </div>
+</section>
+
+<div id="zahlen" class="ablauf-zahlen" data-kapitel>
 <kjg-zahlen>
   <span icon="shirt" zahl="500">Kleidungsstücke</span>
   <span icon="kalender" zahl="4">Sammelaktionen</span>
   <span icon="herz" zahl="3">Einrichtungen</span>
 </kjg-zahlen>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature" id="teaser" bild="klamottenspende-2" bild-alt="Bild Worum geht’s?">
-<h2>Worum geht’s?</h2>
-<p>Wir sammeln saubere, gut erhaltene Kleidung und<br> geben sie an soziale Einrichtungen weiter. Die<br> Kinder sortieren die Spenden mit, packen sie ein<br> und erfahren, wo sie am Ende ankommen.</p>
-<p>Ganz nebenbei lernen sie, was Teilen bedeutet<br> und wie viel eine Gemeinschaft bewegen kann.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="stimmen" class="ablauf-zitat" data-kapitel>
 <kjg-zitat>
 <p>„Was bei euch zu klein geworden ist,<br> kann bei anderen noch lange Freude<br> machen.”</p>
 <strong>Paul,</strong><span>Gruppenleiter</span>
 </kjg-zitat>
-
-<div class="container features">
-<kjg-abschnitt klasse="feature reverse" id="vorbereitungen" bild="klamottenspende-3" bild-alt="Bild Gut zu wissen">
-<h2>Gut zu wissen</h2>
-<p>Gesammelt wird saubere Kleidung für Kinder und<br> Erwachsene, bitte keine beschädigten Stücke und<br> keine Schuhe mit Löchern. Wann und wo ihr die<br> Spenden abgeben könnt, geben wir rechtzeitig<br> bekannt.</p>
-<p>Kinder, die beim Sortieren helfen möchten,<br> melden sich einfach bei uns an. Natürlich sind<br> sie dabei immer in Begleitung.</p>
-</kjg-abschnitt>
 </div>
 
+<div id="kontakt" class="ablauf-kontakt" data-kapitel>
 <kjg-kontakt></kjg-kontakt>
+</div>
 </main>
 
 <kjg-footer></kjg-footer>

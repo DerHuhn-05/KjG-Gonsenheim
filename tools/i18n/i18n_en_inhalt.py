@@ -130,6 +130,7 @@ EN_INHALT = {
 "Kinder im Einsatz": "Children helping",
 "Kinder, die beim Sortieren helfen möchten, melden sich einfach bei uns an. Natürlich sind sie dabei immer in Begleitung.": "Children who would like to help with sorting simply register with us. Of course they are always accompanied.",
 "Kinderschutz": "Child protection",
+"KjG Gonsenheim:": "KjG Gonsenheim:",
 "KjG seit": "KjG since",
 "KjG-Dachverband": "KjG Federation",
 "Klamotten-": "Clothing",

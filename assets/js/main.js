@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const p = klemmen((y - mass.start) / (mass.zoomEnde - mass.start));
       const q = klemmen((y - mass.zoomEnde) / mass.linieL);
       const r = klemmen((y - mass.zoomEnde - mass.linieL) / mass.kastenL);
-      if (kHinweis) kHinweis.style.opacity = (1 - klemmen((r - 0.2) / 0.4)).toFixed(2);   // „Weiter scrollen“ verschwindet, sobald die Kachel ausfährt
+      if (kHinweis) kHinweis.style.opacity = 1;                                             // „Weiter scrollen“ bleibt bis zum Ende des Scrollytellings stehen
       const schluessel = p.toFixed(4) + q.toFixed(4) + r.toFixed(4);
       if (schluessel === letztes) return;
       letztes = schluessel;

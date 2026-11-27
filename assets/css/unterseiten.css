@@ -399,3 +399,8 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .feature.text-only .body { width: auto; max-width: 760px; white-space: normal; font: 400 22px/32px var(--i); letter-spacing: 0; }
 .sub .feature.text-only .body br { display: none; }
 @media (max-width: 960px) { .sub .feature.text-only .body { font-size: 18px; line-height: 28px; } }
+
+/* Titel „Wo Sie uns finden“ vor dem Karten-Scrollytelling (Über uns) */
+.sub .karte-titel h2 { font: 800 49px/49px var(--i); letter-spacing: -.5px; }
+.sub .wer-flow .karte-titel + .karte-sektion { margin-top: 40px; }
+@media (max-width: 960px) { .sub .karte-titel h2 { font-size: 36px; line-height: 42px; } .sub .wer-flow .karte-titel + .karte-sektion { margin-top: 28px; } }

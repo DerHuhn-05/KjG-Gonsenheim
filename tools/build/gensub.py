@@ -182,7 +182,7 @@ KARTE = f'''<section class="karte-sektion" id="karte" aria-labelledby="karte-h">
     </svg>
     <svg class="karte-linie" aria-hidden="true" focusable="false"><path class="karte-linie-halo" d=""/><path class="karte-linie-pfad" d=""/><circle class="karte-linie-halo-punkt" r="9" cx="0" cy="0"/><circle class="karte-linie-punkt" r="5.5" cx="0" cy="0"/></svg>
     <div class="karte-label">
-      <h2 id="karte-h">{KARTE_TITEL}</h2>
+      <h2 id="karte-h">{KARTE_LABEL}</h2>
       <p>{KARTE_ADRESSE[0]}<br>{KARTE_ADRESSE[1]}</p>
       <a class="karte-btn" href="{MAPS_URL}" target="_blank" rel="noopener">{MAPS_BTN}<span class="sr-only"> {MAPS_NEU}</span></a>
     </div>
@@ -205,6 +205,8 @@ page("ueber-uns.html", "Über uns", "", f'''{simple_hero("ueber-uns", "Über uns
 <div class="container">
 {text_abschnitt(WER_C[0], absaetze(WER_C[1]), id_="werte")}
 </div>
+
+<section class="karte-titel"><div class="container"><h2>{KARTE_TITEL}</h2></div></section>
 
 {KARTE}
 

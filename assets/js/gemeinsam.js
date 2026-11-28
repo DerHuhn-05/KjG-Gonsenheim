@@ -9,6 +9,7 @@ window.KJG = (function () {
   const KOPF_BREAKPOINT = 1273;   // ab dieser Fensterbreite ist die Kopfzeile groß …
   const KOPF_GROSS = 100;         // … und so hoch (px)
   const KOPF_KLEIN = 72;          // darunter (Tablet, Handy)
+  const HANDY_BIS = 760;          // px – bis zu dieser Breite gilt ein Bildschirm als Handy
 
   const ruhig = window.matchMedia("(prefers-reduced-motion: reduce)").matches;   // „Bewegung reduzieren“ im Betriebssystem
   const en = document.documentElement.lang === "en";
@@ -16,6 +17,7 @@ window.KJG = (function () {
 
   const T = (deutsch, englisch) => (en ? englisch : deutsch);
   const klemmen = (wert, min = 0, max = 1) => Math.min(max, Math.max(min, wert));
+  const handy = () => window.innerWidth <= HANDY_BIS;
   const kopfHoehe = () => (window.innerWidth >= KOPF_BREAKPOINT ? KOPF_GROSS : KOPF_KLEIN);
 
   // Alle scrollgesteuerten Teile teilen sich eine Schleife und laufen höchstens einmal pro Bildschirm-Frame
@@ -46,5 +48,5 @@ window.KJG = (function () {
     else document.addEventListener("DOMContentLoaded", start);
   };
 
-  return { ruhig, en, basis, T, klemmen, kopfHoehe, beimScrollen, beiBreitenAenderung, beiBereit };
+  return { ruhig, en, basis, T, klemmen, handy, kopfHoehe, beimScrollen, beiBreitenAenderung, beiBereit };
 })();

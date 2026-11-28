@@ -4,8 +4,9 @@
    - ein großes, blasses Stichwort unten rechts zeigt immer die aktuelle Station */
 KJG.beiBereit(() => {
   "use strict";
-  const LINIE_BIS = 0.6;      // die Linie ist bis 60 % der Fensterhöhe gefüllt
-  const AKTIV_BIS = 0.65;     // eine Station gilt als erreicht, wenn ihre Mitte über 65 % der Fensterhöhe liegt
+  const LINIE_BIS = 0.6;      // Desktop: die Linie ist bis 60 % der Fensterhöhe gefüllt
+  const AKTIV_BIS = 0.65;     // Desktop: eine Station gilt als erreicht, wenn ihre Mitte über 65 % der Fensterhöhe liegt
+  const HANDY_LINIE_BIS = 0.8, HANDY_OBERKANTE_BIS = 0.82;   // Handy: Linie bis 80 %; Station erreicht, sobald ihre Oberkante über 82 % liegt
 
   const leiste = document.querySelector(".zeitleiste");
   if (!leiste) return;
@@ -18,15 +19,17 @@ KJG.beiBereit(() => {
   KJG.beimScrollen(() => {
     const vh = window.innerHeight;
     const rahmen = liste.getBoundingClientRect();
-    const fortschritt = KJG.klemmen((vh * LINIE_BIS - rahmen.top) / rahmen.height);
+    const handy = KJG.handy();
+    const linie = vh * (handy ? HANDY_LINIE_BIS : LINIE_BIS);
+    const fortschritt = KJG.klemmen((linie - rahmen.top) / rahmen.height);
     let aktuell = -1;
     stationen.forEach((station, i) => {
       const r = station.getBoundingClientRect();
-      const erreicht = r.top + r.height / 2 < vh * AKTIV_BIS;
+      const erreicht = handy ? r.top < vh * HANDY_OBERKANTE_BIS : r.top + r.height / 2 < vh * AKTIV_BIS;
       station.classList.toggle("an", erreicht);
       if (erreicht) aktuell = i;
     });
-    const zeigen = aktuell >= 0 && rahmen.bottom > vh * LINIE_BIS;
+    const zeigen = aktuell >= 0 && rahmen.bottom > linie;
     const stand = `${fortschritt.toFixed(3)}|${aktuell}|${zeigen}`;
     if (stand === zuletzt) return;   // nur schreiben, wenn sich etwas geändert hat
     zuletzt = stand;

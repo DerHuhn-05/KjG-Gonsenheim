@@ -12,9 +12,11 @@ KJG.beiBereit(() => {
   const HANDY_BIS = 960;
   const START = 1.0;        // Bewegung beginnt, wenn die Oberkante am unteren Fensterrand ist …
   const ENDE = 0.5;         // … und ist fertig, wenn sie die Fenstermitte erreicht
+  const HANDY_ENDE = 0.78;  // Handy: schon fertig, wenn die Oberkante bei 78 % ist
   const TEXT_ANTEIL = 0.6;  // der Text gleitet etwas kürzer als das Bild
   const WORT_BLASS = 0.18;  // Deckkraft eines noch nicht gelesenen Wortes
   const ZITAT_START = 0.85, ZITAT_ENDE = 0.35;   // Wörter füllen sich, während das Zitat von 85 % bis 35 % der Fensterhöhe wandert
+  const HANDY_ZITAT_START = 0.95, HANDY_ZITAT_ENDE = 0.55;
 
   const auslaufen = (t) => 1 - Math.pow(1 - t, 3);   // schnell los, weich ankommen
 
@@ -67,19 +69,21 @@ KJG.beiBereit(() => {
   KJG.beimScrollen(() => {
     const vh = window.innerHeight;
     const versatz = window.innerWidth <= HANDY_BIS ? VERSATZ_HANDY : VERSATZ_DESKTOP;
+    const handy = KJG.handy(), ende = handy ? HANDY_ENDE : ENDE;
+    const zStart = handy ? HANDY_ZITAT_START : ZITAT_START, zEnde = handy ? HANDY_ZITAT_ENDE : ZITAT_ENDE;
     abschnitte.forEach(({ el, bild, text, richtung }) => {
       const rahmen = el.getBoundingClientRect();
       if (rahmen.top > vh * 1.2 || rahmen.bottom < -vh * 0.2) return;   // weit weg: nichts tun
-      const e = auslaufen(fortschritt(rahmen, vh, START, ENDE));
+      const e = auslaufen(fortschritt(rahmen, vh, START, ende));
       schieben(bild, richtung * versatz * (1 - e), e);
       text.forEach((t) => schieben(t, -richtung * versatz * TEXT_ANTEIL * (1 - e), e));
     });
     zitate.forEach(({ el, bild, woerter, richtung }) => {
       const rahmen = el.getBoundingClientRect();
       if (rahmen.top > vh * 1.2 || rahmen.bottom < -vh * 0.2) return;
-      const e = auslaufen(fortschritt(rahmen, vh, START, ENDE));
+      const e = auslaufen(fortschritt(rahmen, vh, START, ende));
       schieben(bild, richtung * versatz * (1 - e), e);
-      const lesen = fortschritt(rahmen, vh, ZITAT_START, ZITAT_ENDE) * woerter.length;   // so viele Wörter sind „gelesen“
+      const lesen = fortschritt(rahmen, vh, zStart, zEnde) * woerter.length;   // so viele Wörter sind „gelesen“
       woerter.forEach((wort, i) => {
         const d = WORT_BLASS + (1 - WORT_BLASS) * KJG.klemmen(lesen - i);
         wort.style.opacity = d >= 1 ? "" : d.toFixed(3);

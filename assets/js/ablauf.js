@@ -8,6 +8,7 @@ KJG.beiBereit(() => {
   const SCHRITT_LINIE = 0.6;    // ein Schritt ist aktiv, sobald seine Oberkante über 60 % der Fensterhöhe liegt
   const BUCHSTABE_BLASS = 0.2;  // Deckkraft eines noch nicht „gelesenen“ Buchstabens
   const ZITAT_START = 0.85, ZITAT_ENDE = 0.3;   // die Buchstaben füllen sich, während das Zitat von 85 % bis 30 % wandert
+  const HANDY_SCHRITT_LINIE = 0.8, HANDY_ZITAT_START = 0.95, HANDY_ZITAT_ENDE = 0.5;
 
   const leiste = document.querySelector(".kapitel");
   if (!leiste) return;
@@ -70,7 +71,7 @@ KJG.beiBereit(() => {
     }
 
     if (schritte.length) {
-      const s = letzterUeber(schritte, vh * SCHRITT_LINIE);
+      const s = letzterUeber(schritte, vh * (KJG.handy() ? HANDY_SCHRITT_LINIE : SCHRITT_LINIE));
       if (s !== schrittZuletzt) {
         schrittZuletzt = s;
         schritte.forEach((el, i) => el.classList.toggle("an", i === s));
@@ -82,7 +83,8 @@ KJG.beiBereit(() => {
 
     if (buchstaben.length) {
       const r = zitat.getBoundingClientRect();
-      const gelesen = KJG.klemmen((vh * ZITAT_START - r.top) / (vh * (ZITAT_START - ZITAT_ENDE))) * buchstaben.length;
+      const [zs, ze] = KJG.handy() ? [HANDY_ZITAT_START, HANDY_ZITAT_ENDE] : [ZITAT_START, ZITAT_ENDE];
+      const gelesen = KJG.klemmen((vh * zs - r.top) / (vh * (zs - ze))) * buchstaben.length;
       buchstaben.forEach((b, i) => {
         const d = BUCHSTABE_BLASS + (1 - BUCHSTABE_BLASS) * KJG.klemmen(gelesen - i);
         b.style.opacity = d >= 1 ? "" : d.toFixed(3);

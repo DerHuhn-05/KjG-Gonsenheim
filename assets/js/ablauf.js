@@ -5,8 +5,9 @@ KJG.beiBereit(() => {
   "use strict";
   const SCHRITT_LINIE = 0.6, HANDY_SCHRITT_LINIE = 0.8;   // ein Absatz ist aktiv, sobald seine Oberkante über dieser Höhe liegt (Anteil des Fensters)
   const BUCHSTABE_BLASS = 0.2;                            // Deckkraft eines noch nicht „gelesenen“ Buchstabens
-  const ZITAT_START = 0.85, ZITAT_ENDE = 0.3;             // die Buchstaben füllen sich, während das Zitat von 85 % bis 30 % wandert
-  const HANDY_ZITAT_START = 0.95, HANDY_ZITAT_ENDE = 0.5;
+  // das erste Wort ist von Anfang an gefüllt; der Rest füllt sich erst, wenn das Zitat kurz vor der Bildschirmmitte ist
+  const ZITAT_START = 0.6, ZITAT_ENDE = 0.25;             // Oberkante des Zitats wandert von 60 % auf 25 % der Fensterhöhe
+  const HANDY_ZITAT_START = 0.62, HANDY_ZITAT_ENDE = 0.28;
 
   const abschnitte = [...document.querySelectorAll(".story")].map((story) => {
     story.classList.add("aktiv");
@@ -15,6 +16,7 @@ KJG.beiBereit(() => {
 
   // Zitat in Buchstaben zerlegen. Vorleseprogramme bekommen den Text am Stück, die Buchstaben-Spans sind für sie verborgen.
   const buchstaben = [];
+  let erstesWort = 0;   // so viele Buchstaben hat das erste Wort – sie sind immer voll
   const zitat = document.querySelector(".ablauf-zitat blockquote p");
   if (zitat && !KJG.ruhig) {
     const text = zitat.textContent.replace(/\s+/g, " ").trim();
@@ -32,6 +34,7 @@ KJG.beiBereit(() => {
         b.className = "zitat-b";
         b.textContent = zeichen;
         buchstaben.push(b);
+        if (i === 0) erstesWort++;
         wortSpan.append(b);
       }
       sichtbar.append(wortSpan);
@@ -59,7 +62,7 @@ KJG.beiBereit(() => {
     if (buchstaben.length) {
       const [start, ende] = handy ? [HANDY_ZITAT_START, HANDY_ZITAT_ENDE] : [ZITAT_START, ZITAT_ENDE];
       const r = zitat.getBoundingClientRect();
-      const gelesen = KJG.klemmen((vh * start - r.top) / (vh * (start - ende))) * buchstaben.length;
+      const gelesen = erstesWort + KJG.klemmen((vh * start - r.top) / (vh * (start - ende))) * (buchstaben.length - erstesWort);
       buchstaben.forEach((b, i) => {
         const d = BUCHSTABE_BLASS + (1 - BUCHSTABE_BLASS) * KJG.klemmen(gelesen - i);
         b.style.opacity = d >= 1 ? "" : d.toFixed(3);

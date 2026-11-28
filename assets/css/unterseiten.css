@@ -342,14 +342,16 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
    Sprungmarken · Zahlen · Abschnitt mit stehendem Bild · Zitat (füllt sich Buchstabe für Buchstabe) · Abschnitt · Kontakt
    ===================================================================== */
 
-.sub .story { padding: 96px 0; }
+.sub .story { padding: 96px 0 72px; }
 .sub .story-in { width: 1030px; max-width: calc(100% - 32px); margin-inline: auto; display: flex; flex-direction: row-reverse; align-items: flex-start; gap: 64px; }
 .sub .story-bild { flex: 1 1 0; min-width: 0; position: sticky; top: 140px; }
 .sub .story.links .story-in { flex-direction: row; }
 .sub .story-rahmen .media { width: 100%; height: 100%; }
 .sub .story-rahmen { position: relative; aspect-ratio: 4 / 5; max-height: calc(100vh - 200px); overflow: hidden; background: var(--placeholder); }
 .sub .story-schritte { flex: 1 1 0; min-width: 0; }
-.sub .story-schritt { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; gap: 14px; transition: opacity .45s ease; }
+.sub .story-schritt { display: flex; flex-direction: column; gap: 14px; transition: opacity .45s ease; }
+.sub .story-schritt + .story-schritt { margin-top: 24px; }
+.sub .story-schritte { align-self: center; }   /* Text steht mittig neben dem Bild */
 .sub .story.aktiv .story-schritt:not(.an) { opacity: .28; }
 .sub .story-schritt h2 { font: 800 44px/1.1 var(--i); }
 .sub .story-schritt p { max-width: 34em; color: #000; font: 400 21px/32px var(--i); }
@@ -362,11 +364,13 @@ html[lang="en"] .sub .hero-split p { max-width: 560px; }
 .sub .zitat-b { transition: opacity .12s linear; }
 
 @media (max-width: 960px) {
-  .sub .story { padding: 40px 0 56px; }
+  .sub .story { padding: 32px 0 40px; }
+  .sub .story-schritte { align-self: stretch; }
   .sub .story-in, .sub .story.links .story-in { flex-direction: column; gap: 0; }
   .sub .story-bild { position: sticky; top: 80px; z-index: 2; width: 100%; flex: none; background: var(--white); padding-bottom: 12px; }
   .sub .story-rahmen { aspect-ratio: 16 / 10; max-height: 34vh; width: 100%; }
-  .sub .story-schritt { min-height: 46vh; gap: 10px; }
+  .sub .story-schritt { gap: 10px; }
+  .sub .story-schritt + .story-schritt { margin-top: 18px; }
   .sub .story-schritt h2 { font-size: 30px; line-height: 36px; }
   .sub .story-schritt p { font-size: 18px; line-height: 28px; }
   .sub .ablauf-zitat .z-quote.ohne-bild .z-quote-inner { padding: 64px 0; }

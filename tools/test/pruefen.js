@@ -36,10 +36,9 @@ const scrolleZu = async (seite, auswahl, anteil) => {
 
 // Funktionsprüfungen für einzelne Seiten
 const detailseite = async (seite, ort) => {
-  if (!(await seite.$(".kapitel a[aria-current]"))) melden(ort, "Kapitel-Leiste: kein Kapitel aktiv");
   await scrolleZu(seite, ".story", 0.5);
-  const aktiveSchritte = await seite.$$eval(".story-schritt.an", (s) => s.length);
-  if (aktiveSchritte !== 1) melden(ort, "Geschichte: nicht genau ein Schritt aktiv");
+  const aktiveSchritte = await seite.$$eval("#teaser .story-schritt.an", (s) => s.length);
+  if (aktiveSchritte !== 1) melden(ort, "Abschnitt: nicht genau ein Schritt aktiv");
   if (!(await seite.$(".ablauf-zitat .zitat-b"))) melden(ort, "Zitat: Buchstaben werden nicht einzeln gefüllt");
 };
 

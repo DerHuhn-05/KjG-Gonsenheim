@@ -89,31 +89,21 @@ def feature(pg, n, title, paras, reverse=False, id_=None, cls="", anchors=()):
 
 # ===================== Detailseiten (MoWo, 72h, Aktion, Gruppenstunde, Trainee) =====================
 KONTAKT = "<kjg-kontakt></kjg-kontakt>"
-KAP_START = t("Start", "Start"); KAP_ZAHLEN = t("In Zahlen", "In numbers"); KAP_STIMMEN = t("Stimmen", "Voices")
-KAP_KONTAKT = t("Kontakt", "Contact"); KAP_NAV = t("Kapitel", "Chapters")
-
-def story(pg, abschnitte):
-    """Geschichte: links die Schritte (je Absatz einer), rechts das Bild des Abschnitts, das beim Scrollen stehen bleibt
-    und mit dem aktiven Schritt wechselt (Steuerung: assets/js/ablauf.js)"""
-    bilder, schritte, nr = [], [], 0
-    for k, (anker, titel, absaetze_) in enumerate(abschnitte):
-        alt = f"Bild {re.sub('<[^>]+>', '', titel)}"
-        bilder.append(tag_bild(bildname(pg, k + 2, alt), alt, "media story-b"))
-        for j, (de, en) in enumerate(absaetze_):
-            nr += 1
-            text = t(de, en)
-            kopf = f"\n  <h2>{titel}</h2>" if j == 0 else ""
-            attr = f' id="{anker}" data-kapitel' if j == 0 else ""
-            schritte.append(f'''<div class="story-schritt"{attr} data-bild="{k}">
-  <span class="story-nr">{nr:02d}</span>{kopf}
-  <p>{text}</p>
+def story(pg, anker, titel, absaetze_, bildnr, bild_links=False):
+    """Abschnitt als Scrollytelling: das Bild bleibt beim Scrollen stehen, die Absätze sind einzelne Schritte –
+    der aktive ist voll sichtbar, die übrigen blass (Steuerung: assets/js/ablauf.js)"""
+    alt = f"Bild {re.sub('<[^>]+>', '', titel)}"
+    schritte = []
+    for j, (de, en) in enumerate(absaetze_):
+        kopf = f"\n  <h2>{titel}</h2>" if j == 0 else ""
+        schritte.append(f'''<div class="story-schritt">{kopf}
+  <p>{t(de, en)}</p>
 </div>''')
     nl = "\n"
-    return f'''<section class="story">
+    return f'''<section class="story{" links" if bild_links else ""}" id="{anker}">
  <div class="story-in">
   <div class="story-bild"><div class="story-rahmen">
-{nl.join(bilder)}
-   <span class="story-zahl" aria-hidden="true"></span>
+{tag_bild(bildname(pg, bildnr, alt), alt, "media")}
   </div></div>
   <div class="story-schritte">
 {nl.join(schritte)}
@@ -130,30 +120,19 @@ def detail(fname, h1, plain, wide=False, small=False, anmeldung=False, kontakt=F
     alt = f"Header-Bild {plain}"
     kommentar = f'<!-- ANMELDE-LINK {plain}: #ANMELDE-LINK-HIER-EINTRAGEN durch die Adresse der Anmeldung ersetzen -->\n<a class="btn" href="#ANMELDE-LINK-HIER-EINTRAGEN">Anmeldung</a>' if anmeldung else ""
     hero_inhalt = f"<h1{cls}>{h1}</h1>\n<p>{sub}</p>" + ("\n" + kommentar if kommentar else "")
-    kapitel = [("start", KAP_START), ("teaser", ta), ("vorbereitungen", tb), ("zahlen", KAP_ZAHLEN), ("stimmen", KAP_STIMMEN)] + ([("kontakt", KAP_KONTAKT)] if kontakt else [])
-    leiste = "".join(f'<a href="#{i}">{re.sub("<[^>]+>", "", n)}</a>' for i, n in kapitel)
-    main = f'''<div id="start" data-kapitel>
-{tag_hero_split(hero_inhalt, "hero-split" + (" small" if small else ""), bildname(pg, 1, alt), alt)}
-</div>
+    main = f'''{tag_hero_split(hero_inhalt, "hero-split" + (" small" if small else ""), bildname(pg, 1, alt), alt)}
 
-<nav class="kapitel" aria-label="{KAP_NAV}">
- <div class="kapitel-in">{leiste}</div>
- <div class="kapitel-balken"><i></i></div>
-</nav>
+{jump([("teaser", ta), ("vorbereitungen", tb)], "jump-detail")}
 
-{story(pg, [("teaser", ta, pa), ("vorbereitungen", tb, pb)])}
-
-<div id="zahlen" class="ablauf-zahlen" data-kapitel>
 {zahlen_tag(pg)}
+
+{story(pg, "teaser", ta, pa, 2)}
+
+<div class="ablauf-zitat">
+{zitat_tag(pg)}
 </div>
 
-<div id="stimmen" class="ablauf-zitat" data-kapitel>
-{zitat_tag(pg)}
-</div>''' + (f'''
-
-<div id="kontakt" class="ablauf-kontakt" data-kapitel>
-{KONTAKT}
-</div>''' if kontakt else "")
+{story(pg, "vorbereitungen", tb, pb, 3, bild_links=True)}''' + (f"\n\n{KONTAKT}" if kontakt else "")
     page(fname, plain, "", main, extra_js=("ablauf",))   # nur Seiten, die selbst im Header stehen, werden fett
 
 detail("mowo.html", "MoWo", "MoWo – Monsterwochenende", wide=True, anmeldung=False)   # Anmeldung: derzeit keine – Knopf ausgeblendet

@@ -13,7 +13,8 @@ KJG.beiBereit(() => {
   const HINTEN_DECKKRAFT = 0.35, VORNE_DECKKRAFT_DAZU = 0.3;
   const FEUER_SKALA_DESKTOP = 0.9, FLAMMEN_HOEHE = 242;   // SVG-Einheiten von der Flammenspitze bis zum Boden
   const NAME_ABSTAND = 24;                     // px vom Namen der aktiven Person bis zur Kachel (Handy)
-  const KOMPAKT_UNTER = 0.48;                  // Handy: bleibt weniger als 48 % der Höhe für die Szene, entfällt das Zitat
+  const KOMPAKT_UNTER = 0.4;                   // Handy: bleibt weniger als 40 % der Höhe für die Szene, entfällt das Zitat
+  const FEUER_ANTEIL = 0.55;                   // Handy: das Feuer ist etwa 55 % so hoch wie der Platz über der Kachel
   const HINWEIS_BIS = 0.97;                    // „Weiter scrollen“ blendet am Ende aus
   const GRUPPE_START = { lagerleitung: 0, planungsleitung: 3, pfarrleitung: 6 };   // Sprungmarken → erste Person der Gruppe
 
@@ -31,7 +32,7 @@ KJG.beiBereit(() => {
   const lerp = (a, b, t) => a + (b - a) * t;
   const weich = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
-  let aktiv = -1, handy = false, kopf = 100, hoehe = 600, schritt = 600, rx = 380, ry = 100, feuerSkala = FEUER_SKALA_DESKTOP;
+  let aktiv = -1, handy = false, kopf = 100, hoehe = 600, schritt = 600, rx = 380, ry = 100, feuerSkala = FEUER_SKALA_DESKTOP, feuerVersatz = -75;   // feuerVersatz: Boden des Feuers relativ zum Kreis (px)
 
   const zuPerson = (i) => {
     const oben = feuer.getBoundingClientRect().top + window.scrollY;
@@ -70,12 +71,18 @@ KJG.beiBereit(() => {
     feuer.classList.remove("kompakt");
     let kachelOben = hoehe - unten - info.offsetHeight;
     if (kachelOben < hoehe * KOMPAKT_UNTER) { feuer.classList.add("kompakt"); kachelOben = hoehe - unten - info.offsetHeight; }
-    const platz = kachelOben - NAME_ABSTAND;
-    const fotoBreite = KJG.klemmen(platz * 0.3, 60, 112);
+    const platz = kachelOben - NAME_ABSTAND;                  // so viel Höhe hat die Szene (der Name endet hier)
+    const fotoBreite = KJG.klemmen(platz * 0.28, 60, 124);
     personen.forEach((p) => { p.style.width = fotoBreite + "px"; });
-    ry = KJG.klemmen(platz * 0.1, 26, 56);
-    ring.style.top = platz - 26 - ry + "px";
-    feuerSkala = KJG.klemmen((platz - 26 - ry - 0.75 * ry - 10) / FLAMMEN_HOEHE, 0.35, 1);   // Flammenspitze ca. 10 px unter dem Oberrand
+    ry = KJG.klemmen(platz * 0.09, 24, 50);
+    feuerSkala = KJG.klemmen((platz * FEUER_ANTEIL) / FLAMMEN_HOEHE, 0.4, 1.3);
+    // Feuer, Kreis und Namen bilden eine Gruppe, die im Platz über der Kachel senkrecht mittig steht
+    // das Feuer steht so hoch, dass es über dem großen Foto der Person vorn gut zu sehen ist
+    const fotoHoeheVorn = fotoBreite * 1.25 * AKTIV_GROESSE.handy;
+    feuerVersatz = -(fotoHoeheVorn * 0.55 - ry);
+    const ueberRing = -feuerVersatz + FLAMMEN_HOEHE * feuerSkala, unterRing = ry + 26;
+    const oben = Math.max(8, (platz - ueberRing - unterRing) / 2);
+    ring.style.top = Math.min(platz - unterRing, oben + ueberRing) + "px";
   };
   const layout = () => {
     handy = window.innerWidth < HANDY_BIS;
@@ -87,7 +94,7 @@ KJG.beiBereit(() => {
     rx = KJG.klemmen(window.innerWidth * (handy ? 0.37 : 0.22), 120, 400);
     ry = KJG.klemmen(hoehe * (handy ? 0.065 : 0.13), 40, 130);
     if (handy) handyLayout();
-    else { ring.style.top = ""; personen.forEach((p) => { p.style.width = ""; }); feuerSkala = FEUER_SKALA_DESKTOP; }
+    else { ring.style.top = ""; personen.forEach((p) => { p.style.width = ""; }); feuerSkala = FEUER_SKALA_DESKTOP; feuerVersatz = -0.75 * ry; }
     bahn.style.width = 2 * rx + "px";
     bahn.style.height = 2 * ry + "px";
   };
@@ -121,7 +128,7 @@ KJG.beiBereit(() => {
       });
     }
     const flamme = lerp(0.85, 1, weich(KJG.klemmen(p * 3))) * feuerSkala;   // das Feuer wächst am Anfang noch ein wenig
-    stelle.style.transform = `translate(-50%,${(-0.75 * ry).toFixed(0)}px) translate(0,-100%) scale(${flamme.toFixed(3)})`;
+    stelle.style.transform = `translate(-50%,${feuerVersatz.toFixed(0)}px) translate(0,-100%) scale(${flamme.toFixed(3)})`;
     if (!hinweis) hinweis = feuer.querySelector(".scroll-hinweis");
     if (hinweis) hinweis.style.opacity = p < HINWEIS_BIS ? 1 : 0;
   };
